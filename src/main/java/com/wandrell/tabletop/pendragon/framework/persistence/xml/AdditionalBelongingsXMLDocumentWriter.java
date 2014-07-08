@@ -13,10 +13,10 @@ import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.util.XMLUtils;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
-public class InventoryRollTableXMLDocumentWriter implements
+public class AdditionalBelongingsXMLDocumentWriter implements
 	XMLDocumentWriter<RollTable<AdditionalBelongings>> {
 
-    public InventoryRollTableXMLDocumentWriter() {
+    public AdditionalBelongingsXMLDocumentWriter() {
 	super();
     }
 

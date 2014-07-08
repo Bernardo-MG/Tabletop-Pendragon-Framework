@@ -10,10 +10,10 @@ import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.pendragon.inventory.DefaultAdditionalBelongings;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
-public class InventoryRollTableXMLDocumentReader implements
+public class AdditionalBelongingsXMLDocumentReader implements
 	XMLDocumentReader<RollTable<AdditionalBelongings>> {
 
-    public InventoryRollTableXMLDocumentReader() {
+    public AdditionalBelongingsXMLDocumentReader() {
 	super();
     }
 
