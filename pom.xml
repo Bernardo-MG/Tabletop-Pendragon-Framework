@@ -105,6 +105,12 @@
 			<version>${rpg.version}</version>
 		</dependency>
 		<dependency>
+			<!-- Tabletop's Pendragon Core -->
+			<groupId>com.wandrell</groupId>
+			<artifactId>tabletop-pendragon-core</artifactId>
+			<version>${rpg.version}</version>
+		</dependency>
+		<dependency>
 			<!-- Wandrell's Core library -->
 			<groupId>com.wandrell</groupId>
 			<artifactId>wandrell-core</artifactId>
