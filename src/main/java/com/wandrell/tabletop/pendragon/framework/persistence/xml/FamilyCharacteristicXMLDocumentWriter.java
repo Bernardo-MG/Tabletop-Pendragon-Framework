@@ -3,19 +3,19 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.dice.RollTable;
+import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
-public class TemplateRollableTableXMLDocumentWriter implements
-	XMLDocumentWriter<RollTable<?>> {
+public class FamilyCharacteristicXMLDocumentWriter implements
+	XMLDocumentWriter<FamilyCharacteristic> {
 
-    public TemplateRollableTableXMLDocumentWriter() {
+    public FamilyCharacteristicXMLDocumentWriter() {
 	super();
     }
 
     @Override
-    public final Document getDocument(final RollTable<?> holder) {
+    public final Document getDocument(final FamilyCharacteristic holder) {
 	final Document doc;
 	final Element element;
 
@@ -32,7 +32,8 @@ public class TemplateRollableTableXMLDocumentWriter implements
     }
 
     @SuppressWarnings("unused")
-    private final Element buildIntervalsXMLTree(final RollTable<?> holder) {
+    private final Element buildIntervalsXMLTree(
+	    final FamilyCharacteristic holder) {
 	final Element root;
 	Element intervalNode;
 

@@ -4,21 +4,21 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.dice.RollTable;
+import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
-public class TemplateRollableTableXMLDocumentReader implements
-	XMLDocumentReader<RollTable<?>> {
+public class FamilyCharacteristicXMLDocumentReader implements
+	XMLDocumentReader<FamilyCharacteristic> {
 
-    public TemplateRollableTableXMLDocumentReader() {
+    public FamilyCharacteristicXMLDocumentReader() {
 	super();
     }
 
     @Override
-    public final RollTable<?> getValue(final Document doc) {
+    public final FamilyCharacteristic getValue(final Document doc) {
 	final Element intervals;
-	final RollTable<?> holder;
+	final FamilyCharacteristic holder;
 	final Element root;
 
 	root = doc.getRootElement();
@@ -42,7 +42,7 @@ public class TemplateRollableTableXMLDocumentReader implements
 
     @SuppressWarnings("unused")
     private final void readIntervalsXMLTree(final Element root,
-	    final RollTable<?> holder) {
+	    final FamilyCharacteristic holder) {
 	String name;
 
 	// Goes through each interval
