@@ -4,7 +4,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
@@ -27,19 +26,20 @@ public class ManorAnimalXMLDocumentReader implements
 	final Element root;
 
 	root = doc.getRootElement();
-	holder = new DefaultManorAnimal(new DefaultRollTable<AnimalYearResult>(
-		null, null, null));
+	// holder = new DefaultManorAnimal(new
+	// DefaultRollTable<AnimalYearResult>(
+	// null, null, null));
 
 	// Acquires the different sections
 	intervals = root.getChild(FileLabels.INTERVALS);
 
 	// Pet's name
-	holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
+	// holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Intervals and results
-	readIntervalsXMLTree(intervals, holder.getAnnualCheckMap());
+	// readIntervalsXMLTree(intervals, holder.getAnnualCheckMap());
 
-	return holder;
+	return null;
     }
 
     private final void readIntervalsXMLTree(final Element root,

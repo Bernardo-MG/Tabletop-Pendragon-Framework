@@ -6,7 +6,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.dice.RollTable;
+import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
@@ -32,21 +32,23 @@ public class ManorAnimalXMLDocumentWriter implements
 	doc = new Document(element);
 
 	// Intervals and results
-	doc.getRootElement().addContent(
-		buildIntervalsXMLTree(holder.getAnnualCheckMap()));
+	doc.getRootElement()
+		.addContent(
+			buildIntervalsXMLTree((DefaultRollTable<AnimalYearResult>) holder
+				.getAnnualCheckMap()));
 
 	return doc;
     }
 
     private final Element buildIntervalsXMLTree(
-	    final RollTable<AnimalYearResult> holder) {
+	    final DefaultRollTable<AnimalYearResult> holder) {
 	final Element root;
 	Element intervalNode;
 	// TODO: Esto se hace en tres clases
 
 	root = new Element(FileLabels.INTERVALS);
 	for (final Entry<ContrastInterval<Integer>, AnimalYearResult> intervals : holder
-		.getValuesMap().entrySet()) {
+		.getIntervals().entrySet()) {
 	    intervalNode = XMLUtils.buildIntervalXMLNode(intervals.getKey(),
 		    FileStreamerTags.INTERVAL);
 	    intervalNode.setAttribute(FileStreamerTags.NAME, intervals

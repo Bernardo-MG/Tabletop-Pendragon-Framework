@@ -4,6 +4,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
+import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
@@ -26,14 +27,11 @@ public class AdditionalBelongingsXMLDocumentReader implements
 
 	root = doc.getRootElement();
 	// TODO
-	// holder = ClassInstanceFactory.getNewValue(InventoryRollTable.class);
+	holder = new DefaultRollTable<AdditionalBelongings>(
+		root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Acquires the different sections
 	intervals = root.getChild(FileLabels.INTERVALS);
-
-	// Table's name
-	// TODO
-	// holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Intervals and results
 	// TODO

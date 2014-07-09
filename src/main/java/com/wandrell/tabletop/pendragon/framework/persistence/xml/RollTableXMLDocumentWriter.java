@@ -6,6 +6,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
+import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
@@ -31,18 +32,20 @@ public class RollTableXMLDocumentWriter implements
 	doc = new Document(element);
 
 	// Intervals and results
-	doc.getRootElement().addContent(buildIntervalsXMLTree(holder));
+	doc.getRootElement().addContent(
+		buildIntervalsXMLTree((DefaultRollTable<String>) holder));
 
 	return doc;
     }
 
-    private final Element buildIntervalsXMLTree(final RollTable<String> holder) {
+    private final Element buildIntervalsXMLTree(
+	    final DefaultRollTable<String> holder) {
 	final Element root;
 	Element intervalNode;
 
 	root = new Element(FileLabels.INTERVALS);
 	for (final Entry<ContrastInterval<Integer>, String> intervals : holder
-		.getValuesMap().entrySet()) {
+		.getIntervals().entrySet()) {
 	    intervalNode = XMLUtils.buildIntervalXMLNode(intervals.getKey(),
 		    FileLabels.INTERVAL);
 	    intervalNode.addContent(new Element(FileStreamerTags.VALUE)
