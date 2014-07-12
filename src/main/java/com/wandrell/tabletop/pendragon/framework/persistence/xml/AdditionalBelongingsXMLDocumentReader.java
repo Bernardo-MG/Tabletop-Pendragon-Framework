@@ -37,7 +37,7 @@ public class AdditionalBelongingsXMLDocumentReader implements
 	// TODO
 	// readIntervalsXMLTree(intervals, holder);
 
-	return null;
+	return holder;
     }
 
     @SuppressWarnings("unused")
