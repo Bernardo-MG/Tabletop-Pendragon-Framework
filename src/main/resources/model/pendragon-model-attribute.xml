@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attributes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-attribute.xsd">
+	<attribute human="true">
+		<name>appearance</name>
+	</attribute>
+	<attribute>
+		<name>constitution</name>
+	</attribute>
+	<attribute>
+		<name>dexterity</name>
+	</attribute>
+	<attribute>
+		<name>strength</name>
+	</attribute>
+	<attribute>
+		<name>size</name>
+	</attribute>
+</attributes>

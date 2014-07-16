@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<passions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-passion.xsd">
+	<passion repeat="true">
+		<name>amor</name>
+	</passion>
+	<passion repeat="true">
+		<name>concern</name>
+	</passion>
+	<passion knight="true">
+		<name>concern</name>
+		<descriptor>commoners</descriptor>
+	</passion>
+	<passion repeat="true">
+		<name>fear</name>
+	</passion>
+	<passion repeat="true">
+		<name>hate</name>
+	</passion>
+	<passion>
+		<name>hospitality</name>
+	</passion>
+	<passion>
+		<name>honor</name>
+	</passion>
+	<passion repeat="true">
+		<name>loyalty</name>
+	</passion>
+	<passion knight="true">
+		<name>loyalty</name>
+		<descriptor>lord</descriptor>
+	</passion>
+	<passion knight="true">
+		<name>loyalty</name>
+		<descriptor>vassals</descriptor>
+	</passion>
+	<passion repeat="true">
+		<name>love</name>
+	</passion>
+	<passion>
+		<name>love</name>
+		<descriptor>family</descriptor>
+	</passion>
+	<passion rare="true">
+		<name>rechtschaffenheit</name>
+	</passion>
+</passions>

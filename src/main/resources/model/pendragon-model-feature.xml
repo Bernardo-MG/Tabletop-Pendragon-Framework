@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-feature.xsd">
+	<feature>
+		<name>body</name>
+	</feature>
+	<feature>
+		<name>expression</name>
+	</feature>
+	<feature>
+		<name>facial</name>
+	</feature>
+	<feature>
+		<name>hair</name>
+	</feature>
+	<feature>
+		<name>limbs</name>
+	</feature>
+	<feature>
+		<name>speech</name>
+	</feature>
+</features>

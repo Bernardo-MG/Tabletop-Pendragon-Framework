@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<traits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-trait.xsd">
+	<trait gentlewoman="true">
+		<positive>chaste</positive>
+		<negative>lustful</negative>
+	</trait>
+	<trait chivaldry="true" gentlewoman="true">
+		<positive>energetic</positive>
+		<negative>lazy</negative>
+	</trait>
+	<trait>
+		<positive>forgiving</positive>
+		<negative>vengeful</negative>
+	</trait>
+	<trait chivaldry="true">
+		<positive>generous</positive>
+		<negative>selfish</negative>
+	</trait>
+	<trait gentlewoman="true">
+		<positive>honest</positive>
+		<negative>deceitful</negative>
+	</trait>
+	<trait chivaldry="true">
+		<positive>just</positive>
+		<negative>arbitrary</negative>
+	</trait>
+	<trait chivaldry="true">
+		<positive>merciful</positive>
+		<negative>cruel</negative>
+	</trait>
+	<trait chivaldry="true" gentlewoman="true">
+		<positive>modest</positive>
+		<negative>proud</negative>
+	</trait>
+	<trait>
+		<positive>pious</positive>
+		<negative>worldly</negative>
+	</trait>
+	<trait chivaldry="true" gentlewoman="true">
+		<positive>prudent</positive>
+		<negative>reckless</negative>
+	</trait>
+	<trait>
+		<positive>temperate</positive>
+		<negative>indulgent</negative>
+	</trait>
+	<trait>
+		<positive>trusting</positive>
+		<negative>suspicious</negative>
+	</trait>
+	<trait chivaldry="true" gentlewoman="true">
+		<positive>valorous</positive>
+		<negative>cowardly</negative>
+	</trait>
+</traits>

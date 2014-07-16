@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skills xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-skill.xsd">
+	<skill italian="true" unique="true" knowledge="true">
+		<name>art_appreciation</name>
+	</skill>
+	<skill knightly="true">
+		<name>awareness</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>axe</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>battle</name>
+	</skill>
+	<skill knightly="true">
+		<name>boating</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>bow</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>charioteer</name>
+	</skill>
+	<skill>
+		<name>chirurgery</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>compose</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>compound_bow</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>courtesy</name>
+	</skill>
+	<skill combat="true">
+		<name>crossbow</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>dagger</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>dancing</name>
+	</skill>
+	<skill knightly="true" knowledge="true">
+		<name>faerie_lore</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>falconry</name>
+	</skill>
+	<skill courtly="true">
+		<name>fashion</name>
+	</skill>
+	<skill knightly="true">
+		<name>first_aid</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>flail</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>flirting</name>
+	</skill>
+	<skill knightly="true">
+		<name>folklore</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>gaming</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>grapple</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>great_axe</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>great_lance</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>great_mace</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>great_spear</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>great_sword</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>halberd</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>hammer</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>heraldry</name>
+	</skill>
+	<skill italian="true" unique="true" knowledge="true">
+		<name>high_finances</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>horsemanship</name>
+	</skill>
+	<skill knightly="true">
+		<name>hunting</name>
+	</skill>
+	<skill>
+		<name>industry</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>intrigue</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>javelin</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>lance</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>mace</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>morning_star</name>
+	</skill>
+	<skill courtly="true" knightly="true">
+		<name>orate</name>
+	</skill>
+	<skill italian="true" unique="true" knowledge="true">
+		<name>philosophy</name>
+	</skill>
+	<skill courtly="true" knightly="true" repeat="true">
+		<name>play</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true" repeat="true">
+		<name>read</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>recognize</name>
+	</skill>
+	<skill knightly="true" knowledge="true" repeat="true">
+		<name>religion</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>romance</name>
+	</skill>
+	<skill italian="true" unique="true" knowledge="true">
+		<name>science</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>siege</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>singing</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>spear</name>
+	</skill>
+	<skill knightly="true" knowledge="true">
+		<name>stewardship</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>sword</name>
+	</skill>
+	<skill knightly="true">
+		<name>swimming</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true">
+		<name>tourney</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>warflail</name>
+	</skill>
+</skills>

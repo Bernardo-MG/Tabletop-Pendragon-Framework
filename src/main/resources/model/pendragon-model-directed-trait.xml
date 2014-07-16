@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<directed_traits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="validation/pendragon-model-directed-trait.xsd">
+	<directed_trait>
+		<name>elan</name>
+	</directed_trait>
+	<directed_trait>
+		<name>gastronomy</name>
+	</directed_trait>
+	<directed_trait>
+		<name>oinology</name>
+	</directed_trait>
+</directed_traits>

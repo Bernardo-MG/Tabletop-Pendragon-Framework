@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="passions">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="passion" type="passion" />
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="uniqueData">
+			<xs:selector xpath="passion" />
+			<xs:field xpath="name" />
+			<xs:field xpath="descriptor" />
+		</xs:unique>
+	</xs:element>
+
+	<xs:complexType name="passion">
+		<xs:sequence>
+			<xs:element name="name" type="xs:token" maxOccurs="1"
+				minOccurs="1" />
+			<xs:element name="descriptor" type="xs:token" maxOccurs="1"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="knight" type="xs:boolean" default="false" />
+		<xs:attribute name="rare" type="xs:boolean" default="false" />
+		<xs:attribute name="repeat" type="xs:boolean" default="false" />
+	</xs:complexType>
+
+</xs:schema>
