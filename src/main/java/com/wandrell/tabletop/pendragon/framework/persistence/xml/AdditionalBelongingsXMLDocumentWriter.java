@@ -7,7 +7,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.dice.RollTable;
-import com.wandrell.tabletop.pendragon.conf.PendragonLabels;
+import com.wandrell.tabletop.pendragon.conf.PendragonToken;
 import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.util.XMLUtils;
@@ -68,7 +68,7 @@ public class AdditionalBelongingsXMLDocumentWriter implements
 	// Flag marking it has to choose instead of receiving all
 	if (items.hasToChoose()) {
 	    listFlags = new ArrayList<String>(1);
-	    listFlags.add(PendragonLabels.FLAGS_HAS_TO_CHOOSE);
+	    listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
 	    node = XMLUtils.buildBooleansSetXMLTree(new Element(
 		    FileLabels.FLAGS), listFlags.iterator());
 	    root.addContent(node);
