@@ -65,6 +65,7 @@ public final class FileToken {
     public static final String MIN = "lower_limit";
     public static final String MONEY = "money";
     public static final String MONEY_VALUE = "money_value";
+    public static final String NAME = "name";
     public static final String PASSION = "passion";
     public static final String PASSIONS = "passions";
     public static final String PET = "pet";
