@@ -2,7 +2,7 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 
 import org.jdom2.Document;
 
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
 import com.wandrell.tabletop.pendragon.inventory.ShieldEquipment;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -22,7 +22,7 @@ public class ShieldXMLDocumentWriter implements
 
 	doc = builder.getDocument(holder);
 
-	doc.getRootElement().setName(FileLabels.SHIELD);
+	doc.getRootElement().setName(FileToken.SHIELD);
 
 	return doc;
     }

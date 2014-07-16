@@ -10,7 +10,7 @@ import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.character.background.culture.Culture;
 import com.wandrell.tabletop.pendragon.character.background.culture.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.character.background.culture.DefaultCulture;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class CultureXMLDocumentReader implements XMLDocumentReader<Culture> {
@@ -69,11 +69,11 @@ public class CultureXMLDocumentReader implements XMLDocumentReader<Culture> {
 	root = doc.getRootElement();
 
 	// Acquires the different sections
-	files = root.getChild(FileLabels.SELECTORS_FILES);
-	templateFemale = root.getChild(FileLabels.TEMPLATE_FEMALE);
-	templateMale = root.getChild(FileLabels.TEMPLATE_MALE);
-	templateRandomFemale = root.getChild(FileLabels.TEMPLATE_FEMALE_RANDOM);
-	templateRandomMale = root.getChild(FileLabels.TEMPLATE_MALE_RANDOM);
+	files = root.getChild(FileToken.SELECTORS_FILES);
+	templateFemale = root.getChild(FileToken.TEMPLATE_FEMALE);
+	templateMale = root.getChild(FileToken.TEMPLATE_MALE);
+	templateRandomFemale = root.getChild(FileToken.TEMPLATE_FEMALE_RANDOM);
+	templateRandomMale = root.getChild(FileToken.TEMPLATE_MALE_RANDOM);
 
 	// Culture's name
 	holder = new DefaultCulture(

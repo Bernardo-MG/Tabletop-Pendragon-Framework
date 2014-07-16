@@ -6,7 +6,7 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.culture.Culture;
 import com.wandrell.tabletop.pendragon.character.background.culture.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class CultureXMLDocumentWriter implements XMLDocumentWriter<Culture> {
@@ -49,7 +49,7 @@ public class CultureXMLDocumentWriter implements XMLDocumentWriter<Culture> {
 	Element node;
 
 	// Main body and name of the culture
-	node = new Element(FileLabels.CULTURE);
+	node = new Element(FileToken.CULTURE);
 	node.setAttribute(FileStreamerTags.NAME, holder.getName());
 	doc = new Document(node);
 
@@ -63,38 +63,38 @@ public class CultureXMLDocumentWriter implements XMLDocumentWriter<Culture> {
 	}
 
 	// Female template
-	node = new Element(FileLabels.TEMPLATE_FEMALE);
+	node = new Element(FileToken.TEMPLATE_FEMALE);
 	buildAttributesLimitsTemplateXMLNode(holder.getFemaleTemplate(), node);
 	doc.getRootElement().addContent(node);
 
 	// Male template
-	node = new Element(FileLabels.TEMPLATE_MALE);
+	node = new Element(FileToken.TEMPLATE_MALE);
 	buildAttributesLimitsTemplateXMLNode(holder.getMaleTemplate(), node);
 	doc.getRootElement().addContent(node);
 
 	// Random generation templates
 
 	// Female template
-	node = new Element(FileLabels.TEMPLATE_FEMALE_RANDOM);
+	node = new Element(FileToken.TEMPLATE_FEMALE_RANDOM);
 	buildAttributesLimitsTemplateXMLNode(holder.getFemaleRandomTemplate(),
 		node);
-	if (node.getChild(FileLabels.ATTRIBUTES) == null) {
-	    node.addContent(new Element(FileLabels.ATTRIBUTES));
+	if (node.getChild(FileToken.ATTRIBUTES) == null) {
+	    node.addContent(new Element(FileToken.ATTRIBUTES));
 	}
-	if (node.getChild(FileLabels.PASSIONS) == null) {
-	    node.addContent(new Element(FileLabels.PASSIONS));
+	if (node.getChild(FileToken.PASSIONS) == null) {
+	    node.addContent(new Element(FileToken.PASSIONS));
 	}
 	doc.getRootElement().addContent(node);
 
 	// Male template
-	node = new Element(FileLabels.TEMPLATE_MALE_RANDOM);
+	node = new Element(FileToken.TEMPLATE_MALE_RANDOM);
 	buildAttributesLimitsTemplateXMLNode(holder.getMaleRandomTemplate(),
 		node);
-	if (node.getChild(FileLabels.ATTRIBUTES) == null) {
-	    node.addContent(new Element(FileLabels.ATTRIBUTES));
+	if (node.getChild(FileToken.ATTRIBUTES) == null) {
+	    node.addContent(new Element(FileToken.ATTRIBUTES));
 	}
-	if (node.getChild(FileLabels.PASSIONS) == null) {
-	    node.addContent(new Element(FileLabels.PASSIONS));
+	if (node.getChild(FileToken.PASSIONS) == null) {
+	    node.addContent(new Element(FileToken.PASSIONS));
 	}
 	doc.getRootElement().addContent(node);
 

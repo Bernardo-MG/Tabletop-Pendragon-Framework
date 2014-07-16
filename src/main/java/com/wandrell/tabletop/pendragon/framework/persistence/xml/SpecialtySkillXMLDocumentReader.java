@@ -6,7 +6,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSpecialtySkill;
 import com.wandrell.tabletop.util.XMLUtils;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -29,7 +29,7 @@ public class SpecialtySkillXMLDocumentReader implements
 	root = doc.getRootElement();
 
 	// Acquires the different sections
-	skills = root.getChild(FileLabels.SKILLS);
+	skills = root.getChild(FileToken.SKILLS);
 
 	// Skill's name
 	name = root.getAttributeValue(FileStreamerTags.NAME);

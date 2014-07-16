@@ -5,7 +5,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.RollTable;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.manor.DefaultAnimalYearResult;
 import com.wandrell.tabletop.pendragon.manor.DefaultManorAnimal;
@@ -31,7 +31,7 @@ public class ManorAnimalXMLDocumentReader implements
 	// null, null, null));
 
 	// Acquires the different sections
-	intervals = root.getChild(FileLabels.INTERVALS);
+	intervals = root.getChild(FileToken.INTERVALS);
 
 	// Pet's name
 	// holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
@@ -48,7 +48,7 @@ public class ManorAnimalXMLDocumentReader implements
 
 	// Goes through each interval
 	for (final Element node : root.getChildren()) {
-	    result = readYearResultNode(node.getChild(FileLabels.RESULTS));
+	    result = readYearResultNode(node.getChild(FileToken.RESULTS));
 	    result.setName(node.getAttributeValue(FileStreamerTags.NAME));
 	    // TODO
 	    // holder.put((ContrastInterval<Integer>) XMLUtils
@@ -60,9 +60,9 @@ public class ManorAnimalXMLDocumentReader implements
 	final Element values, flags, files;
 	final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
 
-	values = root.getChild(FileLabels.VALUE_HANDLERS);
-	flags = root.getChild(FileLabels.FLAGS);
-	files = root.getChild(FileLabels.SELECTORS_FILES);
+	values = root.getChild(FileToken.VALUE_HANDLERS);
+	flags = root.getChild(FileToken.FLAGS);
+	files = root.getChild(FileToken.SELECTORS_FILES);
 
 	// Values
 	if (values != null) {

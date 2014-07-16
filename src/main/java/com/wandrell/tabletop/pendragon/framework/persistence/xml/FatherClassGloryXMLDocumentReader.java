@@ -4,7 +4,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.DefaultFatherClassGlory;
 import com.wandrell.tabletop.pendragon.glory.FatherClassGlory;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -25,7 +25,7 @@ public class FatherClassGloryXMLDocumentReader implements
 
 	root = doc.getRootElement();
 
-	gloryBase = root.getChild(FileLabels.FATHER_CLASS_GLORY_BASE);
+	gloryBase = root.getChild(FileToken.FATHER_CLASS_GLORY_BASE);
 	// gloryYear = root.getChild(FileLabels.FATHER_CLASS_GLORY_PER_YEAR);
 
 	// Father's class name

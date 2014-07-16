@@ -17,7 +17,7 @@ import com.wandrell.tabletop.pendragon.character.follower.DefaultFollower;
 import com.wandrell.tabletop.pendragon.character.follower.DefaultWife;
 import com.wandrell.tabletop.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.pendragon.character.follower.Wife;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.DefaultGloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
@@ -31,10 +31,9 @@ public class PlayerCharacterXMLDocumentReader implements
 	final int year, gloryGained;
 	final String description;
 
-	year = Integer.parseInt(node.getAttributeValue(FileLabels.DATE));
-	gloryGained = Integer
-		.parseInt(node.getAttributeValue(FileLabels.GLORY));
-	description = node.getChildText(FileLabels.GLORY_EVENT_DESCRIPTION);
+	year = Integer.parseInt(node.getAttributeValue(FileToken.DATE));
+	gloryGained = Integer.parseInt(node.getAttributeValue(FileToken.GLORY));
+	description = node.getChildText(FileToken.GLORY_EVENT_DESCRIPTION);
 
 	return new DefaultGloryEvent(year, gloryGained, description);
     }
@@ -67,8 +66,8 @@ public class PlayerCharacterXMLDocumentReader implements
 	holder = new DefaultPendragonPlayerCharacter(null);
 
 	// Acquires the first sections
-	texts = root.getChild(FileLabels.TEXT_VALUES);
-	flags = root.getChild(FileLabels.FLAGS);
+	texts = root.getChild(FileToken.TEXT_VALUES);
+	flags = root.getChild(FileToken.FLAGS);
 
 	// Flags
 	if (flags != null) {
@@ -90,17 +89,17 @@ public class PlayerCharacterXMLDocumentReader implements
 	// holder);
 
 	// Acquires the different sections
-	glory = root.getChild(FileLabels.GLORY_HISTORY);
-	vhs = root.getChild(FileLabels.VALUE_HANDLERS);
-	features = root.getChild(FileLabels.FEATURES);
-	wives = root.getChild(FileLabels.WIVES);
-	famchar = root.getChild(FileLabels.FAMILY_CHARACTERISTIC);
-	invcarried = root.getChild(FileLabels.ITEMS_CARRIED);
-	invhome = root.getChild(FileLabels.ITEMS_AT_HOME);
-	money = root.getChild(FileLabels.MONEY);
-	horses = root.getChild(FileLabels.HORSES);
-	squires = root.getChild(FileLabels.SQUIRES);
-	followers = root.getChild(FileLabels.FOLLOWERS);
+	glory = root.getChild(FileToken.GLORY_HISTORY);
+	vhs = root.getChild(FileToken.VALUE_HANDLERS);
+	features = root.getChild(FileToken.FEATURES);
+	wives = root.getChild(FileToken.WIVES);
+	famchar = root.getChild(FileToken.FAMILY_CHARACTERISTIC);
+	invcarried = root.getChild(FileToken.ITEMS_CARRIED);
+	invhome = root.getChild(FileToken.ITEMS_AT_HOME);
+	money = root.getChild(FileToken.MONEY);
+	horses = root.getChild(FileToken.HORSES);
+	squires = root.getChild(FileToken.SQUIRES);
+	followers = root.getChild(FileToken.FOLLOWERS);
 
 	// Knight
 	// TODO
@@ -191,8 +190,8 @@ public class PlayerCharacterXMLDocumentReader implements
 	for (final Element itemNode : root.getChildren()) {
 	    follower = new DefaultFollower();
 
-	    follower.setFile(itemNode.getAttributeValue(FileLabels.FILE));
-	    follower.setJob(itemNode.getAttributeValue(FileLabels.JOB));
+	    follower.setFile(itemNode.getAttributeValue(FileToken.FILE));
+	    follower.setJob(itemNode.getAttributeValue(FileToken.JOB));
 
 	    listFollowers.add(follower);
 	}
@@ -247,14 +246,14 @@ public class PlayerCharacterXMLDocumentReader implements
 	for (final Element wifeNode : root.getChildren()) {
 	    wife = new DefaultWife();
 
-	    wife.setFile(wifeNode.getAttributeValue(FileLabels.FILE));
+	    wife.setFile(wifeNode.getAttributeValue(FileToken.FILE));
 	    // TODO
 	    // wife.getYearWed().setValue(
 	    // XMLUtils.readIntegerValueHandlerXMLNode(
 	    // wifeNode.getChild(FileLabels.YEAR_WEDDING),
 	    // new IntegerValueHandler()).getStoredValue());
 
-	    children = wifeNode.getChild(FileLabels.CHILDREN);
+	    children = wifeNode.getChild(FileToken.CHILDREN);
 
 	    listChildren = new ArrayList<Child>(children.getChildren().size());
 	    for (final Element childNode : children.getChildren()) {

@@ -6,7 +6,7 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.DefaultFamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class FamilyCharacteristicXMLDocumentReader implements
@@ -28,7 +28,7 @@ public class FamilyCharacteristicXMLDocumentReader implements
 	// holder = ClassInstanceFactory.getNewValue(TemplateRollTable.class);
 
 	// Acquires the different sections
-	intervals = root.getChild(FileLabels.INTERVALS);
+	intervals = root.getChild(FileToken.INTERVALS);
 
 	// Intervals and results
 	// readIntervalsXMLTree(intervals, holder);

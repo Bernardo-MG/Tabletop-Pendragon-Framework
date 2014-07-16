@@ -4,7 +4,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class FamilyCharacteristicXMLDocumentWriter implements
@@ -20,7 +20,7 @@ public class FamilyCharacteristicXMLDocumentWriter implements
 	final Element element;
 
 	// Root and table's name
-	element = new Element(FileLabels.ROLL_TABLE);
+	element = new Element(FileToken.ROLL_TABLE);
 	// TODO
 	// element.setAttribute(FileStreamerTags.NAME, holder.getName());
 	doc = new Document(element);
@@ -37,7 +37,7 @@ public class FamilyCharacteristicXMLDocumentWriter implements
 	final Element root;
 	Element intervalNode;
 
-	root = new Element(FileLabels.INTERVALS);
+	root = new Element(FileToken.INTERVALS);
 	// Creates intervals tree
 	// TODO
 	// for (final Entry<ContrastInterval<Integer>, PendragonTemplate> entry

@@ -8,7 +8,7 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.DefaultFatherClass;
 import com.wandrell.tabletop.pendragon.character.background.FatherClass;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -31,9 +31,9 @@ public class FatherClassTemplateXMLDocumentReader implements
 	// PersistenceFactory.getTemplatesContainerService().readXMLTree(root,
 	// holder);
 
-	skillsGroup = root.getChild(FileLabels.SKILLS_GROUP);
-	skillPoints = root.getChild(FileLabels.SKILLS_POINTS);
-	money = root.getChild(FileLabels.MONEY);
+	skillsGroup = root.getChild(FileToken.SKILLS_GROUP);
+	skillPoints = root.getChild(FileToken.SKILLS_POINTS);
+	money = root.getChild(FileToken.MONEY);
 
 	// Father's class name
 	holder = new DefaultFatherClass(

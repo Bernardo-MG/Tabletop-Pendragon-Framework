@@ -5,7 +5,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.FatherClass;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class FatherClassTemplateXMLDocumentWriter implements
@@ -21,7 +21,7 @@ public class FatherClassTemplateXMLDocumentWriter implements
 	Element node;
 
 	// Main body and name of the father's class
-	node = new Element(FileLabels.FATHER_CLASS);
+	node = new Element(FileToken.FATHER_CLASS);
 	node.setAttribute(FileStreamerTags.NAME, holder.getName());
 	doc = new Document(node);
 

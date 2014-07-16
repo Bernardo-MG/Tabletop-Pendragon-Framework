@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
 import com.wandrell.tabletop.pendragon.inventory.WeaponEquipment;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -24,10 +24,10 @@ public class WeaponXMLDocumentWriter implements
 
 	doc = builder.getDocument(holder);
 
-	node = new Element(FileLabels.SKILL);
+	node = new Element(FileToken.SKILL);
 	node.setText(holder.getSkill());
 
-	doc.getRootElement().setName(FileLabels.WEAPON);
+	doc.getRootElement().setName(FileToken.WEAPON);
 
 	return doc;
     }

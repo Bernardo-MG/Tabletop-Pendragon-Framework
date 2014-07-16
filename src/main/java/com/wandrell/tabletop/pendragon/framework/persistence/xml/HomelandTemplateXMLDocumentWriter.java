@@ -5,7 +5,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.Homeland;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class HomelandTemplateXMLDocumentWriter implements
@@ -21,7 +21,7 @@ public class HomelandTemplateXMLDocumentWriter implements
 	Element node;
 
 	// Main body and name of the template
-	node = new Element(FileLabels.HOMELAND);
+	node = new Element(FileToken.HOMELAND);
 	node.setAttribute(FileStreamerTags.NAME, holder.getName());
 	doc = new Document(node);
 

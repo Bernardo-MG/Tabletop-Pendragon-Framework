@@ -5,7 +5,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class HorseXMLDocumentWriter implements
@@ -21,7 +21,7 @@ public class HorseXMLDocumentWriter implements
 	final Document doc;
 	Element node;
 
-	doc = new Document(new Element(FileLabels.HORSE));
+	doc = new Document(new Element(FileToken.HORSE));
 	// TODO
 	// PersistenceFactory.getCharacterService().addBaseCharacterToDocument(
 	// doc, holder);
@@ -30,7 +30,7 @@ public class HorseXMLDocumentWriter implements
 	doc.getRootElement().setAttribute(FileStreamerTags.NAME,
 		holder.getHorseType());
 	doc.getRootElement().addContent(0,
-		new Element(FileLabels.RACE).setText(holder.getHorseType()));
+		new Element(FileToken.RACE).setText(holder.getHorseType()));
 
 	// Secondary attributes
 	// TODO

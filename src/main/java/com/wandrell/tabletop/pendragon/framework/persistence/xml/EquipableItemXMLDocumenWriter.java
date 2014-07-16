@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
@@ -26,10 +26,10 @@ public class EquipableItemXMLDocumenWriter implements
 	// .buildItemXMLNode(holder));
 
 	// Removes quantity count
-	doc.getRootElement().removeChild(FileLabels.QUANTITY);
+	doc.getRootElement().removeChild(FileToken.QUANTITY);
 
 	// Removes money value count
-	doc.getRootElement().removeChild(FileLabels.MONEY);
+	doc.getRootElement().removeChild(FileToken.MONEY);
 
 	// Values
 	node = null;

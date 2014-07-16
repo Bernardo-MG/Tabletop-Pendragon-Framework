@@ -6,7 +6,7 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.pendragon.inventory.DefaultAdditionalBelongings;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -31,7 +31,7 @@ public class AdditionalBelongingsXMLDocumentReader implements
 		root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Acquires the different sections
-	intervals = root.getChild(FileLabels.INTERVALS);
+	intervals = root.getChild(FileToken.INTERVALS);
 
 	// Intervals and results
 	// TODO
@@ -49,7 +49,7 @@ public class AdditionalBelongingsXMLDocumentReader implements
 	for (final Element node : root.getChildren()) {
 	    items = new DefaultAdditionalBelongings();
 
-	    belongings = node.getChild(FileLabels.BELONGINGS);
+	    belongings = node.getChild(FileToken.BELONGINGS);
 
 	    readItemsXMLTree(belongings, items);
 
@@ -64,14 +64,14 @@ public class AdditionalBelongingsXMLDocumentReader implements
 	    final DefaultAdditionalBelongings holder) {
 	final Element flags, horses, equipment, pets, reroll, rerolls, weapons, shields, money, name;
 
-	flags = root.getChild(FileLabels.FLAGS);
-	horses = root.getChild(FileLabels.HORSES);
-	equipment = root.getChild(FileLabels.ITEMS);
-	weapons = root.getChild(FileLabels.WEAPONS);
-	shields = root.getChild(FileLabels.SHIELDS);
-	reroll = root.getChild(FileLabels.REROLL);
-	pets = root.getChild(FileLabels.PETS);
-	money = root.getChild(FileLabels.MONEY);
+	flags = root.getChild(FileToken.FLAGS);
+	horses = root.getChild(FileToken.HORSES);
+	equipment = root.getChild(FileToken.ITEMS);
+	weapons = root.getChild(FileToken.WEAPONS);
+	shields = root.getChild(FileToken.SHIELDS);
+	reroll = root.getChild(FileToken.REROLL);
+	pets = root.getChild(FileToken.PETS);
+	money = root.getChild(FileToken.MONEY);
 	name = root.getChild(FileStreamerTags.NAME);
 
 	// Name
@@ -119,7 +119,7 @@ public class AdditionalBelongingsXMLDocumentReader implements
 
 	// Re-roll
 	if (reroll != null) {
-	    rerolls = reroll.getChild(FileLabels.REROLLS_LIST);
+	    rerolls = reroll.getChild(FileToken.REROLLS_LIST);
 	    if (rerolls != null) {
 		// TODO
 		// holder.setReroll(reroll

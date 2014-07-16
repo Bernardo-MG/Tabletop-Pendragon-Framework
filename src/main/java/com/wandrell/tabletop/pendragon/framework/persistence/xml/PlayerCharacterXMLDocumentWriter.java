@@ -12,7 +12,7 @@ import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic
 import com.wandrell.tabletop.pendragon.character.follower.Child;
 import com.wandrell.tabletop.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.pendragon.character.follower.Wife;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryKeeper;
 import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
@@ -26,12 +26,12 @@ public class PlayerCharacterXMLDocumentWriter implements
     private static final Element buildGloryEventXMLNode(final GloryEvent glory) {
 	final Element gloryNode;
 
-	gloryNode = new Element(FileLabels.GLORY_EVENT);
-	gloryNode.setAttribute(FileLabels.DATE,
+	gloryNode = new Element(FileToken.GLORY_EVENT);
+	gloryNode.setAttribute(FileToken.DATE,
 		String.valueOf(glory.getYear().getStoredValue()));
-	gloryNode.setAttribute(FileLabels.GLORY,
+	gloryNode.setAttribute(FileToken.GLORY,
 		String.valueOf(glory.getGloryGained().getStoredValue()));
-	gloryNode.addContent(new Element(FileLabels.GLORY_EVENT_DESCRIPTION)
+	gloryNode.addContent(new Element(FileToken.GLORY_EVENT_DESCRIPTION)
 		.setText(String.valueOf(glory.getDescription())));
 
 	return gloryNode;
@@ -39,7 +39,7 @@ public class PlayerCharacterXMLDocumentWriter implements
 
     @SuppressWarnings("unused")
     private static final Element buildGloryXMLTree(final GloryKeeper holder) {
-	final Element nodeGlory = new Element(FileLabels.GLORY_HISTORY);
+	final Element nodeGlory = new Element(FileToken.GLORY_HISTORY);
 	final Iterator<GloryEvent> iteratorGlory;
 
 	// TODO
@@ -136,7 +136,7 @@ public class PlayerCharacterXMLDocumentWriter implements
 	    final FamilyCharacteristic characteristic) {
 	final Element root, bonusNode;
 
-	root = new Element(FileLabels.FAMILY_CHARACTERISTIC);
+	root = new Element(FileToken.FAMILY_CHARACTERISTIC);
 	root.setAttribute(FileStreamerTags.NAME, characteristic.getName());
 
 	// TODO
@@ -151,7 +151,7 @@ public class PlayerCharacterXMLDocumentWriter implements
     @SuppressWarnings("unused")
     private final Element buildFollowersXMLTree(
 	    final Iterator<Follower> itrFollowers) {
-	Element root = new Element(FileLabels.FOLLOWERS);
+	Element root = new Element(FileToken.FOLLOWERS);
 	while (itrFollowers.hasNext()) {
 	    root.addContent(buildFollowerXMLTree(itrFollowers.next()));
 	}
@@ -161,9 +161,9 @@ public class PlayerCharacterXMLDocumentWriter implements
     private final Element buildFollowerXMLTree(final Follower follower) {
 	final Element followerNode;
 
-	followerNode = new Element(FileLabels.FOLLOWER);
-	followerNode.setAttribute(FileLabels.FILE, follower.getFile());
-	followerNode.setAttribute(FileLabels.JOB, follower.getJob());
+	followerNode = new Element(FileToken.FOLLOWER);
+	followerNode.setAttribute(FileToken.FILE, follower.getFile());
+	followerNode.setAttribute(FileToken.JOB, follower.getJob());
 
 	return followerNode;
     }
@@ -183,7 +183,7 @@ public class PlayerCharacterXMLDocumentWriter implements
     @SuppressWarnings("unused")
     private final Element buildHorsesXMLTree(
 	    final Iterator<HorseCharacter> itrHorses) {
-	Element root = new Element(FileLabels.HORSES);
+	Element root = new Element(FileToken.HORSES);
 	while (itrHorses.hasNext()) {
 	    root.addContent(buildHorseXMLTree(itrHorses.next()));
 	}
@@ -193,9 +193,9 @@ public class PlayerCharacterXMLDocumentWriter implements
     private final Element buildHorseXMLTree(final HorseCharacter horse) {
 	final Element horseNode;
 
-	horseNode = new Element(FileLabels.HORSE);
+	horseNode = new Element(FileToken.HORSE);
 	horseNode.setAttribute(FileStreamerTags.NAME, horse.getName());
-	horseNode.setAttribute(FileLabels.RACE, horse.getHorseType());
+	horseNode.setAttribute(FileToken.RACE, horse.getHorseType());
 	// TODO
 	// horseNode.addContent(XMLUtils.buildBooleansSetXMLTree(new Element(
 	// FileLabels.FLAGS), horse.getFlagsIterator()));
@@ -210,12 +210,12 @@ public class PlayerCharacterXMLDocumentWriter implements
 	Child child;
 	Element childNode;
 
-	root = new Element(FileLabels.WIFE);
-	root.setAttribute(FileLabels.FILE, wife.getFile());
+	root = new Element(FileToken.WIFE);
+	root.setAttribute(FileToken.FILE, wife.getFile());
 	root.addContent(XMLUtils.buildValueHandlerXMLNode(wife.getYearWed(),
-		FileLabels.YEAR_WEDDING));
+		FileToken.YEAR_WEDDING));
 
-	children = new Element(FileLabels.CHILDREN);
+	children = new Element(FileToken.CHILDREN);
 	// TODO
 	// iteratorChildren = wife.getChildrenIterator();
 	// while (iteratorChildren.hasNext()) {
@@ -238,7 +238,7 @@ public class PlayerCharacterXMLDocumentWriter implements
 
     @SuppressWarnings("unused")
     private final Element buildWivesXMLTree(final Iterator<Wife> itrWives) {
-	Element root = new Element(FileLabels.WIVES);
+	Element root = new Element(FileToken.WIVES);
 	while (itrWives.hasNext()) {
 	    root.addContent(buildWifeXMLTree(itrWives.next()));
 	}

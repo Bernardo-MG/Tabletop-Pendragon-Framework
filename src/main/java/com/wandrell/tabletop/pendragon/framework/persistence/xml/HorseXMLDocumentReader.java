@@ -7,7 +7,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.character.DefaultHorseCharacter;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonAttribute;
 import com.wandrell.tabletop.util.XMLUtils;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -35,11 +35,11 @@ public class HorseXMLDocumentReader implements
 	// holder);
 
 	// Acquires the different sections
-	secAttributes = root.getChild(FileLabels.SECONDARY_ATTRIBUTES);
-	flags = root.getChild(FileLabels.FLAGS);
+	secAttributes = root.getChild(FileToken.SECONDARY_ATTRIBUTES);
+	flags = root.getChild(FileToken.FLAGS);
 
 	// Horse race
-	holder.setHorseType(root.getChildText(FileLabels.RACE));
+	holder.setHorseType(root.getChildText(FileToken.RACE));
 
 	// Secondary attributes
 	// TODO

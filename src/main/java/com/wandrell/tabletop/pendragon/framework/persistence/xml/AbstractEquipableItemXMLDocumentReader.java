@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -27,9 +27,9 @@ public abstract class AbstractEquipableItemXMLDocumentReader<V extends Pendragon
 	// ClassInstanceFactory.getNewValue(classValue));
 
 	// Acquires the different sections
-	values = root.getChild(FileLabels.VALUE_HANDLERS);
-	flags = root.getChild(FileLabels.FLAGS);
-	bonus = root.getChild(FileLabels.TEMPLATE_BONUS);
+	values = root.getChild(FileToken.VALUE_HANDLERS);
+	flags = root.getChild(FileToken.FLAGS);
+	bonus = root.getChild(FileToken.TEMPLATE_BONUS);
 
 	// Values
 	if (values != null) {

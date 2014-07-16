@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.WeaponEquipment;
 
 public class WeaponXMLDocumentReader extends
@@ -24,7 +24,7 @@ public class WeaponXMLDocumentReader extends
 	root = doc.getRootElement();
 
 	// Acquires the different sections
-	skill = root.getChild(FileLabels.SKILL);
+	skill = root.getChild(FileToken.SKILL);
 	weapon.setSkill(skill.getText());
 
 	return weapon;

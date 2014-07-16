@@ -1,6 +1,6 @@
 package com.wandrell.tabletop.pendragon.framework.conf;
 
-public final class FileLabels {
+public final class FileToken {
 
     public static final String ADVANCED_SKILL = "advanced_skill";
     public static final String ADVANCED_SKILLS = "advanced_skills";

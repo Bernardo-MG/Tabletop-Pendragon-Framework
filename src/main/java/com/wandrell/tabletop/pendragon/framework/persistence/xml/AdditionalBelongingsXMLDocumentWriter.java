@@ -8,7 +8,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.conf.PendragonToken;
-import com.wandrell.tabletop.pendragon.framework.conf.FileLabels;
+import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.util.XMLUtils;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -27,7 +27,7 @@ public class AdditionalBelongingsXMLDocumentWriter implements
 	final Element element;
 
 	// Root and table's name
-	element = new Element(FileLabels.INVENTORY_ROLL_TABLE);
+	element = new Element(FileToken.INVENTORY_ROLL_TABLE);
 	// TODO
 	// element.setAttribute(FileStreamerTags.NAME, holder.getName());
 	doc = new Document(element);
@@ -44,7 +44,7 @@ public class AdditionalBelongingsXMLDocumentWriter implements
 	final Element root;
 	Element intervalNode;
 
-	root = new Element(FileLabels.INTERVALS);
+	root = new Element(FileToken.INTERVALS);
 	// for (final Entry<ContrastInterval<Integer>,
 	// AdditionalBelongingsSetData> intervals : holder
 	// .entrySet()) {
@@ -63,14 +63,14 @@ public class AdditionalBelongingsXMLDocumentWriter implements
 	Element node, node2;
 	List<String> listFlags;
 
-	root = new Element(FileLabels.BELONGINGS);
+	root = new Element(FileToken.BELONGINGS);
 
 	// Flag marking it has to choose instead of receiving all
 	if (items.hasToChoose()) {
 	    listFlags = new ArrayList<String>(1);
 	    listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
-	    node = XMLUtils.buildBooleansSetXMLTree(new Element(
-		    FileLabels.FLAGS), listFlags.iterator());
+	    node = XMLUtils.buildBooleansSetXMLTree(
+		    new Element(FileToken.FLAGS), listFlags.iterator());
 	    root.addContent(node);
 	}
 
