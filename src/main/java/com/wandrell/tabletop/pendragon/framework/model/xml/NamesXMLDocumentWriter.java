@@ -6,10 +6,10 @@ import org.jdom2.Document;
 
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
-public class AttributeNamesXMLDocumentWriter implements
+public class NamesXMLDocumentWriter implements
 	XMLDocumentWriter<Collection<String>> {
 
-    public AttributeNamesXMLDocumentWriter() {
+    public NamesXMLDocumentWriter() {
 	super();
     }
 

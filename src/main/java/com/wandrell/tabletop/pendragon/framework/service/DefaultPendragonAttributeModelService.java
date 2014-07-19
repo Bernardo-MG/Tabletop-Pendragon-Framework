@@ -9,8 +9,8 @@ import com.wandrell.tabletop.pendragon.framework.service.command.PendragonAttrib
 public final class DefaultPendragonAttributeModelService implements
 	PendragonAttributeModelService {
 
-    private Collection<String> attributeNames;
     private final CommandExecutor executor;
+    private Collection<String> names;
 
     public DefaultPendragonAttributeModelService(final CommandExecutor executor) {
 	super();
@@ -19,12 +19,11 @@ public final class DefaultPendragonAttributeModelService implements
 
     @Override
     public final Collection<String> getAttributeNames() {
-	if (attributeNames == null) {
-	    attributeNames = getExecutor().execute(
-		    new PendragonAttributeNamesCommand());
+	if (names == null) {
+	    names = getExecutor().execute(new PendragonAttributeNamesCommand());
 	}
 
-	return Collections.unmodifiableCollection(attributeNames);
+	return Collections.unmodifiableCollection(names);
     }
 
     protected final CommandExecutor getExecutor() {

@@ -13,6 +13,8 @@ public final class FileToken {
     public static final String CHARACTER = "character";
     public static final String CHILD = "child";
     public static final String CHILDREN = "children";
+    public static final String COMBAT = "combat";
+    public static final String COURT = "court";
     public static final String CULTURE = "culture";
     public static final String DATE = "date";
     public static final String DENARII = "denarii";
@@ -53,12 +55,15 @@ public final class FileToken {
     public static final String INTERVAL = "interval";
     public static final String INTERVALS = "intervals";
     public static final String INVENTORY_ROLL_TABLE = "inventory_roll_table";
+    public static final String ITALIAN = "italian";
     public static final String ITEM = "item";
     public static final String ITEMS = "items";
     public static final String ITEMS_AT_HOME = "items_at_home";
     public static final String ITEMS_CARRIED = "items_carried";
     public static final String JOB = "job";
+    public static final String KNIGHT = "knight";
     public static final String KNIGHT_KIND = "knight_status";
+    public static final String KNOWLEDGE = "knowledge";
     public static final String LIBRA = "libra";
     public static final String MALE = "male";
     public static final String MAX = "upper_limit";
@@ -74,6 +79,7 @@ public final class FileToken {
     public static final String RACE = "race";
     public static final String RANGE = "range";
     public static final String RELIGION = "religion";
+    public static final String REPEAT = "repeat";
     public static final String REROLL = "reroll";
     public static final String REROLLS_LIST = "rerolls_list";
     public static final String RESULTS = "results";

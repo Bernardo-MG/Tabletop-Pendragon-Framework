@@ -9,26 +9,26 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
-public class AttributeNamesXMLDocumentReader implements
+public class NamesXMLDocumentReader implements
 	XMLDocumentReader<Collection<String>> {
 
-    public AttributeNamesXMLDocumentReader() {
+    public NamesXMLDocumentReader() {
 	super();
     }
 
     @Override
     public final Collection<String> getValue(final Document doc) {
 	final Element root;
-	final Collection<String> attributes;
+	final Collection<String> names;
 
 	root = doc.getRootElement();
 
-	attributes = new LinkedList<>();
+	names = new LinkedList<>();
 	for (final Element node : root.getChildren()) {
-	    attributes.add(node.getChildText(FileToken.NAME));
+	    names.add(node.getChildText(FileToken.NAME));
 	}
 
-	return attributes;
+	return names;
     }
 
 }

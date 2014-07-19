@@ -93,6 +93,12 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
+			<!-- Tabletop API -->
+			<groupId>com.wandrell</groupId>
+			<artifactId>tabletop-api</artifactId>
+			<version>${tabletop.version}</version>
+		</dependency>
+		<dependency>
 			<!-- Tabletop core -->
 			<groupId>com.wandrell</groupId>
 			<artifactId>tabletop-core</artifactId>
