@@ -16,7 +16,7 @@ import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryKeeper;
 import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
-import com.wandrell.tabletop.util.XMLUtils;
+import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class PlayerCharacterXMLDocumentWriter implements
@@ -212,7 +212,7 @@ public class PlayerCharacterXMLDocumentWriter implements
 
 	root = new Element(FileToken.WIFE);
 	root.setAttribute(FileToken.FILE, wife.getFile());
-	root.addContent(XMLUtils.buildValueHandlerXMLNode(wife.getYearWed(),
+	root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
 		FileToken.YEAR_WEDDING));
 
 	children = new Element(FileToken.CHILDREN);

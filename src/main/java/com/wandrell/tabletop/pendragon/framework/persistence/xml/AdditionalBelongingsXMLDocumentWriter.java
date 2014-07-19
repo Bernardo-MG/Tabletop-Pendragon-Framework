@@ -10,7 +10,7 @@ import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.conf.PendragonToken;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
-import com.wandrell.tabletop.util.XMLUtils;
+import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class AdditionalBelongingsXMLDocumentWriter implements
@@ -69,7 +69,7 @@ public class AdditionalBelongingsXMLDocumentWriter implements
 	if (items.hasToChoose()) {
 	    listFlags = new ArrayList<String>(1);
 	    listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
-	    node = XMLUtils.buildBooleansSetXMLTree(
+	    node = XMLUtil.buildBooleansSetXMLTree(
 		    new Element(FileToken.FLAGS), listFlags.iterator());
 	    root.addContent(node);
 	}

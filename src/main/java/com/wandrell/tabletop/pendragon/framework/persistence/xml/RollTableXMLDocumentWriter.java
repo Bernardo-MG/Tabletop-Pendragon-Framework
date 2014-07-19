@@ -10,7 +10,7 @@ import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.util.XMLUtils;
+import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class RollTableXMLDocumentWriter implements
@@ -46,7 +46,7 @@ public class RollTableXMLDocumentWriter implements
 	root = new Element(FileToken.INTERVALS);
 	for (final Entry<ContrastInterval<Integer>, String> intervals : holder
 		.getIntervals().entrySet()) {
-	    intervalNode = XMLUtils.buildIntervalXMLNode(intervals.getKey(),
+	    intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
 		    FileToken.INTERVAL);
 	    intervalNode.addContent(new Element(FileStreamerTags.VALUE)
 		    .setText(intervals.getValue()));

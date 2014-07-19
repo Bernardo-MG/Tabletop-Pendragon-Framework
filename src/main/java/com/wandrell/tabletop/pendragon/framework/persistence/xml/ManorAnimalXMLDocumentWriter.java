@@ -11,7 +11,7 @@ import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.manor.ManorAnimal;
-import com.wandrell.tabletop.util.XMLUtils;
+import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class ManorAnimalXMLDocumentWriter implements
@@ -49,7 +49,7 @@ public class ManorAnimalXMLDocumentWriter implements
 	root = new Element(FileToken.INTERVALS);
 	for (final Entry<ContrastInterval<Integer>, AnimalYearResult> intervals : holder
 		.getIntervals().entrySet()) {
-	    intervalNode = XMLUtils.buildIntervalXMLNode(intervals.getKey(),
+	    intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
 		    FileStreamerTags.INTERVAL);
 	    intervalNode.setAttribute(FileStreamerTags.NAME, intervals
 		    .getValue().getName());
