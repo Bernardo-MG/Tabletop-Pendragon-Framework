@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
-import com.wandrell.tabletop.pendragon.framework.model.xml.SkillsXMLDocumentReader;
+import com.wandrell.tabletop.pendragon.framework.model.xml.SkillXMLDocumentReader;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 import com.wandrell.util.PathUtils;
 import com.wandrell.util.file.api.FileHandler;
@@ -14,21 +14,22 @@ import com.wandrell.util.file.impl.xml.DefaultXMLFileHandler;
 import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
 import com.wandrell.util.file.impl.xml.XSDValidator;
 
-public final class PendragonBaseSkillsCommand implements
+public final class PendragonCommonNonCombatSkillsCommand implements
 	ReturnCommand<Collection<PendragonSkill>> {
 
-    public PendragonBaseSkillsCommand() {
+    public PendragonCommonNonCombatSkillsCommand() {
 	super();
     }
 
     @Override
     public final Collection<PendragonSkill> execute() {
 	final FileHandler<Collection<PendragonSkill>> file;
-	final SkillsXMLDocumentReader reader;
+	final SkillXMLDocumentReader reader;
 
-	reader = new SkillsXMLDocumentReader();
+	reader = new SkillXMLDocumentReader();
 	reader.addRejectedAttribute(FileToken.ITALIAN);
 	reader.addRejectedAttribute(FileToken.REPEAT);
+	reader.addRejectedAttribute(FileToken.COMBAT);
 
 	file = new DefaultXMLFileHandler<Collection<PendragonSkill>>(
 		new DisabledXMLWriter<Collection<PendragonSkill>>(), reader,

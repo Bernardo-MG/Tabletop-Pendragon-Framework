@@ -9,10 +9,10 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
-public class NamesXMLDocumentReader implements
+public class TraitNameXMLDocumentReader implements
 	XMLDocumentReader<Collection<String>> {
 
-    public NamesXMLDocumentReader() {
+    public TraitNameXMLDocumentReader() {
 	super();
     }
 
@@ -25,7 +25,8 @@ public class NamesXMLDocumentReader implements
 
 	names = new LinkedList<>();
 	for (final Element node : root.getChildren()) {
-	    names.add(node.getChildText(FileToken.NAME));
+	    names.add(node.getChildText(FileToken.POSITIVE));
+	    names.add(node.getChildText(FileToken.NEGATIVE));
 	}
 
 	return names;

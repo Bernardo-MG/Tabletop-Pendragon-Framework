@@ -5,17 +5,17 @@ import java.util.Collection;
 
 import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
-import com.wandrell.tabletop.pendragon.framework.model.xml.NameXMLDocumentReader;
+import com.wandrell.tabletop.pendragon.framework.model.xml.TraitNameXMLDocumentReader;
 import com.wandrell.util.PathUtils;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.impl.xml.DefaultXMLFileHandler;
 import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
 import com.wandrell.util.file.impl.xml.XSDValidator;
 
-public final class PendragonAttributeNamesCommand implements
+public final class PendragonTraitNamesCommand implements
 	ReturnCommand<Collection<String>> {
 
-    public PendragonAttributeNamesCommand() {
+    public PendragonTraitNamesCommand() {
 	super();
     }
 
@@ -25,12 +25,12 @@ public final class PendragonAttributeNamesCommand implements
 
 	file = new DefaultXMLFileHandler<Collection<String>>(
 		new DisabledXMLWriter<Collection<String>>(),
-		new NameXMLDocumentReader(), new XSDValidator(
+		new TraitNameXMLDocumentReader(), new XSDValidator(
 			PathUtils.getClassPathResource(Paths
-				.get(ModelFile.VALIDATION_ATTRIBUTE))));
+				.get(ModelFile.VALIDATION_TRAIT))));
 
 	return file.read(PathUtils.getClassPathResource(Paths
-		.get(ModelFile.ATTRIBUTE)));
+		.get(ModelFile.TRAIT)));
     }
 
 }

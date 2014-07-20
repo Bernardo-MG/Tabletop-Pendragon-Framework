@@ -4,14 +4,16 @@ import java.util.Collection;
 import java.util.Collections;
 
 import com.wandrell.framework.command.CommandExecutor;
-import com.wandrell.tabletop.pendragon.framework.service.command.PendragonBaseSkillsCommand;
+import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCombatSkillsCommand;
+import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCommonNonCombatSkillsCommand;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 
 public final class DefaultPendragonSkillModelService implements
 	PendragonSkillModelService {
 
     private final CommandExecutor executor;
-    private Collection<PendragonSkill> skillsBase;
+    private Collection<PendragonSkill> skillsCombat;
+    private Collection<PendragonSkill> skillsCommonNonCombat;
 
     public DefaultPendragonSkillModelService(final CommandExecutor executor) {
 	super();
@@ -19,13 +21,23 @@ public final class DefaultPendragonSkillModelService implements
     }
 
     @Override
-    public final Collection<PendragonSkill> getBaseSkills() {
-	if (skillsBase == null) {
-	    skillsBase = getExecutor()
-		    .execute(new PendragonBaseSkillsCommand());
+    public final Collection<PendragonSkill> getCombatSkills() {
+	if (skillsCombat == null) {
+	    skillsCombat = getExecutor().execute(
+		    new PendragonCombatSkillsCommand());
 	}
 
-	return Collections.unmodifiableCollection(skillsBase);
+	return Collections.unmodifiableCollection(skillsCombat);
+    }
+
+    @Override
+    public final Collection<PendragonSkill> getCommonNonCombatSkills() {
+	if (skillsCommonNonCombat == null) {
+	    skillsCommonNonCombat = getExecutor().execute(
+		    new PendragonCommonNonCombatSkillsCommand());
+	}
+
+	return Collections.unmodifiableCollection(skillsCommonNonCombat);
     }
 
     protected final CommandExecutor getExecutor() {

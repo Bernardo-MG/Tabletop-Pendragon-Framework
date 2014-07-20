@@ -21,6 +21,7 @@ public final class FileToken {
     public static final String DERIVED_ATTRIBUTE = "derived_attribute";
     public static final String DERIVED_ATTRIBUTES = "derived_attributes";
     public static final String DESCRIPTION = "description";
+    public static final String DESCRIPTOR = "descriptor";
     public static final String DIE_BONUS_CHAIN = "die_bonus_vs_chain";
     public static final String DIE_BONUS_GENERAL = "die_bonus";
     public static final String DIE_BONUS_LEATHER = "die_bonus_vs_leather";
@@ -71,13 +72,16 @@ public final class FileToken {
     public static final String MONEY = "money";
     public static final String MONEY_VALUE = "money_value";
     public static final String NAME = "name";
+    public static final String NEGATIVE = "negative";
     public static final String PASSION = "passion";
     public static final String PASSIONS = "passions";
     public static final String PET = "pet";
     public static final String PETS = "pets";
+    public static final String POSITIVE = "positive";
     public static final String QUANTITY = "quantity";
     public static final String RACE = "race";
     public static final String RANGE = "range";
+    public static final String RARE = "rare";
     public static final String RELIGION = "religion";
     public static final String REPEAT = "repeat";
     public static final String REROLL = "reroll";

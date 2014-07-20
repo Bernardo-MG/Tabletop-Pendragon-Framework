@@ -10,10 +10,10 @@ import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
 
-public class SkillsXMLDocumentReader extends
+public class SkillXMLDocumentReader extends
 	AbstractFilteredXMLDocumentReader<Collection<PendragonSkill>> {
 
-    public SkillsXMLDocumentReader() {
+    public SkillXMLDocumentReader() {
 	super(FileToken.SKILL);
     }
 
