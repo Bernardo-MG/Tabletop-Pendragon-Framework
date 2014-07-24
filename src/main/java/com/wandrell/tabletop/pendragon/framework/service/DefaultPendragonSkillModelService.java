@@ -6,6 +6,7 @@ import java.util.Collections;
 import com.wandrell.framework.command.CommandExecutor;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCombatSkillsCommand;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCommonNonCombatSkillsCommand;
+import com.wandrell.tabletop.pendragon.framework.service.command.PendragonRepeatableSkillsCommand;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 
 public final class DefaultPendragonSkillModelService implements
@@ -14,6 +15,7 @@ public final class DefaultPendragonSkillModelService implements
     private final CommandExecutor executor;
     private Collection<PendragonSkill> skillsCombat;
     private Collection<PendragonSkill> skillsCommonNonCombat;
+    private Collection<PendragonSkill> skillsRepeatable;
 
     public DefaultPendragonSkillModelService(final CommandExecutor executor) {
 	super();
@@ -38,6 +40,16 @@ public final class DefaultPendragonSkillModelService implements
 	}
 
 	return Collections.unmodifiableCollection(skillsCommonNonCombat);
+    }
+
+    @Override
+    public final Collection<PendragonSkill> getRepeatableNonCombatSkills() {
+	if (skillsRepeatable == null) {
+	    skillsRepeatable = getExecutor().execute(
+		    new PendragonRepeatableSkillsCommand());
+	}
+
+	return Collections.unmodifiableCollection(skillsRepeatable);
     }
 
     protected final CommandExecutor getExecutor() {
