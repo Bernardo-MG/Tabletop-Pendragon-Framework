@@ -20,10 +20,14 @@ public final class DefaultPendragonAttributeModelService implements
     @Override
     public final Collection<String> getAttributeNames() {
 	if (names == null) {
-	    names = getExecutor().execute(new PendragonAttributeNamesCommand());
+	    names = loadAttributeNames();
 	}
 
 	return Collections.unmodifiableCollection(names);
+    }
+
+    private final Collection<String> loadAttributeNames() {
+	return getExecutor().execute(new PendragonAttributeNamesCommand());
     }
 
     protected final CommandExecutor getExecutor() {

@@ -21,11 +21,14 @@ public final class DefaultPendragonPassionModelService implements
     @Override
     public final Collection<PendragonPassion> getInitialPassions() {
 	if (initialPassions == null) {
-	    initialPassions = getExecutor().execute(
-		    new PendragonInitialPassionsCommand());
+	    initialPassions = loadInitialPassions();
 	}
 
 	return Collections.unmodifiableCollection(initialPassions);
+    }
+
+    private final Collection<PendragonPassion> loadInitialPassions() {
+	return getExecutor().execute(new PendragonInitialPassionsCommand());
     }
 
     protected final CommandExecutor getExecutor() {

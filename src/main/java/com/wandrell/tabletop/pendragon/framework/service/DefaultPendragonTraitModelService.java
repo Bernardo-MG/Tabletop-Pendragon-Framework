@@ -20,10 +20,14 @@ public final class DefaultPendragonTraitModelService implements
     @Override
     public final Collection<String> getTraitNames() {
 	if (names == null) {
-	    names = getExecutor().execute(new PendragonTraitNamesCommand());
+	    names = loadTraitNames();
 	}
 
 	return Collections.unmodifiableCollection(names);
+    }
+
+    private final Collection<String> loadTraitNames() {
+	return getExecutor().execute(new PendragonTraitNamesCommand());
     }
 
     protected final CommandExecutor getExecutor() {

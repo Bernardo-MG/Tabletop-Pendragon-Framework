@@ -31,7 +31,7 @@ public final class PendragonCommonNonCombatSkillsCommand implements
 	reader.addRejectedAttribute(FileToken.REPEAT);
 	reader.addRejectedAttribute(FileToken.COMBAT);
 
-	file = new DefaultXMLFileHandler<Collection<PendragonSkill>>(
+	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<PendragonSkill>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_SKILL))));

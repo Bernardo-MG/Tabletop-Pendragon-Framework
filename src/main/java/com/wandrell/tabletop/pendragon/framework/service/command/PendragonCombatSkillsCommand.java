@@ -29,7 +29,7 @@ public final class PendragonCombatSkillsCommand implements
 	reader = new SkillXMLDocumentReader();
 	reader.addRequiredAttribute(FileToken.COMBAT);
 
-	file = new DefaultXMLFileHandler<Collection<PendragonSkill>>(
+	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<PendragonSkill>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_SKILL))));

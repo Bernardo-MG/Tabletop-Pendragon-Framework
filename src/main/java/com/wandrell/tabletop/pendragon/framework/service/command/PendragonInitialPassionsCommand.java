@@ -30,7 +30,7 @@ public final class PendragonInitialPassionsCommand implements
 	reader.addRejectedAttribute(FileToken.REPEAT);
 	reader.addRejectedAttribute(FileToken.RARE);
 
-	file = new DefaultXMLFileHandler<Collection<PendragonPassion>>(
+	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<PendragonPassion>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_PASSION))));

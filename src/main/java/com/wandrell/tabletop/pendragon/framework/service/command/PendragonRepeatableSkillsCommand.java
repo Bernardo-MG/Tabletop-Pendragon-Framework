@@ -29,7 +29,7 @@ public final class PendragonRepeatableSkillsCommand implements
 	reader = new SkillXMLDocumentReader();
 	reader.addRequiredAttribute(FileToken.REPEAT);
 
-	file = new DefaultXMLFileHandler<Collection<PendragonSkill>>(
+	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<PendragonSkill>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_SKILL))));

@@ -23,7 +23,7 @@ public final class PendragonAttributeNamesCommand implements
     public final Collection<String> execute() {
 	final FileHandler<Collection<String>> file;
 
-	file = new DefaultXMLFileHandler<Collection<String>>(
+	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<String>>(),
 		new NameXMLDocumentReader(), new XSDValidator(
 			PathUtils.getClassPathResource(Paths

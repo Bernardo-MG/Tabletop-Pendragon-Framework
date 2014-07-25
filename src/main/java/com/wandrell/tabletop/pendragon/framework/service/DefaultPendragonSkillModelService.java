@@ -25,8 +25,7 @@ public final class DefaultPendragonSkillModelService implements
     @Override
     public final Collection<PendragonSkill> getCombatSkills() {
 	if (skillsCombat == null) {
-	    skillsCombat = getExecutor().execute(
-		    new PendragonCombatSkillsCommand());
+	    skillsCombat = loadCombatSkills();
 	}
 
 	return Collections.unmodifiableCollection(skillsCombat);
@@ -50,6 +49,10 @@ public final class DefaultPendragonSkillModelService implements
 	}
 
 	return Collections.unmodifiableCollection(skillsRepeatable);
+    }
+
+    private final Collection<PendragonSkill> loadCombatSkills() {
+	return getExecutor().execute(new PendragonCombatSkillsCommand());
     }
 
     protected final CommandExecutor getExecutor() {
