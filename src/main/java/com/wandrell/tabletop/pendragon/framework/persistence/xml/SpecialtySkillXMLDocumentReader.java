@@ -1,14 +1,15 @@
 package com.wandrell.tabletop.pendragon.framework.persistence.xml;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
+import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSpecialtySkill;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class SpecialtySkillXMLDocumentReader implements
@@ -22,9 +23,10 @@ public class SpecialtySkillXMLDocumentReader implements
     @Override
     public final PendragonSpecialtySkill getValue(final Document doc) {
 	final Element skills;
-	final Iterator<String> itrSkills;
 	final String name;
 	final Element root;
+	final PendragonFactory factory;
+	final List<String> list;
 
 	root = doc.getRootElement();
 
@@ -35,11 +37,13 @@ public class SpecialtySkillXMLDocumentReader implements
 	name = root.getAttributeValue(FileStreamerTags.NAME);
 
 	// Acquires the different sections
-	itrSkills = XMLUtil.readStringsListXMLTree(skills);
+	list = new ArrayList<String>(root.getChildren().size());
+	for (final Element skill : skills.getChildren()) {
+	    list.add(skill.getAttributeValue(FileStreamerTags.NAME));
+	}
 
-	// TODO
-	// return new DefaultPendragonAggregatedSkill(name, itrSkills);
-	return null;
+	factory = PendragonFactory.getInstance();
+	return factory.getSpecialtySkill(name, list);
     }
 
 }
