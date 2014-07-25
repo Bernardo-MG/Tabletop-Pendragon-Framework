@@ -28,7 +28,6 @@ public final class PendragonRepeatablePassionsCommand implements
 
 	reader = new PassionXMLDocumentReader();
 	reader.addRequiredAttribute(FileToken.REPEAT);
-	reader.addRequiredAttribute(FileToken.RARE);
 
 	file = new DefaultXMLFileHandler<>(
 		new DisabledXMLWriter<Collection<PendragonPassion>>(), reader,
