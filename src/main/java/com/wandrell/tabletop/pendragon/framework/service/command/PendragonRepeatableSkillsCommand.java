@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
-import com.wandrell.tabletop.pendragon.framework.model.xml.SkillXMLDocumentReader;
+import com.wandrell.tabletop.pendragon.framework.util.file.model.SkillXMLDocumentReader;
 import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
 import com.wandrell.util.PathUtils;
 import com.wandrell.util.file.api.FileHandler;
