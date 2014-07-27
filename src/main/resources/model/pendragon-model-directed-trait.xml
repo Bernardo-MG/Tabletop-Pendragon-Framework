@@ -2,12 +2,90 @@
 <directed_traits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="validation/pendragon-model-directed-trait.xsd">
 	<directed_trait>
+		<name>arbitrary</name>
+	</directed_trait>
+	<directed_trait>
+		<name>chaste</name>
+	</directed_trait>
+	<directed_trait>
+		<name>cowardly</name>
+	</directed_trait>
+	<directed_trait>
+		<name>cruel</name>
+	</directed_trait>
+	<directed_trait>
+		<name>deceitful</name>
+	</directed_trait>
+	<directed_trait repeat="false">
 		<name>elan</name>
 	</directed_trait>
 	<directed_trait>
+		<name>energetic</name>
+	</directed_trait>
+	<directed_trait>
+		<name>forgiving</name>
+	</directed_trait>
+	<directed_trait repeat="false">
 		<name>gastronomy</name>
 	</directed_trait>
 	<directed_trait>
+		<name>generous</name>
+	</directed_trait>
+	<directed_trait>
+		<name>honest</name>
+	</directed_trait>
+	<directed_trait>
+		<name>indulgent</name>
+	</directed_trait>
+	<directed_trait>
+		<name>just</name>
+	</directed_trait>
+	<directed_trait>
+		<name>lazy</name>
+	</directed_trait>
+	<directed_trait>
+		<name>lustful</name>
+	</directed_trait>
+	<directed_trait>
+		<name>merciful</name>
+	</directed_trait>
+	<directed_trait>
+		<name>modest</name>
+	</directed_trait>
+	<directed_trait repeat="false">
 		<name>oinology</name>
+	</directed_trait>
+	<directed_trait>
+		<name>pious</name>
+	</directed_trait>
+	<directed_trait>
+		<name>proud</name>
+	</directed_trait>
+	<directed_trait>
+		<name>prudent</name>
+	</directed_trait>
+	<directed_trait>
+		<name>reckless</name>
+	</directed_trait>
+	<directed_trait>
+		<name>selfish</name>
+	</directed_trait>
+	<directed_trait>
+		<name>suspicious</name>
+	</directed_trait>
+	<directed_trait>
+		<name>temperate</name>
+	</directed_trait>
+	<directed_trait>
+		<name>trusting</name>
+	</directed_trait>
+	<directed_trait>
+		<name>valorous</name>
+	</directed_trait>
+	<directed_trait>
+		<name>vengeful</name>
+	</directed_trait>
+	<directed_trait>
+		<name>wordly</name>
 	</directed_trait>
 </directed_traits>
