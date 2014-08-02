@@ -16,7 +16,6 @@ import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryKeeper;
 import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class PlayerCharacterXMLDocumentWriter implements
@@ -27,10 +26,10 @@ public class PlayerCharacterXMLDocumentWriter implements
 	final Element gloryNode;
 
 	gloryNode = new Element(FileToken.GLORY_EVENT);
-	gloryNode.setAttribute(FileToken.DATE,
-		String.valueOf(glory.getYear().getStoredValue()));
-	gloryNode.setAttribute(FileToken.GLORY,
-		String.valueOf(glory.getGloryGained().getStoredValue()));
+	// gloryNode.setAttribute(FileToken.DATE,
+	// String.valueOf(glory.getYear().getStoredValue()));
+	// gloryNode.setAttribute(FileToken.GLORY,
+	// String.valueOf(glory.getGloryGained().getStoredValue()));
 	gloryNode.addContent(new Element(FileToken.GLORY_EVENT_DESCRIPTION)
 		.setText(String.valueOf(glory.getDescription())));
 
@@ -212,8 +211,8 @@ public class PlayerCharacterXMLDocumentWriter implements
 
 	root = new Element(FileToken.WIFE);
 	root.setAttribute(FileToken.FILE, wife.getFile());
-	root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
-		FileToken.YEAR_WEDDING));
+	// root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
+	// FileToken.YEAR_WEDDING));
 
 	children = new Element(FileToken.CHILDREN);
 	// TODO
