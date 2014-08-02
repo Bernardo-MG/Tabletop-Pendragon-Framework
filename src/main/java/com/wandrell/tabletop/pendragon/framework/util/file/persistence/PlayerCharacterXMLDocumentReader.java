@@ -21,7 +21,7 @@ import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.DefaultGloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
-import com.wandrell.tabletop.pendragon.valuehandler.AppearanceFeature;
+import com.wandrell.tabletop.pendragon.valuehandler.DistinctiveFeature;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class PlayerCharacterXMLDocumentReader implements
@@ -165,10 +165,10 @@ public class PlayerCharacterXMLDocumentReader implements
     }
 
     @SuppressWarnings("unused")
-    private final Iterator<AppearanceFeature> loadFeatures(final Element root) {
-	List<AppearanceFeature> listFeatures;
+    private final Iterator<DistinctiveFeature> loadFeatures(final Element root) {
+	List<DistinctiveFeature> listFeatures;
 
-	listFeatures = new ArrayList<AppearanceFeature>(root.getChildren()
+	listFeatures = new ArrayList<DistinctiveFeature>(root.getChildren()
 		.size());
 	for (final Element node : root.getChildren()) {
 	    // TODO

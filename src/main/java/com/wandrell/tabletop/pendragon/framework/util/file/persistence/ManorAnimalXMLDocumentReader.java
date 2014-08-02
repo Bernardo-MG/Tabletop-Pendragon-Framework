@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
@@ -48,8 +47,8 @@ public class ManorAnimalXMLDocumentReader implements
 
 	// Goes through each interval
 	for (final Element node : root.getChildren()) {
-	    result = readYearResultNode(node.getChild(FileToken.RESULTS));
-	    result.setName(node.getAttributeValue(FileStreamerTags.NAME));
+	    // result = readYearResultNode(node.getChild(FileToken.RESULTS));
+	    // result.setName(node.getAttributeValue(FileStreamerTags.NAME));
 	    // TODO
 	    // holder.put((ContrastInterval<Integer>) XMLUtils
 	    // .readIntegerIntervalXMLNode(node), result);
@@ -58,7 +57,7 @@ public class ManorAnimalXMLDocumentReader implements
 
     private final DefaultAnimalYearResult readYearResultNode(final Element root) {
 	final Element values, flags, files;
-	final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
+	// final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
 
 	values = root.getChild(FileToken.VALUE_HANDLERS);
 	flags = root.getChild(FileToken.FLAGS);
@@ -83,7 +82,7 @@ public class ManorAnimalXMLDocumentReader implements
 	    // result.setFiles(XMLUtils.readStringsDictionaryXMLTree(files));
 	}
 
-	return result;
+	return null;
     }
 
 }

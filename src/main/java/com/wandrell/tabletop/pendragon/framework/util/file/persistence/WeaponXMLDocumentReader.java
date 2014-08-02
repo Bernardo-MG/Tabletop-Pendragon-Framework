@@ -25,7 +25,7 @@ public class WeaponXMLDocumentReader extends
 
 	// Acquires the different sections
 	skill = root.getChild(FileToken.SKILL);
-	weapon.setSkill(skill.getText());
+	// weapon.setSkill(skill.getText());
 
 	return weapon;
     }
