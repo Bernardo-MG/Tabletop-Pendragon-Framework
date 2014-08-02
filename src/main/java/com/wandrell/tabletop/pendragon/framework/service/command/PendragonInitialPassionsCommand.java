@@ -7,7 +7,7 @@ import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
 import com.wandrell.tabletop.pendragon.framework.util.file.model.PassionXMLDocumentReader;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonPassion;
+import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 import com.wandrell.util.PathUtils;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.impl.xml.DefaultXMLFileHandler;
@@ -15,15 +15,15 @@ import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
 import com.wandrell.util.file.impl.xml.XSDValidator;
 
 public final class PendragonInitialPassionsCommand implements
-	ReturnCommand<Collection<PendragonPassion>> {
+	ReturnCommand<Collection<Passion>> {
 
     public PendragonInitialPassionsCommand() {
 	super();
     }
 
     @Override
-    public final Collection<PendragonPassion> execute() {
-	final FileHandler<Collection<PendragonPassion>> file;
+    public final Collection<Passion> execute() {
+	final FileHandler<Collection<Passion>> file;
 	final PassionXMLDocumentReader reader;
 
 	reader = new PassionXMLDocumentReader();
@@ -31,7 +31,7 @@ public final class PendragonInitialPassionsCommand implements
 	reader.addRejectedAttribute(FileToken.RARE);
 
 	file = new DefaultXMLFileHandler<>(
-		new DisabledXMLWriter<Collection<PendragonPassion>>(), reader,
+		new DisabledXMLWriter<Collection<Passion>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_PASSION))));
 

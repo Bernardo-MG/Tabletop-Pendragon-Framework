@@ -7,22 +7,22 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonDirectedTrait;
+import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
 import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
 
 public class DirectedTraitXMLDocumentReader extends
-	AbstractFilteredXMLDocumentReader<Collection<PendragonDirectedTrait>> {
+	AbstractFilteredXMLDocumentReader<Collection<DirectedTrait>> {
 
     public DirectedTraitXMLDocumentReader() {
 	super(FileToken.DIRECTED_TRAIT);
     }
 
     @Override
-    protected Collection<PendragonDirectedTrait> readNodes(
+    protected Collection<DirectedTrait> readNodes(
 	    final Collection<Element> nodes) {
-	final Collection<PendragonDirectedTrait> traits;
+	final Collection<DirectedTrait> traits;
 	final PendragonFactory factory;
-	PendragonDirectedTrait trait;
+	DirectedTrait trait;
 	String name;
 
 	factory = PendragonFactory.getInstance();

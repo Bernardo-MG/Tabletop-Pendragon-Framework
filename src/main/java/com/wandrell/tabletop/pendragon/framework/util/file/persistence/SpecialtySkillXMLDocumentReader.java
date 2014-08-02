@@ -9,11 +9,11 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSpecialtySkill;
+import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class SpecialtySkillXMLDocumentReader implements
-	XMLDocumentReader<PendragonSpecialtySkill> {
+	XMLDocumentReader<SpecialtySkill> {
 
     public SpecialtySkillXMLDocumentReader() {
 	super();
@@ -21,7 +21,7 @@ public class SpecialtySkillXMLDocumentReader implements
 
     @SuppressWarnings("unused")
     @Override
-    public final PendragonSpecialtySkill getValue(final Document doc) {
+    public final SpecialtySkill getValue(final Document doc) {
 	final Element skills;
 	final String name;
 	final Element root;

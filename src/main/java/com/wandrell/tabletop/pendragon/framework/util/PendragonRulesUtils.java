@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.util;
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.conf.factory.PendragonRulesFactory;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
+import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 
 public final class PendragonRulesUtils {
 
@@ -19,7 +19,7 @@ public final class PendragonRulesUtils {
     }
 
     public static final Boolean isSkillAbleToBeCharGenExcellentSkill(
-	    final PendragonSkill skill, final Gender gender) {
+	    final Skill skill, final Gender gender) {
 	final Boolean result;
 	final Boolean combat;
 
@@ -42,7 +42,7 @@ public final class PendragonRulesUtils {
     }
 
     public static final Boolean isSkillAbleToBeCharGenExtraSkill(
-	    final PendragonSkill skill, final Gender gender) {
+	    final Skill skill, final Gender gender) {
 	final Boolean result;
 	final Boolean combat;
 
@@ -65,7 +65,7 @@ public final class PendragonRulesUtils {
     }
 
     public static final Boolean isSkillAbleToBeCharGenIndividualDifferenceSkill(
-	    final PendragonSkill skill) {
+	    final Skill skill) {
 	return ((skill.isCombatSkill()) || (skill.getStoredValue() > 0));
     }
 

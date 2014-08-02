@@ -8,7 +8,7 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.pendragon.character.DefaultHorseCharacter;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonAttribute;
+import com.wandrell.tabletop.pendragon.valuehandler.Attribute;
 import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -28,7 +28,7 @@ public class HorseXMLDocumentReader implements
 
 	root = doc.getRootElement();
 
-	holder = new DefaultHorseCharacter(new LinkedList<PendragonAttribute>());
+	holder = new DefaultHorseCharacter(new LinkedList<Attribute>());
 
 	// TODO
 	// PersistenceFactory.getCharacterService().addToBaseCharacter(root,

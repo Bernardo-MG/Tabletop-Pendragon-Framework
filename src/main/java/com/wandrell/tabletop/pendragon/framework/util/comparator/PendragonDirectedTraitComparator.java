@@ -3,10 +3,10 @@ package com.wandrell.tabletop.pendragon.framework.util.comparator;
 import java.util.Comparator;
 
 import com.wandrell.tabletop.pendragon.framework.service.PendragonLocalizationService;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonDirectedTrait;
+import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
 
 public class PendragonDirectedTraitComparator implements
-	Comparator<PendragonDirectedTrait> {
+	Comparator<DirectedTrait> {
 
     private final PendragonLocalizationService serviceLocalization;
 
@@ -17,8 +17,7 @@ public class PendragonDirectedTraitComparator implements
     }
 
     @Override
-    public final int compare(final PendragonDirectedTrait o1,
-	    final PendragonDirectedTrait o2) {
+    public final int compare(final DirectedTrait o1, final DirectedTrait o2) {
 	final String s1, s2;
 
 	s1 = getLocalizationService().getDirectedTraitString(o1.getName());

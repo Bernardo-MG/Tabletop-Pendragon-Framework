@@ -5,18 +5,18 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSpecialtySkill;
+import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class SpecialtySkillXMLDocumentWriter implements
-	XMLDocumentWriter<PendragonSpecialtySkill> {
+	XMLDocumentWriter<SpecialtySkill> {
 
     public SpecialtySkillXMLDocumentWriter() {
 	super();
     }
 
     @Override
-    public final Document getDocument(final PendragonSpecialtySkill holder) {
+    public final Document getDocument(final SpecialtySkill holder) {
 	final Document doc;
 	Element element;
 

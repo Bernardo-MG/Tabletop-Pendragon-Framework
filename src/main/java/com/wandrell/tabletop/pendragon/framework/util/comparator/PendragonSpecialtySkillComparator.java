@@ -3,10 +3,10 @@ package com.wandrell.tabletop.pendragon.framework.util.comparator;
 import java.util.Comparator;
 
 import com.wandrell.tabletop.pendragon.framework.service.PendragonLocalizationService;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSpecialtySkill;
+import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 
 public class PendragonSpecialtySkillComparator implements
-	Comparator<PendragonSpecialtySkill> {
+	Comparator<SpecialtySkill> {
 
     private final PendragonLocalizationService serviceLocalization;
 
@@ -17,8 +17,7 @@ public class PendragonSpecialtySkillComparator implements
     }
 
     @Override
-    public final int compare(final PendragonSpecialtySkill o1,
-	    final PendragonSpecialtySkill o2) {
+    public final int compare(final SpecialtySkill o1, final SpecialtySkill o2) {
 	final String s1, s2;
 
 	s1 = getLocalizationService().getSpecialtySkillString(o1.getName());

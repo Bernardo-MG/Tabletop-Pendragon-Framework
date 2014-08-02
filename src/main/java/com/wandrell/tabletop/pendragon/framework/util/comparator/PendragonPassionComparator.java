@@ -3,9 +3,9 @@ package com.wandrell.tabletop.pendragon.framework.util.comparator;
 import java.util.Comparator;
 
 import com.wandrell.tabletop.pendragon.framework.service.PendragonLocalizationService;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonPassion;
+import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 
-public class PendragonPassionComparator implements Comparator<PendragonPassion> {
+public class PendragonPassionComparator implements Comparator<Passion> {
 
     private final PendragonLocalizationService serviceLocalization;
 
@@ -15,8 +15,7 @@ public class PendragonPassionComparator implements Comparator<PendragonPassion> 
     }
 
     @Override
-    public final int compare(final PendragonPassion o1,
-	    final PendragonPassion o2) {
+    public final int compare(final Passion o1, final Passion o2) {
 	final String s1, s2;
 
 	s1 = getLocalizationService().getPassionString(o1.getName());

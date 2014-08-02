@@ -7,7 +7,7 @@ import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
 import com.wandrell.tabletop.pendragon.framework.util.file.model.SkillXMLDocumentReader;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
+import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 import com.wandrell.util.PathUtils;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.impl.xml.DefaultXMLFileHandler;
@@ -15,15 +15,15 @@ import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
 import com.wandrell.util.file.impl.xml.XSDValidator;
 
 public final class PendragonCommonNonCombatSkillsCommand implements
-	ReturnCommand<Collection<PendragonSkill>> {
+	ReturnCommand<Collection<Skill>> {
 
     public PendragonCommonNonCombatSkillsCommand() {
 	super();
     }
 
     @Override
-    public final Collection<PendragonSkill> execute() {
-	final FileHandler<Collection<PendragonSkill>> file;
+    public final Collection<Skill> execute() {
+	final FileHandler<Collection<Skill>> file;
 	final SkillXMLDocumentReader reader;
 
 	reader = new SkillXMLDocumentReader();
@@ -32,7 +32,7 @@ public final class PendragonCommonNonCombatSkillsCommand implements
 	reader.addRejectedAttribute(FileToken.COMBAT);
 
 	file = new DefaultXMLFileHandler<>(
-		new DisabledXMLWriter<Collection<PendragonSkill>>(), reader,
+		new DisabledXMLWriter<Collection<Skill>>(), reader,
 		new XSDValidator(PathUtils.getClassPathResource(Paths
 			.get(ModelFile.VALIDATION_SKILL))));
 

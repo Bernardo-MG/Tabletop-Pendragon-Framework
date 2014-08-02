@@ -12,21 +12,21 @@ import com.wandrell.tabletop.pendragon.framework.service.command.PendragonInitia
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonRepeatablePassionsCommand;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonRepeatableSkillsCommand;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonTraitNamesCommand;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonDirectedTrait;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonPassion;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
+import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
+import com.wandrell.tabletop.pendragon.valuehandler.Passion;
+import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 
 public final class DefaultPendragonModelService implements
 	PendragonModelService {
 
     private Collection<String> attributesNames;
-    private Collection<PendragonDirectedTrait> directedTraits;
+    private Collection<DirectedTrait> directedTraits;
     private final CommandExecutor executor;
-    private Collection<PendragonPassion> passionsInitial;
-    private Collection<PendragonPassion> passionsRepeat;
-    private Collection<PendragonSkill> skillsCombat;
-    private Collection<PendragonSkill> skillsCommonNonCombat;
-    private Collection<PendragonSkill> skillsRepeatable;
+    private Collection<Passion> passionsInitial;
+    private Collection<Passion> passionsRepeat;
+    private Collection<Skill> skillsCombat;
+    private Collection<Skill> skillsCommonNonCombat;
+    private Collection<Skill> skillsRepeatable;
     private Collection<String> traitsNames;
 
     public DefaultPendragonModelService(final CommandExecutor executor) {
@@ -44,7 +44,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonSkill> getCombatSkills() {
+    public final Collection<Skill> getCombatSkills() {
 	if (skillsCombat == null) {
 	    skillsCombat = loadCombatSkills();
 	}
@@ -53,7 +53,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonSkill> getCommonNonCombatSkills() {
+    public final Collection<Skill> getCommonNonCombatSkills() {
 	if (skillsCommonNonCombat == null) {
 	    skillsCommonNonCombat = getExecutor().execute(
 		    new PendragonCommonNonCombatSkillsCommand());
@@ -63,7 +63,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonDirectedTrait> getDirectedTraits() {
+    public final Collection<DirectedTrait> getDirectedTraits() {
 	if (directedTraits == null) {
 	    directedTraits = loadDirectedTraits();
 	}
@@ -72,7 +72,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonPassion> getInitialPassions() {
+    public final Collection<Passion> getInitialPassions() {
 	if (passionsInitial == null) {
 	    passionsInitial = loadInitialPassions();
 	}
@@ -81,7 +81,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonSkill> getRepeatableNonCombatSkills() {
+    public final Collection<Skill> getRepeatableNonCombatSkills() {
 	if (skillsRepeatable == null) {
 	    skillsRepeatable = getExecutor().execute(
 		    new PendragonRepeatableSkillsCommand());
@@ -91,7 +91,7 @@ public final class DefaultPendragonModelService implements
     }
 
     @Override
-    public final Collection<PendragonPassion> getRepeatablePassions() {
+    public final Collection<Passion> getRepeatablePassions() {
 	if (passionsRepeat == null) {
 	    passionsRepeat = loadRepeatablePassions();
 	}
@@ -112,19 +112,19 @@ public final class DefaultPendragonModelService implements
 	return getExecutor().execute(new PendragonAttributeNamesCommand());
     }
 
-    private final Collection<PendragonSkill> loadCombatSkills() {
+    private final Collection<Skill> loadCombatSkills() {
 	return getExecutor().execute(new PendragonCombatSkillsCommand());
     }
 
-    private final Collection<PendragonDirectedTrait> loadDirectedTraits() {
+    private final Collection<DirectedTrait> loadDirectedTraits() {
 	return getExecutor().execute(new PendragonDirectedTraitsCommand());
     }
 
-    private final Collection<PendragonPassion> loadInitialPassions() {
+    private final Collection<Passion> loadInitialPassions() {
 	return getExecutor().execute(new PendragonInitialPassionsCommand());
     }
 
-    private final Collection<PendragonPassion> loadRepeatablePassions() {
+    private final Collection<Passion> loadRepeatablePassions() {
 	return getExecutor().execute(new PendragonRepeatablePassionsCommand());
     }
 

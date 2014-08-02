@@ -9,7 +9,7 @@ import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.DefaultFatherClass;
 import com.wandrell.tabletop.pendragon.character.background.FatherClass;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
+import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class FatherClassTemplateXMLDocumentReader implements
@@ -62,8 +62,8 @@ public class FatherClassTemplateXMLDocumentReader implements
     }
 
     @SuppressWarnings("unused")
-    private final Iterator<PendragonSkill> buildSkillsIterator(
-	    final FatherClass holder, final Element skills) {
+    private final Iterator<Skill> buildSkillsIterator(final FatherClass holder,
+	    final Element skills) {
 	// TODO
 	// final Iterator<? extends ValueHandler<Integer>> itrSkills;
 	// final List<DefaultPendragonSkill> listSkills;

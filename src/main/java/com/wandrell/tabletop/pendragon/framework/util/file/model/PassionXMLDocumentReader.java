@@ -7,22 +7,21 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonPassion;
+import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
 
 public class PassionXMLDocumentReader extends
-	AbstractFilteredXMLDocumentReader<Collection<PendragonPassion>> {
+	AbstractFilteredXMLDocumentReader<Collection<Passion>> {
 
     public PassionXMLDocumentReader() {
 	super(FileToken.PASSION);
     }
 
     @Override
-    protected Collection<PendragonPassion> readNodes(
-	    final Collection<Element> nodes) {
-	final Collection<PendragonPassion> passions;
+    protected Collection<Passion> readNodes(final Collection<Element> nodes) {
+	final Collection<Passion> passions;
 	final PendragonFactory factory;
-	PendragonPassion passion;
+	Passion passion;
 	String name;
 	String descriptor;
 

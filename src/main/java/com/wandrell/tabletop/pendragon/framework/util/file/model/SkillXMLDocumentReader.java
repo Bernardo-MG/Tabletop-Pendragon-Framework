@@ -7,22 +7,21 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.valuehandler.PendragonSkill;
+import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
 
 public class SkillXMLDocumentReader extends
-	AbstractFilteredXMLDocumentReader<Collection<PendragonSkill>> {
+	AbstractFilteredXMLDocumentReader<Collection<Skill>> {
 
     public SkillXMLDocumentReader() {
 	super(FileToken.SKILL);
     }
 
     @Override
-    protected Collection<PendragonSkill> readNodes(
-	    final Collection<Element> nodes) {
-	final Collection<PendragonSkill> skills;
+    protected Collection<Skill> readNodes(final Collection<Element> nodes) {
+	final Collection<Skill> skills;
 	final PendragonFactory factory;
-	PendragonSkill skill;
+	Skill skill;
 	String name;
 	Boolean combat;
 	Boolean court;
