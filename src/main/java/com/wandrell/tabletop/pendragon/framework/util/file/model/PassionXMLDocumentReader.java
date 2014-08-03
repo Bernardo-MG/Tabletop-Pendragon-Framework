@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
+import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
 

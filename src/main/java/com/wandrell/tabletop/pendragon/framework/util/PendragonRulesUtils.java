@@ -2,7 +2,7 @@ package com.wandrell.tabletop.pendragon.framework.util;
 
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.dice.RollTable;
-import com.wandrell.tabletop.pendragon.conf.factory.PendragonRulesFactory;
+import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonRulesFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.Skill;
 
 public final class PendragonRulesUtils {

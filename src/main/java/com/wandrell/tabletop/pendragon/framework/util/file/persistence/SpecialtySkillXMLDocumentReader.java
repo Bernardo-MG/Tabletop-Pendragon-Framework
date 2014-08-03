@@ -7,8 +7,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
+import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 

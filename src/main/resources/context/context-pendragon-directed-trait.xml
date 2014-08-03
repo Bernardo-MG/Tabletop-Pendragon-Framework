@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- DEFAULT CONFIGURATION -->
+
+	<context:property-placeholder
+		location="classpath:context/pendragon-directed-trait.properties"
+		file-encoding="UTF-8" />
+
+	<!-- SKILL -->
+
+	<bean id="pendragonDirectedTrait" scope="prototype" class="${trait.class}"
+		c:name="${trait.name}" c:generator-ref="moduleGenerator"
+		c:interval-ref="moduleInterval" c:store-ref="moduleStore"
+		c:validator-ref="moduleValidatorAggregator" />
+
+	<!-- MODULES -->
+
+	<bean id="moduleGenerator" scope="prototype" class="${trait.module.generator.class}" />
+
+	<bean id="moduleInterval" scope="prototype" class="${trait.module.interval.class}"
+		c:lowerLimit="${trait.module.interval.limit.lower}" c:upperLimit="${trait.module.interval.limit.upper}" />
+
+	<bean id="moduleStore" scope="prototype" class="${trait.module.store.class}"
+		c:value="${trait.module.store.value}" />
+
+	<bean id="moduleValidatorAggregator" scope="prototype"
+		class="com.wandrell.tabletop.valuehandler.module.validator.ValidatorAggregate">
+		<property name="validators">
+			<list>
+				<ref bean="moduleValidator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="moduleValidator" scope="prototype" class="${trait.module.validator.class}" />
+
+</beans>
