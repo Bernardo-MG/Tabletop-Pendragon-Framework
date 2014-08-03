@@ -4,10 +4,10 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
+import com.wandrell.tabletop.pendragon.inventory.Equipment;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
-public abstract class AbstractEquipableItemXMLDocumentReader<V extends PendragonEquipment>
+public abstract class AbstractEquipableItemXMLDocumentReader<V extends Equipment>
 	implements XMLDocumentReader<V> {
 
     public AbstractEquipableItemXMLDocumentReader() {
@@ -18,7 +18,7 @@ public abstract class AbstractEquipableItemXMLDocumentReader<V extends Pendragon
     @Override
     public V getValue(final Document doc) {
 	final Element values, flags, bonus;
-	PendragonEquipment holder = null;
+	Equipment holder = null;
 	final Element root = doc.getRootElement();
 
 	// TODO

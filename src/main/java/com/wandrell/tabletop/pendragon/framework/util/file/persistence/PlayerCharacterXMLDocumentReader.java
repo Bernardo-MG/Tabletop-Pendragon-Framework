@@ -20,7 +20,7 @@ import com.wandrell.tabletop.pendragon.character.follower.Wife;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.DefaultGloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
-import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
+import com.wandrell.tabletop.pendragon.inventory.Item;
 import com.wandrell.tabletop.pendragon.valuehandler.DistinctiveFeature;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -220,10 +220,10 @@ public class PlayerCharacterXMLDocumentReader implements
     }
 
     @SuppressWarnings("unused")
-    private final Iterator<PendragonItem> readItemsXMLTree(final Element root) {
-	final List<PendragonItem> listItems;
+    private final Iterator<Item> readItemsXMLTree(final Element root) {
+	final List<Item> listItems;
 
-	listItems = new ArrayList<PendragonItem>(root.getChildren().size());
+	listItems = new ArrayList<Item>(root.getChildren().size());
 	for (final Element itemNode : root.getChildren()) {
 	    // TODO
 	    // listItems.add(PersistenceFactory.getItemService().readItemXMLNode(

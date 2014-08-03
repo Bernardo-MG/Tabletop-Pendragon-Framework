@@ -4,11 +4,11 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.inventory.PendragonEquipment;
+import com.wandrell.tabletop.pendragon.inventory.Equipment;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class EquipableItemXMLDocumenWriter implements
-	XMLDocumentWriter<PendragonEquipment> {
+	XMLDocumentWriter<Equipment> {
 
     public EquipableItemXMLDocumenWriter() {
 	super();
@@ -16,7 +16,7 @@ public class EquipableItemXMLDocumenWriter implements
 
     @SuppressWarnings("null")
     @Override
-    public final Document getDocument(final PendragonEquipment holder) {
+    public final Document getDocument(final Equipment holder) {
 	final Document doc;
 	Element node;
 

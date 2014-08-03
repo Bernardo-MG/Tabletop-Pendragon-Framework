@@ -15,7 +15,7 @@ import com.wandrell.tabletop.pendragon.character.follower.Wife;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.pendragon.glory.GloryKeeper;
-import com.wandrell.tabletop.pendragon.inventory.PendragonItem;
+import com.wandrell.tabletop.pendragon.inventory.Item;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class PlayerCharacterXMLDocumentWriter implements
@@ -169,7 +169,7 @@ public class PlayerCharacterXMLDocumentWriter implements
 
     @SuppressWarnings("unused")
     private final Element buildHoldingsXMLTree(
-	    final Iterator<PendragonItem> itrHoldings, final String rootName) {
+	    final Iterator<Item> itrHoldings, final String rootName) {
 	Element root = new Element(rootName);
 	while (itrHoldings.hasNext()) {
 	    // TODO

@@ -4,19 +4,19 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.inventory.WeaponEquipment;
+import com.wandrell.tabletop.pendragon.inventory.Weapon;
 
 public class WeaponXMLDocumentReader extends
-	AbstractEquipableItemXMLDocumentReader<WeaponEquipment> {
+	AbstractEquipableItemXMLDocumentReader<Weapon> {
 
     public WeaponXMLDocumentReader() {
 	super();
     }
 
     @Override
-    public final WeaponEquipment getValue(final Document doc) {
+    public final Weapon getValue(final Document doc) {
 	final Element skill;
-	final WeaponEquipment weapon;
+	final Weapon weapon;
 	final Element root;
 
 	weapon = super.getValue(doc);
