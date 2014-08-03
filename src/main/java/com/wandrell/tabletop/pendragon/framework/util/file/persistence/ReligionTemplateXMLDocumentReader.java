@@ -3,8 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.character.background.DefaultReligion;
 import com.wandrell.tabletop.pendragon.character.background.Religion;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -28,8 +26,8 @@ public class ReligionTemplateXMLDocumentReader implements
 	// bonus = root.getChild(FileLabels.TEMPLATE_BONUS);
 
 	// Religion's name
-	holder = new DefaultReligion(
-		root.getAttributeValue(FileStreamerTags.NAME));
+	// holder = new DefaultReligion(
+	// root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Religious traits
 	// TODO
@@ -44,7 +42,7 @@ public class ReligionTemplateXMLDocumentReader implements
 	// new DefaultPendragonTemplate()));
 	// }
 
-	return holder;
+	return null;
     }
 
 }

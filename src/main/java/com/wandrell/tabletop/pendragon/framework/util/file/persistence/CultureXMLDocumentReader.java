@@ -5,11 +5,9 @@ import java.util.Iterator;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.character.background.culture.Culture;
 import com.wandrell.tabletop.pendragon.character.background.culture.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.character.background.culture.DefaultCulture;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -76,8 +74,8 @@ public class CultureXMLDocumentReader implements XMLDocumentReader<Culture> {
 	templateRandomMale = root.getChild(FileToken.TEMPLATE_MALE_RANDOM);
 
 	// Culture's name
-	holder = new DefaultCulture(
-		root.getAttributeValue(FileStreamerTags.NAME));
+	// holder = new DefaultCulture(
+	// root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Files
 	if (files != null) {
@@ -115,7 +113,7 @@ public class CultureXMLDocumentReader implements XMLDocumentReader<Culture> {
 	    // loadAttributesLimitsTemplateXMLNode(templateRandomMale));
 	}
 
-	return holder;
+	return null;
     }
 
 }

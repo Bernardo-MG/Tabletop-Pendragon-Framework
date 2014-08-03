@@ -3,9 +3,7 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.pendragon.glory.DefaultFatherClassGlory;
 import com.wandrell.tabletop.pendragon.glory.FatherClassGlory;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
@@ -29,8 +27,8 @@ public class FatherClassGloryXMLDocumentReader implements
 	// gloryYear = root.getChild(FileLabels.FATHER_CLASS_GLORY_PER_YEAR);
 
 	// Father's class name
-	holder = new DefaultFatherClassGlory(
-		root.getAttributeValue(FileStreamerTags.NAME));
+	// holder = new DefaultFatherClassGlory(
+	// root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Base glory
 	if (gloryBase != null) {
@@ -48,7 +46,7 @@ public class FatherClassGloryXMLDocumentReader implements
 	    // new IntegerValueHandler()).getStoredValue());
 	}
 
-	return holder;
+	return null;
     }
 
 }

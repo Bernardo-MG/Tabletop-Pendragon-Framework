@@ -47,11 +47,11 @@ public class AdditionalBelongingsXMLDocumentReader implements
 	DefaultAdditionalBelongings items;
 
 	for (final Element node : root.getChildren()) {
-	    items = new DefaultAdditionalBelongings();
+	    // items = new DefaultAdditionalBelongings();
 
-	    belongings = node.getChild(FileToken.BELONGINGS);
+	    // belongings = node.getChild(FileToken.BELONGINGS);
 
-	    readItemsXMLTree(belongings, items);
+	    // readItemsXMLTree(belongings, items);
 
 	    // TODO
 	    // holder.put((ContrastInterval<Integer>) XMLUtils
@@ -76,15 +76,15 @@ public class AdditionalBelongingsXMLDocumentReader implements
 
 	// Name
 	if (name != null) {
-	    holder.setMoneyName(name.getText());
+	    // holder.setMoneyName(name.getText());
 	}
 
 	// Flags
 	if (flags != null) {
 	    if (flags.getChildren().size() > 0) {
-		holder.setHasToChoose(flags.getChildren().get(0)
-			.getAttributeValue(FileStreamerTags.VALUE)
-			.equalsIgnoreCase("true"));
+		// holder.setHasToChoose(flags.getChildren().get(0)
+		// .getAttributeValue(FileStreamerTags.VALUE)
+		// .equalsIgnoreCase("true"));
 	    }
 	}
 

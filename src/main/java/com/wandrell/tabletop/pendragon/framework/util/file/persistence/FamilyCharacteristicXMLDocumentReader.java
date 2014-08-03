@@ -4,7 +4,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.character.background.DefaultFamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -33,10 +32,10 @@ public class FamilyCharacteristicXMLDocumentReader implements
 	// Intervals and results
 	// readIntervalsXMLTree(intervals, holder);
 
-	holder = new DefaultFamilyCharacteristic(
-		root.getAttributeValue(FileStreamerTags.NAME));
+	// holder = new DefaultFamilyCharacteristic(
+	// root.getAttributeValue(FileStreamerTags.NAME));
 
-	return holder;
+	return null;
     }
 
     @SuppressWarnings("unused")

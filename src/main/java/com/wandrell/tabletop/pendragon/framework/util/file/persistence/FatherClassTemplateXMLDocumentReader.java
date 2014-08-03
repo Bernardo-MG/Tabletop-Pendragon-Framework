@@ -5,8 +5,6 @@ import java.util.Iterator;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.pendragon.character.background.DefaultFatherClass;
 import com.wandrell.tabletop.pendragon.character.background.FatherClass;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.Skill;
@@ -36,12 +34,12 @@ public class FatherClassTemplateXMLDocumentReader implements
 	money = root.getChild(FileToken.MONEY);
 
 	// Father's class name
-	holder = new DefaultFatherClass(
-		root.getAttributeValue(FileStreamerTags.NAME));
+	// holder = new DefaultFatherClass(
+	// root.getAttributeValue(FileStreamerTags.NAME));
 
 	// Skills groups
 	if (skillsGroup != null) {
-	    readSkillsGroupXMLTree(skillsGroup, holder);
+	    // readSkillsGroupXMLTree(skillsGroup, holder);
 	}
 
 	// Skills points
@@ -58,7 +56,7 @@ public class FatherClassTemplateXMLDocumentReader implements
 	    // holder.getMoneyData());
 	}
 
-	return holder;
+	return null;
     }
 
     @SuppressWarnings("unused")

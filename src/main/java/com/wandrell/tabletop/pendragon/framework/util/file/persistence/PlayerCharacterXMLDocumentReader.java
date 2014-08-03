@@ -187,12 +187,12 @@ public class PlayerCharacterXMLDocumentReader implements
 
 	listFollowers = new ArrayList<Follower>(root.getChildren().size());
 	for (final Element itemNode : root.getChildren()) {
-	    follower = new DefaultFollower();
+	    // follower = new DefaultFollower();
 
-	    follower.setFile(itemNode.getAttributeValue(FileToken.FILE));
-	    follower.setJob(itemNode.getAttributeValue(FileToken.JOB));
+	    // follower.setFile(itemNode.getAttributeValue(FileToken.FILE));
+	    // follower.setJob(itemNode.getAttributeValue(FileToken.JOB));
 
-	    listFollowers.add(follower);
+	    // listFollowers.add(follower);
 	}
 
 	return listFollowers.iterator();
@@ -243,9 +243,9 @@ public class PlayerCharacterXMLDocumentReader implements
 
 	listWives = new ArrayList<Wife>(root.getChildren().size());
 	for (final Element wifeNode : root.getChildren()) {
-	    wife = new DefaultWife();
+	    // wife = new DefaultWife();
 
-	    wife.setFile(wifeNode.getAttributeValue(FileToken.FILE));
+	    // wife.setFile(wifeNode.getAttributeValue(FileToken.FILE));
 	    // TODO
 	    // wife.getYearWed().setValue(
 	    // XMLUtils.readIntegerValueHandlerXMLNode(
@@ -274,9 +274,9 @@ public class PlayerCharacterXMLDocumentReader implements
 
 		// listChildren.add(child);
 	    }
-	    wife.setChildren(listChildren);
+	    // wife.setChildren(listChildren);
 
-	    listWives.add(wife);
+	    // listWives.add(wife);
 	}
 
 	return listWives.iterator();
