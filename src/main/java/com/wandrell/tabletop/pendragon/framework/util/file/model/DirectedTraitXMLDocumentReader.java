@@ -8,10 +8,10 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
-import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
+import com.wandrell.util.file.impl.xml.DefaultFilteredXMLDocumentReader;
 
 public class DirectedTraitXMLDocumentReader extends
-	AbstractFilteredXMLDocumentReader<Collection<DirectedTrait>> {
+	DefaultFilteredXMLDocumentReader<Collection<DirectedTrait>> {
 
     public DirectedTraitXMLDocumentReader() {
 	super(FileToken.DIRECTED_TRAIT);

@@ -8,10 +8,10 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.Passion;
-import com.wandrell.util.file.impl.xml.AbstractFilteredXMLDocumentReader;
+import com.wandrell.util.file.impl.xml.DefaultFilteredXMLDocumentReader;
 
 public class PassionXMLDocumentReader extends
-	AbstractFilteredXMLDocumentReader<Collection<Passion>> {
+	DefaultFilteredXMLDocumentReader<Collection<Passion>> {
 
     public PassionXMLDocumentReader() {
 	super(FileToken.PASSION);
