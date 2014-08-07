@@ -19,228 +19,228 @@ import com.wandrell.tabletop.pendragon.inventory.Item;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class PlayerCharacterXMLDocumentWriter implements
-	XMLDocumentWriter<PendragonPlayerCharacter> {
+        XMLDocumentWriter<PendragonPlayerCharacter> {
 
     @SuppressWarnings("unused")
     private static final Element buildGloryEventXMLNode(final GloryEvent glory) {
-	final Element gloryNode;
+        final Element gloryNode;
 
-	gloryNode = new Element(FileToken.GLORY_EVENT);
-	// gloryNode.setAttribute(FileToken.DATE,
-	// String.valueOf(glory.getYear().getStoredValue()));
-	// gloryNode.setAttribute(FileToken.GLORY,
-	// String.valueOf(glory.getGloryGained().getStoredValue()));
-	gloryNode.addContent(new Element(FileToken.GLORY_EVENT_DESCRIPTION)
-		.setText(String.valueOf(glory.getDescription())));
+        gloryNode = new Element(FileToken.GLORY_EVENT);
+        // gloryNode.setAttribute(FileToken.DATE,
+        // String.valueOf(glory.getYear().getStoredValue()));
+        // gloryNode.setAttribute(FileToken.GLORY,
+        // String.valueOf(glory.getGloryGained().getStoredValue()));
+        gloryNode.addContent(new Element(FileToken.GLORY_EVENT_DESCRIPTION)
+                .setText(String.valueOf(glory.getDescription())));
 
-	return gloryNode;
+        return gloryNode;
     }
 
     @SuppressWarnings("unused")
     private static final Element buildGloryXMLTree(final GloryKeeper holder) {
-	final Element nodeGlory = new Element(FileToken.GLORY_HISTORY);
-	final Iterator<GloryEvent> iteratorGlory;
+        final Element nodeGlory = new Element(FileToken.GLORY_HISTORY);
+        final Iterator<GloryEvent> iteratorGlory;
 
-	// TODO
-	// iteratorGlory = holder.getGloryHistoryIterator();
-	// while (iteratorGlory.hasNext()) {
-	// nodeGlory.addContent(buildGloryEventXMLNode(iteratorGlory.next()));
-	// }
+        // TODO
+        // iteratorGlory = holder.getGloryHistoryIterator();
+        // while (iteratorGlory.hasNext()) {
+        // nodeGlory.addContent(buildGloryEventXMLNode(iteratorGlory.next()));
+        // }
 
-	return nodeGlory;
+        return nodeGlory;
     }
 
     public PlayerCharacterXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final PendragonPlayerCharacter holder) {
-	@SuppressWarnings("unused")
-	final Document doc;
+        @SuppressWarnings("unused")
+        final Document doc;
 
-	// TODO
-	// doc = new Document(new Element(FileLabels.CHARACTER));
-	// PersistenceFactory.getCharacterService().addSimpleCharacterToDocument(
-	// doc, holder);
+        // TODO
+        // doc = new Document(new Element(FileLabels.CHARACTER));
+        // PersistenceFactory.getCharacterService().addSimpleCharacterToDocument(
+        // doc, holder);
 
-	// Glory
-	// TODO
-	// doc.getRootElement().addContent(
-	// buildGloryXMLTree(holder.getGloryData()));
+        // Glory
+        // TODO
+        // doc.getRootElement().addContent(
+        // buildGloryXMLTree(holder.getGloryData()));
 
-	// ValueHandlers
-	// TODO
-	// doc.getRootElement().addContent(
-	// XMLUtils.buildIntegerValueHandlerXMLTree(new Element(
-	// FileLabels.VALUE_HANDLERS), holder
-	// .getValueHandlersIterator(), FileLabels.VALUE_HANDLER));
+        // ValueHandlers
+        // TODO
+        // doc.getRootElement().addContent(
+        // XMLUtils.buildIntegerValueHandlerXMLTree(new Element(
+        // FileLabels.VALUE_HANDLERS), holder
+        // .getValueHandlersIterator(), FileLabels.VALUE_HANDLER));
 
-	// Flags
-	// TODO
-	// doc.getRootElement().addContent(
-	// XMLUtils.buildBooleansSetXMLTree(new Element(FileLabels.FLAGS),
-	// holder.getFlagsIterator()));
+        // Flags
+        // TODO
+        // doc.getRootElement().addContent(
+        // XMLUtils.buildBooleansSetXMLTree(new Element(FileLabels.FLAGS),
+        // holder.getFlagsIterator()));
 
-	// Text values
-	// TODO
-	// doc.getRootElement().addContent(
-	// XMLUtils.buildStringsDictionaryXMLTree(new Element(
-	// FileLabels.TEXT_VALUES),
-	// holder.getTextValuesIterator(), FileLabels.TEXT_VALUE));
+        // Text values
+        // TODO
+        // doc.getRootElement().addContent(
+        // XMLUtils.buildStringsDictionaryXMLTree(new Element(
+        // FileLabels.TEXT_VALUES),
+        // holder.getTextValuesIterator(), FileLabels.TEXT_VALUE));
 
-	// Features
-	// TODO
-	// XMLUtils.buildIntegerValueHandlerXMLTree(new
-	// Element(FileLabels.FEATURES),
-	// holder.getFeaturesIterator(), FileLabels.FEATURE);
+        // Features
+        // TODO
+        // XMLUtils.buildIntegerValueHandlerXMLTree(new
+        // Element(FileLabels.FEATURES),
+        // holder.getFeaturesIterator(), FileLabels.FEATURE);
 
-	// Wives
-	// TODO
-	// doc.getRootElement().addContent(
-	// buildWivesXMLTree(holder.getWivesIterator()));
+        // Wives
+        // TODO
+        // doc.getRootElement().addContent(
+        // buildWivesXMLTree(holder.getWivesIterator()));
 
-	// Items carried
-	// TODO
-	// doc.getRootElement().addContent(
-	// buildHoldingsXMLTree(holder.getHoldingsCarriedIterator(),
-	// FileLabels.ITEMS_CARRIED));
+        // Items carried
+        // TODO
+        // doc.getRootElement().addContent(
+        // buildHoldingsXMLTree(holder.getHoldingsCarriedIterator(),
+        // FileLabels.ITEMS_CARRIED));
 
-	// Items at home
-	// TODO
-	// doc.getRootElement().addContent(
-	// buildHoldingsXMLTree(holder.getHoldingsAtHomeIterator(),
-	// FileLabels.ITEMS_AT_HOME));
+        // Items at home
+        // TODO
+        // doc.getRootElement().addContent(
+        // buildHoldingsXMLTree(holder.getHoldingsAtHomeIterator(),
+        // FileLabels.ITEMS_AT_HOME));
 
-	// Money
-	// TODO
-	// doc.getRootElement().addContent(
-	// PersistenceFactory.getItemService().buildMoneyXMLNode(
-	// holder.getMoneyData()));
+        // Money
+        // TODO
+        // doc.getRootElement().addContent(
+        // PersistenceFactory.getItemService().buildMoneyXMLNode(
+        // holder.getMoneyData()));
 
-	// Horses
-	// TODO
-	// doc.getRootElement().addContent(
-	// buildHorsesXMLTree(holder.getHorsesIterator()));
+        // Horses
+        // TODO
+        // doc.getRootElement().addContent(
+        // buildHorsesXMLTree(holder.getHorsesIterator()));
 
-	// Followers
-	// doc.getRootElement().addContent(
-	// buildFollowersXMLTree(holder.getFollowersIterator()));
+        // Followers
+        // doc.getRootElement().addContent(
+        // buildFollowersXMLTree(holder.getFollowersIterator()));
 
-	return null;
+        return null;
     }
 
     @SuppressWarnings("unused")
     private final Element buildFamilyCharacteristicXMLTree(
-	    final FamilyCharacteristic characteristic) {
-	final Element root, bonusNode;
+            final FamilyCharacteristic characteristic) {
+        final Element root, bonusNode;
 
-	root = new Element(FileToken.FAMILY_CHARACTERISTIC);
-	root.setAttribute(FileStreamerTags.NAME, characteristic.getName());
+        root = new Element(FileToken.FAMILY_CHARACTERISTIC);
+        root.setAttribute(FileStreamerTags.NAME, characteristic.getName());
 
-	// TODO
-	// bonusNode = PersistenceFactory.getPendragonTemplateService()
-	// .buildPendragonTemplateXMLNode(characteristic,
-	// new Element(FileLabels.TEMPLATE_BONUS));
-	// root.addContent(bonusNode);
+        // TODO
+        // bonusNode = PersistenceFactory.getPendragonTemplateService()
+        // .buildPendragonTemplateXMLNode(characteristic,
+        // new Element(FileLabels.TEMPLATE_BONUS));
+        // root.addContent(bonusNode);
 
-	return root;
+        return root;
     }
 
     @SuppressWarnings("unused")
     private final Element buildFollowersXMLTree(
-	    final Iterator<Follower> itrFollowers) {
-	Element root = new Element(FileToken.FOLLOWERS);
-	while (itrFollowers.hasNext()) {
-	    root.addContent(buildFollowerXMLTree(itrFollowers.next()));
-	}
-	return root;
+            final Iterator<Follower> itrFollowers) {
+        Element root = new Element(FileToken.FOLLOWERS);
+        while (itrFollowers.hasNext()) {
+            root.addContent(buildFollowerXMLTree(itrFollowers.next()));
+        }
+        return root;
     }
 
     private final Element buildFollowerXMLTree(final Follower follower) {
-	final Element followerNode;
+        final Element followerNode;
 
-	followerNode = new Element(FileToken.FOLLOWER);
-	followerNode.setAttribute(FileToken.FILE, follower.getFile());
-	followerNode.setAttribute(FileToken.JOB, follower.getJob());
+        followerNode = new Element(FileToken.FOLLOWER);
+        followerNode.setAttribute(FileToken.FILE, follower.getFile());
+        followerNode.setAttribute(FileToken.JOB, follower.getJob());
 
-	return followerNode;
+        return followerNode;
     }
 
     @SuppressWarnings("unused")
     private final Element buildHoldingsXMLTree(
-	    final Iterator<Item> itrHoldings, final String rootName) {
-	Element root = new Element(rootName);
-	while (itrHoldings.hasNext()) {
-	    // TODO
-	    // root.addContent(PersistenceFactory.getItemService()
-	    // .buildItemXMLNode(itrHoldings.next()));
-	}
-	return root;
+            final Iterator<Item> itrHoldings, final String rootName) {
+        Element root = new Element(rootName);
+        while (itrHoldings.hasNext()) {
+            // TODO
+            // root.addContent(PersistenceFactory.getItemService()
+            // .buildItemXMLNode(itrHoldings.next()));
+        }
+        return root;
     }
 
     @SuppressWarnings("unused")
     private final Element buildHorsesXMLTree(
-	    final Iterator<HorseCharacter> itrHorses) {
-	Element root = new Element(FileToken.HORSES);
-	while (itrHorses.hasNext()) {
-	    root.addContent(buildHorseXMLTree(itrHorses.next()));
-	}
-	return root;
+            final Iterator<HorseCharacter> itrHorses) {
+        Element root = new Element(FileToken.HORSES);
+        while (itrHorses.hasNext()) {
+            root.addContent(buildHorseXMLTree(itrHorses.next()));
+        }
+        return root;
     }
 
     private final Element buildHorseXMLTree(final HorseCharacter horse) {
-	final Element horseNode;
+        final Element horseNode;
 
-	horseNode = new Element(FileToken.HORSE);
-	horseNode.setAttribute(FileStreamerTags.NAME, horse.getName());
-	horseNode.setAttribute(FileToken.RACE, horse.getHorseType());
-	// TODO
-	// horseNode.addContent(XMLUtils.buildBooleansSetXMLTree(new Element(
-	// FileLabels.FLAGS), horse.getFlagsIterator()));
+        horseNode = new Element(FileToken.HORSE);
+        horseNode.setAttribute(FileStreamerTags.NAME, horse.getName());
+        horseNode.setAttribute(FileToken.RACE, horse.getHorseType());
+        // TODO
+        // horseNode.addContent(XMLUtils.buildBooleansSetXMLTree(new Element(
+        // FileLabels.FLAGS), horse.getFlagsIterator()));
 
-	return horseNode;
+        return horseNode;
     }
 
     @SuppressWarnings("unused")
     private final Element buildWifeXMLTree(final Wife wife) {
-	final Element root, children;
-	final Iterator<Child> iteratorChildren;
-	Child child;
-	Element childNode;
+        final Element root, children;
+        final Iterator<Child> iteratorChildren;
+        Child child;
+        Element childNode;
 
-	root = new Element(FileToken.WIFE);
-	root.setAttribute(FileToken.FILE, wife.getFile());
-	// root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
-	// FileToken.YEAR_WEDDING));
+        root = new Element(FileToken.WIFE);
+        root.setAttribute(FileToken.FILE, wife.getFile());
+        // root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
+        // FileToken.YEAR_WEDDING));
 
-	children = new Element(FileToken.CHILDREN);
-	// TODO
-	// iteratorChildren = wife.getChildrenIterator();
-	// while (iteratorChildren.hasNext()) {
-	// child = iteratorChildren.next();
-	// childNode = new Element(FileLabels.CHILD);
-	// childNode.setAttribute(FileStreamerTags.NAME, child.getChildName());
-	// childNode.addContent(new Element(FileLabels.GENDER).setText(String
-	// .valueOf(child.getGender().name())));
-	// childNode.addContent(XMLUtils.buildValueHandlerXMLNode(
-	// child.getYearBorn(), FileLabels.YEAR_BORN));
-	// childNode.addContent(XMLUtils.buildValueHandlerXMLNode(
-	// child.getYearDeath(), FileLabels.YEAR_DEATH));
-	//
-	// children.addContent(childNode);
-	// }
-	root.addContent(children);
+        children = new Element(FileToken.CHILDREN);
+        // TODO
+        // iteratorChildren = wife.getChildrenIterator();
+        // while (iteratorChildren.hasNext()) {
+        // child = iteratorChildren.next();
+        // childNode = new Element(FileLabels.CHILD);
+        // childNode.setAttribute(FileStreamerTags.NAME, child.getChildName());
+        // childNode.addContent(new Element(FileLabels.GENDER).setText(String
+        // .valueOf(child.getGender().name())));
+        // childNode.addContent(XMLUtils.buildValueHandlerXMLNode(
+        // child.getYearBorn(), FileLabels.YEAR_BORN));
+        // childNode.addContent(XMLUtils.buildValueHandlerXMLNode(
+        // child.getYearDeath(), FileLabels.YEAR_DEATH));
+        //
+        // children.addContent(childNode);
+        // }
+        root.addContent(children);
 
-	return root;
+        return root;
     }
 
     @SuppressWarnings("unused")
     private final Element buildWivesXMLTree(final Iterator<Wife> itrWives) {
-	Element root = new Element(FileToken.WIVES);
-	while (itrWives.hasNext()) {
-	    root.addContent(buildWifeXMLTree(itrWives.next()));
-	}
-	return root;
+        Element root = new Element(FileToken.WIVES);
+        while (itrWives.hasNext()) {
+            root.addContent(buildWifeXMLTree(itrWives.next()));
+        }
+        return root;
     }
 }

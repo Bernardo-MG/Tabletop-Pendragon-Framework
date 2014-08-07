@@ -14,46 +14,46 @@ import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class RollTableXMLDocumentWriter implements
-	XMLDocumentWriter<RollTable<String>> {
+        XMLDocumentWriter<RollTable<String>> {
 
     public RollTableXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final RollTable<String> holder) {
-	final Document doc;
-	final Element element;
+        final Document doc;
+        final Element element;
 
-	// Root and table's name
-	element = new Element(FileToken.ROLL_TABLE);
-	// TODO
-	// element.setAttribute(FileStreamerTags.NAME, holder.getName());
-	doc = new Document(element);
+        // Root and table's name
+        element = new Element(FileToken.ROLL_TABLE);
+        // TODO
+        // element.setAttribute(FileStreamerTags.NAME, holder.getName());
+        doc = new Document(element);
 
-	// Intervals and results
-	doc.getRootElement().addContent(
-		buildIntervalsXMLTree((DefaultRollTable<String>) holder));
+        // Intervals and results
+        doc.getRootElement().addContent(
+                buildIntervalsXMLTree((DefaultRollTable<String>) holder));
 
-	return doc;
+        return doc;
     }
 
     private final Element buildIntervalsXMLTree(
-	    final DefaultRollTable<String> holder) {
-	final Element root;
-	Element intervalNode;
+            final DefaultRollTable<String> holder) {
+        final Element root;
+        Element intervalNode;
 
-	root = new Element(FileToken.INTERVALS);
-	for (final Entry<ContrastInterval<Integer>, String> intervals : holder
-		.getIntervals().entrySet()) {
-	    intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
-		    FileToken.INTERVAL);
-	    intervalNode.addContent(new Element(FileStreamerTags.VALUE)
-		    .setText(intervals.getValue()));
-	    root.addContent(intervalNode);
-	}
+        root = new Element(FileToken.INTERVALS);
+        for (final Entry<ContrastInterval<Integer>, String> intervals : holder
+                .getIntervals().entrySet()) {
+            intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
+                    FileToken.INTERVAL);
+            intervalNode.addContent(new Element(FileStreamerTags.VALUE)
+                    .setText(intervals.getValue()));
+            root.addContent(intervalNode);
+        }
 
-	return root;
+        return root;
     }
 
 }

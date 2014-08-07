@@ -5,15 +5,15 @@ import org.jdom2.Document;
 import com.wandrell.tabletop.pendragon.inventory.Shield;
 
 public final class ShieldXMLDocumentReader extends
-	AbstractEquipableItemXMLDocumentReader<Shield> {
+        AbstractEquipableItemXMLDocumentReader<Shield> {
 
     public ShieldXMLDocumentReader() {
-	super();
+        super();
     }
 
     @Override
     public final Shield getValue(final Document doc) {
-	return super.getValue(doc);
+        return super.getValue(doc);
     }
 
 }

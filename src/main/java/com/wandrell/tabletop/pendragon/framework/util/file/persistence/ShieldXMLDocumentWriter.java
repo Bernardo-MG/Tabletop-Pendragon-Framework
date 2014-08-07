@@ -12,18 +12,18 @@ public class ShieldXMLDocumentWriter implements XMLDocumentWriter<Shield> {
     private final XMLDocumentWriter<Equipment> builder = new EquipableItemXMLDocumenWriter();
 
     public ShieldXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final Shield holder) {
-	final Document doc;
+        final Document doc;
 
-	doc = builder.getDocument(holder);
+        doc = builder.getDocument(holder);
 
-	doc.getRootElement().setName(FileToken.SHIELD);
+        doc.getRootElement().setName(FileToken.SHIELD);
 
-	return doc;
+        return doc;
     }
 
 }

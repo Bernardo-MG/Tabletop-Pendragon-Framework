@@ -13,24 +13,24 @@ import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
 import com.wandrell.util.file.impl.xml.XSDValidator;
 
 public final class PendragonTraitNamesCommand implements
-	ReturnCommand<Collection<String>> {
+        ReturnCommand<Collection<String>> {
 
     public PendragonTraitNamesCommand() {
-	super();
+        super();
     }
 
     @Override
     public final Collection<String> execute() {
-	final FileHandler<Collection<String>> file;
+        final FileHandler<Collection<String>> file;
 
-	file = new DefaultXMLFileHandler<>(
-		new DisabledXMLWriter<Collection<String>>(),
-		new TraitNameXMLDocumentReader(), new XSDValidator(
-			PathUtils.getClassPathResource(Paths
-				.get(ModelFile.VALIDATION_TRAIT))));
+        file = new DefaultXMLFileHandler<>(
+                new DisabledXMLWriter<Collection<String>>(),
+                new TraitNameXMLDocumentReader(), new XSDValidator(
+                        PathUtils.getClassPathResource(Paths
+                                .get(ModelFile.VALIDATION_TRAIT))));
 
-	return file.read(PathUtils.getClassPathResource(Paths
-		.get(ModelFile.TRAIT)));
+        return file.read(PathUtils.getClassPathResource(Paths
+                .get(ModelFile.TRAIT)));
     }
 
 }

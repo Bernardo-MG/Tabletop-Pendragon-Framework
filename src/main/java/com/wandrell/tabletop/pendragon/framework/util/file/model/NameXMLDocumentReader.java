@@ -10,25 +10,25 @@ import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class NameXMLDocumentReader implements
-	XMLDocumentReader<Collection<String>> {
+        XMLDocumentReader<Collection<String>> {
 
     public NameXMLDocumentReader() {
-	super();
+        super();
     }
 
     @Override
     public final Collection<String> getValue(final Document doc) {
-	final Element root;
-	final Collection<String> names;
+        final Element root;
+        final Collection<String> names;
 
-	root = doc.getRootElement();
+        root = doc.getRootElement();
 
-	names = new LinkedList<>();
-	for (final Element node : root.getChildren()) {
-	    names.add(node.getChildText(FileToken.NAME));
-	}
+        names = new LinkedList<>();
+        for (final Element node : root.getChildren()) {
+            names.add(node.getChildText(FileToken.NAME));
+        }
 
-	return names;
+        return names;
     }
 
 }

@@ -15,86 +15,86 @@ import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class ManorAnimalXMLDocumentWriter implements
-	XMLDocumentWriter<ManorAnimal> {
+        XMLDocumentWriter<ManorAnimal> {
 
     public ManorAnimalXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final ManorAnimal holder) {
-	final Document doc;
-	final Element element;
+        final Document doc;
+        final Element element;
 
-	// Root and pet's name
-	element = new Element(FileToken.PET);
-	element.setAttribute(FileStreamerTags.NAME, holder.getName());
-	doc = new Document(element);
+        // Root and pet's name
+        element = new Element(FileToken.PET);
+        element.setAttribute(FileStreamerTags.NAME, holder.getName());
+        doc = new Document(element);
 
-	// Intervals and results
-	doc.getRootElement()
-		.addContent(
-			buildIntervalsXMLTree((DefaultRollTable<AnimalYearResult>) holder
-				.getAnnualCheckMap()));
+        // Intervals and results
+        doc.getRootElement()
+                .addContent(
+                        buildIntervalsXMLTree((DefaultRollTable<AnimalYearResult>) holder
+                                .getAnnualCheckMap()));
 
-	return doc;
+        return doc;
     }
 
     private final Element buildIntervalsXMLTree(
-	    final DefaultRollTable<AnimalYearResult> holder) {
-	final Element root;
-	Element intervalNode;
-	// TODO: Esto se hace en tres clases
+            final DefaultRollTable<AnimalYearResult> holder) {
+        final Element root;
+        Element intervalNode;
+        // TODO: Esto se hace en tres clases
 
-	root = new Element(FileToken.INTERVALS);
-	for (final Entry<ContrastInterval<Integer>, AnimalYearResult> intervals : holder
-		.getIntervals().entrySet()) {
-	    intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
-		    FileStreamerTags.INTERVAL);
-	    intervalNode.setAttribute(FileStreamerTags.NAME, intervals
-		    .getValue().getName());
+        root = new Element(FileToken.INTERVALS);
+        for (final Entry<ContrastInterval<Integer>, AnimalYearResult> intervals : holder
+                .getIntervals().entrySet()) {
+            intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
+                    FileStreamerTags.INTERVAL);
+            intervalNode.setAttribute(FileStreamerTags.NAME, intervals
+                    .getValue().getName());
 
-	    intervalNode.addContent(buildYearResultNode(intervals.getValue()));
-	    root.addContent(intervalNode);
-	}
+            intervalNode.addContent(buildYearResultNode(intervals.getValue()));
+            root.addContent(intervalNode);
+        }
 
-	return root;
+        return root;
     }
 
     @SuppressWarnings("unused")
     private final Element buildYearResultNode(final AnimalYearResult result) {
-	Element node, root;
+        Element node, root;
 
-	root = new Element(FileToken.RESULTS);
+        root = new Element(FileToken.RESULTS);
 
-	// Values
-	// TODO
-	// node = XMLUtils.buildIntegerValueHandlerXMLTree(new Element(
-	// FileLabels.VALUE_HANDLERS), result.getValuesIterator(),
-	// FileLabels.VALUE_HANDLER);
-	// if (node.getChildren().size() > 0) {
-	// root.addContent(node);
-	// }
+        // Values
+        // TODO
+        // node = XMLUtils.buildIntegerValueHandlerXMLTree(new Element(
+        // FileLabels.VALUE_HANDLERS), result.getValuesIterator(),
+        // FileLabels.VALUE_HANDLER);
+        // if (node.getChildren().size() > 0) {
+        // root.addContent(node);
+        // }
 
-	// Flags
-	// TODO
-	// node = XMLUtils.buildBooleansSetXMLTree(new
-	// Element(FileLabels.FLAGS),
-	// result.getFlagsIterator());
-	// if (node.getChildren().size() > 0) {
-	// root.addContent(node);
-	// }
+        // Flags
+        // TODO
+        // node = XMLUtils.buildBooleansSetXMLTree(new
+        // Element(FileLabels.FLAGS),
+        // result.getFlagsIterator());
+        // if (node.getChildren().size() > 0) {
+        // root.addContent(node);
+        // }
 
-	// Files
-	// TODO
-	// node = XMLUtils.buildStringsDictionaryXMLTree(new Element(
-	// FileLabels.SELECTORS_FILES), result.getFilesIterator(),
-	// FileLabels.FILE);
-	// if (node.getChildren().size() > 0) {
-	// root.addContent(node);
-	// }
+        // Files
+        // TODO
+        // node = XMLUtils.buildStringsDictionaryXMLTree(new Element(
+        // FileLabels.SELECTORS_FILES), result.getFilesIterator(),
+        // FileLabels.FILE);
+        // if (node.getChildren().size() > 0) {
+        // root.addContent(node);
+        // }
 
-	return root;
+        return root;
     }
 
 }

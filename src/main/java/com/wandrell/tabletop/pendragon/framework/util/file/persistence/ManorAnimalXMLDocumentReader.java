@@ -12,77 +12,78 @@ import com.wandrell.tabletop.pendragon.manor.ManorAnimal;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class ManorAnimalXMLDocumentReader implements
-	XMLDocumentReader<ManorAnimal> {
+        XMLDocumentReader<ManorAnimal> {
 
     public ManorAnimalXMLDocumentReader() {
-	super();
+        super();
     }
 
     @Override
     public final ManorAnimal getValue(final Document doc) {
-	final DefaultManorAnimal holder;
-	final Element intervals;
-	final Element root;
+        final DefaultManorAnimal holder;
+        final Element intervals;
+        final Element root;
 
-	root = doc.getRootElement();
-	// holder = new DefaultManorAnimal(new
-	// DefaultRollTable<AnimalYearResult>(
-	// null, null, null));
+        root = doc.getRootElement();
+        // holder = new DefaultManorAnimal(new
+        // DefaultRollTable<AnimalYearResult>(
+        // null, null, null));
 
-	// Acquires the different sections
-	intervals = root.getChild(FileToken.INTERVALS);
+        // Acquires the different sections
+        intervals = root.getChild(FileToken.INTERVALS);
 
-	// Pet's name
-	// holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
+        // Pet's name
+        // holder.setName(root.getAttributeValue(FileStreamerTags.NAME));
 
-	// Intervals and results
-	// readIntervalsXMLTree(intervals, holder.getAnnualCheckMap());
+        // Intervals and results
+        // readIntervalsXMLTree(intervals, holder.getAnnualCheckMap());
 
-	return null;
+        return null;
     }
 
     private final void readIntervalsXMLTree(final Element root,
-	    final RollTable<AnimalYearResult> holder) {
-	DefaultAnimalYearResult result;
+            final RollTable<AnimalYearResult> holder) {
+        DefaultAnimalYearResult result;
 
-	// Goes through each interval
-	for (final Element node : root.getChildren()) {
-	    // result = readYearResultNode(node.getChild(FileToken.RESULTS));
-	    // result.setName(node.getAttributeValue(FileStreamerTags.NAME));
-	    // TODO
-	    // holder.put((ContrastInterval<Integer>) XMLUtils
-	    // .readIntegerIntervalXMLNode(node), result);
-	}
+        // Goes through each interval
+        for (final Element node : root.getChildren()) {
+            // result = readYearResultNode(node.getChild(FileToken.RESULTS));
+            // result.setName(node.getAttributeValue(FileStreamerTags.NAME));
+            // TODO
+            // holder.put((ContrastInterval<Integer>) XMLUtils
+            // .readIntegerIntervalXMLNode(node), result);
+        }
     }
 
-    private final DefaultAnimalYearResult readYearResultNode(final Element root) {
-	final Element values, flags, files;
-	// final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
+    private final DefaultAnimalYearResult
+            readYearResultNode(final Element root) {
+        final Element values, flags, files;
+        // final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
 
-	values = root.getChild(FileToken.VALUE_HANDLERS);
-	flags = root.getChild(FileToken.FLAGS);
-	files = root.getChild(FileToken.SELECTORS_FILES);
+        values = root.getChild(FileToken.VALUE_HANDLERS);
+        flags = root.getChild(FileToken.FLAGS);
+        files = root.getChild(FileToken.SELECTORS_FILES);
 
-	// Values
-	if (values != null) {
-	    // TODO
-	    // result.setValues(XMLUtils.readIntegerValueHandlerXMLTree(values,
-	    // new IntegerValueHandler()));
-	}
+        // Values
+        if (values != null) {
+            // TODO
+            // result.setValues(XMLUtils.readIntegerValueHandlerXMLTree(values,
+            // new IntegerValueHandler()));
+        }
 
-	// Flags
-	if (flags != null) {
-	    // TODO
-	    // result.setFlags(XMLUtils.readBooleanXMLTree(flags));
-	}
+        // Flags
+        if (flags != null) {
+            // TODO
+            // result.setFlags(XMLUtils.readBooleanXMLTree(flags));
+        }
 
-	// Files
-	if (files != null) {
-	    // TODO
-	    // result.setFiles(XMLUtils.readStringsDictionaryXMLTree(files));
-	}
+        // Files
+        if (files != null) {
+            // TODO
+            // result.setFiles(XMLUtils.readStringsDictionaryXMLTree(files));
+        }
 
-	return null;
+        return null;
     }
 
 }

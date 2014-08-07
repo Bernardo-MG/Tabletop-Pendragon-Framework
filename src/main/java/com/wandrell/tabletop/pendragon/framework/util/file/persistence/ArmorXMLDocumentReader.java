@@ -5,15 +5,15 @@ import org.jdom2.Document;
 import com.wandrell.tabletop.pendragon.inventory.Armor;
 
 public class ArmorXMLDocumentReader extends
-	AbstractEquipableItemXMLDocumentReader<Armor> {
+        AbstractEquipableItemXMLDocumentReader<Armor> {
 
     public ArmorXMLDocumentReader() {
-	super();
+        super();
     }
 
     @Override
     public final Armor getValue(final Document doc) {
-	return super.getValue(doc);
+        return super.getValue(doc);
     }
 
 }

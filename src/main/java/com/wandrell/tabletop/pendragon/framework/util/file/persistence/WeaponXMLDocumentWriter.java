@@ -13,22 +13,22 @@ public class WeaponXMLDocumentWriter implements XMLDocumentWriter<Weapon> {
     private final XMLDocumentWriter<Equipment> builder = new EquipableItemXMLDocumenWriter();
 
     public WeaponXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final Weapon holder) {
-	final Document doc;
-	Element node;
+        final Document doc;
+        Element node;
 
-	doc = builder.getDocument(holder);
+        doc = builder.getDocument(holder);
 
-	node = new Element(FileToken.SKILL);
-	node.setText(holder.getSkill());
+        node = new Element(FileToken.SKILL);
+        node.setText(holder.getSkill());
 
-	doc.getRootElement().setName(FileToken.WEAPON);
+        doc.getRootElement().setName(FileToken.WEAPON);
 
-	return doc;
+        return doc;
     }
 
 }

@@ -13,37 +13,37 @@ import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class SpecialtySkillXMLDocumentReader implements
-	XMLDocumentReader<SpecialtySkill> {
+        XMLDocumentReader<SpecialtySkill> {
 
     public SpecialtySkillXMLDocumentReader() {
-	super();
+        super();
     }
 
     @SuppressWarnings("unused")
     @Override
     public final SpecialtySkill getValue(final Document doc) {
-	final Element skills;
-	final String name;
-	final Element root;
-	final PendragonFactory factory;
-	final List<String> list;
+        final Element skills;
+        final String name;
+        final Element root;
+        final PendragonFactory factory;
+        final List<String> list;
 
-	root = doc.getRootElement();
+        root = doc.getRootElement();
 
-	// Acquires the different sections
-	skills = root.getChild(FileToken.SKILLS);
+        // Acquires the different sections
+        skills = root.getChild(FileToken.SKILLS);
 
-	// Skill's name
-	name = root.getAttributeValue(FileStreamerTags.NAME);
+        // Skill's name
+        name = root.getAttributeValue(FileStreamerTags.NAME);
 
-	// Acquires the different sections
-	list = new ArrayList<String>(root.getChildren().size());
-	for (final Element skill : skills.getChildren()) {
-	    list.add(skill.getAttributeValue(FileStreamerTags.NAME));
-	}
+        // Acquires the different sections
+        list = new ArrayList<String>(root.getChildren().size());
+        for (final Element skill : skills.getChildren()) {
+            list.add(skill.getAttributeValue(FileStreamerTags.NAME));
+        }
 
-	factory = PendragonFactory.getInstance();
-	return factory.getSpecialtySkill(name, list);
+        factory = PendragonFactory.getInstance();
+        return factory.getSpecialtySkill(name, list);
     }
 
 }

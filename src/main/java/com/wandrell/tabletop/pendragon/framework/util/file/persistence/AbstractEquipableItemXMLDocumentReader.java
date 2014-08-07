@@ -8,52 +8,52 @@ import com.wandrell.tabletop.pendragon.inventory.Equipment;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public abstract class AbstractEquipableItemXMLDocumentReader<V extends Equipment>
-	implements XMLDocumentReader<V> {
+        implements XMLDocumentReader<V> {
 
     public AbstractEquipableItemXMLDocumentReader() {
-	super();
+        super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public V getValue(final Document doc) {
-	final Element values, flags, bonus;
-	Equipment holder = null;
-	final Element root = doc.getRootElement();
+        final Element values, flags, bonus;
+        Equipment holder = null;
+        final Element root = doc.getRootElement();
 
-	// TODO
-	// holder = (PendragonEquipment) PersistenceFactory.getItemService()
-	// .readItemXMLNode(root,
-	// ClassInstanceFactory.getNewValue(classValue));
+        // TODO
+        // holder = (PendragonEquipment) PersistenceFactory.getItemService()
+        // .readItemXMLNode(root,
+        // ClassInstanceFactory.getNewValue(classValue));
 
-	// Acquires the different sections
-	values = root.getChild(FileToken.VALUE_HANDLERS);
-	flags = root.getChild(FileToken.FLAGS);
-	bonus = root.getChild(FileToken.TEMPLATE_BONUS);
+        // Acquires the different sections
+        values = root.getChild(FileToken.VALUE_HANDLERS);
+        flags = root.getChild(FileToken.FLAGS);
+        bonus = root.getChild(FileToken.TEMPLATE_BONUS);
 
-	// Values
-	if (values != null) {
-	    // TODO
-	    // holder.setValues(XMLUtils.readIntegerValueHandlerXMLTree(values,
-	    // new IntegerValueHandler()));
-	}
+        // Values
+        if (values != null) {
+            // TODO
+            // holder.setValues(XMLUtils.readIntegerValueHandlerXMLTree(values,
+            // new IntegerValueHandler()));
+        }
 
-	// Flags
-	if (flags != null) {
-	    // TODO
-	    // holder.setFlags(XMLUtils.readBooleanXMLTree(flags));
-	}
+        // Flags
+        if (flags != null) {
+            // TODO
+            // holder.setFlags(XMLUtils.readBooleanXMLTree(flags));
+        }
 
-	// Bonus
-	if (bonus != null) {
-	    // TODO
-	    // holder.setBonusValuesTemplate(PersistenceFactory
-	    // .getPendragonTemplateService()
-	    // .readPendragonTemplateXMLTree(bonus,
-	    // new DefaultPendragonTemplate()));
-	}
+        // Bonus
+        if (bonus != null) {
+            // TODO
+            // holder.setBonusValuesTemplate(PersistenceFactory
+            // .getPendragonTemplateService()
+            // .readPendragonTemplateXMLTree(bonus,
+            // new DefaultPendragonTemplate()));
+        }
 
-	return (V) holder;
+        return (V) holder;
     }
 
 }

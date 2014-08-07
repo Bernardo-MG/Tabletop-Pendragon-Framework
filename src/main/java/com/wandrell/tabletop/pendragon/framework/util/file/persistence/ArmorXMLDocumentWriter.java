@@ -12,18 +12,18 @@ public class ArmorXMLDocumentWriter implements XMLDocumentWriter<Armor> {
     private final XMLDocumentWriter<Equipment> builder = new EquipableItemXMLDocumenWriter();
 
     public ArmorXMLDocumentWriter() {
-	super();
+        super();
     }
 
     @Override
     public final Document getDocument(final Armor holder) {
-	final Document doc;
+        final Document doc;
 
-	doc = builder.getDocument(holder);
+        doc = builder.getDocument(holder);
 
-	doc.getRootElement().setName(FileToken.ARMOR);
+        doc.getRootElement().setName(FileToken.ARMOR);
 
-	return doc;
+        return doc;
     }
 
 }

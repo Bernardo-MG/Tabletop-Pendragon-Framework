@@ -13,43 +13,43 @@ import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class HorseXMLDocumentReader implements
-	XMLDocumentReader<HorseCharacter> {
+        XMLDocumentReader<HorseCharacter> {
 
     public HorseXMLDocumentReader() {
-	super();
+        super();
     }
 
     @SuppressWarnings("unused")
     @Override
     public final HorseCharacter getValue(final Document doc) {
-	final DefaultHorseCharacter holder;
-	final Element secAttributes, flags;
-	final Element root;
+        final DefaultHorseCharacter holder;
+        final Element secAttributes, flags;
+        final Element root;
 
-	root = doc.getRootElement();
+        root = doc.getRootElement();
 
-	holder = new DefaultHorseCharacter(new LinkedList<Attribute>());
+        holder = new DefaultHorseCharacter(new LinkedList<Attribute>());
 
-	// TODO
-	// PersistenceFactory.getCharacterService().addToBaseCharacter(root,
-	// holder);
+        // TODO
+        // PersistenceFactory.getCharacterService().addToBaseCharacter(root,
+        // holder);
 
-	// Acquires the different sections
-	secAttributes = root.getChild(FileToken.SECONDARY_ATTRIBUTES);
-	flags = root.getChild(FileToken.FLAGS);
+        // Acquires the different sections
+        secAttributes = root.getChild(FileToken.SECONDARY_ATTRIBUTES);
+        flags = root.getChild(FileToken.FLAGS);
 
-	// Horse race
-	holder.setHorseType(root.getChildText(FileToken.RACE));
+        // Horse race
+        holder.setHorseType(root.getChildText(FileToken.RACE));
 
-	// Secondary attributes
-	// TODO
-	// holder.setSecondaryAttributes(XMLUtils.readIntegerValueHandlerXMLTree(
-	// secAttributes, new IntegerValueHandler()));
+        // Secondary attributes
+        // TODO
+        // holder.setSecondaryAttributes(XMLUtils.readIntegerValueHandlerXMLTree(
+        // secAttributes, new IntegerValueHandler()));
 
-	// Flags
-	holder.setFlags(XMLUtil.readBooleanXMLTree(flags));
+        // Flags
+        holder.setFlags(XMLUtil.readBooleanXMLTree(flags));
 
-	return holder;
+        return holder;
     }
 
 }
