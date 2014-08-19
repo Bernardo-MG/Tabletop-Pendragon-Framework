@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -27,8 +26,8 @@ public class HorseXMLDocumentWriter implements
         // doc, holder);
 
         // Horse race
-        doc.getRootElement().setAttribute(FileStreamerTags.NAME,
-                holder.getHorseType());
+        // doc.getRootElement().setAttribute(FileStreamerTags.NAME,
+        // holder.getHorseType());
         doc.getRootElement().addContent(0,
                 new Element(FileToken.RACE).setText(holder.getHorseType()));
 

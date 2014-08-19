@@ -1,6 +1,5 @@
 package com.wandrell.tabletop.pendragon.framework.conf.factory;
 
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Properties;
 
@@ -35,16 +34,19 @@ public final class PendragonFactory {
         final ApplicationContext context;
         final Properties properties;
 
-        properties = FileUtils.getProperties(PathUtils
-                .getClassPathResource(Paths
-                        .get(PendragonFactoryConf.PROPERTIES_DIRECTED_TRAIT)));
+        properties = FileUtils
+                .getProperties(PathUtils
+                        .getClassPathResource(PendragonFactoryConf.PROPERTIES_DIRECTED_TRAIT));
 
         // TODO: This is hardcoded
         properties.setProperty("trait.name", name);
 
         // TODO: Try to reload changing only the values
-        context = ContextUtils.getContext(PathUtils.getClassPathResource(Paths
-                .get(PendragonFactoryConf.CONTEXT_DIRECTED_TRAIT)), properties);
+        context = ContextUtils
+                .getContext(
+                        PathUtils
+                                .getClassPathResource(PendragonFactoryConf.CONTEXT_DIRECTED_TRAIT),
+                        properties);
 
         return (DirectedTrait) context
                 .getBean(PendragonFactoryConf.BEAN_DIRECTED_TRAIT);
@@ -55,16 +57,16 @@ public final class PendragonFactory {
         final Properties properties;
 
         properties = FileUtils.getProperties(PathUtils
-                .getClassPathResource(Paths
-                        .get(PendragonFactoryConf.PROPERTIES_PASSION)));
+                .getClassPathResource(PendragonFactoryConf.PROPERTIES_PASSION));
 
         // TODO: This is hardcoded
         properties.setProperty("passion.name", name);
         properties.setProperty("passion.descriptor", descriptor);
 
         // TODO: Try to reload changing only the values
-        context = ContextUtils.getContext(PathUtils.getClassPathResource(Paths
-                .get(PendragonFactoryConf.CONTEXT_PASSION)), properties);
+        context = ContextUtils.getContext(PathUtils
+                .getClassPathResource(PendragonFactoryConf.CONTEXT_PASSION),
+                properties);
 
         // Spring framework builds the instance
 
@@ -78,8 +80,7 @@ public final class PendragonFactory {
         final Properties properties;
 
         properties = FileUtils.getProperties(PathUtils
-                .getClassPathResource(Paths
-                        .get(PendragonFactoryConf.PROPERTIES_SKILL)));
+                .getClassPathResource(PendragonFactoryConf.PROPERTIES_SKILL));
 
         // TODO: This is hardcoded
         properties.setProperty("skill.name", name);
@@ -90,8 +91,9 @@ public final class PendragonFactory {
         properties.setProperty("skill.flag.repeat", repeat.toString());
 
         // TODO: Try to reload changing only the values
-        context = ContextUtils.getContext(PathUtils.getClassPathResource(Paths
-                .get(PendragonFactoryConf.CONTEXT_SKILL)), properties);
+        context = ContextUtils.getContext(PathUtils
+                .getClassPathResource(PendragonFactoryConf.CONTEXT_SKILL),
+                properties);
 
         // Spring framework builds the instance
 
@@ -104,9 +106,9 @@ public final class PendragonFactory {
         final Properties properties;
         StringBuilder skillsToken;
 
-        properties = FileUtils.getProperties(PathUtils
-                .getClassPathResource(Paths
-                        .get(PendragonFactoryConf.PROPERTIES_SPECIALTY_SKILL)));
+        properties = FileUtils
+                .getProperties(PathUtils
+                        .getClassPathResource(PendragonFactoryConf.PROPERTIES_SPECIALTY_SKILL));
 
         skillsToken = new StringBuilder("");
         for (final String skill : skills) {
@@ -123,8 +125,9 @@ public final class PendragonFactory {
 
         // TODO: Try to reload changing only the values
         context = ContextUtils
-                .getContext(PathUtils.getClassPathResource(Paths
-                        .get(PendragonFactoryConf.CONTEXT_SPECIALTY_SKILL)),
+                .getContext(
+                        PathUtils
+                                .getClassPathResource(PendragonFactoryConf.CONTEXT_SPECIALTY_SKILL),
                         properties);
 
         return (SpecialtySkill) context

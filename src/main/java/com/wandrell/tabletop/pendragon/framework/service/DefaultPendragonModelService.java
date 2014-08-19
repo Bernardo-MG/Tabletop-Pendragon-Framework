@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.service;
 import java.util.Collection;
 import java.util.Collections;
 
-import com.wandrell.framework.command.CommandExecutor;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonAttributeNamesCommand;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCombatSkillsCommand;
 import com.wandrell.tabletop.pendragon.framework.service.command.PendragonCommonNonCombatSkillsCommand;
@@ -15,6 +14,7 @@ import com.wandrell.tabletop.pendragon.framework.service.command.PendragonTraitN
 import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
 import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 import com.wandrell.tabletop.pendragon.valuehandler.Skill;
+import com.wandrell.util.command.CommandExecutor;
 
 public final class DefaultPendragonModelService implements
         PendragonModelService {

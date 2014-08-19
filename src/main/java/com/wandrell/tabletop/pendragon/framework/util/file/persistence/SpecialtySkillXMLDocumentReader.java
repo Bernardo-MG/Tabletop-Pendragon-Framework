@@ -6,7 +6,6 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.factory.PendragonFactory;
 import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
@@ -34,16 +33,17 @@ public class SpecialtySkillXMLDocumentReader implements
         skills = root.getChild(FileToken.SKILLS);
 
         // Skill's name
-        name = root.getAttributeValue(FileStreamerTags.NAME);
+        // name = root.getAttributeValue(FileStreamerTags.NAME);
 
         // Acquires the different sections
         list = new ArrayList<String>(root.getChildren().size());
         for (final Element skill : skills.getChildren()) {
-            list.add(skill.getAttributeValue(FileStreamerTags.NAME));
+            // list.add(skill.getAttributeValue(FileStreamerTags.NAME));
         }
 
         factory = PendragonFactory.getInstance();
-        return factory.getSpecialtySkill(name, list);
+        // return factory.getSpecialtySkill(name, list);
+        return null;
     }
 
 }

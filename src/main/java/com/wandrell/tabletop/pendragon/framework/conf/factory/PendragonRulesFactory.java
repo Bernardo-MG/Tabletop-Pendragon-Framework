@@ -1,7 +1,13 @@
 package com.wandrell.tabletop.pendragon.framework.conf.factory;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
+import com.wandrell.tabletop.interval.ContrastInterval;
+import com.wandrell.tabletop.interval.DefaultInterval;
+import com.wandrell.tabletop.interval.IntervalComparator;
 
 public final class PendragonRulesFactory {
 
@@ -21,14 +27,18 @@ public final class PendragonRulesFactory {
     }
 
     public final synchronized RollTable<Integer> getFeaturesCountTable() {
+        final Map<ContrastInterval, Integer> map;
+
         if (featuresCount == null) {
             // TODO: Load the configuration from a file
-            featuresCount = new DefaultRollTable<>("features_table");
-            featuresCount.setInterval(Integer.MIN_VALUE, 6, 3);
-            featuresCount.addInterval(9, 2);
-            featuresCount.addInterval(12, 1);
-            featuresCount.addInterval(16, 2);
-            featuresCount.addInterval(Integer.MAX_VALUE, 3);
+            map = new TreeMap<>(new IntervalComparator());
+            map.put(new DefaultInterval(Integer.MIN_VALUE, 6), 3);
+            map.put(new DefaultInterval(7, 9), 2);
+            map.put(new DefaultInterval(10, 12), 1);
+            map.put(new DefaultInterval(13, 16), 2);
+            map.put(new DefaultInterval(17, Integer.MAX_VALUE), 3);
+
+            featuresCount = new DefaultRollTable<>("features_table", map);
         }
 
         return featuresCount;

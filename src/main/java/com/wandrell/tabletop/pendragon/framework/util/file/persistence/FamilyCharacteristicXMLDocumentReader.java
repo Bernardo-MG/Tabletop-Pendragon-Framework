@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -45,7 +44,7 @@ public class FamilyCharacteristicXMLDocumentReader implements
 
         // Goes through each interval
         for (final Element node : root.getChildren()) {
-            name = node.getAttributeValue(FileStreamerTags.NAME);
+            // name = node.getAttributeValue(FileStreamerTags.NAME);
 
             // TODO
             // holder.put(

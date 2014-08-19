@@ -1,14 +1,13 @@
 package com.wandrell.tabletop.pendragon.framework.service.command;
 
-import java.nio.file.Paths;
 import java.util.Collection;
 
-import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
 import com.wandrell.tabletop.pendragon.framework.util.file.model.PassionNodesReader;
 import com.wandrell.tabletop.pendragon.valuehandler.Passion;
 import com.wandrell.util.PathUtils;
+import com.wandrell.util.command.ReturnCommand;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.api.xml.FilteredXMLDocumentReader;
 import com.wandrell.util.file.impl.xml.DefaultFilteredXMLDocumentReader;
@@ -35,11 +34,10 @@ public final class PendragonInitialPassionsCommand implements
 
         file = new DefaultXMLFileHandler<>(
                 new DisabledXMLWriter<Collection<Passion>>(), reader,
-                new XSDValidator(PathUtils.getClassPathResource(Paths
-                        .get(ModelFile.VALIDATION_PASSION))));
+                new XSDValidator(PathUtils
+                        .getClassPathResource(ModelFile.VALIDATION_PASSION)));
 
-        return file.read(PathUtils.getClassPathResource(Paths
-                .get(ModelFile.PASSION)));
+        return file.read(PathUtils.getClassPathResource(ModelFile.PASSION));
     }
 
 }

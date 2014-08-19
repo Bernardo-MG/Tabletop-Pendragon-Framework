@@ -5,7 +5,6 @@ import java.util.Iterator;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.pendragon.character.PendragonPlayerCharacter;
 import com.wandrell.tabletop.pendragon.character.background.FamilyCharacteristic;
@@ -136,7 +135,7 @@ public class PlayerCharacterXMLDocumentWriter implements
         final Element root, bonusNode;
 
         root = new Element(FileToken.FAMILY_CHARACTERISTIC);
-        root.setAttribute(FileStreamerTags.NAME, characteristic.getName());
+        // root.setAttribute(FileStreamerTags.NAME, characteristic.getName());
 
         // TODO
         // bonusNode = PersistenceFactory.getPendragonTemplateService()
@@ -193,7 +192,7 @@ public class PlayerCharacterXMLDocumentWriter implements
         final Element horseNode;
 
         horseNode = new Element(FileToken.HORSE);
-        horseNode.setAttribute(FileStreamerTags.NAME, horse.getName());
+        // horseNode.setAttribute(FileStreamerTags.NAME, horse.getName());
         horseNode.setAttribute(FileToken.RACE, horse.getHorseType());
         // TODO
         // horseNode.addContent(XMLUtils.buildBooleansSetXMLTree(new Element(

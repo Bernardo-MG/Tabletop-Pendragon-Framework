@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.culture.Culture;
 import com.wandrell.tabletop.pendragon.character.background.culture.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
@@ -50,7 +49,7 @@ public class CultureXMLDocumentWriter implements XMLDocumentWriter<Culture> {
 
         // Main body and name of the culture
         node = new Element(FileToken.CULTURE);
-        node.setAttribute(FileStreamerTags.NAME, holder.getName());
+        // node.setAttribute(FileStreamerTags.NAME, holder.getName());
         doc = new Document(node);
 
         // Selector files

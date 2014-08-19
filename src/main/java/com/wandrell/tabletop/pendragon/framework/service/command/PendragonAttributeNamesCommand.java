@@ -1,12 +1,11 @@
 package com.wandrell.tabletop.pendragon.framework.service.command;
 
-import java.nio.file.Paths;
 import java.util.Collection;
 
-import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
 import com.wandrell.tabletop.pendragon.framework.util.file.model.NameXMLDocumentReader;
 import com.wandrell.util.PathUtils;
+import com.wandrell.util.command.ReturnCommand;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.impl.xml.DefaultXMLFileHandler;
 import com.wandrell.util.file.impl.xml.DisabledXMLWriter;
@@ -25,12 +24,11 @@ public final class PendragonAttributeNamesCommand implements
 
         file = new DefaultXMLFileHandler<>(
                 new DisabledXMLWriter<Collection<String>>(),
-                new NameXMLDocumentReader(), new XSDValidator(
-                        PathUtils.getClassPathResource(Paths
-                                .get(ModelFile.VALIDATION_ATTRIBUTE))));
+                new NameXMLDocumentReader(),
+                new XSDValidator(PathUtils
+                        .getClassPathResource(ModelFile.VALIDATION_ATTRIBUTE)));
 
-        return file.read(PathUtils.getClassPathResource(Paths
-                .get(ModelFile.ATTRIBUTE)));
+        return file.read(PathUtils.getClassPathResource(ModelFile.ATTRIBUTE));
     }
 
 }

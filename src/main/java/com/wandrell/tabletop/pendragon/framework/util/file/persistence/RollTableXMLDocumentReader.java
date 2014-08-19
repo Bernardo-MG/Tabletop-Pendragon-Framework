@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
@@ -24,8 +23,8 @@ public class RollTableXMLDocumentReader implements
         root = doc.getRootElement();
 
         // TODO: Get the correct upper limit
-        holder = new DefaultRollTable<String>(
-                root.getAttributeValue(FileStreamerTags.NAME));
+        // holder = new DefaultRollTable<String>(
+        // root.getAttributeValue(FileStreamerTags.NAME));
 
         // Acquires the different sections
         // intervals = root.getChild(FileLabels.INTERVALS);
@@ -33,7 +32,7 @@ public class RollTableXMLDocumentReader implements
         // Intervals and results
         // readIntervalsXMLTree(intervals, holder);
 
-        return holder;
+        return null;
     }
 
     @SuppressWarnings("unused")

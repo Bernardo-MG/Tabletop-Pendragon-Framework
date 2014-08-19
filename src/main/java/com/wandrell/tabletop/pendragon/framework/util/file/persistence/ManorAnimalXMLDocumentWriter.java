@@ -1,17 +1,12 @@
 package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 
-import java.util.Map.Entry;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.DefaultRollTable;
-import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.manor.ManorAnimal;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class ManorAnimalXMLDocumentWriter implements
@@ -28,7 +23,7 @@ public class ManorAnimalXMLDocumentWriter implements
 
         // Root and pet's name
         element = new Element(FileToken.PET);
-        element.setAttribute(FileStreamerTags.NAME, holder.getName());
+        // element.setAttribute(FileStreamerTags.NAME, holder.getName());
         doc = new Document(element);
 
         // Intervals and results
@@ -47,18 +42,19 @@ public class ManorAnimalXMLDocumentWriter implements
         // TODO: Esto se hace en tres clases
 
         root = new Element(FileToken.INTERVALS);
-        for (final Entry<ContrastInterval<Integer>, AnimalYearResult> intervals : holder
-                .getIntervals().entrySet()) {
-            intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
-                    FileStreamerTags.INTERVAL);
-            intervalNode.setAttribute(FileStreamerTags.NAME, intervals
-                    .getValue().getName());
+        // for (final Entry<ContrastInterval<Integer>, AnimalYearResult>
+        // intervals : holder
+        // .getIntervals().entrySet()) {
+        // intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
+        // FileStreamerTags.INTERVAL);
+        // intervalNode.setAttribute(FileStreamerTags.NAME, intervals
+        // .getValue().getName());
 
-            intervalNode.addContent(buildYearResultNode(intervals.getValue()));
-            root.addContent(intervalNode);
-        }
+        // intervalNode.addContent(buildYearResultNode(intervals.getValue()));
+        // root.addContent(intervalNode);
+        // }
 
-        return root;
+        return null;
     }
 
     @SuppressWarnings("unused")

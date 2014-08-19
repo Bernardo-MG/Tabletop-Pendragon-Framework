@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -10,11 +11,27 @@ import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.conf.PendragonToken;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class AdditionalBelongingsXMLDocumentWriter implements
         XMLDocumentWriter<RollTable<AdditionalBelongings>> {
+
+    private static Element buildBooleansSetXMLTree(final Element root,
+            final Iterator<String> itrFlags) {
+        String flag;
+        Element node;
+
+        while (itrFlags.hasNext()) {
+            flag = itrFlags.next();
+            // node = new Element(FileStreamerTags.FLAG);
+            // node.setAttribute(FileStreamerTags.NAME, flag);
+            // node.setAttribute(FileStreamerTags.VALUE, String.valueOf(true));
+
+            // root.addContent(node);
+        }
+
+        return root;
+    }
 
     public AdditionalBelongingsXMLDocumentWriter() {
         super();
@@ -69,8 +86,8 @@ public class AdditionalBelongingsXMLDocumentWriter implements
         if (items.hasToChoose()) {
             listFlags = new ArrayList<String>(1);
             listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
-            node = XMLUtil.buildBooleansSetXMLTree(
-                    new Element(FileToken.FLAGS), listFlags.iterator());
+            node = buildBooleansSetXMLTree(new Element(FileToken.FLAGS),
+                    listFlags.iterator());
             root.addContent(node);
         }
 

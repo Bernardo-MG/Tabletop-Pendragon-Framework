@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.SpecialtySkill;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -22,7 +21,7 @@ public class SpecialtySkillXMLDocumentWriter implements
 
         // Root and skill name
         element = new Element(FileToken.ADVANCED_SKILL);
-        element.setAttribute(FileStreamerTags.NAME, holder.getName());
+        // element.setAttribute(FileStreamerTags.NAME, holder.getName());
 
         doc = new Document(element);
 

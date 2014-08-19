@@ -1,14 +1,13 @@
 package com.wandrell.tabletop.pendragon.framework.service.command;
 
-import java.nio.file.Paths;
 import java.util.Collection;
 
-import com.wandrell.framework.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.framework.conf.ModelFile;
 import com.wandrell.tabletop.pendragon.framework.util.file.model.DirectedTraitNodesReader;
 import com.wandrell.tabletop.pendragon.valuehandler.DirectedTrait;
 import com.wandrell.util.PathUtils;
+import com.wandrell.util.command.ReturnCommand;
 import com.wandrell.util.file.api.FileHandler;
 import com.wandrell.util.file.api.xml.FilteredXMLDocumentReader;
 import com.wandrell.util.file.impl.xml.DefaultFilteredXMLDocumentReader;
@@ -32,12 +31,14 @@ public final class PendragonDirectedTraitsCommand implements
                 FileToken.DIRECTED_TRAIT, new DirectedTraitNodesReader());
 
         file = new DefaultXMLFileHandler<>(
-                new DisabledXMLWriter<Collection<DirectedTrait>>(), reader,
-                new XSDValidator(PathUtils.getClassPathResource(Paths
-                        .get(ModelFile.VALIDATION_DIRECTED_TRAIT))));
+                new DisabledXMLWriter<Collection<DirectedTrait>>(),
+                reader,
+                new XSDValidator(
+                        PathUtils
+                                .getClassPathResource(ModelFile.VALIDATION_DIRECTED_TRAIT)));
 
-        return file.read(PathUtils.getClassPathResource(Paths
-                .get(ModelFile.DIRECTED_TRAIT)));
+        return file.read(PathUtils
+                .getClassPathResource(ModelFile.DIRECTED_TRAIT));
     }
 
 }

@@ -1,16 +1,11 @@
 package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 
-import java.util.Map.Entry;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
-import com.wandrell.tabletop.interval.ContrastInterval;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
 
 public class RollTableXMLDocumentWriter implements
@@ -44,16 +39,17 @@ public class RollTableXMLDocumentWriter implements
         Element intervalNode;
 
         root = new Element(FileToken.INTERVALS);
-        for (final Entry<ContrastInterval<Integer>, String> intervals : holder
-                .getIntervals().entrySet()) {
-            intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
-                    FileToken.INTERVAL);
-            intervalNode.addContent(new Element(FileStreamerTags.VALUE)
-                    .setText(intervals.getValue()));
-            root.addContent(intervalNode);
-        }
+        // for (final Entry<ContrastInterval<Integer>, String> intervals :
+        // holder
+        // .getIntervals().entrySet()) {
+        // intervalNode = XMLUtil.buildIntervalXMLNode(intervals.getKey(),
+        // FileToken.INTERVAL);
+        // intervalNode.addContent(new Element(FileStreamerTags.VALUE)
+        // .setText(intervals.getValue()));
+        // root.addContent(intervalNode);
+        // }
 
-        return root;
+        return null;
     }
 
 }

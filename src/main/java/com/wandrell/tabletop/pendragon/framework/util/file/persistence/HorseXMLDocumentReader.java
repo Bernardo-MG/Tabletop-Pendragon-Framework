@@ -9,7 +9,6 @@ import com.wandrell.tabletop.pendragon.character.DefaultHorseCharacter;
 import com.wandrell.tabletop.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.valuehandler.Attribute;
-import com.wandrell.tabletop.util.XMLUtil;
 import com.wandrell.util.file.api.xml.XMLDocumentReader;
 
 public class HorseXMLDocumentReader implements
@@ -47,7 +46,7 @@ public class HorseXMLDocumentReader implements
         // secAttributes, new IntegerValueHandler()));
 
         // Flags
-        holder.setFlags(XMLUtil.readBooleanXMLTree(flags));
+        // holder.setFlags(XMLUtil.readBooleanXMLTree(flags));
 
         return holder;
     }

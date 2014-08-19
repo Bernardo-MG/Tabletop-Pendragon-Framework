@@ -3,7 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
 import com.wandrell.tabletop.pendragon.character.background.Religion;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.util.file.api.xml.XMLDocumentWriter;
@@ -22,7 +21,7 @@ public class ReligionTemplateXMLDocumentWriter implements
 
         // Root and religion name
         node = new Element(FileToken.RELIGION);
-        node.setAttribute(FileStreamerTags.NAME, holder.getName());
+        // node.setAttribute(FileStreamerTags.NAME, holder.getName());
         doc = new Document(node);
 
         // Religious traits

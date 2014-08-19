@@ -35,8 +35,8 @@ public class CultureXMLDocumentReader implements XMLDocumentReader<Culture> {
     }
 
     @SuppressWarnings("unused")
-    private final static Iterator<ContrastInterval<Integer>>
-            readAttributesLimits(final Element nodeLimits) {
+    private final static Iterator<ContrastInterval> readAttributesLimits(
+            final Element nodeLimits) {
         // TODO
         // final List<NamedContrastInterval<Integer>> listLimits;
         // NamedContrastInterval<Integer> interval;

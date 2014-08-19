@@ -3,8 +3,6 @@ package com.wandrell.tabletop.pendragon.framework.util.file.persistence;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.conf.FileStreamerTags;
-import com.wandrell.tabletop.dice.DefaultRollTable;
 import com.wandrell.tabletop.dice.RollTable;
 import com.wandrell.tabletop.pendragon.framework.conf.FileToken;
 import com.wandrell.tabletop.pendragon.inventory.AdditionalBelongings;
@@ -27,8 +25,8 @@ public class AdditionalBelongingsXMLDocumentReader implements
 
         root = doc.getRootElement();
         // TODO
-        holder = new DefaultRollTable<AdditionalBelongings>(
-                root.getAttributeValue(FileStreamerTags.NAME));
+        // holder = new DefaultRollTable<AdditionalBelongings>(
+        // root.getAttributeValue(FileStreamerTags.NAME));
 
         // Acquires the different sections
         intervals = root.getChild(FileToken.INTERVALS);
@@ -37,7 +35,7 @@ public class AdditionalBelongingsXMLDocumentReader implements
         // TODO
         // readIntervalsXMLTree(intervals, holder);
 
-        return holder;
+        return null;
     }
 
     @SuppressWarnings("unused")
@@ -72,12 +70,12 @@ public class AdditionalBelongingsXMLDocumentReader implements
         reroll = root.getChild(FileToken.REROLL);
         pets = root.getChild(FileToken.PETS);
         money = root.getChild(FileToken.MONEY);
-        name = root.getChild(FileStreamerTags.NAME);
+        // name = root.getChild(FileStreamerTags.NAME);
 
         // Name
-        if (name != null) {
-            // holder.setMoneyName(name.getText());
-        }
+        // if (name != null) {
+        // holder.setMoneyName(name.getText());
+        // }
 
         // Flags
         if (flags != null) {
