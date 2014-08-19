@@ -71,7 +71,7 @@
 		<plugin.reports.version>2.7</plugin.reports.version>
 		<plugin.surefire.version>2.17</plugin.surefire.version>
 		<!-- Manifest data -->
-		<manifest.name>com/wandrell/tabletop/pendragon/core</manifest.name>
+		<manifest.name>com/wandrell/tabletop/pendragon/framework</manifest.name>
 	</properties>
 
 	<dependencies>
