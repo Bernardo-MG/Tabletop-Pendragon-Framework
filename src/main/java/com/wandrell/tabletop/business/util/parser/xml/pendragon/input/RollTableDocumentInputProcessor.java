@@ -3,20 +3,19 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.input;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.business.model.dice.DefaultRollTable;
-import com.wandrell.tabletop.business.model.dice.RollTable;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class RollTableDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<RollTable<String>> {
+        JDOMDocumentInputProcessor<IntervalTable<String>> {
 
     public RollTableDocumentInputProcessor() {
         super();
     }
 
     @Override
-    public final RollTable<String> process(final Document doc) {
-        final DefaultRollTable<String> holder;
+    public final IntervalTable<String> process(final Document doc) {
+        final IntervalTable<String> holder;
         // final Element intervals;
         final Element root;
 
@@ -37,7 +36,7 @@ public class RollTableDocumentInputProcessor implements
 
     @SuppressWarnings("unused")
     private final void readIntervalsXMLTree(final Element root,
-            final DefaultRollTable<String> holder) {
+            final IntervalTable<String> holder) {
         for (final Element node : root.getChildren()) {
             // TODO
             // holder.put((ContrastInterval<Integer>) XMLUtils

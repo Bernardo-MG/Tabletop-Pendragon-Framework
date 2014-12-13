@@ -13,6 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.character.DefaultHorseChar
 import com.wandrell.tabletop.business.model.pendragon.character.DefaultPendragonPlayerCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.PendragonPlayerCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.background.DistinctiveFeature;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Child;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.DefaultFollower;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.DefaultWife;
@@ -21,7 +22,6 @@ import com.wandrell.tabletop.business.model.pendragon.character.follower.Wife;
 import com.wandrell.tabletop.business.model.pendragon.glory.DefaultGloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.DistinctiveFeature;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class PlayerCharacterDocumentInputProcessor implements

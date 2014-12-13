@@ -4,20 +4,20 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.dice.DefaultRollTable;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.manor.AnimalYearResult;
-import com.wandrell.tabletop.business.model.pendragon.manor.ManorAnimal;
+import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class ManorAnimalDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<ManorAnimal> {
+        JDOMDocumentOutputProcessor<Pet> {
 
     public ManorAnimalDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final ManorAnimal holder) {
+    public final Document process(final Pet holder) {
         final Document doc;
         final Element element;
 
@@ -27,16 +27,16 @@ public class ManorAnimalDocumentOutputProcessor implements
         doc = new Document(element);
 
         // Intervals and results
-        doc.getRootElement()
-                .addContent(
-                        buildIntervalsXMLTree((DefaultRollTable<AnimalYearResult>) holder
-                                .getAnnualCheckMap()));
+        // doc.getRootElement()
+        // .addContent(
+        // buildIntervalsXMLTree((DefaultIntervalTable<AnimalYearResult>) holder
+        // .getAnnualCheckMap()));
 
         return doc;
     }
 
     private final Element buildIntervalsXMLTree(
-            final DefaultRollTable<AnimalYearResult> holder) {
+            final IntervalTable<AnimalYearResult> holder) {
         final Element root;
         Element intervalNode;
         // TODO: Esto se hace en tres clases

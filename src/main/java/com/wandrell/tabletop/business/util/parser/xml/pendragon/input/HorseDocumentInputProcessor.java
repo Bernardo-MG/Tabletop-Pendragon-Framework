@@ -1,14 +1,11 @@
 package com.wandrell.tabletop.business.util.parser.xml.pendragon.input;
 
-import java.util.LinkedList;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.pendragon.character.DefaultHorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Attribute;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class HorseDocumentInputProcessor implements
@@ -27,7 +24,7 @@ public class HorseDocumentInputProcessor implements
 
         root = doc.getRootElement();
 
-        holder = new DefaultHorseCharacter(new LinkedList<Attribute>());
+        // holder = new DefaultHorseCharacter(new LinkedList<Attribute>());
 
         // TODO
         // PersistenceFactory.getCharacterService().addToBaseCharacter(root,
@@ -38,7 +35,7 @@ public class HorseDocumentInputProcessor implements
         flags = root.getChild(FileToken.FLAGS);
 
         // Horse race
-        holder.setHorseType(root.getChildText(FileToken.RACE));
+        // holder.setHorseType(root.getChildText(FileToken.RACE));
 
         // Secondary attributes
         // TODO
@@ -48,7 +45,7 @@ public class HorseDocumentInputProcessor implements
         // Flags
         // holder.setFlags(XMLUtil.readBooleanXMLTree(flags));
 
-        return holder;
+        return null;
     }
 
 }

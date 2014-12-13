@@ -4,8 +4,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.background.culture.Culture;
-import com.wandrell.tabletop.business.model.pendragon.character.background.culture.CultureCharacterTemplate;
+import com.wandrell.tabletop.business.model.pendragon.character.background.Culture;
+import com.wandrell.tabletop.business.model.pendragon.character.background.CultureCharacterTemplate;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class CultureDocumentOutputProcessor implements
@@ -64,20 +64,21 @@ public class CultureDocumentOutputProcessor implements
 
         // Female template
         node = new Element(FileToken.TEMPLATE_FEMALE);
-        buildAttributesLimitsTemplateXMLNode(holder.getFemaleTemplate(), node);
+        // buildAttributesLimitsTemplateXMLNode(holder.getFemaleTemplate(),
+        // node);
         doc.getRootElement().addContent(node);
 
         // Male template
         node = new Element(FileToken.TEMPLATE_MALE);
-        buildAttributesLimitsTemplateXMLNode(holder.getMaleTemplate(), node);
+        // buildAttributesLimitsTemplateXMLNode(holder.getMaleTemplate(), node);
         doc.getRootElement().addContent(node);
 
         // Random generation templates
 
         // Female template
         node = new Element(FileToken.TEMPLATE_FEMALE_RANDOM);
-        buildAttributesLimitsTemplateXMLNode(holder.getFemaleRandomTemplate(),
-                node);
+        // buildAttributesLimitsTemplateXMLNode(holder.getFemaleRandomTemplate(),
+        // node);
         if (node.getChild(FileToken.ATTRIBUTES) == null) {
             node.addContent(new Element(FileToken.ATTRIBUTES));
         }
@@ -88,8 +89,8 @@ public class CultureDocumentOutputProcessor implements
 
         // Male template
         node = new Element(FileToken.TEMPLATE_MALE_RANDOM);
-        buildAttributesLimitsTemplateXMLNode(holder.getMaleRandomTemplate(),
-                node);
+        // buildAttributesLimitsTemplateXMLNode(holder.getMaleRandomTemplate(),
+        // node);
         if (node.getChild(FileToken.ATTRIBUTES) == null) {
             node.addContent(new Element(FileToken.ATTRIBUTES));
         }

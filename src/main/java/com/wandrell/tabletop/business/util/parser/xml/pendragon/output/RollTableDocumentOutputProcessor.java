@@ -4,19 +4,18 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.dice.DefaultRollTable;
-import com.wandrell.tabletop.business.model.dice.RollTable;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class RollTableDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<RollTable<String>> {
+        JDOMDocumentOutputProcessor<IntervalTable<String>> {
 
     public RollTableDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final RollTable<String> holder) {
+    public final Document process(final IntervalTable<String> holder) {
         final Document doc;
         final Element element;
 
@@ -27,14 +26,14 @@ public class RollTableDocumentOutputProcessor implements
         doc = new Document(element);
 
         // Intervals and results
-        doc.getRootElement().addContent(
-                buildIntervalsXMLTree((DefaultRollTable<String>) holder));
+        // doc.getRootElement().addContent(
+        // / buildIntervalsXMLTree((DefaultIntervalTable<String>) holder));
 
         return doc;
     }
 
     private final Element buildIntervalsXMLTree(
-            final DefaultRollTable<String> holder) {
+            final IntervalTable<String> holder) {
         final Element root;
         Element intervalNode;
 

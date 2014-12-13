@@ -2,12 +2,12 @@ package com.wandrell.tabletop.business.util.pendragon;
 
 import com.wandrell.tabletop.business.conf.pendragon.factory.PendragonRulesFactory;
 import com.wandrell.tabletop.business.model.character.Gender;
-import com.wandrell.tabletop.business.model.dice.RollTable;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.valuehandler.Skill;
 
 public final class PendragonRulesUtils {
 
-    private static RollTable<Integer> featuresCount;
+    private static IntervalTable<Integer> featuresCount;
 
     public static final Integer getFeaturesCount(final Integer appearance) {
         if (featuresCount == null) {

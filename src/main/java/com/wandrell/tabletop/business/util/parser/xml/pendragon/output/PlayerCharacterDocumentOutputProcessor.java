@@ -13,7 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.character.follower.Child;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Wife;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryEvent;
-import com.wandrell.tabletop.business.model.pendragon.glory.GloryKeeper;
+import com.wandrell.tabletop.business.model.pendragon.glory.GloryManager;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
@@ -36,7 +36,7 @@ public class PlayerCharacterDocumentOutputProcessor implements
     }
 
     @SuppressWarnings("unused")
-    private static final Element buildGloryXMLTree(final GloryKeeper holder) {
+    private static final Element buildGloryXMLTree(final GloryManager holder) {
         final Element nodeGlory = new Element(FileToken.GLORY_HISTORY);
         final Iterator<GloryEvent> iteratorGlory;
 
@@ -160,7 +160,7 @@ public class PlayerCharacterDocumentOutputProcessor implements
         final Element followerNode;
 
         followerNode = new Element(FileToken.FOLLOWER);
-        followerNode.setAttribute(FileToken.FILE, follower.getFile());
+        // followerNode.setAttribute(FileToken.FILE, follower.getFile());
         followerNode.setAttribute(FileToken.JOB, follower.getJob());
 
         return followerNode;
@@ -209,7 +209,7 @@ public class PlayerCharacterDocumentOutputProcessor implements
         Element childNode;
 
         root = new Element(FileToken.WIFE);
-        root.setAttribute(FileToken.FILE, wife.getFile());
+        // root.setAttribute(FileToken.FILE, wife.getFile());
         // root.addContent(XMLUtil.buildValueHandlerXMLNode(wife.getYearWed(),
         // FileToken.YEAR_WEDDING));
 

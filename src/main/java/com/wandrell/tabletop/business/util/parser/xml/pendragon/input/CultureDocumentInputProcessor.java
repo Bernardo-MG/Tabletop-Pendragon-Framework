@@ -7,8 +7,8 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.interval.Interval;
-import com.wandrell.tabletop.business.model.pendragon.character.background.culture.Culture;
-import com.wandrell.tabletop.business.model.pendragon.character.background.culture.CultureCharacterTemplate;
+import com.wandrell.tabletop.business.model.pendragon.character.background.Culture;
+import com.wandrell.tabletop.business.model.pendragon.character.background.CultureCharacterTemplate;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class CultureDocumentInputProcessor implements

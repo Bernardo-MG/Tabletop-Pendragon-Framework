@@ -3,16 +3,16 @@ package com.wandrell.tabletop.business.conf.pendragon.factory;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.wandrell.tabletop.business.model.dice.DefaultRollTable;
-import com.wandrell.tabletop.business.model.dice.RollTable;
 import com.wandrell.tabletop.business.model.interval.DefaultInterval;
+import com.wandrell.tabletop.business.model.interval.DefaultIntervalTable;
 import com.wandrell.tabletop.business.model.interval.Interval;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.util.comparator.interval.IntervalComparator;
 
 public final class PendragonRulesFactory {
 
-    private static DefaultRollTable<Integer> featuresCount;
-    private static PendragonRulesFactory     instance;
+    private static IntervalTable<Integer> featuresCount;
+    private static PendragonRulesFactory  instance;
 
     public static final synchronized PendragonRulesFactory getInstance() {
         if (instance == null) {
@@ -26,7 +26,7 @@ public final class PendragonRulesFactory {
         super();
     }
 
-    public final synchronized RollTable<Integer> getFeaturesCountTable() {
+    public final synchronized IntervalTable<Integer> getFeaturesCountTable() {
         final Map<Interval, Integer> map;
 
         if (featuresCount == null) {
@@ -38,7 +38,7 @@ public final class PendragonRulesFactory {
             map.put(new DefaultInterval(13, 16), 2);
             map.put(new DefaultInterval(17, Integer.MAX_VALUE), 3);
 
-            featuresCount = new DefaultRollTable<>("features_table", map);
+            featuresCount = new DefaultIntervalTable<>(map);
         }
 
         return featuresCount;

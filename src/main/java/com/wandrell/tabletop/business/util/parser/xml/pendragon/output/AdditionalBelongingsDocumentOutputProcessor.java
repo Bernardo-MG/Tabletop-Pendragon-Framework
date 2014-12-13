@@ -9,12 +9,12 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.conf.pendragon.PendragonToken;
-import com.wandrell.tabletop.business.model.dice.RollTable;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.inventory.AdditionalBelongings;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class AdditionalBelongingsDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<RollTable<AdditionalBelongings>> {
+        JDOMDocumentOutputProcessor<IntervalTable<AdditionalBelongings>> {
 
     private static Element buildBooleansSetXMLTree(final Element root,
             final Iterator<String> itrFlags) {
@@ -38,7 +38,8 @@ public class AdditionalBelongingsDocumentOutputProcessor implements
     }
 
     @Override
-    public final Document process(final RollTable<AdditionalBelongings> holder) {
+    public final Document process(
+            final IntervalTable<AdditionalBelongings> holder) {
         final Document doc;
         final Element element;
 
@@ -56,7 +57,7 @@ public class AdditionalBelongingsDocumentOutputProcessor implements
 
     @SuppressWarnings("unused")
     private final Element buildIntervalsXMLTree(
-            final RollTable<AdditionalBelongings> holder) {
+            final IntervalTable<AdditionalBelongings> holder) {
         final Element root;
         Element intervalNode;
 
