@@ -4,18 +4,18 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.background.Homeland;
+import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandBonus;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class HomelandTemplateDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<Homeland> {
+        JDOMDocumentOutputProcessor<HomelandBonus> {
 
     public HomelandTemplateDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final Homeland holder) {
+    public final Document process(final HomelandBonus holder) {
         final Document doc;
         Element node;
 

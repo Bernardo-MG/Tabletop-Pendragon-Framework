@@ -8,9 +8,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.conf.pendragon.PendragonToken;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
-import com.wandrell.tabletop.business.model.pendragon.inventory.AdditionalBelongings;
+import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class AdditionalBelongingsDocumentOutputProcessor implements
@@ -85,7 +84,7 @@ public class AdditionalBelongingsDocumentOutputProcessor implements
         // Flag marking it has to choose instead of receiving all
         if (items.hasToChoose()) {
             listFlags = new ArrayList<String>(1);
-            listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
+            // listFlags.add(PendragonToken.FLAGS_HAS_TO_CHOOSE);
             node = buildBooleansSetXMLTree(new Element(FileToken.FLAGS),
                     listFlags.iterator());
             root.addContent(node);

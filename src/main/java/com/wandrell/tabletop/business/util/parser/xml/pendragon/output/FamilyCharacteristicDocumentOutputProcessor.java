@@ -4,18 +4,18 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.background.FamilyCharacteristic;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicBonus;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class FamilyCharacteristicDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<FamilyCharacteristic> {
+        JDOMDocumentOutputProcessor<FamilyCharacteristicBonus> {
 
     public FamilyCharacteristicDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final FamilyCharacteristic holder) {
+    public final Document process(final FamilyCharacteristicBonus holder) {
         final Document doc;
         final Element element;
 
@@ -33,7 +33,7 @@ public class FamilyCharacteristicDocumentOutputProcessor implements
 
     @SuppressWarnings("unused")
     private final Element buildIntervalsXMLTree(
-            final FamilyCharacteristic holder) {
+            final FamilyCharacteristicBonus holder) {
         final Element root;
         Element intervalNode;
 

@@ -4,18 +4,18 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.background.Religion;
+import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionBonus;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class ReligionTemplateDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<Religion> {
+        JDOMDocumentOutputProcessor<ReligionBonus> {
 
     public ReligionTemplateDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final Religion holder) {
+    public final Document process(final ReligionBonus holder) {
         final Document doc;
         Element node;
 

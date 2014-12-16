@@ -7,12 +7,12 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.interval.Interval;
-import com.wandrell.tabletop.business.model.pendragon.character.background.Culture;
-import com.wandrell.tabletop.business.model.pendragon.character.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureCharacterTemplate;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class CultureDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<Culture> {
+        JDOMDocumentInputProcessor<CultureBonus> {
 
     public final static CultureCharacterTemplate
             loadAttributesLimitsTemplateXMLNode(final Element root) {
@@ -60,8 +60,8 @@ public class CultureDocumentInputProcessor implements
     }
 
     @Override
-    public final Culture process(final Document doc) {
-        final Culture holder;
+    public final CultureBonus process(final Document doc) {
+        final CultureBonus holder;
         final Element root;
         final Element files, templateFemale, templateMale, templateRandomFemale, templateRandomMale;
 

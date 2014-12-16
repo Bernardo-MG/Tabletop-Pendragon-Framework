@@ -8,7 +8,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.conf.pendragon.factory.PendragonFactory;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Passion;
+import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public final class PassionDocumentInputProcessor implements

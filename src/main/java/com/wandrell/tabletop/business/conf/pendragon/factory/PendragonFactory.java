@@ -2,10 +2,10 @@ package com.wandrell.tabletop.business.conf.pendragon.factory;
 
 import java.util.Collection;
 
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.DirectedTrait;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Passion;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Skill;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.SpecialtySkill;
+import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
+import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
+import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
+import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 
 public final class PendragonFactory {
 

@@ -5,8 +5,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
-import com.wandrell.tabletop.business.model.pendragon.inventory.AdditionalBelongings;
-import com.wandrell.tabletop.business.model.pendragon.inventory.DefaultAdditionalBelongings;
+import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class AdditionalBelongingsDocumentInputProcessor implements
@@ -43,7 +42,7 @@ public class AdditionalBelongingsDocumentInputProcessor implements
     private final void readIntervalsXMLTree(final Element root,
             final IntervalTable<AdditionalBelongings> holder) {
         Element belongings;
-        DefaultAdditionalBelongings items;
+        // DefaultAdditionalBelongings items;
 
         for (final Element node : root.getChildren()) {
             // items = new DefaultAdditionalBelongings();
@@ -60,7 +59,7 @@ public class AdditionalBelongingsDocumentInputProcessor implements
     }
 
     private final void readItemsXMLTree(final Element root,
-            final DefaultAdditionalBelongings holder) {
+            final AdditionalBelongings holder) {
         final Element flags, horses, equipment, pets, reroll, rerolls, weapons, shields, money, name;
 
         flags = root.getChild(FileToken.FLAGS);

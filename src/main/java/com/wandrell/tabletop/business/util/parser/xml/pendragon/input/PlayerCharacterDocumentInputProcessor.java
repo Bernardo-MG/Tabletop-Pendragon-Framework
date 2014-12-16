@@ -9,17 +9,12 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.DefaultHorseCharacter;
-import com.wandrell.tabletop.business.model.pendragon.character.DefaultPendragonPlayerCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.DistinctiveFeature;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.PendragonPlayerCharacter;
-import com.wandrell.tabletop.business.model.pendragon.character.background.DistinctiveFeature;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Child;
-import com.wandrell.tabletop.business.model.pendragon.character.follower.DefaultFollower;
-import com.wandrell.tabletop.business.model.pendragon.character.follower.DefaultWife;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Wife;
-import com.wandrell.tabletop.business.model.pendragon.glory.DefaultGloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
@@ -35,7 +30,8 @@ public class PlayerCharacterDocumentInputProcessor implements
         gloryGained = Integer.parseInt(node.getAttributeValue(FileToken.GLORY));
         description = node.getChildText(FileToken.GLORY_EVENT_DESCRIPTION);
 
-        return new DefaultGloryEvent(year, gloryGained, description);
+        // return new DefaultGloryEvent(year, gloryGained, description);
+        return null;
     }
 
     @SuppressWarnings("unused")
@@ -57,13 +53,13 @@ public class PlayerCharacterDocumentInputProcessor implements
 
     @Override
     public final PendragonPlayerCharacter process(final Document doc) {
-        final DefaultPendragonPlayerCharacter holder;
+        final PendragonPlayerCharacter holder;
         @SuppressWarnings("unused")
         final Element glory, vhs, flags, texts, features, wives, famchar, invcarried, invhome, money, horses, squires, followers;
         final Element root;
 
         root = doc.getRootElement();
-        holder = new DefaultPendragonPlayerCharacter(null);
+        // holder = new DefaultPendragonPlayerCharacter(null);
 
         // Acquires the first sections
         texts = root.getChild(FileToken.TEXT_VALUES);
@@ -161,7 +157,7 @@ public class PlayerCharacterDocumentInputProcessor implements
             // holder.setFollowers(readFollowersXMLTree(followers));
         }
 
-        return holder;
+        return null;
     }
 
     @SuppressWarnings("unused")
@@ -183,7 +179,7 @@ public class PlayerCharacterDocumentInputProcessor implements
     @SuppressWarnings("unused")
     private final Iterator<Follower> readFollowersXMLTree(final Element root) {
         final List<Follower> listFollowers;
-        DefaultFollower follower;
+        Follower follower;
 
         listFollowers = new ArrayList<Follower>(root.getChildren().size());
         for (final Element itemNode : root.getChildren()) {
@@ -202,7 +198,7 @@ public class PlayerCharacterDocumentInputProcessor implements
     private final Iterator<HorseCharacter>
             readHorsesXMLTree(final Element root) {
         final List<HorseCharacter> listHorse;
-        DefaultHorseCharacter horse;
+        HorseCharacter horse;
 
         listHorse = new ArrayList<HorseCharacter>(root.getChildren().size());
         for (final Element horseNode : root.getChildren()) {
@@ -239,7 +235,7 @@ public class PlayerCharacterDocumentInputProcessor implements
         final List<Wife> listWives;
         List<Child> listChildren;
         Element children;
-        DefaultWife wife;
+        Wife wife;
         Child child;
 
         listWives = new ArrayList<Wife>(root.getChildren().size());

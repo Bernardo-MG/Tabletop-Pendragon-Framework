@@ -3,7 +3,7 @@ package com.wandrell.tabletop.business.util.pendragon;
 import com.wandrell.tabletop.business.conf.pendragon.factory.PendragonRulesFactory;
 import com.wandrell.tabletop.business.model.character.Gender;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Skill;
+import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 
 public final class PendragonRulesUtils {
 

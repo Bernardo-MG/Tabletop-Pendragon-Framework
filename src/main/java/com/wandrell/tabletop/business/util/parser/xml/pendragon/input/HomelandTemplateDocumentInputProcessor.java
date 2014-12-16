@@ -3,19 +3,19 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.input;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.business.model.pendragon.character.background.Homeland;
+import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandBonus;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class HomelandTemplateDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<Homeland> {
+        JDOMDocumentInputProcessor<HomelandBonus> {
 
     public HomelandTemplateDocumentInputProcessor() {
         super();
     }
 
     @Override
-    public final Homeland process(final Document doc) {
-        final Homeland holder;
+    public final HomelandBonus process(final Document doc) {
+        final HomelandBonus holder;
         final Element root;
 
         root = doc.getRootElement();

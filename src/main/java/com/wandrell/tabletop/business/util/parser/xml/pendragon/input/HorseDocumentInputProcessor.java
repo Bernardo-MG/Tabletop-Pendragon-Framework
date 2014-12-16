@@ -4,7 +4,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.DefaultHorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
@@ -18,7 +17,7 @@ public class HorseDocumentInputProcessor implements
     @SuppressWarnings("unused")
     @Override
     public final HorseCharacter process(final Document doc) {
-        final DefaultHorseCharacter holder;
+        final HorseCharacter holder;
         final Element secAttributes, flags;
         final Element root;
 

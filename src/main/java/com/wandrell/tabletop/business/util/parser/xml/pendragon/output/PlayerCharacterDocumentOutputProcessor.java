@@ -8,10 +8,10 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.character.PendragonPlayerCharacter;
-import com.wandrell.tabletop.business.model.pendragon.character.background.FamilyCharacteristic;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Child;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Wife;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicBonus;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryManager;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
@@ -131,7 +131,7 @@ public class PlayerCharacterDocumentOutputProcessor implements
 
     @SuppressWarnings("unused")
     private final Element buildFamilyCharacteristicXMLTree(
-            final FamilyCharacteristic characteristic) {
+            final FamilyCharacteristicBonus characteristic) {
         final Element root, bonusNode;
 
         root = new Element(FileToken.FAMILY_CHARACTERISTIC);

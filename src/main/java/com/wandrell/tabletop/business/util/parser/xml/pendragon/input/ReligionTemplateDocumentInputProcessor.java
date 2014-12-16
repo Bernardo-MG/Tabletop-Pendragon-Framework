@@ -3,19 +3,19 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.input;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import com.wandrell.tabletop.business.model.pendragon.character.background.Religion;
+import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionBonus;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class ReligionTemplateDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<Religion> {
+        JDOMDocumentInputProcessor<ReligionBonus> {
 
     public ReligionTemplateDocumentInputProcessor() {
         super();
     }
 
     @Override
-    public final Religion process(final Document doc) {
-        final Religion holder;
+    public final ReligionBonus process(final Document doc) {
+        final ReligionBonus holder;
         // final Element traits, bonus;
         final Element root;
 

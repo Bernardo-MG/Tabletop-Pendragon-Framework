@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.conf.pendragon.ModelFile;
-import com.wandrell.tabletop.business.model.pendragon.valuehandler.Skill;
+import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.SkillDocumentInputProcessor;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.command.ReturnCommand;

@@ -6,8 +6,6 @@ import org.jdom2.Element;
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.manor.AnimalYearResult;
-import com.wandrell.tabletop.business.model.pendragon.manor.DefaultAnimalYearResult;
-import com.wandrell.tabletop.business.model.pendragon.manor.DefaultManorAnimal;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
@@ -20,7 +18,7 @@ public class ManorAnimalDocumentInputProcessor implements
 
     @Override
     public final Pet process(final Document doc) {
-        final DefaultManorAnimal holder;
+        final Pet holder;
         final Element intervals;
         final Element root;
 
@@ -43,7 +41,7 @@ public class ManorAnimalDocumentInputProcessor implements
 
     private final void readIntervalsXMLTree(final Element root,
             final IntervalTable<AnimalYearResult> holder) {
-        DefaultAnimalYearResult result;
+        AnimalYearResult result;
 
         // Goes through each interval
         for (final Element node : root.getChildren()) {
@@ -55,8 +53,7 @@ public class ManorAnimalDocumentInputProcessor implements
         }
     }
 
-    private final DefaultAnimalYearResult
-            readYearResultNode(final Element root) {
+    private final AnimalYearResult readYearResultNode(final Element root) {
         final Element values, flags, files;
         // final DefaultAnimalYearResult result = new DefaultAnimalYearResult();
 

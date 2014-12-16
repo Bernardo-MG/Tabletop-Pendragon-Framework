@@ -4,12 +4,12 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.character.background.Culture;
-import com.wandrell.tabletop.business.model.pendragon.character.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureCharacterTemplate;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class CultureDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<Culture> {
+        JDOMDocumentOutputProcessor<CultureBonus> {
 
     private final static Element buildAttributesLimitsTemplateXMLNode(
             final CultureCharacterTemplate holder, final Element root) {
@@ -44,7 +44,7 @@ public class CultureDocumentOutputProcessor implements
     }
 
     @Override
-    public final Document process(final Culture holder) {
+    public final Document process(final CultureBonus holder) {
         final Document doc;
         Element node;
 
