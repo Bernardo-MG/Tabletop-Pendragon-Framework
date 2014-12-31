@@ -29,8 +29,8 @@ public final class PendragonRulesUtils {
                 break;
             case FEMALE:
                 // TODO: Read from a file or something
-                combat = (skill.getName().equals("dagger"))
-                        || (skill.getName().equals("siege"));
+                combat = (skill.getNameToken().equals("dagger"))
+                        || (skill.getNameToken().equals("siege"));
 
                 result = ((combat) || (!(skill.isCombatSkill())));
                 break;
@@ -52,8 +52,8 @@ public final class PendragonRulesUtils {
                 break;
             case FEMALE:
                 // TODO: Read from a file or something
-                combat = (skill.getName().equals("dagger"))
-                        || (skill.getName().equals("siege"));
+                combat = (skill.getNameToken().equals("dagger"))
+                        || (skill.getNameToken().equals("siege"));
 
                 result = ((combat) || (!(skill.isCombatSkill())));
                 break;

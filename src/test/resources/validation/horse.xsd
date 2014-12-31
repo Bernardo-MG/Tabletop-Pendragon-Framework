@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ptbs="http://www.ptb.org/XMLValidation">
+	<xs:import schemaLocation="PTBValidation.xsd"
+		namespace="http://www.ptb.org/XMLValidation" />
+
+	<xs:element name="horse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="race" type="xs:string" />
+				<xs:element name="attributes" type="ptbs:storedAttributes" />
+				<xs:element name="secondary_attributes" type="ptbs:storedSecondaryHorseAttributes" />
+				<xs:element name="flags" type="ptbs:storedFlags"
+					minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

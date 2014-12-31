@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ptbs="http://www.ptb.org/XMLValidation" >
+	<xs:import schemaLocation="PTBValidation.xsd"
+		namespace="http://www.ptb.org/XMLValidation" />
+
+	<xs:element name="father_class">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="template_bonus" type="ptbs:templateGeneral"
+					minOccurs="0" />
+				<xs:element name="template_base_values" type="ptbs:templateGeneral"
+					minOccurs="0" />
+				<xs:element name="skills_points" type="skillsPoints"
+					minOccurs="0" />
+				<xs:element name="skills_group" type="skillsGroup"
+					minOccurs="0" />
+				<xs:element name="money" type="ptbs:storedMoney" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="skillsPoints">
+		<xs:sequence>
+			<xs:element name="points" type="ptbs:nodeSkillsPoints" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="skillsGroup">
+		<xs:sequence>
+			<xs:element name="skills_points" type="ptbs:nodeSkillsPoints" />
+			<xs:element name="skills" type="skillsGrouped" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="skillsGrouped">
+		<xs:sequence>
+			<xs:element name="skill" type="ptbs:nodeSkill" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

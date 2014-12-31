@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ptb.org/XMLValidation" xmlns:rpgs="http://www.rpgtb.org/XMLValidation"
+	xmlns:ptbs="http://www.ptb.org/XMLValidation">
+	<xs:import schemaLocation="XMLValidation.xsd"
+		namespace="http://www.rpgtb.org/XMLValidation" />
+
+
+	<xs:complexType name="vh">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<!-- ATTRIBUTES -->
+
+	<xs:attributeGroup name="intervalsAttr">
+		<xs:attribute name="lower_limit" type="xs:integer" use="required" />
+		<xs:attribute name="upper_limit" type="xs:integer" />
+	</xs:attributeGroup>
+
+	<!-- RESTRICTIONS -->
+
+	<xs:simpleType name="restrictionValueHandlerReligion">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="armor" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionValueHandlerMoney">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="denarii" />
+			<xs:enumeration value="libra" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionAttributes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="appearance" />
+			<xs:enumeration value="constitution" />
+			<xs:enumeration value="dexterity" />
+			<xs:enumeration value="size" />
+			<xs:enumeration value="strength" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionSkillsPoints">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="skills_points" />
+			<xs:enumeration value="non_combat_skills_points" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionSecondaryAttributes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="armor" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionSecondaryHorseAttributes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="damage" />
+			<xs:enumeration value="movement_rate" />
+			<xs:enumeration value="natural_armor" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionDerivedAttributes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="damage_bonus" />
+			<xs:enumeration value="damage" />
+			<xs:enumeration value="dex_roll" />
+			<xs:enumeration value="features" />
+			<xs:enumeration value="heal_rate" />
+			<xs:enumeration value="hitpoints" />
+			<xs:enumeration value="knockdown" />
+			<xs:enumeration value="major_wound" />
+			<xs:enumeration value="movement_rate" />
+			<xs:enumeration value="unconscious" />
+			<xs:enumeration value="weight" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionDirectedTraits">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="arbitrary" />
+			<xs:enumeration value="chaste" />
+			<xs:enumeration value="cowardly" />
+			<xs:enumeration value="cruel" />
+			<xs:enumeration value="deceitful" />
+			<xs:enumeration value="energetic" />
+			<xs:enumeration value="forgiving" />
+			<xs:enumeration value="generous" />
+			<xs:enumeration value="honest" />
+			<xs:enumeration value="indulgent" />
+			<xs:enumeration value="just" />
+			<xs:enumeration value="lazy" />
+			<xs:enumeration value="lustful" />
+			<xs:enumeration value="merciful" />
+			<xs:enumeration value="modest" />
+			<xs:enumeration value="pious" />
+			<xs:enumeration value="proud" />
+			<xs:enumeration value="prudent" />
+			<xs:enumeration value="reckless" />
+			<xs:enumeration value="selfish" />
+			<xs:enumeration value="suspicious" />
+			<xs:enumeration value="temperate" />
+			<xs:enumeration value="trusting" />
+			<xs:enumeration value="valorous" />
+			<xs:enumeration value="vengeful" />
+			<xs:enumeration value="worldly" />
+			<xs:enumeration value="elan" />
+			<xs:enumeration value="gastronomy" />
+			<xs:enumeration value="oinology" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionTraits">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="arbitrary" />
+			<xs:enumeration value="chaste" />
+			<xs:enumeration value="cowardly" />
+			<xs:enumeration value="cruel" />
+			<xs:enumeration value="deceitful" />
+			<xs:enumeration value="energetic" />
+			<xs:enumeration value="forgiving" />
+			<xs:enumeration value="generous" />
+			<xs:enumeration value="honest" />
+			<xs:enumeration value="indulgent" />
+			<xs:enumeration value="just" />
+			<xs:enumeration value="lazy" />
+			<xs:enumeration value="lustful" />
+			<xs:enumeration value="merciful" />
+			<xs:enumeration value="modest" />
+			<xs:enumeration value="pious" />
+			<xs:enumeration value="proud" />
+			<xs:enumeration value="prudent" />
+			<xs:enumeration value="reckless" />
+			<xs:enumeration value="selfish" />
+			<xs:enumeration value="suspicious" />
+			<xs:enumeration value="temperate" />
+			<xs:enumeration value="trusting" />
+			<xs:enumeration value="valorous" />
+			<xs:enumeration value="vengeful" />
+			<xs:enumeration value="worldly" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionPassions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="amor" />
+			<xs:enumeration value="fear" />
+			<xs:enumeration value="hate" />
+			<xs:enumeration value="honor" />
+			<xs:enumeration value="hospitality" />
+			<xs:enumeration value="love" />
+			<xs:enumeration value="loyalty" />
+			<xs:enumeration value="rechtschaffenheit" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="restrictionSkills">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="awareness" />
+			<xs:enumeration value="boating" />
+			<xs:enumeration value="chirurgery" />
+			<xs:enumeration value="compose" />
+			<xs:enumeration value="courtesy" />
+			<xs:enumeration value="dancing" />
+			<xs:enumeration value="faerie_lore" />
+			<xs:enumeration value="falconry" />
+			<xs:enumeration value="fashion" />
+			<xs:enumeration value="first_aid" />
+			<xs:enumeration value="flirting" />
+			<xs:enumeration value="folklore" />
+			<xs:enumeration value="gaming" />
+			<xs:enumeration value="heraldry" />
+			<xs:enumeration value="hunting" />
+			<xs:enumeration value="industry" />
+			<xs:enumeration value="intrigue" />
+			<xs:enumeration value="orate" />
+			<xs:enumeration value="play" />
+			<xs:enumeration value="read" />
+			<xs:enumeration value="recognize" />
+			<xs:enumeration value="religion" />
+			<xs:enumeration value="romance" />
+			<xs:enumeration value="singing" />
+			<xs:enumeration value="stewardship" />
+			<xs:enumeration value="swimming" />
+			<xs:enumeration value="tourney" />
+			<xs:enumeration value="axe" />
+			<xs:enumeration value="battle" />
+			<xs:enumeration value="bow" />
+			<xs:enumeration value="charioteer" />
+			<xs:enumeration value="compound_bow" />
+			<xs:enumeration value="crossbow" />
+			<xs:enumeration value="dagger" />
+			<xs:enumeration value="flail" />
+			<xs:enumeration value="grapple" />
+			<xs:enumeration value="great_axe" />
+			<xs:enumeration value="great_lance" />
+			<xs:enumeration value="great_mace" />
+			<xs:enumeration value="great_spear" />
+			<xs:enumeration value="great_sword" />
+			<xs:enumeration value="halberd" />
+			<xs:enumeration value="hammer" />
+			<xs:enumeration value="horsemanship" />
+			<xs:enumeration value="javelin" />
+			<xs:enumeration value="lance" />
+			<xs:enumeration value="mace" />
+			<xs:enumeration value="morning_star" />
+			<xs:enumeration value="siege" />
+			<xs:enumeration value="spear" />
+			<xs:enumeration value="sword" />
+			<xs:enumeration value="warflail" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- GROUPS -->
+
+	<xs:complexType name="storedValuehandlers">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="miscelany_value" type="rpgs:valuehandler" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedValuehandlersReligion">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="miscelany_value" type="rpgs:valuehandler" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedFlags">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="flag" type="rpgs:flag" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedTextPairs">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="file" type="rpgs:textPair" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedAttributes">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="attribute" type="ptbs:nodeAttribute" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedSecondaryHorseAttributes">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="secondary_attribute" type="ptbs:nodeSecondaryHorseAttribute" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedDerivedAttributes">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="derived_attribute" type="ptbs:nodeDerivedAttribute" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedDirectedTraits">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="directed_trait" type="ptbs:nodeDirectedTrait" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedExclusiveSkills">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="exclusive_skill" type="rpgs:valuehandler" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedAdvancedSkills">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="advanced_skill" type="ptbs:nodeAdvancedSkill" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedPassions">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="passion" type="ptbs:nodePassion" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedSkills">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="skill" type="ptbs:nodeSkill" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedTraits">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="trait" type="ptbs:nodeTrait" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedSecondaryAttributes">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="secondary_attribute" type="ptbs:nodeSecondaryAttribute" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedAttributesLimits">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="attribute" type="ptbs:nodeAttributeLimits" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedSimpleIntervals">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="interval" type="ptbs:nodeSimpleTextInterval" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedTemplateIntervals">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="interval" type="ptbs:nodeTemplateInterval" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedMoney">
+		<xs:sequence maxOccurs="2">
+			<xs:element name="money_value" type="ptbs:nodeMoney" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- NODES -->
+
+	<xs:complexType name="nodeItem">
+		<xs:complexContent>
+			<xs:extension base="rpgs:item">
+				<xs:sequence>
+					<xs:element name="miscelany_values" type="ptbs:storedValuehandlers"
+						minOccurs="0" />
+					<xs:element name="flags" type="ptbs:storedFlags"
+						minOccurs="0" />
+					<xs:element name="template_bonus" type="ptbs:templateGeneral"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="nodeMoney">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionValueHandlerMoney"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeValueHandlerReligion">
+		<xs:attribute name="name" type="ptbs:restrictionValueHandlerReligion"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeAdvancedSkill">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeAttribute">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionAttributes"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeSkillsPoints">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionSkillsPoints"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeSecondaryHorseAttribute">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name"
+			type="ptbs:restrictionSecondaryHorseAttributes" use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeSecondaryAttribute">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionSecondaryAttributes"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeDerivedAttribute">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionDerivedAttributes"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeDirectedTrait">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionDirectedTraits"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodePassion">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionPassions"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeSkill">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionSkills"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeTrait">
+		<xs:group ref="rpgs:valuehandlerContent" />
+		<xs:attribute name="name" type="ptbs:restrictionTraits"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:valuehandlerTypeAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeAttributeLimits">
+		<xs:attribute name="name" type="ptbs:restrictionAttributes"
+			use="required" />
+		<xs:attributeGroup ref="rpgs:intervalAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeSimpleTextInterval">
+		<xs:sequence>
+			<xs:element name="value" type="xs:string" default=""/>
+		</xs:sequence>
+		<xs:attributeGroup ref="rpgs:intervalAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeNamed">
+		<xs:attribute name="name" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeTemplateInterval">
+		<xs:sequence>
+			<xs:element name="template_bonus" type="ptbs:templateGeneral"
+				minOccurs="0" />
+			<xs:element name="template_base_values" type="ptbs:templateGeneral"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attributeGroup ref="rpgs:intervalAttributes" />
+	</xs:complexType>
+
+	<!-- TEMPLATES -->
+
+	<xs:complexType name="templateGeneral">
+		<xs:all>
+			<xs:element name="advanced_skills" type="ptbs:storedAdvancedSkills"
+				minOccurs="0" />
+			<xs:element name="attributes" type="ptbs:storedAttributes"
+				minOccurs="0" />
+			<xs:element name="derived_attributes" type="ptbs:storedDerivedAttributes"
+				minOccurs="0" />
+			<xs:element name="directed_traits" type="ptbs:storedDirectedTraits"
+				minOccurs="0" />
+			<xs:element name="exclusive_skills" type="ptbs:storedExclusiveSkills"
+				minOccurs="0" />
+			<xs:element name="passions" type="ptbs:storedPassions"
+				minOccurs="0" />
+			<xs:element name="skills" type="ptbs:storedSkills"
+				minOccurs="0" />
+			<xs:element name="traits" type="ptbs:storedTraits"
+				minOccurs="0" />
+			<xs:element name="secondary_attributes" type="ptbs:storedSecondaryAttributes"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="templateCulture">
+		<xs:all>
+			<xs:element name="advanced_skills" type="ptbs:storedAdvancedSkills"
+				minOccurs="0" />
+			<xs:element name="attributes" type="ptbs:storedAttributes"
+				minOccurs="0" />
+			<xs:element name="derived_attributes" type="ptbs:storedDerivedAttributes"
+				minOccurs="0" />
+			<xs:element name="directed_traits" type="ptbs:storedDirectedTraits"
+				minOccurs="0" />
+			<xs:element name="exclusive_skills" type="ptbs:storedExclusiveSkills"
+				minOccurs="0" />
+			<xs:element name="passions" type="ptbs:storedPassions"
+				minOccurs="0" />
+			<xs:element name="skills" type="ptbs:storedSkills"
+				minOccurs="0" />
+			<xs:element name="traits" type="ptbs:storedTraits"
+				minOccurs="0" />
+			<xs:element name="secondary_attributes" type="ptbs:storedSecondaryAttributes"
+				minOccurs="0" />
+			<xs:element name="attributes_limits" type="ptbs:storedAttributesLimits"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="templateCultureRandom">
+		<xs:all>
+			<xs:element name="attributes" type="ptbs:storedAttributes" />
+			<xs:element name="passions" type="ptbs:storedPassions" />
+		</xs:all>
+	</xs:complexType>
+
+</xs:schema>

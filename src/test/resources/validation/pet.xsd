@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ptbs="http://www.ptb.org/XMLValidation">
+	<xs:import schemaLocation="PTBValidation.xsd"
+		namespace="http://www.ptb.org/XMLValidation" />
+
+	<xs:element name="pet">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="intervals" type="storedPetIntervals" />
+			</xs:all>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="storedPetIntervals">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="interval" type="nodePetInterval" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedFiles">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="file" type="nodeFile" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storedPetFlags">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="flag" type="petFlag" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="nodePetInterval">
+		<xs:sequence>
+			<xs:element name="results" type="nodeResult" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attributeGroup ref="ptbs:intervalsAttr" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeFile">
+		<xs:attribute name="name" type="petFile" use="required" />
+		<xs:attribute name="value" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="nodeResult">
+		<xs:all>
+			<xs:element name="flags" type="ptbs:storedFlags"
+				minOccurs="0" />
+			<xs:element name="selectors_files" type="storedFiles"
+				minOccurs="0" />
+			<xs:element name="miscelany_values" type="ptbs:storedValuehandlers"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="petFile">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="puppy" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="petFlag">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dies" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

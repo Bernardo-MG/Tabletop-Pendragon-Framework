@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ptbs="http://www.ptb.org/XMLValidation">
+	<xs:import schemaLocation="PTBValidation.xsd"
+		namespace="http://www.ptb.org/XMLValidation" />
+
+	<xs:element name="advanced_skill">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="skills" type="skillsGroup" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:token" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="skillsGroup">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="skill" type="skillNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="skillNode">
+		<xs:attribute name="name" type="ptbs:restrictionSkills"
+			use="required" />
+	</xs:complexType>
+
+</xs:schema>
