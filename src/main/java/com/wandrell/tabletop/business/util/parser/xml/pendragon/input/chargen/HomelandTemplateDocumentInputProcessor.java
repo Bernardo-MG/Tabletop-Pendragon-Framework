@@ -10,6 +10,7 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
+import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
@@ -60,7 +61,7 @@ public final class HomelandTemplateDocumentInputProcessor implements
                 } else {
                     descriptor = skill.getChildText(ModelXMLConf.DESCRIPTOR);
                 }
-                skillData = getModelService().getSkillData(
+                skillData = new DefaultNameAndDescriptor(
                         skill.getChildText(ModelXMLConf.NAME), descriptor);
                 skills.put(skillData, Integer.parseInt(skill
                         .getChildText(ModelXMLConf.VALUE)));
@@ -94,7 +95,7 @@ public final class HomelandTemplateDocumentInputProcessor implements
         directedTraitsNode = bonus.getChild(ModelXMLConf.DIRECTED_TRAITS);
         if (directedTraitsNode != null) {
             for (final Element trait : directedTraitsNode.getChildren()) {
-                skillData = getModelService().getSkillData(
+                skillData = new DefaultNameAndDescriptor(
                         trait.getChildText(ModelXMLConf.NAME),
                         trait.getChildText(ModelXMLConf.DESCRIPTOR));
                 directedTraits.add(skillData);
@@ -106,7 +107,7 @@ public final class HomelandTemplateDocumentInputProcessor implements
         passionsNode = bonus.getChild(ModelXMLConf.PASSIONS);
         if (passionsNode != null) {
             for (final Element passion : passionsNode.getChildren()) {
-                skillData = getModelService().getSkillData(
+                skillData = new DefaultNameAndDescriptor(
                         passion.getChildText(ModelXMLConf.NAME),
                         passion.getChildText(ModelXMLConf.DESCRIPTOR));
                 passions.add(skillData);

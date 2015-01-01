@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 
+import com.wandrell.tabletop.business.model.interval.Interval;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
-import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
@@ -25,6 +27,39 @@ public final class TestServiceFactory {
 
     public final ModelService getModelService() {
         return new ModelService() {
+
+            @Override
+            public final
+                    FamilyCharacteristicTable
+                    getFamilyCharacteristicTable(
+                            final String name,
+                            final Map<Interval, FamilyCharacteristicTemplate> intervals) {
+                final FamilyCharacteristicTable table;
+
+                table = Mockito.mock(FamilyCharacteristicTable.class);
+
+                Mockito.when(table.getName()).thenReturn(name);
+                Mockito.when(table.getIntervals()).thenReturn(intervals);
+
+                return table;
+            }
+
+            @Override
+            public final FamilyCharacteristicTemplate
+                    getFamilyCharacteristicTemplate(final String name,
+                            final Map<String, Integer> attributes,
+                            final Map<NameAndDescriptor, Integer> skills) {
+                final FamilyCharacteristicTemplate template;
+
+                template = Mockito.mock(FamilyCharacteristicTemplate.class);
+
+                Mockito.when(template.getAttributes()).thenReturn(attributes);
+                Mockito.when(template.getFamilyCharacteristic()).thenReturn(
+                        name);
+                Mockito.when(template.getSkills()).thenReturn(skills);
+
+                return template;
+            }
 
             @Override
             public final HomelandTemplate getHomelandTemplate(
@@ -70,12 +105,6 @@ public final class TestServiceFactory {
                 Mockito.when(religion.getReligion()).thenReturn(name);
 
                 return religion;
-            }
-
-            @Override
-            public final NameAndDescriptor getSkillData(final String name,
-                    final String descriptor) {
-                return new DefaultNameAndDescriptor(name, descriptor);
             }
 
         };

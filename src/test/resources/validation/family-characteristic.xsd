@@ -1,16 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
 
-	<xs:element name="roll_table">
+	<xs:element name="family_characteristic_table">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="intervals" type="ptbs:storedTemplateIntervals" />
-			</xs:sequence>
-			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:all>
+				<xs:element name="name" type="xs:token" />
+				<xs:element name="intervals" type="intervalList">
+					<xs:unique name="uniqueCharacteristic">
+						<xs:selector xpath="interval/family_characteristic" />
+						<xs:field xpath="name" />
+					</xs:unique>
+					<xs:unique name="uniqueLimit">
+						<xs:selector xpath="interval" />
+						<xs:field xpath="lower_limit" />
+					</xs:unique>
+				</xs:element>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
+
+	<xs:complexType name="intervalList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="interval" type="interval" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="interval">
+		<xs:all>
+			<xs:element name="lower_limit" type="xs:integer" />
+			<xs:element name="family_characteristic" type="familyCharacteristic" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="familyCharacteristic">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="bonus" type="bonusList" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="bonusList">
+		<xs:all>
+			<xs:element name="attributes" type="attributesList"
+				minOccurs="0" />
+			<xs:element name="skills" type="skillsList" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="attributesList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="attribute" type="attributeNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="skillsList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="skill" type="skillNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="attributeNode">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="skillNode">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="descriptor" type="xs:token" minOccurs="0" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
 
 </xs:schema>

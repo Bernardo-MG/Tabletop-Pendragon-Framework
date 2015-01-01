@@ -6,18 +6,47 @@
 		<xs:complexType>
 			<xs:all>
 				<xs:element name="name" type="xs:token" />
-				<xs:element name="bonus" type="bonusList" minOccurs="0" />
+				<xs:element name="bonus" type="bonusList" />
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:complexType name="bonusList">
-		<xs:all>
-			<xs:element name="traits" type="traitsList" minOccurs="0" />
-			<xs:element name="skills" type="skillsList" minOccurs="0" />
-			<xs:element name="specialty_skills" type="skillsList" minOccurs="0" />
-			<xs:element name="passions" type="passionsList" minOccurs="0" />
-			<xs:element name="directed_traits" type="directedTraitsList" minOccurs="0" />
+		<xs:all minOccurs="0">
+			<xs:element name="traits" type="traitsList">
+				<xs:unique name="uniqueTrait">
+					<xs:selector xpath="trait" />
+					<xs:field xpath="name" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="skills" type="skillsList">
+				<xs:unique name="uniqueSkill">
+					<xs:selector xpath="skill" />
+					<xs:field xpath="name" />
+					<xs:field xpath="descriptor" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="specialty_skills" type="skillsList"
+				minOccurs="0">
+				<xs:unique name="uniqueSpecialtySkill">
+					<xs:selector xpath="skill" />
+					<xs:field xpath="name" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="passions" type="passionsList">
+				<xs:unique name="uniquePassion">
+					<xs:selector xpath="passion" />
+					<xs:field xpath="name" />
+					<xs:field xpath="descriptor" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="directed_traits" type="directedTraitsList">
+				<xs:unique name="uniqueDirectedTrait">
+					<xs:selector xpath="directed_trait" />
+					<xs:field xpath="name" />
+					<xs:field xpath="descriptor" />
+				</xs:unique>
+			</xs:element>
 		</xs:all>
 	</xs:complexType>
 

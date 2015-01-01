@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
+import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.HomelandTemplateDocumentInputProcessor;
@@ -44,8 +45,8 @@ public final class ITReadHomelandTemplateDocumentInputProcessor {
 
         Assert.assertEquals(homeland.getDirectedTraits().size(), 1);
 
-        skill = modelService
-                .getSkillData("directed_1", "descriptor_directed_1");
+        skill = new DefaultNameAndDescriptor("directed_1",
+                "descriptor_directed_1");
         Assert.assertTrue(homeland.getDirectedTraits().contains(skill));
     }
 
@@ -60,7 +61,8 @@ public final class ITReadHomelandTemplateDocumentInputProcessor {
 
         Assert.assertEquals(homeland.getPassions().size(), 1);
 
-        skill = modelService.getSkillData("passion_1", "descriptor_passion_1");
+        skill = new DefaultNameAndDescriptor("passion_1",
+                "descriptor_passion_1");
         Assert.assertTrue(homeland.getPassions().contains(skill));
     }
 
@@ -70,11 +72,11 @@ public final class ITReadHomelandTemplateDocumentInputProcessor {
 
         Assert.assertEquals(homeland.getSkills().size(), 2);
 
-        skill = modelService.getSkillData("skill_1", "");
+        skill = new DefaultNameAndDescriptor("skill_1", "");
         Assert.assertTrue(homeland.getSkills().containsKey(skill));
         Assert.assertEquals(homeland.getSkills().get(skill), (Integer) 3);
 
-        skill = modelService.getSkillData("skill_2", "descriptor_skill_2");
+        skill = new DefaultNameAndDescriptor("skill_2", "descriptor_skill_2");
         Assert.assertTrue(homeland.getSkills().containsKey(skill));
         Assert.assertEquals(homeland.getSkills().get(skill), (Integer) 4);
 

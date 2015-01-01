@@ -7,22 +7,28 @@
 			<xs:all>
 				<xs:element name="name" type="xs:token" maxOccurs="1"
 					minOccurs="1" />
-				<xs:element name="traits" type="traitsList" />
+				<xs:element name="traits" type="traitsList">
+					<xs:unique name="uniqueTrait">
+						<xs:selector xpath="trait" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
 				<xs:element name="bonus" type="bonusList" minOccurs="0" />
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:complexType name="bonusList">
-		<xs:all>
-			<xs:element name="derived_attributes" type="derivedAttributesList"
-				minOccurs="0" />
-			<xs:element name="armor_bonus" type="xs:integer"
-				minOccurs="0" />
-			<xs:element name="damage_bonus" type="xs:integer"
-				minOccurs="0" />
-			<xs:element name="damage_dice_bonus" type="xs:integer"
-				minOccurs="0" />
+		<xs:all minOccurs="0">
+			<xs:element name="derived_attributes" type="derivedAttributesList">
+				<xs:unique name="uniqueDerived">
+					<xs:selector xpath="derived_attribute" />
+					<xs:field xpath="name" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="armor_bonus" type="xs:integer" />
+			<xs:element name="damage_bonus" type="xs:integer" />
+			<xs:element name="damage_dice_bonus" type="xs:integer" />
 		</xs:all>
 	</xs:complexType>
 
