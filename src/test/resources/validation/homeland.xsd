@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
 
 	<xs:element name="homeland">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="template_bonus" type="ptbs:templateGeneral"
-					minOccurs="0" />
-				<xs:element name="template_base_values" type="ptbs:templateGeneral"
-					minOccurs="0" />
+				<xs:element name="name" type="xs:token" />
+				<xs:element name="bonus" type="bonusList" minOccurs="0" />
 			</xs:all>
-			<xs:attribute name="name" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
+
+	<xs:complexType name="bonusList">
+		<xs:all>
+			<xs:element name="traits" type="traitsList" minOccurs="0" />
+			<xs:element name="skills" type="skillsList" minOccurs="0" />
+			<xs:element name="specialty_skills" type="skillsList" minOccurs="0" />
+			<xs:element name="passions" type="passionsList" minOccurs="0" />
+			<xs:element name="directed_traits" type="directedTraitsList" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="directedTraitsList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="directed_trait" type="descriptorNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passionsList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="passion" type="descriptorNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="skillsList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="skill" type="skillNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="traitsList">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="trait" type="bonusNode" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bonusNode">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="descriptorNode">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="descriptor" type="xs:token" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="skillNode">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="descriptor" type="xs:token" minOccurs="0" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
 
 </xs:schema>

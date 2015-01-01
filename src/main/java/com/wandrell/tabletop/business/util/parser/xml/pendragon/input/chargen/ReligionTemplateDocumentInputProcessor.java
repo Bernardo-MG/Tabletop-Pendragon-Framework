@@ -9,30 +9,30 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
-import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
-public class ReligionBonusDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<ReligionBonus> {
+public final class ReligionTemplateDocumentInputProcessor implements
+        JDOMDocumentInputProcessor<ReligionTemplate> {
 
     private final ModelService modelService;
 
-    public ReligionBonusDocumentInputProcessor(final ModelService service) {
+    public ReligionTemplateDocumentInputProcessor(final ModelService service) {
         super();
 
         modelService = service;
     }
 
     @Override
-    public final ReligionBonus process(final Document doc) {
+    public final ReligionTemplate process(final Document doc) {
+        final Element root;
         final Element traitsNode;
         final Element armorNode;
         final Element damageNode;
         final Element damageDiceNode;
         final Element bonus;
         final Element derived;
-        final Element root;
         final String name;
         final Collection<String> traits;
         final Map<String, Integer> bonusDerived;
@@ -92,8 +92,8 @@ public class ReligionBonusDocumentInputProcessor implements
             bonusDamageDice = 0;
         }
 
-        return getModelService().getReligionBonus(name, traits, bonusDerived,
-                bonusArmor, bonusDamage, bonusDamageDice);
+        return getModelService().getReligionTemplate(name, traits,
+                bonusDerived, bonusArmor, bonusDamage, bonusDamageDice);
     }
 
     private final ModelService getModelService() {

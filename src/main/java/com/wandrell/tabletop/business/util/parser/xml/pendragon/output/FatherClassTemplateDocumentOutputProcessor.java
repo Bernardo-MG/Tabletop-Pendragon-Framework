@@ -4,18 +4,18 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class FatherClassTemplateDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<FatherClassBonus> {
+        JDOMDocumentOutputProcessor<FatherClassTemplate> {
 
     public FatherClassTemplateDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final FatherClassBonus holder) {
+    public final Document process(final FatherClassTemplate holder) {
         final Document doc;
         Element node;
 
@@ -54,8 +54,8 @@ public class FatherClassTemplateDocumentOutputProcessor implements
         return doc;
     }
 
-    private final Element
-            buildSkillsGroupXMLTree(final FatherClassBonus holder) {
+    private final Element buildSkillsGroupXMLTree(
+            final FatherClassTemplate holder) {
         // TODO
         // final Iterator<DefaultPendragonSkill> iterator;
         // Element root, nodeVH, skillsRoot;

@@ -11,7 +11,7 @@ import com.wandrell.tabletop.business.model.pendragon.character.PendragonPlayerC
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Child;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Follower;
 import com.wandrell.tabletop.business.model.pendragon.character.follower.Wife;
-import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryEvent;
 import com.wandrell.tabletop.business.model.pendragon.glory.GloryManager;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
@@ -131,7 +131,7 @@ public class PlayerCharacterDocumentOutputProcessor implements
 
     @SuppressWarnings("unused")
     private final Element buildFamilyCharacteristicXMLTree(
-            final FamilyCharacteristicBonus characteristic) {
+            final FamilyCharacteristicTemplate characteristic) {
         final Element root, bonusNode;
 
         root = new Element(FileToken.FAMILY_CHARACTERISTIC);

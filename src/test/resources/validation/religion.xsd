@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd" namespace="http://www.ptb.org/XMLValidation" />
 
 	<xs:element name="religion">
 		<xs:complexType>
@@ -9,8 +8,7 @@
 				<xs:element name="name" type="xs:token" maxOccurs="1"
 					minOccurs="1" />
 				<xs:element name="traits" type="traitsList" />
-				<xs:element name="bonus" type="bonusList"
-					minOccurs="0" />
+				<xs:element name="bonus" type="bonusList" minOccurs="0" />
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -18,13 +16,13 @@
 	<xs:complexType name="bonusList">
 		<xs:all>
 			<xs:element name="derived_attributes" type="derivedAttributesList"
-				maxOccurs="1" minOccurs="0" />
+				minOccurs="0" />
 			<xs:element name="armor_bonus" type="xs:integer"
-				maxOccurs="1" minOccurs="0" />
+				minOccurs="0" />
 			<xs:element name="damage_bonus" type="xs:integer"
-				maxOccurs="1" minOccurs="0" />
+				minOccurs="0" />
 			<xs:element name="damage_dice_bonus" type="xs:integer"
-				maxOccurs="1" minOccurs="0" />
+				minOccurs="0" />
 		</xs:all>
 	</xs:complexType>
 

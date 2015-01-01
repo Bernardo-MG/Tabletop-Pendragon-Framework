@@ -4,8 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionBonus;
-import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.ReligionBonusDocumentInputProcessor;
+import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
+import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.ReligionTemplateDocumentInputProcessor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
@@ -13,22 +13,22 @@ import com.wandrell.util.parser.InputParser;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 import com.wandrell.util.parser.xml.input.JDOMStAXInputParser;
 
-public final class ITReadReligionBonusDocumentInputProcessor {
+public final class ITReadReligionTemplateDocumentInputProcessor {
 
-    private ReligionBonus religion;
+    private ReligionTemplate religion;
 
-    public ITReadReligionBonusDocumentInputProcessor() {
+    public ITReadReligionTemplateDocumentInputProcessor() {
         super();
     }
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final InputParser<ReligionBonus> parser;
-        final JDOMDocumentInputProcessor<ReligionBonus> processor;
+        final InputParser<ReligionTemplate> parser;
+        final JDOMDocumentInputProcessor<ReligionTemplate> processor;
 
-        processor = new ReligionBonusDocumentInputProcessor(TestServiceFactory
-                .getInstance().getModelService());
-        parser = new JDOMStAXInputParser<ReligionBonus>(processor);
+        processor = new ReligionTemplateDocumentInputProcessor(
+                TestServiceFactory.getInstance().getModelService());
+        parser = new JDOMStAXInputParser<ReligionTemplate>(processor);
 
         religion = parser.read(ResourceUtils
                 .getClassPathInputStream(FileConf.RELIGION));

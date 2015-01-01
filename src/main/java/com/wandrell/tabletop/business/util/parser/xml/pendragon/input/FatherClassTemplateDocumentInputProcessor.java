@@ -6,20 +6,20 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class FatherClassTemplateDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<FatherClassBonus> {
+        JDOMDocumentInputProcessor<FatherClassTemplate> {
 
     public FatherClassTemplateDocumentInputProcessor() {
         super();
     }
 
     @Override
-    public final FatherClassBonus process(final Document doc) {
-        final FatherClassBonus holder;
+    public final FatherClassTemplate process(final Document doc) {
+        final FatherClassTemplate holder;
         final Element skillsGroup, skillPoints, money;
         final Element root;
 
@@ -61,7 +61,7 @@ public class FatherClassTemplateDocumentInputProcessor implements
 
     @SuppressWarnings("unused")
     private final Iterator<Skill> buildSkillsIterator(
-            final FatherClassBonus holder, final Element skills) {
+            final FatherClassTemplate holder, final Element skills) {
         // TODO
         // final Iterator<? extends ValueHandler<Integer>> itrSkills;
         // final List<DefaultPendragonSkill> listSkills;
@@ -86,7 +86,7 @@ public class FatherClassTemplateDocumentInputProcessor implements
     }
 
     private final void readSkillsGroupXMLTree(final Element root,
-            final FatherClassBonus holder) {
+            final FatherClassTemplate holder) {
         // TODO
         // final Element skills, points;
         //

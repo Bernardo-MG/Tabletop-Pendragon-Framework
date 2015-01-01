@@ -5,7 +5,10 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 
-import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
+import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
+import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
+import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
 public final class TestServiceFactory {
@@ -24,14 +27,38 @@ public final class TestServiceFactory {
         return new ModelService() {
 
             @Override
-            public final ReligionBonus getReligionBonus(final String name,
-                    final Collection<String> traits,
+            public final HomelandTemplate getHomelandTemplate(
+                    final String name,
+                    final Map<NameAndDescriptor, Integer> skills,
+                    final Map<String, Integer> specialtySkills,
+                    final Map<String, Integer> traits,
+                    final Collection<NameAndDescriptor> directedTraits,
+                    final Collection<NameAndDescriptor> passions) {
+                final HomelandTemplate homeland;
+
+                homeland = Mockito.mock(HomelandTemplate.class);
+
+                Mockito.when(homeland.getHomeland()).thenReturn(name);
+                Mockito.when(homeland.getSkills()).thenReturn(skills);
+                Mockito.when(homeland.getSpecialtySkills()).thenReturn(
+                        specialtySkills);
+                Mockito.when(homeland.getTraits()).thenReturn(traits);
+                Mockito.when(homeland.getDirectedTraits()).thenReturn(
+                        directedTraits);
+                Mockito.when(homeland.getPassions()).thenReturn(passions);
+
+                return homeland;
+            }
+
+            @Override
+            public final ReligionTemplate getReligionTemplate(
+                    final String name, final Collection<String> traits,
                     final Map<String, Integer> bonusDerived,
                     final Integer bonusArmor, final Integer bonusDamage,
                     final Integer bonusDamageDice) {
-                final ReligionBonus religion;
+                final ReligionTemplate religion;
 
-                religion = Mockito.mock(ReligionBonus.class);
+                religion = Mockito.mock(ReligionTemplate.class);
 
                 Mockito.when(religion.getArmorBonus()).thenReturn(bonusArmor);
                 Mockito.when(religion.getDamageBonus()).thenReturn(bonusDamage);
@@ -43,6 +70,12 @@ public final class TestServiceFactory {
                 Mockito.when(religion.getReligion()).thenReturn(name);
 
                 return religion;
+            }
+
+            @Override
+            public final NameAndDescriptor getSkillData(final String name,
+                    final String descriptor) {
+                return new DefaultNameAndDescriptor(name, descriptor);
             }
 
         };

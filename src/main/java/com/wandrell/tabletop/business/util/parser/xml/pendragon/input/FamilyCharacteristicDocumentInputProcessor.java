@@ -4,20 +4,20 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicBonus;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public class FamilyCharacteristicDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<FamilyCharacteristicBonus> {
+        JDOMDocumentInputProcessor<FamilyCharacteristicTemplate> {
 
     public FamilyCharacteristicDocumentInputProcessor() {
         super();
     }
 
     @Override
-    public final FamilyCharacteristicBonus process(final Document doc) {
+    public final FamilyCharacteristicTemplate process(final Document doc) {
         final Element intervals;
-        final FamilyCharacteristicBonus holder;
+        final FamilyCharacteristicTemplate holder;
         final Element root;
 
         root = doc.getRootElement();
@@ -39,7 +39,7 @@ public class FamilyCharacteristicDocumentInputProcessor implements
 
     @SuppressWarnings("unused")
     private final void readIntervalsXMLTree(final Element root,
-            final FamilyCharacteristicBonus holder) {
+            final FamilyCharacteristicTemplate holder) {
         String name;
 
         // Goes through each interval
