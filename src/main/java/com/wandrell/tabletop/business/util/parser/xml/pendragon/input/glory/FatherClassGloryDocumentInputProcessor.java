@@ -8,7 +8,7 @@ import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
-public class FatherClassGloryDocumentInputProcessor implements
+public final class FatherClassGloryDocumentInputProcessor implements
         JDOMDocumentInputProcessor<FatherClassGlory> {
 
     private final ModelService modelService;

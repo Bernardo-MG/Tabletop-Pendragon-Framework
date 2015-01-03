@@ -13,6 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplat
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
+import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
@@ -166,6 +167,19 @@ public final class TestServiceFactory {
                 Mockito.when(religion.getReligion()).thenReturn(name);
 
                 return religion;
+            }
+
+            @Override
+            public final SpecialtySkill getSpecialtySkill(final String name,
+                    final Collection<String> skills) {
+                final SpecialtySkill skill;
+
+                skill = Mockito.mock(SpecialtySkill.class);
+
+                Mockito.when(skill.getName()).thenReturn(name);
+                Mockito.when(skill.getSurrogatedSkills()).thenReturn(skills);
+
+                return skill;
             }
 
         };
