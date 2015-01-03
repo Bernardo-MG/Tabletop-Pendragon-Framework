@@ -12,6 +12,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacterist
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
+import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
@@ -61,6 +62,22 @@ public final class TestServiceFactory {
                 Mockito.when(template.getSkills()).thenReturn(skills);
 
                 return template;
+            }
+
+            @Override
+            public final FatherClassGlory getFatherClassGlory(
+                    final String name, final Integer glory,
+                    final Integer yearlyGlory) {
+                final FatherClassGlory fatherGlory;
+
+                fatherGlory = Mockito.mock(FatherClassGlory.class);
+
+                Mockito.when(fatherGlory.getFatherClass()).thenReturn(name);
+                Mockito.when(fatherGlory.getBaseGlory()).thenReturn(glory);
+                Mockito.when(fatherGlory.getYearlyGlory()).thenReturn(
+                        yearlyGlory);
+
+                return fatherGlory;
             }
 
             @Override
