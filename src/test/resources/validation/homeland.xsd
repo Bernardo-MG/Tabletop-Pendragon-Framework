@@ -5,7 +5,7 @@
 	<xs:element name="homeland">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="name" type="xs:token" />
+				<xs:element name="name" type="xs:string" />
 				<xs:element name="bonus" type="bonusList" />
 			</xs:all>
 		</xs:complexType>

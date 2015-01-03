@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 
+import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
@@ -59,6 +61,48 @@ public final class TestServiceFactory {
                 Mockito.when(template.getSkills()).thenReturn(skills);
 
                 return template;
+            }
+
+            @Override
+            public final FatherClassTemplate getFatherClassTemplate(
+                    final String name, final Integer skillsGroupPoints,
+                    final Integer skillsGroupPointsDivide,
+                    final Integer skillsPoints,
+                    final Integer skillsNonCombatPoints, final Dice money,
+                    final Collection<NameAndDescriptor> skillsGroup,
+                    final Map<String, Integer> specialtySkills,
+                    final Map<NameAndDescriptor, Integer> directedTraits,
+                    final Map<NameAndDescriptor, Integer> directedTraitsBase) {
+                final FatherClassTemplate fatherClass;
+
+                fatherClass = Mockito.mock(FatherClassTemplate.class);
+
+                Mockito.when(fatherClass.getName()).thenReturn(name);
+
+                Mockito.when(fatherClass.getSkillsGroupBonusPoints())
+                        .thenReturn(skillsGroupPoints);
+                Mockito.when(fatherClass.getSkillsGroupDividePoints())
+                        .thenReturn(skillsGroupPointsDivide);
+
+                Mockito.when(fatherClass.getSkillsPoints()).thenReturn(
+                        skillsPoints);
+                Mockito.when(fatherClass.getNonCombatSkillBonus()).thenReturn(
+                        skillsNonCombatPoints);
+
+                Mockito.when(fatherClass.getMoney()).thenReturn(money);
+
+                Mockito.when(fatherClass.getSkillsGroup()).thenReturn(
+                        skillsGroup);
+
+                Mockito.when(fatherClass.getSpecialtySkills()).thenReturn(
+                        specialtySkills);
+
+                Mockito.when(fatherClass.getDirectedTraits()).thenReturn(
+                        directedTraits);
+                Mockito.when(fatherClass.getDirectedTraitsBase()).thenReturn(
+                        directedTraitsBase);
+
+                return fatherClass;
             }
 
             @Override

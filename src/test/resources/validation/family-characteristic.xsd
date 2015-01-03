@@ -5,7 +5,7 @@
 	<xs:element name="family_characteristic_table">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="name" type="xs:token" />
+				<xs:element name="name" type="xs:string" />
 				<xs:element name="intervals" type="intervalList">
 					<xs:unique name="uniqueCharacteristic">
 						<xs:selector xpath="interval/family_characteristic" />

@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.religion;
+package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read;
 
 import java.util.Iterator;
 import java.util.Map;

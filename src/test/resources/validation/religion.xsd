@@ -5,8 +5,7 @@
 	<xs:element name="religion">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="name" type="xs:token" maxOccurs="1"
-					minOccurs="1" />
+				<xs:element name="name" type="xs:string" />
 				<xs:element name="traits" type="traitsList">
 					<xs:unique name="uniqueTrait">
 						<xs:selector xpath="trait" />
