@@ -13,6 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplat
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
+import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
@@ -147,6 +148,20 @@ public final class TestServiceFactory {
                 Mockito.when(homeland.getPassions()).thenReturn(passions);
 
                 return homeland;
+            }
+
+            @Override
+            public final Passion getPassion(final String name,
+                    final String descriptor, final Boolean repeatable) {
+                final Passion passion;
+
+                passion = Mockito.mock(Passion.class);
+
+                Mockito.when(passion.getName()).thenReturn(name);
+                Mockito.when(passion.getDescriptor()).thenReturn(descriptor);
+                Mockito.when(passion.isDescribed()).thenReturn(repeatable);
+
+                return passion;
             }
 
             @Override

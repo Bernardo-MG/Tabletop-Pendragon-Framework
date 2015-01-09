@@ -122,9 +122,10 @@
 		<name>play</name>
 		<descriptor>instrument</descriptor>
 	</skill>
-	<skill courtly="true" knightly="true" knowledge="true" repeatable="true">
+	<skill courtly="true" knightly="true" knowledge="true"
+		repeatable="true">
 		<name>read</name>
-		<descriptor>written_language</descriptor>
+		<descriptor>symbols</descriptor>
 	</skill>
 	<skill courtly="true" knightly="true" knowledge="true">
 		<name>recognize</name>

@@ -7,6 +7,8 @@ public final class FileConf {
     public static final String FATHER_CLASS_GLORY    = "model/files/father-glory.xml";
     public static final String HOMELAND              = "model/files/homeland.xml";
     public static final String LIST                  = "model/files/list.xml";
+    public static final String PASSIONS              = "model/files/passions.xml";
+    public static final String PASSIONS_VALIDATION   = "validation/pendragon-model-passion.xsd";
     public static final String RELIGION              = "model/files/religion.xml";
     public static final String SKILLS                = "model/files/skills.xml";
     public static final String SKILLS_VALIDATION     = "validation/pendragon-model-skill.xsd";

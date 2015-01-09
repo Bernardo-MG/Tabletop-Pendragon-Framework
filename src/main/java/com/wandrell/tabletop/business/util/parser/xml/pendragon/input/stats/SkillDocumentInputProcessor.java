@@ -32,7 +32,7 @@ public final class SkillDocumentInputProcessor implements
         Boolean court;
         Boolean knight;
         Boolean knowledge;
-        Boolean repeat;
+        Boolean repeatable;
 
         skills = new LinkedList<>();
         for (final Element node : doc.getRootElement().getChildren()) {
@@ -44,11 +44,11 @@ public final class SkillDocumentInputProcessor implements
             knight = new Boolean(node.getAttributeValue(ModelXMLConf.KNIGHTLY));
             knowledge = new Boolean(
                     node.getAttributeValue(ModelXMLConf.KNOWLEDGE));
-            repeat = new Boolean(
+            repeatable = new Boolean(
                     node.getAttributeValue(ModelXMLConf.REPEATEABLE));
 
             skill = getModelService().getSkill(name, descriptor, combat, court,
-                    knight, knowledge, repeat);
+                    knight, knowledge, repeatable);
 
             skills.add(skill);
         }
