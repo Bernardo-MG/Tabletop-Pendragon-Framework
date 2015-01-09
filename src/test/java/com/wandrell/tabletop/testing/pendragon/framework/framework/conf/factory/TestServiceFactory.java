@@ -14,6 +14,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
+import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
@@ -180,6 +181,19 @@ public final class TestServiceFactory {
                 Mockito.when(skill.getSurrogatedSkills()).thenReturn(skills);
 
                 return skill;
+            }
+
+            @Override
+            public final TextList getTextList(final String name,
+                    final Collection<String> values) {
+                final TextList list;
+
+                list = Mockito.mock(TextList.class);
+
+                Mockito.when(list.getName()).thenReturn(name);
+                Mockito.when(list.getValues()).thenReturn(values);
+
+                return list;
             }
 
         };
