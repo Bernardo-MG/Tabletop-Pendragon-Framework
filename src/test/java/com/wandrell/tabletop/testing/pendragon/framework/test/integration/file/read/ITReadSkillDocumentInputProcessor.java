@@ -61,29 +61,35 @@ public final class ITReadSkillDocumentInputProcessor {
         skill = itr.next();
         Assert.assertEquals(skill.getName(), "skill_1");
         Assert.assertEquals(skill.getDescriptor(), null);
+
+        Assert.assertEquals(skill.isDescribed(), (Boolean) false);
+
         Assert.assertEquals(skill.isCombatSkill(), (Boolean) false);
         Assert.assertEquals(skill.isCourtlySkill(), (Boolean) false);
         Assert.assertEquals(skill.isKnightlySkill(), (Boolean) false);
         Assert.assertEquals(skill.isKnowledgeSkill(), (Boolean) false);
-        Assert.assertEquals(skill.isRepeatable(), (Boolean) false);
 
         skill = itr.next();
         Assert.assertEquals(skill.getName(), "skill_2");
         Assert.assertEquals(skill.getDescriptor(), null);
+
+        Assert.assertEquals(skill.isDescribed(), (Boolean) false);
+
         Assert.assertEquals(skill.isCombatSkill(), (Boolean) true);
         Assert.assertEquals(skill.isCourtlySkill(), (Boolean) false);
         Assert.assertEquals(skill.isKnightlySkill(), (Boolean) true);
         Assert.assertEquals(skill.isKnowledgeSkill(), (Boolean) false);
-        Assert.assertEquals(skill.isRepeatable(), (Boolean) false);
 
         skill = itr.next();
         Assert.assertEquals(skill.getName(), "skill_3");
         Assert.assertEquals(skill.getDescriptor(), "descriptor_3");
+
+        Assert.assertEquals(skill.isDescribed(), (Boolean) true);
+
         Assert.assertEquals(skill.isCombatSkill(), (Boolean) false);
         Assert.assertEquals(skill.isCourtlySkill(), (Boolean) true);
         Assert.assertEquals(skill.isKnightlySkill(), (Boolean) true);
         Assert.assertEquals(skill.isKnowledgeSkill(), (Boolean) true);
-        Assert.assertEquals(skill.isRepeatable(), (Boolean) true);
     }
 
 }

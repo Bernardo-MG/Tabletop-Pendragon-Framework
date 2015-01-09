@@ -183,11 +183,12 @@ public final class TestServiceFactory {
                 Mockito.when(skill.getName()).thenReturn(name);
                 Mockito.when(skill.getDescriptor()).thenReturn(descriptor);
 
+                Mockito.when(skill.isDescribed()).thenReturn(repeat);
+
                 Mockito.when(skill.isCombatSkill()).thenReturn(combat);
                 Mockito.when(skill.isCourtlySkill()).thenReturn(court);
                 Mockito.when(skill.isKnightlySkill()).thenReturn(knight);
                 Mockito.when(skill.isKnowledgeSkill()).thenReturn(knowledge);
-                Mockito.when(skill.isRepeatable()).thenReturn(repeat);
 
                 return skill;
             }
