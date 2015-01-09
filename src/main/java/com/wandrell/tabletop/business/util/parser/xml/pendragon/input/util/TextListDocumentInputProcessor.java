@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.interval;
+package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.util;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
-import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
@@ -28,7 +27,6 @@ public final class TextListDocumentInputProcessor implements
         final Element root;
         final Element valuesNode;
         final String name;
-        final IntervalTable<String> table;
         final Collection<String> values;
 
         root = doc.getRootElement();

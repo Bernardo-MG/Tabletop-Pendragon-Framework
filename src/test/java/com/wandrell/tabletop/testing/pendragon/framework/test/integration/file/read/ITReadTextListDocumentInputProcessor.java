@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.interval.TextListDocumentInputProcessor;
+import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.util.TextListDocumentInputProcessor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
