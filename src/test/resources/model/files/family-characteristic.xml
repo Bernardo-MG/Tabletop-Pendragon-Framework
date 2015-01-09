@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <family_characteristic_table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="..\..\validation\family-characteristic.xsd">
+	xsi:noNamespaceSchemaLocation="../../validation/family-characteristic.xsd">
 	<name>test_family_characteristic</name>
 	<intervals>
 		<interval>

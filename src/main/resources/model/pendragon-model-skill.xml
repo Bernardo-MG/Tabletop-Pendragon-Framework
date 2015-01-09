@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skills xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="validation/pendragon-model-skill.xsd">
-	<skill italian="true" unique="true" knowledge="true">
-		<name>art_appreciation</name>
-	</skill>
 	<skill knightly="true">
 		<name>awareness</name>
 	</skill>
@@ -94,9 +91,6 @@
 	<skill courtly="true" knightly="true" knowledge="true">
 		<name>heraldry</name>
 	</skill>
-	<skill italian="true" unique="true" knowledge="true">
-		<name>high_finances</name>
-	</skill>
 	<skill combat="true" knightly="true">
 		<name>horsemanship</name>
 	</skill>
@@ -124,26 +118,23 @@
 	<skill courtly="true" knightly="true">
 		<name>orate</name>
 	</skill>
-	<skill italian="true" unique="true" knowledge="true">
-		<name>philosophy</name>
-	</skill>
-	<skill courtly="true" knightly="true" repeat="true">
+	<skill courtly="true" knightly="true" repeatable="true">
 		<name>play</name>
+		<descriptor>instrument</descriptor>
 	</skill>
-	<skill courtly="true" knightly="true" knowledge="true" repeat="true">
+	<skill courtly="true" knightly="true" knowledge="true" repeatable="true">
 		<name>read</name>
+		<descriptor>written_language</descriptor>
 	</skill>
 	<skill courtly="true" knightly="true" knowledge="true">
 		<name>recognize</name>
 	</skill>
-	<skill knightly="true" knowledge="true" repeat="true">
+	<skill knightly="true" knowledge="true" repeatable="true">
 		<name>religion</name>
+		<descriptor>religion</descriptor>
 	</skill>
 	<skill courtly="true" knightly="true" knowledge="true">
 		<name>romance</name>
-	</skill>
-	<skill italian="true" unique="true" knowledge="true">
-		<name>science</name>
 	</skill>
 	<skill combat="true" knightly="true">
 		<name>siege</name>

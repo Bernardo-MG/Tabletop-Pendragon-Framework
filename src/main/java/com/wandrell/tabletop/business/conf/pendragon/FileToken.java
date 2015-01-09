@@ -56,7 +56,6 @@ public final class FileToken {
     public static final String INTERVAL                    = "interval";
     public static final String INTERVALS                   = "intervals";
     public static final String INVENTORY_ROLL_TABLE        = "inventory_roll_table";
-    public static final String ITALIAN                     = "italian";
     public static final String ITEM                        = "item";
     public static final String ITEMS                       = "items";
     public static final String ITEMS_AT_HOME               = "items_at_home";

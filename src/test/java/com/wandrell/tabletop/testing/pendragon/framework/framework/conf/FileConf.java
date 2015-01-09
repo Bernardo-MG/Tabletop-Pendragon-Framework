@@ -8,6 +8,8 @@ public final class FileConf {
     public static final String HOMELAND              = "model/files/homeland.xml";
     public static final String LIST                  = "model/files/list.xml";
     public static final String RELIGION              = "model/files/religion.xml";
+    public static final String SKILLS                = "model/files/skills.xml";
+    public static final String SKILLS_VALIDATION     = "validation/pendragon-model-skill.xsd";
     public static final String SPECIALTY_SKILL       = "model/files/specialty-skill.xml";
 
     private FileConf() {

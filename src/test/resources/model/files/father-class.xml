@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <father_class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="..\..\validation\father-class.xsd">
+	xsi:noNamespaceSchemaLocation="../../validation/father-class.xsd">
 	<name>test_father_class</name>
 	<skills_points>5</skills_points>
 	<skills_points_non_combat>6</skills_points_non_combat>

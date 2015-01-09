@@ -13,6 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplat
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
+import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
@@ -168,6 +169,27 @@ public final class TestServiceFactory {
                 Mockito.when(religion.getReligion()).thenReturn(name);
 
                 return religion;
+            }
+
+            @Override
+            public final Skill getSkill(final String name,
+                    final String descriptor, final Boolean combat,
+                    final Boolean court, final Boolean knight,
+                    final Boolean knowledge, final Boolean repeat) {
+                final Skill skill;
+
+                skill = Mockito.mock(Skill.class);
+
+                Mockito.when(skill.getName()).thenReturn(name);
+                Mockito.when(skill.getDescriptor()).thenReturn(descriptor);
+
+                Mockito.when(skill.isCombatSkill()).thenReturn(combat);
+                Mockito.when(skill.isCourtlySkill()).thenReturn(court);
+                Mockito.when(skill.isKnightlySkill()).thenReturn(knight);
+                Mockito.when(skill.isKnowledgeSkill()).thenReturn(knowledge);
+                Mockito.when(skill.isRepeatable()).thenReturn(repeat);
+
+                return skill;
             }
 
             @Override

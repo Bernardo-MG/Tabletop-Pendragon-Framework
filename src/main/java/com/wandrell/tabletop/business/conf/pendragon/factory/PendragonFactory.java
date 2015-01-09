@@ -7,6 +7,7 @@ import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 
+@Deprecated
 public final class PendragonFactory {
 
     private static PendragonFactory instance;

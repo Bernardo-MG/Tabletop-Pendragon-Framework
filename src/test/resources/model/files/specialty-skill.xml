@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <specialty_skill xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="..\..\validation\specialty-skill.xsd">
+	xsi:noNamespaceSchemaLocation="../../validation/specialty-skill.xsd">
 	<name>test_specialty_skill</name>
 	<skills>
 		<skill>

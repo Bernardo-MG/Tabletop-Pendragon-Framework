@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skills xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../validation/pendragon-model-skill.xsd">
+	<skill >
+		<name>skill_1</name>
+	</skill>
+	<skill combat="true" knightly="true">
+		<name>skill_2</name>
+	</skill>
+	<skill courtly="true" knightly="true" knowledge="true" repeatable="true">
+		<name>skill_3</name>
+		<descriptor>descriptor_3</descriptor>
+	</skill>
+</skills>
