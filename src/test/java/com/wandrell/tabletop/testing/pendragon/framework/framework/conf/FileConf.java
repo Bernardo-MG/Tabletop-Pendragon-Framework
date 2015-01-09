@@ -2,6 +2,7 @@ package com.wandrell.tabletop.testing.pendragon.framework.framework.conf;
 
 public final class FileConf {
 
+    public static final String DIRECTED_TRAITS       = "model/files/directed-traits.xml";
     public static final String FAMILY_CHARACTERISTIC = "model/files/family-characteristic.xml";
     public static final String FATHER_CLASS          = "model/files/father-class.xml";
     public static final String FATHER_CLASS_GLORY    = "model/files/father-glory.xml";

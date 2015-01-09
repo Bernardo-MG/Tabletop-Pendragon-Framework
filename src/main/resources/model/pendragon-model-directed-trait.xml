@@ -16,17 +16,11 @@
 	<directed_trait>
 		<name>deceitful</name>
 	</directed_trait>
-	<directed_trait repeat="false">
-		<name>elan</name>
-	</directed_trait>
 	<directed_trait>
 		<name>energetic</name>
 	</directed_trait>
 	<directed_trait>
 		<name>forgiving</name>
-	</directed_trait>
-	<directed_trait repeat="false">
-		<name>gastronomy</name>
 	</directed_trait>
 	<directed_trait>
 		<name>generous</name>
@@ -51,9 +45,6 @@
 	</directed_trait>
 	<directed_trait>
 		<name>modest</name>
-	</directed_trait>
-	<directed_trait repeat="false">
-		<name>oinology</name>
 	</directed_trait>
 	<directed_trait>
 		<name>pious</name>

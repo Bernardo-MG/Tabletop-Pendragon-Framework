@@ -13,6 +13,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplat
 import com.wandrell.tabletop.business.model.pendragon.chargen.HomelandTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
+import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
 import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
@@ -34,6 +35,17 @@ public final class TestServiceFactory {
 
     public final ModelService getModelService() {
         return new ModelService() {
+
+            @Override
+            public final DirectedTrait getDirectedTrait(final String name) {
+                final DirectedTrait trait;
+
+                trait = Mockito.mock(DirectedTrait.class);
+
+                Mockito.when(trait.getName()).thenReturn(name);
+
+                return trait;
+            }
 
             @Override
             public final

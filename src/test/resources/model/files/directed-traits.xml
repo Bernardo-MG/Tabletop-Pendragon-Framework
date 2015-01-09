@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<directed_traits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../validation/pendragon-model-directed-trait.xsd">
+	<directed_trait>
+		<name>directed_1</name>
+	</directed_trait>
+	<directed_trait>
+		<name>directed_2</name>
+	</directed_trait>
+</directed_traits>
