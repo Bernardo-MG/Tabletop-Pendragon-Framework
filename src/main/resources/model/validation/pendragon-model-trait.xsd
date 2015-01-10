@@ -20,9 +20,6 @@
 			<xs:element name="negative" type="xs:token" maxOccurs="1"
 				minOccurs="1" />
 		</xs:sequence>
-		<xs:attribute name="chivaldry" type="xs:boolean" default="false" />
-		<xs:attribute name="gentlewoman" type="xs:boolean"
-			default="false" />
 	</xs:complexType>
 
 </xs:schema>
