@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<xs:element name="weapon" type="nodeWeapon" />
+	<xs:element name="weapon">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="skill" type="xs:token" />
+				<xs:element name="two_handed" type="xs:boolean" />
+				<xs:element name="damage_bonus" type="xs:integer" />
+				<xs:element name="dice_bonus" type="xs:integer" />
+				<xs:element name="damage_override" type="xs:integer"
+					minOccurs="0" />
+				<xs:element name="range" type="xs:integer" minOccurs="0" />
+				<xs:element name="rate_of_fire" type="xs:integer"
+					minOccurs="0" />
+				<xs:element name="vs_armor_bonus" type="bonusList"
+					minOccurs="0" />
+				<xs:element name="flags" type="flagsList" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
 
-	<xs:complexType name="nodeWeapon">
-		<xs:all>
-			<xs:element name="skill" type="xs:string" />
-			<xs:element name="description" type="xs:string" />
-			<xs:element name="flags" type="ptbs:storedFlags" minOccurs="0"/>
-			<xs:element name="miscelany_values" type="ptbs:storedValuehandlers" minOccurs="0"/>
+	<xs:complexType name="bonusList">
+		<xs:all minOccurs="0">
+			<xs:element name="bonus" type="armorTypeBonus" />
 		</xs:all>
-		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="armorTypeBonus">
+		<xs:all minOccurs="0">
+			<xs:element name="armor_type" type="armorType" />
+			<xs:element name="dice_bonus" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="armorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chain" />
+			<xs:enumeration value="leather" />
+			<xs:enumeration value="plate" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="flagsList">
+		<xs:all>
+			<xs:element name="break_enemy_on_draw" type="xs:boolean" />
+			<xs:element name="break_on_fumble" type="xs:boolean" />
+			<xs:element name="hits_back" type="xs:boolean" />
+			<xs:element name="ignores_shield" type="xs:boolean" />
+			<xs:element name="reduce_shield_to_roll" type="xs:boolean" />
+		</xs:all>
 	</xs:complexType>
 
 </xs:schema>

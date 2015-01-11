@@ -4,14 +4,14 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Equipment;
+import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class WeaponDocumentOutputProcessor implements
         JDOMDocumentOutputProcessor<Weapon> {
 
-    private final JDOMDocumentOutputProcessor<Equipment> builder = new EquipableItemDocumentOutputProcessor();
+    private final JDOMDocumentOutputProcessor<Item> builder = new EquipableItemDocumentOutputProcessor();
 
     public WeaponDocumentOutputProcessor() {
         super();

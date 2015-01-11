@@ -4,11 +4,11 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Equipment;
+import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
 
 public class EquipableItemDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<Equipment> {
+        JDOMDocumentOutputProcessor<Item> {
 
     public EquipableItemDocumentOutputProcessor() {
         super();
@@ -16,7 +16,7 @@ public class EquipableItemDocumentOutputProcessor implements
 
     @SuppressWarnings("null")
     @Override
-    public final Document process(final Equipment holder) {
+    public final Document process(final Item holder) {
         final Document doc;
         Element node;
 

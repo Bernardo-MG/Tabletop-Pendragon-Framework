@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<xs:element name="armor" type="ptbs:nodeItem"/>
+	<xs:element name="armor">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="type" type="armorType" />
+				<xs:element name="heavy" type="xs:boolean" />
+				<xs:element name="armor_value" type="xs:integer" />
+				<xs:element name="dexterity_modifier" type="xs:integer" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="armorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chain" />
+			<xs:enumeration value="leather" />
+			<xs:enumeration value="plate" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

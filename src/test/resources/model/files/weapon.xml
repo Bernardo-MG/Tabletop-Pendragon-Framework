@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weapon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../validation/weapon.xsd">
+	<name>test_weapon</name>
+	<skill>skill_1</skill>
+	<two_handed>false</two_handed>
+	<damage_bonus>11</damage_bonus>
+	<dice_bonus>22</dice_bonus>
+	<flags>
+		<break_enemy_on_draw>true</break_enemy_on_draw>
+		<break_on_fumble>false</break_on_fumble>
+		<hits_back>false</hits_back>
+		<ignores_shield>true</ignores_shield>
+		<reduce_shield_to_roll>false</reduce_shield_to_roll>
+	</flags>
+</weapon>
