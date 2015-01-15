@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.PassionDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -38,15 +38,16 @@ public final class ITReadPassionDocumentInputProcessor {
         modelService = TestServiceFactory.getInstance().getModelService();
 
         validationStreams = new LinkedList<>();
-        validationStreams.add(ResourceUtils
-                .getClassPathInputStream(FileConf.PASSIONS_VALIDATION));
+        validationStreams
+                .add(ResourceUtils
+                        .getClassPathInputStream(TestModelFileConf.PASSIONS_VALIDATION));
 
         processor = new PassionDocumentInputProcessor(modelService);
         parser = new JDOMSAXInputParser<Collection<Passion>>(
                 XMLValidationType.XSD, validationStreams, processor);
 
         passions = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.PASSIONS));
+                .getClassPathInputStream(TestModelFileConf.PASSIONS));
     }
 
     @Test

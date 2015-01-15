@@ -1,6 +1,6 @@
 package com.wandrell.tabletop.testing.pendragon.framework.framework.conf;
 
-public final class FileConf {
+public final class TestModelFileConf {
 
     public static final String ARMOR                   = "model/files/armor.xml";
     public static final String DIRECTED_TRAITS         = "model/files/directed-traits.xml";
@@ -12,6 +12,7 @@ public final class FileConf {
     public static final String LIST                    = "model/files/list.xml";
     public static final String PASSIONS                = "model/files/passions.xml";
     public static final String PASSIONS_VALIDATION     = "validation/pendragon-model-passion.xsd";
+    public static final String PET                     = "model/files/pet.xml";
     public static final String RELIGION                = "model/files/religion.xml";
     public static final String SHIELD                  = "model/files/shield.xml";
     public static final String SKILLS                  = "model/files/skills.xml";
@@ -22,7 +23,7 @@ public final class FileConf {
     public static final String WEAPON_DAMAGE_OVERRIDEN = "model/files/weapon-damage-overriden.xml";
     public static final String WEAPON_RANGED           = "model/files/weapon-ranged.xml";
 
-    private FileConf() {
+    private TestModelFileConf() {
         super();
     }
 

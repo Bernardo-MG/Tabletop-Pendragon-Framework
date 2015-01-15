@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.glory.FatherClassGloryDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -34,7 +34,7 @@ public final class ITReadFatherClassGloryDocumentInputProcessor {
         parser = new JDOMStAXInputParser<FatherClassGlory>(processor);
 
         glory = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.FATHER_CLASS_GLORY));
+                .getClassPathInputStream(TestModelFileConf.FATHER_CLASS_GLORY));
     }
 
     @Test

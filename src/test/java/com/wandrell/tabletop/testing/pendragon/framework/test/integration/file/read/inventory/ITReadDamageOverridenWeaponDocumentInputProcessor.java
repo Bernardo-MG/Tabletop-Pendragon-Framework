@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.inventory.WeaponDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -33,8 +33,9 @@ public final class ITReadDamageOverridenWeaponDocumentInputProcessor {
         processor = new WeaponDocumentInputProcessor(modelService);
         parser = new JDOMStAXInputParser<Weapon>(processor);
 
-        weapon = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.WEAPON_DAMAGE_OVERRIDEN));
+        weapon = parser
+                .read(ResourceUtils
+                        .getClassPathInputStream(TestModelFileConf.WEAPON_DAMAGE_OVERRIDEN));
     }
 
     @Test

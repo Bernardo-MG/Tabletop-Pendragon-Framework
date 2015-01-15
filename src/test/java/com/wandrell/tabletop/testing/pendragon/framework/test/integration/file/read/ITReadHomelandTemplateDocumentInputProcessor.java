@@ -9,7 +9,7 @@ import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.HomelandTemplateDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -36,7 +36,7 @@ public final class ITReadHomelandTemplateDocumentInputProcessor {
         parser = new JDOMStAXInputParser<HomelandTemplate>(processor);
 
         homeland = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.HOMELAND));
+                .getClassPathInputStream(TestModelFileConf.HOMELAND));
     }
 
     @Test

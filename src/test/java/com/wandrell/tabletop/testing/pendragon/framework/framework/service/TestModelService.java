@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
+import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
@@ -20,6 +21,8 @@ import com.wandrell.tabletop.business.model.pendragon.inventory.Money;
 import com.wandrell.tabletop.business.model.pendragon.inventory.RangedWeapon;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
+import com.wandrell.tabletop.business.model.pendragon.manor.AnimalYearResult;
+import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
 import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
@@ -31,6 +34,25 @@ import com.wandrell.tabletop.business.model.valuebox.EditableValueBox;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
 public final class TestModelService implements ModelService {
+
+    @Override
+    public final AnimalYearResult getAnimalYearResult(final String description,
+            final String puppy, final Boolean dies, final Integer libra,
+            final Integer denarii) {
+        final AnimalYearResult result;
+        final Money money;
+
+        result = Mockito.mock(AnimalYearResult.class);
+
+        money = getMoney(libra, denarii);
+
+        Mockito.when(result.getDescription()).thenReturn(description);
+        Mockito.when(result.getPuppy()).thenReturn(puppy);
+        Mockito.when(result.isDying()).thenReturn(dies);
+        Mockito.when(result.getMoney()).thenReturn(money);
+
+        return result;
+    }
 
     @Override
     public final Armor getArmor(final String name, final String description,
@@ -208,6 +230,19 @@ public final class TestModelService implements ModelService {
         Mockito.when(passion.isDescribed()).thenReturn(repeatable);
 
         return passion;
+    }
+
+    @Override
+    public final Pet getPet(final String name,
+            final IntervalTable<AnimalYearResult> yearResults) {
+        final Pet pet;
+
+        pet = Mockito.mock(Pet.class);
+
+        Mockito.when(pet.getName()).thenReturn(name);
+        Mockito.when(pet.getAnnualCheckMap()).thenReturn(yearResults);
+
+        return pet;
     }
 
     @Override

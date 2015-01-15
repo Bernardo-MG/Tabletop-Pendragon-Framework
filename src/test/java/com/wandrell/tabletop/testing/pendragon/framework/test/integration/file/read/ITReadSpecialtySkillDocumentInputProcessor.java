@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.SpecialtySkillDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -34,7 +34,7 @@ public final class ITReadSpecialtySkillDocumentInputProcessor {
         parser = new JDOMStAXInputParser<SpecialtySkill>(processor);
 
         skill = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.SPECIALTY_SKILL));
+                .getClassPathInputStream(TestModelFileConf.SPECIALTY_SKILL));
     }
 
     @Test

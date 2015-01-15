@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.DirectedTraitDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -37,7 +37,7 @@ public final class ITReadDirectedTraitDocumentInputProcessor {
         parser = new JDOMStAXInputParser<Collection<DirectedTrait>>(processor);
 
         traits = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.DIRECTED_TRAITS));
+                .getClassPathInputStream(TestModelFileConf.DIRECTED_TRAITS));
     }
 
     @Test

@@ -8,7 +8,7 @@ import com.wandrell.tabletop.business.model.pendragon.inventory.Armor;
 import com.wandrell.tabletop.business.model.pendragon.inventory.ArmorType;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.inventory.ArmorDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -35,7 +35,7 @@ public final class ITReadArmorDocumentInputProcessor {
         parser = new JDOMStAXInputParser<Armor>(processor);
 
         armor = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.ARMOR));
+                .getClassPathInputStream(TestModelFileConf.ARMOR));
     }
 
     @Test

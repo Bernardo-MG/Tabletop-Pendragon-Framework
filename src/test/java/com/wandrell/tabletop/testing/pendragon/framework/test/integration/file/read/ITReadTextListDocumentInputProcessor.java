@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.util.TextListDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -33,8 +33,8 @@ public final class ITReadTextListDocumentInputProcessor {
         processor = new TextListDocumentInputProcessor(modelService);
         parser = new JDOMStAXInputParser<TextList>(processor);
 
-        list = parser
-                .read(ResourceUtils.getClassPathInputStream(FileConf.LIST));
+        list = parser.read(ResourceUtils
+                .getClassPathInputStream(TestModelFileConf.LIST));
     }
 
     @Test

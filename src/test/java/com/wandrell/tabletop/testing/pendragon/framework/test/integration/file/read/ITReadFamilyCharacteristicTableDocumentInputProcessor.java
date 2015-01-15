@@ -14,7 +14,7 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacterist
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.FamilyCharacteristicTableDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -41,8 +41,9 @@ public final class ITReadFamilyCharacteristicTableDocumentInputProcessor {
                 modelService);
         parser = new JDOMStAXInputParser<FamilyCharacteristicTable>(processor);
 
-        table = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.FAMILY_CHARACTERISTIC));
+        table = parser
+                .read(ResourceUtils
+                        .getClassPathInputStream(TestModelFileConf.FAMILY_CHARACTERISTIC));
     }
 
     @Test

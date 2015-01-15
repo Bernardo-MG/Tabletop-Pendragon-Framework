@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.business.model.pendragon.chargen.ReligionTemplate;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.ReligionTemplateDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -31,7 +31,7 @@ public final class ITReadReligionTemplateDocumentInputProcessor {
         parser = new JDOMStAXInputParser<ReligionTemplate>(processor);
 
         religion = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.RELIGION));
+                .getClassPathInputStream(TestModelFileConf.RELIGION));
     }
 
     @Test

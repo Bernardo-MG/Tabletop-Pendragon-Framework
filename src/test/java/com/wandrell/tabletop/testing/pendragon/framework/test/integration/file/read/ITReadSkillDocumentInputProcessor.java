@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.SkillDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -39,14 +39,14 @@ public final class ITReadSkillDocumentInputProcessor {
 
         validationStreams = new LinkedList<>();
         validationStreams.add(ResourceUtils
-                .getClassPathInputStream(FileConf.SKILLS_VALIDATION));
+                .getClassPathInputStream(TestModelFileConf.SKILLS_VALIDATION));
 
         processor = new SkillDocumentInputProcessor(modelService);
         parser = new JDOMSAXInputParser<Collection<Skill>>(
                 XMLValidationType.XSD, validationStreams, processor);
 
         skills = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.SKILLS));
+                .getClassPathInputStream(TestModelFileConf.SKILLS));
     }
 
     @Test

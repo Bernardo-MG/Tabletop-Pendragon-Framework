@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.inventory.ItemDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -33,8 +33,8 @@ public final class ITReadItemDocumentInputProcessor {
         processor = new ItemDocumentInputProcessor(modelService);
         parser = new JDOMStAXInputParser<Item>(processor);
 
-        item = parser
-                .read(ResourceUtils.getClassPathInputStream(FileConf.ITEM));
+        item = parser.read(ResourceUtils
+                .getClassPathInputStream(TestModelFileConf.ITEM));
     }
 
     @Test

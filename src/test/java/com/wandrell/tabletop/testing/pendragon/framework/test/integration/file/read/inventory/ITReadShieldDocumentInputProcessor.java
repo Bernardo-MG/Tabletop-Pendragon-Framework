@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.inventory.ShieldDocumentInputProcessor;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.FileConf;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
@@ -34,7 +34,7 @@ public final class ITReadShieldDocumentInputProcessor {
         parser = new JDOMStAXInputParser<Shield>(processor);
 
         shield = parser.read(ResourceUtils
-                .getClassPathInputStream(FileConf.SHIELD));
+                .getClassPathInputStream(TestModelFileConf.SHIELD));
     }
 
     @Test
