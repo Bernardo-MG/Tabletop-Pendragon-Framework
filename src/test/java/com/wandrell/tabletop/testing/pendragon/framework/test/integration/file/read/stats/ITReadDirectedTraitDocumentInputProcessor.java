@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read;
+package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read.stats;
 
 import java.util.Collection;
 import java.util.Iterator;

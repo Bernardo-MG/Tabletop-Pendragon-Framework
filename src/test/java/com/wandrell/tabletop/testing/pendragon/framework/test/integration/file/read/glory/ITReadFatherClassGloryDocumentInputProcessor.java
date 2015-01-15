@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read;
+package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read.glory;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
