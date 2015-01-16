@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:element name="horse">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="race" type="xs:string" />
-				<xs:element name="attributes" type="ptbs:storedAttributes" />
-				<xs:element name="secondary_attributes" type="ptbs:storedSecondaryHorseAttributes" />
-				<xs:element name="flags" type="ptbs:storedFlags"
-					minOccurs="0" />
+				<xs:element name="type" type="xs:string" />
+				<xs:element name="natural_armor" type="xs:integer" />
+				<xs:element name="attributes" type="attributesList" />
+				<xs:element name="derived_attributes" type="derivedList" />
+				<xs:element name="flags" type="flagsList" />
 			</xs:all>
-			<xs:attribute name="name" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
+
+	<xs:complexType name="attributesList">
+		<xs:all>
+			<xs:element name="constitution" type="xs:integer" />
+			<xs:element name="dexterity" type="xs:integer" />
+			<xs:element name="size" type="xs:integer" />
+			<xs:element name="strength" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="derivedList">
+		<xs:all>
+			<xs:element name="damage" type="xs:integer" />
+			<xs:element name="movement_rate" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="flagsList">
+		<xs:all>
+			<xs:element name="armored" type="xs:boolean" />
+			<xs:element name="combat" type="xs:boolean" />
+			<xs:element name="hunting" type="xs:boolean" />
+		</xs:all>
+	</xs:complexType>
 
 </xs:schema>

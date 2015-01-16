@@ -8,6 +8,7 @@ public final class TestModelFileConf {
     public static final String FATHER_CLASS            = "model/files/father-class.xml";
     public static final String FATHER_CLASS_GLORY      = "model/files/father-glory.xml";
     public static final String HOMELAND                = "model/files/homeland.xml";
+    public static final String HORSE                   = "model/files/horse.xml";
     public static final String ITEM                    = "model/files/item.xml";
     public static final String LIST                    = "model/files/list.xml";
     public static final String PASSIONS                = "model/files/passions.xml";

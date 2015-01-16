@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
+import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
@@ -186,6 +187,35 @@ public final class TestModelService implements ModelService {
         Mockito.when(homeland.getPassions()).thenReturn(passions);
 
         return homeland;
+    }
+
+    @Override
+    public final HorseCharacter getHorse(final String type,
+            final Integer constitution, final Integer dexterity,
+            final Integer size, final Integer strength, final Integer damage,
+            final Integer movement, final Integer armor, final Boolean armored,
+            final Boolean combat, final Boolean hunting) {
+        final HorseCharacter horse;
+
+        horse = Mockito.mock(HorseCharacter.class);
+
+        Mockito.when(horse.getHorseType()).thenReturn(type);
+
+        Mockito.when(horse.getConstitution()).thenReturn(constitution);
+        Mockito.when(horse.getDexterity()).thenReturn(dexterity);
+        Mockito.when(horse.getSize()).thenReturn(size);
+        Mockito.when(horse.getStrength()).thenReturn(strength);
+
+        Mockito.when(horse.getDamage()).thenReturn(damage);
+        Mockito.when(horse.getMovementRate()).thenReturn(movement);
+
+        Mockito.when(horse.getNaturalArmor()).thenReturn(armor);
+
+        Mockito.when(horse.isArmored()).thenReturn(armored);
+        Mockito.when(horse.isCombatHorse()).thenReturn(combat);
+        Mockito.when(horse.isHuntingHorse()).thenReturn(hunting);
+
+        return horse;
     }
 
     @Override
