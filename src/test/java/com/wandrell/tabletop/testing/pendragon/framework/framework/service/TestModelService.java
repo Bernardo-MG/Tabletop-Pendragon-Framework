@@ -24,8 +24,6 @@ import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.tabletop.business.model.pendragon.manor.AnimalYearResult;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
-import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
-import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
@@ -73,17 +71,6 @@ public final class TestModelService implements ModelService {
         Mockito.when(armor.isHeavyLoad()).thenReturn(heavyLoad);
 
         return armor;
-    }
-
-    @Override
-    public final DirectedTrait getDirectedTrait(final String name) {
-        final DirectedTrait trait;
-
-        trait = Mockito.mock(DirectedTrait.class);
-
-        Mockito.when(trait.getName()).thenReturn(name);
-
-        return trait;
     }
 
     @Override
@@ -246,20 +233,6 @@ public final class TestModelService implements ModelService {
         Mockito.when(money.getLibra()).thenReturn(libraValue);
 
         return money;
-    }
-
-    @Override
-    public final Passion getPassion(final String name, final String descriptor,
-            final Boolean repeatable) {
-        final Passion passion;
-
-        passion = Mockito.mock(Passion.class);
-
-        Mockito.when(passion.getName()).thenReturn(name);
-        Mockito.when(passion.getDescriptor()).thenReturn(descriptor);
-        Mockito.when(passion.isDescribed()).thenReturn(repeatable);
-
-        return passion;
     }
 
     @Override

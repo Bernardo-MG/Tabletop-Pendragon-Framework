@@ -7,11 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
-import com.wandrell.tabletop.business.service.pendragon.ModelService;
+import com.wandrell.tabletop.business.model.valuebox.SkillBox;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.DirectedTraitDocumentInputProcessor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
@@ -19,7 +17,7 @@ import com.wandrell.util.parser.xml.input.JDOMStAXInputParser;
 
 public final class ITReadDirectedTraitDocumentInputProcessor {
 
-    private Collection<DirectedTrait> traits;
+    private Collection<SkillBox> traits;
 
     public ITReadDirectedTraitDocumentInputProcessor() {
         super();
@@ -27,14 +25,11 @@ public final class ITReadDirectedTraitDocumentInputProcessor {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final InputParser<Collection<DirectedTrait>> parser;
-        final JDOMDocumentInputProcessor<Collection<DirectedTrait>> processor;
-        final ModelService modelService;
+        final InputParser<Collection<SkillBox>> parser;
+        final JDOMDocumentInputProcessor<Collection<SkillBox>> processor;
 
-        modelService = TestServiceFactory.getInstance().getModelService();
-
-        processor = new DirectedTraitDocumentInputProcessor(modelService);
-        parser = new JDOMStAXInputParser<Collection<DirectedTrait>>(processor);
+        processor = new DirectedTraitDocumentInputProcessor();
+        parser = new JDOMStAXInputParser<Collection<SkillBox>>(processor);
 
         traits = parser.read(ResourceUtils
                 .getClassPathInputStream(TestModelFileConf.DIRECTED_TRAITS));
@@ -42,8 +37,8 @@ public final class ITReadDirectedTraitDocumentInputProcessor {
 
     @Test
     public final void testDirectedTraits() {
-        final Iterator<DirectedTrait> itr;
-        DirectedTrait trait;
+        final Iterator<SkillBox> itr;
+        SkillBox trait;
 
         Assert.assertEquals(traits.size(), 2);
 

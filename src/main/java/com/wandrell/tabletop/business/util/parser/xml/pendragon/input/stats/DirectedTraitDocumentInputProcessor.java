@@ -7,41 +7,33 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
-import com.wandrell.tabletop.business.model.pendragon.stats.DirectedTrait;
-import com.wandrell.tabletop.business.service.pendragon.ModelService;
+import com.wandrell.tabletop.business.model.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.business.model.valuebox.SkillBox;
 import com.wandrell.util.parser.xml.input.JDOMDocumentInputProcessor;
 
 public final class DirectedTraitDocumentInputProcessor implements
-        JDOMDocumentInputProcessor<Collection<DirectedTrait>> {
+        JDOMDocumentInputProcessor<Collection<SkillBox>> {
 
-    private final ModelService modelService;
-
-    public DirectedTraitDocumentInputProcessor(final ModelService service) {
+    public DirectedTraitDocumentInputProcessor() {
         super();
-
-        modelService = service;
     }
 
     @Override
-    public final Collection<DirectedTrait> process(final Document doc) {
-        final Collection<DirectedTrait> traits;
-        DirectedTrait trait;
+    public final Collection<SkillBox> process(final Document doc) {
+        final Collection<SkillBox> traits;
+        SkillBox trait;
         String name;
 
         traits = new LinkedList<>();
         for (final Element node : doc.getRootElement().getChildren()) {
             name = node.getChildText(ModelXMLConf.NAME);
 
-            trait = getModelService().getDirectedTrait(name);
+            trait = new DefaultSkillBox(name, 0, 0, Integer.MAX_VALUE);
 
             traits.add(trait);
         }
 
         return traits;
-    }
-
-    private final ModelService getModelService() {
-        return modelService;
     }
 
 }

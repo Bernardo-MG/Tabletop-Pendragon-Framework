@@ -9,11 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.business.model.pendragon.stats.Passion;
-import com.wandrell.tabletop.business.service.pendragon.ModelService;
+import com.wandrell.tabletop.business.model.valuebox.SkillBox;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.PassionDocumentInputProcessor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
-import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 import com.wandrell.util.parser.InputParser;
 import com.wandrell.util.parser.xml.XMLValidationType;
@@ -22,7 +20,7 @@ import com.wandrell.util.parser.xml.input.JDOMSAXInputParser;
 
 public final class ITReadPassionDocumentInputProcessor {
 
-    private Collection<Passion> passions;
+    private Collection<SkillBox> passions;
 
     public ITReadPassionDocumentInputProcessor() {
         super();
@@ -30,20 +28,17 @@ public final class ITReadPassionDocumentInputProcessor {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final InputParser<Collection<Passion>> parser;
-        final JDOMDocumentInputProcessor<Collection<Passion>> processor;
-        final ModelService modelService;
+        final InputParser<Collection<SkillBox>> parser;
+        final JDOMDocumentInputProcessor<Collection<SkillBox>> processor;
         final Collection<InputStream> validationStreams;
-
-        modelService = TestServiceFactory.getInstance().getModelService();
 
         validationStreams = new LinkedList<>();
         validationStreams
                 .add(ResourceUtils
                         .getClassPathInputStream(TestModelFileConf.PASSIONS_VALIDATION));
 
-        processor = new PassionDocumentInputProcessor(modelService);
-        parser = new JDOMSAXInputParser<Collection<Passion>>(
+        processor = new PassionDocumentInputProcessor();
+        parser = new JDOMSAXInputParser<Collection<SkillBox>>(
                 XMLValidationType.XSD, validationStreams, processor);
 
         passions = parser.read(ResourceUtils
@@ -52,8 +47,8 @@ public final class ITReadPassionDocumentInputProcessor {
 
     @Test
     public final void testSkills() {
-        final Iterator<Passion> itr;
-        Passion passion;
+        final Iterator<SkillBox> itr;
+        SkillBox passion;
 
         Assert.assertEquals(passions.size(), 2);
 
