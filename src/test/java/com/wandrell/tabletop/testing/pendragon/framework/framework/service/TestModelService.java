@@ -9,6 +9,8 @@ import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
+import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
@@ -28,11 +30,52 @@ import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.model.pendragon.util.TextList;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
-import com.wandrell.tabletop.business.model.valuebox.DefaultEditableValueBox;
-import com.wandrell.tabletop.business.model.valuebox.EditableValueBox;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 
 public final class TestModelService implements ModelService {
+
+    @Override
+    public final AdditionalBelongings getAdditionaBelongings(
+            final Boolean choose, final String moneyName, final Integer libra,
+            final Integer denarii, final String rerollTable,
+            final Collection<Dice> dice,
+            final Collection<HorseCharacter> horses,
+            final Collection<Item> items, final Collection<Pet> pets,
+            final Collection<Shield> shields, final Collection<Weapon> weapons) {
+        final AdditionalBelongings belongings;
+        final Money money;
+
+        belongings = Mockito.mock(AdditionalBelongings.class);
+
+        money = getMoney(libra, denarii);
+
+        Mockito.when(belongings.hasToChoose()).thenReturn(choose);
+        Mockito.when(belongings.getMoney()).thenReturn(money);
+        Mockito.when(belongings.getMoneyName()).thenReturn(moneyName);
+        Mockito.when(belongings.getRerollTable()).thenReturn(rerollTable);
+        Mockito.when(belongings.getRerolls()).thenReturn(dice);
+        Mockito.when(belongings.getHorses()).thenReturn(horses);
+        Mockito.when(belongings.getItems()).thenReturn(items);
+        Mockito.when(belongings.getPets()).thenReturn(pets);
+        Mockito.when(belongings.getShields()).thenReturn(shields);
+        Mockito.when(belongings.getWeapons()).thenReturn(weapons);
+
+        return belongings;
+    }
+
+    @Override
+    public final AdditionalBelongingsTable getAdditionalBelongingsTable(
+            final String name,
+            final Map<Interval, AdditionalBelongings> intervalsMap) {
+        final AdditionalBelongingsTable table;
+
+        table = Mockito.mock(AdditionalBelongingsTable.class);
+
+        Mockito.when(table.getName()).thenReturn(name);
+        Mockito.when(table.getIntervals()).thenReturn(intervalsMap);
+
+        return table;
+    }
 
     @Override
     public final AnimalYearResult getAnimalYearResult(final String description,
@@ -218,19 +261,13 @@ public final class TestModelService implements ModelService {
     }
 
     @Override
-    public final Money getMoney(final Integer denarii, final Integer libra) {
+    public final Money getMoney(final Integer libra, final Integer denarii) {
         final Money money;
-        final EditableValueBox denariiValue;
-        final EditableValueBox libraValue;
 
         money = Mockito.mock(Money.class);
 
-        denariiValue = new DefaultEditableValueBox(denarii, 0,
-                Integer.MAX_VALUE);
-        libraValue = new DefaultEditableValueBox(libra, 0, Integer.MAX_VALUE);
-
-        Mockito.when(money.getDenarii()).thenReturn(denariiValue);
-        Mockito.when(money.getLibra()).thenReturn(libraValue);
+        Mockito.when(money.getDenarii()).thenReturn(denarii);
+        Mockito.when(money.getLibra()).thenReturn(libra);
 
         return money;
     }
