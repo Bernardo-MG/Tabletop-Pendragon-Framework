@@ -61,7 +61,7 @@ public final class ITReadPassionDocumentInputProcessor {
 
         passion = itr.next();
         Assert.assertEquals(passion.getName(), "passion_2");
-        Assert.assertEquals(passion.getDescriptor(), null);
+        Assert.assertEquals(passion.getDescriptor(), "");
         Assert.assertEquals(passion.isDescribed(), (Boolean) false);
     }
 

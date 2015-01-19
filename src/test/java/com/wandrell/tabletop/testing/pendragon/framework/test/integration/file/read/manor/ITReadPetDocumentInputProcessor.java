@@ -77,8 +77,8 @@ public final class ITReadPetDocumentInputProcessor {
         Assert.assertEquals(pet.getAnnualCheckMap().getValue(20), result);
         Assert.assertEquals(result.getDescription(), "description_4");
         Assert.assertEquals(result.getPuppy(), "");
-        Assert.assertEquals(result.getMoney().getDenarii(), (Integer) 11);
-        Assert.assertEquals(result.getMoney().getLibra(), (Integer) 22);
+        Assert.assertEquals(result.getMoney().getLibra(), (Integer) 11);
+        Assert.assertEquals(result.getMoney().getDenarii(), (Integer) 22);
         Assert.assertTrue(!result.isDying());
     }
 

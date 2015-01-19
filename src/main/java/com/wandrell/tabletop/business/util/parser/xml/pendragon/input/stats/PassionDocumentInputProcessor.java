@@ -28,10 +28,14 @@ public final class PassionDocumentInputProcessor implements
         passions = new LinkedList<>();
         for (final Element node : doc.getRootElement().getChildren()) {
             name = node.getChildText(ModelXMLConf.NAME);
-            descriptor = node.getChildText(ModelXMLConf.DESCRIPTOR);
 
-            passion = new DefaultSkillBox(name, descriptor, 0, 0,
-                    Integer.MAX_VALUE);
+            if (node.getChild(ModelXMLConf.DESCRIPTOR) == null) {
+                passion = new DefaultSkillBox(name, 0, 0, Integer.MAX_VALUE);
+            } else {
+                descriptor = node.getChildText(ModelXMLConf.DESCRIPTOR);
+                passion = new DefaultSkillBox(name, descriptor, 0, 0,
+                        Integer.MAX_VALUE);
+            }
 
             passions.add(passion);
         }
