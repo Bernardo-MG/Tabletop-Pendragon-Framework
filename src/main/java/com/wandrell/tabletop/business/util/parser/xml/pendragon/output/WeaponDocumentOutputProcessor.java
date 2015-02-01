@@ -1,35 +1,20 @@
 package com.wandrell.tabletop.business.util.parser.xml.pendragon.output;
 
 import org.jdom2.Document;
-import org.jdom2.Element;
 
-import com.wandrell.tabletop.business.conf.pendragon.FileToken;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
-import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
+import com.wandrell.util.parser.xml.output.JDOMDocumentEncoder;
 
 public class WeaponDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<Weapon> {
-
-    private final JDOMDocumentOutputProcessor<Item> builder = new EquipableItemDocumentOutputProcessor();
+        JDOMDocumentEncoder<Weapon> {
 
     public WeaponDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final Weapon holder) {
-        final Document doc;
-        Element node;
-
-        doc = builder.process(holder);
-
-        node = new Element(FileToken.SKILL);
-        node.setText(holder.getSkill());
-
-        doc.getRootElement().setName(FileToken.WEAPON);
-
-        return doc;
+    public final Document encode(final Weapon holder) {
+        return null;
     }
 
 }

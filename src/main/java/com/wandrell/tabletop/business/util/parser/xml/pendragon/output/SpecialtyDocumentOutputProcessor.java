@@ -5,17 +5,17 @@ import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
-import com.wandrell.util.parser.xml.output.JDOMDocumentOutputProcessor;
+import com.wandrell.util.parser.xml.output.JDOMDocumentEncoder;
 
 public class SpecialtyDocumentOutputProcessor implements
-        JDOMDocumentOutputProcessor<SpecialtySkill> {
+        JDOMDocumentEncoder<SpecialtySkill> {
 
     public SpecialtyDocumentOutputProcessor() {
         super();
     }
 
     @Override
-    public final Document process(final SpecialtySkill holder) {
+    public final Document encode(final SpecialtySkill holder) {
         final Document doc;
         Element element;
 

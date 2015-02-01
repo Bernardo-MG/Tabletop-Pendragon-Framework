@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.wandrell.data.repository.Repository;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.util.repository.Repository;
 
 public final class TestHorseRepository implements Repository<HorseCharacter> {
 

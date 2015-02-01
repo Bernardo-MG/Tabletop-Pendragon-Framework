@@ -1,6 +1,5 @@
 package com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory;
 
-import com.wandrell.data.repository.Repository;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
@@ -13,6 +12,7 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.repository.Te
 import com.wandrell.tabletop.testing.pendragon.framework.framework.repository.TestShieldRepository;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.repository.TestWeaponRepository;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.service.TestModelService;
+import com.wandrell.util.repository.Repository;
 
 public final class TestServiceFactory {
 

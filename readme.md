@@ -1,40 +1,52 @@
-## Tabletop's Pendragon Framework library
+# Tabletop's Pendragon Framework library
 Default implementation of the Pendragon's Framework API extension for the library for the Tabletop project.
 
-### Version
-The project is still under development, so expect a certain degree of instability. Class paths and names may change, and classes keep receiving enhancements which make them change with frequency.
+### Webpage
+Currently the project has no webpage.
 
-## Building
-The application was coded using Java, and dependencies are handled through Maven.
+#### Documentation webpage
+The project has a [Maven site][] and [Javadoc page][] with the information from the
+latest release.
 
-### JDK
-Coded with JDK 7.
+### Status
+The project is still under development, so expect a certain degree of volatility.
 
-### Dependencies
-All dependencies are handled through Maven, and noted on the pom file.
+Still, it is mostly stable, and classpath or name changes should be infrequent, but classes may be added or removed without warning.
 
-But currently my projects lack a Maven repository, and so can't be handled automatically by this application.
+#### Issues management
+Issues are managed at the GitHub [project issues page][].
 
-The list of projects which need to be manually downloaded and installed are:
-* [Wandrell's Core library][]
-* [Wandrell's Framework library][]
-* [Tabletop API library][]
-* [Tabletop Core library][]
-* [Tabletop's Pendragon API library][]
-* [Tabletop's Pendragon Core library][]
-* [Tabletop's Pendragon Framework API library][]
+## Building the code
+The application is coded in Java, using Maven to handle the project's configuration and tests.
+
+### Prerequisites
+Requires JDK 8.
+
+All other dependencies are handled through Maven, and noted in the included POM file.
 
 ### Getting the code
-The GitHub project is found at http://github.com/Bernardo-MG/Tabletop-Pendragon-Framework, and it includes the git clone uri.
+The code can be found at the GitHub [project page][].
+
+To acquire it through Git use the following clone URI:
+
+`git clone https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework.git`
+
+#### Repository
+Releases can be found in the [releases repository][] on Bintray.
+
+It can be added to Maven as a repository using the following URI:
+`http://dl.bintray.com/bernardo-mg/maven`
+
+## Continuous integration
+The continuous integration information can be found at the [project CI page][] based on Travis CI.
 
 ## License
 The project is released under version 2.0 of the [Apache License][].
 
 [Apache License]: http://www.apache.org/licenses/LICENSE-2.0
-[Tabletop API library]: http://github.com/Bernardo-MG/Tabletop-API
-[Tabletop Core library]: http://github.com/Bernardo-MG/Tabletop-Core
-[Tabletop's Pendragon API library]: http://github.com/Bernardo-MG/Tabletop-Pendragon-API
-[Tabletop's Pendragon Core library]: http://github.com/Bernardo-MG/Tabletop-Pendragon-Core
-[Tabletop's Pendragon Framework API library]: http://github.com/Bernardo-MG/Tabletop-Pendragon-Framework-API
-[Wandrell's Core library]: http://github.com/Bernardo-MG/Wandrell-Core
-[Wandrell's Framework library]: http://github.com/Bernardo-MG/Wandrell-Framework
+[Javadoc page]: http://docs.wandrell.com/maven/tabletop-pendragon-framework/apidocs
+[Maven site]: http://docs.wandrell.com/maven/tabletop-pendragon-framework
+[project CI page]: https://travis-ci.org/Bernardo-MG/Tabletop-Pendragon-Framework
+[project issues page]: https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework/issues
+[project page]: http://github.com/Bernardo-MG/Tabletop-Pendragon-Framework
+[releases repository]: http://dl.bintray.com/bernardo-mg/tabletop-pendragon-framework
