@@ -11,6 +11,8 @@ import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureCharacterTemplate;
+import com.wandrell.tabletop.business.model.pendragon.chargen.CultureTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
@@ -117,6 +119,61 @@ public final class TestModelService implements ModelService {
     }
 
     @Override
+    public final CultureCharacterTemplate getCultureCharacterTemplate(
+            final Map<String, Integer> attributesBonus,
+            final Map<String, Dice> attributesRandom,
+            final Map<NameAndDescriptor, Integer> skillsBonus,
+            final Map<String, Integer> specialtySkills,
+            final Map<NameAndDescriptor, Integer> passionsBonus,
+            final Map<NameAndDescriptor, Dice> passionsRandom,
+            final Map<NameAndDescriptor, Integer> directedBonus,
+            final Map<String, Integer> traits) {
+        final CultureCharacterTemplate template;
+
+        template = Mockito.mock(CultureCharacterTemplate.class);
+
+        Mockito.when(template.getAttributes()).thenReturn(attributesBonus);
+        Mockito.when(template.getAttributesRandom()).thenReturn(
+                attributesRandom);
+        Mockito.when(template.getDirectedTraits()).thenReturn(directedBonus);
+        Mockito.when(template.getPassions()).thenReturn(passionsBonus);
+        Mockito.when(template.getPassionsRandom()).thenReturn(passionsRandom);
+        Mockito.when(template.getSkills()).thenReturn(skillsBonus);
+        Mockito.when(template.getSpecialtySkills()).thenReturn(specialtySkills);
+        Mockito.when(template.getTraits()).thenReturn(traits);
+
+        return template;
+    }
+
+    @Override
+    public final CultureTemplate getCultureTemplate(final String name,
+            final FamilyCharacteristicTemplate charMale,
+            final FamilyCharacteristicTemplate charFemale,
+            final AdditionalBelongingsTable belonginsMale,
+            final AdditionalBelongingsTable belonginsFemale,
+            final CultureCharacterTemplate templateMale,
+            final CultureCharacterTemplate templateFemale) {
+        final CultureTemplate template;
+
+        template = Mockito.mock(CultureTemplate.class);
+
+        Mockito.when(template.getName()).thenReturn(name);
+
+        Mockito.when(template.getFemaleFamilyCharacteristic()).thenReturn(
+                charFemale);
+        Mockito.when(template.getMaleFamilyCharacteristic()).thenReturn(
+                charMale);
+        Mockito.when(template.getMaleInitialLuckTable()).thenReturn(
+                belonginsMale);
+        Mockito.when(template.getFemaleInitialLuckTable()).thenReturn(
+                belonginsFemale);
+        Mockito.when(template.getMaleTemplate()).thenReturn(templateMale);
+        Mockito.when(template.getFemaleTemplate()).thenReturn(templateFemale);
+
+        return template;
+    }
+
+    @Override
     public final FamilyCharacteristicTable getFamilyCharacteristicTable(
             final String name,
             final Map<Interval, FamilyCharacteristicTemplate> intervals) {
@@ -139,7 +196,7 @@ public final class TestModelService implements ModelService {
         template = Mockito.mock(FamilyCharacteristicTemplate.class);
 
         Mockito.when(template.getAttributes()).thenReturn(attributes);
-        Mockito.when(template.getFamilyCharacteristic()).thenReturn(name);
+        Mockito.when(template.getName()).thenReturn(name);
         Mockito.when(template.getSkills()).thenReturn(skills);
 
         return template;

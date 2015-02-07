@@ -1,21 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ptbs="http://www.ptb.org/XMLValidation">
-	<xs:import schemaLocation="PTBValidation.xsd"
-		namespace="http://www.ptb.org/XMLValidation" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:element name="culture">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="selectors_files" type="ptbs:storedTextPairs"
-					minOccurs="0" />
-				<xs:element name="template_female" type="ptbs:templateCulture" />
-				<xs:element name="template_male" type="ptbs:templateCulture" />
-				<xs:element name="template_female_random" type="ptbs:templateCultureRandom" />
-				<xs:element name="template_male_random" type="ptbs:templateCultureRandom" />
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="family_characteristic" type="genderPair" />
+				<xs:element name="initial_luck" type="genderPair" />
+				<xs:element name="template" type="templateBaseGenders" />
 			</xs:all>
-			<xs:attribute name="name" type="xs:token" use="required" />
 		</xs:complexType>
 	</xs:element>
+
+	<xs:complexType name="genderPair">
+		<xs:all>
+			<xs:element name="female" type="xs:token" />
+			<xs:element name="male" type="xs:token" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="templateBaseGenders">
+		<xs:all>
+			<xs:element name="female" type="templateBase" />
+			<xs:element name="male" type="templateBase" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="templateBase">
+		<xs:all>
+			<xs:element name="attributes_bonus" type="attributesBonus" />
+			<xs:element name="attributes_random" type="attributesRandom" />
+			<xs:element name="traits_bonus" type="traitsBonus" />
+			<xs:element name="skills_bonus" type="skillsBonus" />
+			<xs:element name="specialty_skills" type="specialtySkills" />
+			<xs:element name="passions_bonus" type="passionsBonus" />
+			<xs:element name="passions_random" type="passionsRandom" />
+			<xs:element name="directed_traits_bonus" type="directedTraitsBonus" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="attributesBonus">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="attribute" type="characteristic" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="attributesRandom">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="attribute" type="characteristicRandom" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="traitsBonus">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="trait" type="characteristic" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passionsBonus">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="passion" type="skill" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passionsRandom">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="passion" type="skillRandom" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="skillsBonus">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="skill" type="skill" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="specialtySkills">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="specialty_skill" type="characteristic" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="directedTraitsBonus">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="directed_trait" type="skill" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="characteristic">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="characteristicRandom">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="value" type="xs:token" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="skill">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="descriptor" type="xs:token" minOccurs="0" />
+			<xs:element name="value" type="xs:integer" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="skillRandom">
+		<xs:all>
+			<xs:element name="name" type="xs:token" />
+			<xs:element name="descriptor" type="xs:token" minOccurs="0" />
+			<xs:element name="value" type="xs:token" />
+		</xs:all>
+	</xs:complexType>
 
 </xs:schema>

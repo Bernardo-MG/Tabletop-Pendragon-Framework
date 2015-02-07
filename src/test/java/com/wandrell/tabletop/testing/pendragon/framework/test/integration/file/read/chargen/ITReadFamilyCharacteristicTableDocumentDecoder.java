@@ -54,8 +54,7 @@ public final class ITReadFamilyCharacteristicTableDocumentDecoder {
 
         familyChar = table.getIntervals().values().iterator().next();
 
-        Assert.assertEquals(familyChar.getFamilyCharacteristic(),
-                "characteristic_1");
+        Assert.assertEquals(familyChar.getName(), "characteristic_1");
 
         Assert.assertEquals(familyChar.getAttributes().size(), 0);
 
@@ -90,8 +89,7 @@ public final class ITReadFamilyCharacteristicTableDocumentDecoder {
         itrValues.next();
         familyChar = itrValues.next();
 
-        Assert.assertEquals(familyChar.getFamilyCharacteristic(),
-                "characteristic_2");
+        Assert.assertEquals(familyChar.getName(), "characteristic_2");
 
         Assert.assertEquals(familyChar.getAttributes().size(), 1);
 

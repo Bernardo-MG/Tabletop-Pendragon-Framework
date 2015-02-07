@@ -1,6 +1,5 @@
 package com.wandrell.tabletop.testing.pendragon.framework.test.integration.file.read.stats;
 
-import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -32,7 +31,6 @@ public final class ITReadSkillDocumentDecoder {
         final InputParser<Collection<Skill>> parser;
         final JDOMDocumentDecoder<Collection<Skill>> processor;
         final ModelService modelService;
-        final Collection<InputStream> validationStreams;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 

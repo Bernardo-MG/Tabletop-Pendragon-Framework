@@ -4,6 +4,7 @@ public final class TestModelFileConf {
 
     public static final String ADDITIONAL_BELONGINGS   = "model/files/additional-belongings.xml";
     public static final String ARMOR                   = "model/files/armor.xml";
+    public static final String CULTURE                 = "model/files/culture.xml";
     public static final String DIRECTED_TRAITS         = "model/files/directed-traits.xml";
     public static final String FAMILY_CHARACTERISTIC   = "model/files/family-characteristic.xml";
     public static final String FATHER_CLASS            = "model/files/father-class.xml";
