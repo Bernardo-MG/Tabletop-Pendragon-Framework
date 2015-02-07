@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.glory;
+package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen;
 
 import org.jdom2.Document;
 import org.jdom2.Element;

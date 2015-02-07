@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.business.model.pendragon.glory.FatherClassGlory;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.glory.FatherClassGloryDocumentDecoder;
+import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.FatherClassGloryDocumentDecoder;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
