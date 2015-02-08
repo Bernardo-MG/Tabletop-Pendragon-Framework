@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Directed Traits model XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="directed_traits">
 		<xs:complexType>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">

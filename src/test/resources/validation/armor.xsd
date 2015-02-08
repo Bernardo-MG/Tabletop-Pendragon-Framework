@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Armor XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="armor">
 		<xs:complexType>
 			<xs:all>
@@ -13,6 +19,11 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- ************************************************************ -->
+	<!-- ************************** ENUMS *************************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Allowed armor types -->
 	<xs:simpleType name="armorType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="chain" />

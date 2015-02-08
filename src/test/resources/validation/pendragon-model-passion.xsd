@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Passions model XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="passions">
 		<xs:complexType>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -21,7 +27,8 @@
 			<xs:element name="descriptor" type="xs:token" maxOccurs="1"
 				minOccurs="0" />
 		</xs:sequence>
-		<xs:attribute name="repeatable" type="xs:boolean" default="false" />
+		<xs:attribute name="repeatable" type="xs:boolean"
+			default="false" />
 	</xs:complexType>
 
 </xs:schema>

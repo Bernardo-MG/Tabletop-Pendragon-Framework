@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.character.HorseDocumentDecoder;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -16,7 +16,7 @@ import com.wandrell.util.parser.xml.input.StAXInputParser;
 
 public final class ITReadHorseDocumentDecoder {
 
-    private HorseCharacter horse;
+    private Horse horse;
 
     public ITReadHorseDocumentDecoder() {
         super();
@@ -24,14 +24,14 @@ public final class ITReadHorseDocumentDecoder {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final InputParser<HorseCharacter> parser;
-        final JDOMDocumentDecoder<HorseCharacter> decoder;
+        final InputParser<Horse> parser;
+        final JDOMDocumentDecoder<Horse> decoder;
         final ModelService modelService;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
         decoder = new HorseDocumentDecoder(modelService);
-        parser = new StAXInputParser<HorseCharacter>(decoder);
+        parser = new StAXInputParser<Horse>(decoder);
 
         horse = parser.read(ResourceUtils
                 .getClassPathInputStream(TestModelFileConf.HORSE));

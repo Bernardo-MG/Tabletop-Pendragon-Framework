@@ -4,12 +4,11 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
-public class HorseDocumentDecoder implements
-        JDOMDocumentDecoder<HorseCharacter> {
+public class HorseDocumentDecoder implements JDOMDocumentDecoder<Horse> {
 
     private final ModelService modelService;
 
@@ -20,7 +19,7 @@ public class HorseDocumentDecoder implements
     }
 
     @Override
-    public final HorseCharacter decode(final Document doc) {
+    public final Horse decode(final Document doc) {
         final Element root;
         final Element attributesNode;
         final Element derivedNode;

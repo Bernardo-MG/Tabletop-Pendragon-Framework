@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.interval.IntervalTable;
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.CultureCharacterTemplate;
@@ -40,8 +40,7 @@ public final class TestModelService implements ModelService {
     public final AdditionalBelongings getAdditionaBelongings(
             final Boolean choose, final String moneyName, final Integer libra,
             final Integer denarii, final String rerollTable,
-            final Collection<Dice> dice,
-            final Collection<HorseCharacter> horses,
+            final Collection<Dice> dice, final Collection<Horse> horses,
             final Collection<Item> items, final Collection<Pet> pets,
             final Collection<Shield> shields, final Collection<Weapon> weapons) {
         final AdditionalBelongings belongings;
@@ -277,14 +276,14 @@ public final class TestModelService implements ModelService {
     }
 
     @Override
-    public final HorseCharacter getHorse(final String type,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength, final Integer damage,
+    public final Horse getHorse(final String type, final Integer constitution,
+            final Integer dexterity, final Integer size,
+            final Integer strength, final Integer damage,
             final Integer movement, final Integer armor, final Boolean armored,
             final Boolean combat, final Boolean hunting) {
-        final HorseCharacter horse;
+        final Horse horse;
 
-        horse = Mockito.mock(HorseCharacter.class);
+        horse = Mockito.mock(Horse.class);
 
         Mockito.when(horse.getHorseType()).thenReturn(type);
 

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.Interval;
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
@@ -39,7 +39,7 @@ public final class ITReadAdditionalBelongingsTableDocumentDecoder {
         final JDOMDocumentDecoder<AdditionalBelongingsTable> decoder;
         final TestServiceFactory factory;
         final ModelService modelService;
-        final Repository<HorseCharacter> horseRepository;
+        final Repository<Horse> horseRepository;
         final Repository<Item> itemRepository;
         final Repository<Pet> petRepository;
         final Repository<Shield> shieldRepository;
@@ -264,7 +264,7 @@ public final class ITReadAdditionalBelongingsTableDocumentDecoder {
     public final void testAdditionalBelongings_Third() {
         final AdditionalBelongings belongings;
         final Iterator<AdditionalBelongings> itrValues;
-        final Iterator<HorseCharacter> itrHorse;
+        final Iterator<Horse> itrHorse;
 
         itrValues = table.getIntervals().values().iterator();
         itrValues.next();

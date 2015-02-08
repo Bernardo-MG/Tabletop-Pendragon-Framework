@@ -5,33 +5,21 @@
 	<year_results_table>
 		<year_result>
 			<description>description_1</description>
-			<interval>
-				<lower_limit>1</lower_limit>
-				<upper_limit>5</upper_limit>
-			</interval>
+			<lower_limit>1</lower_limit>
 		</year_result>
 		<year_result>
 			<description>description_2</description>
-			<interval>
-				<lower_limit>6</lower_limit>
-				<upper_limit>10</upper_limit>
-			</interval>
+			<lower_limit>6</lower_limit>
 			<puppy_name>puppy_1</puppy_name>
 		</year_result>
 		<year_result>
 			<description>description_3</description>
-			<interval>
-				<lower_limit>11</lower_limit>
-				<upper_limit>12</upper_limit>
-			</interval>
+			<lower_limit>11</lower_limit>
 			<dies>true</dies>
 		</year_result>
 		<year_result>
 			<description>description_4</description>
-			<interval>
-				<lower_limit>13</lower_limit>
-				<upper_limit>20</upper_limit>
-			</interval>
+			<lower_limit>13</lower_limit>
 			<money>
 				<libra>11</libra>
 				<denarii>22</denarii>

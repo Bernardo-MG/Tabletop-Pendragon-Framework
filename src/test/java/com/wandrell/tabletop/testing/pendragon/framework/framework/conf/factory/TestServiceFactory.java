@@ -2,7 +2,7 @@ package com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory
 
 import java.util.LinkedHashMap;
 
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
@@ -54,8 +54,8 @@ public final class TestServiceFactory {
         return repository;
     }
 
-    public final Repository<HorseCharacter> getHorseRepository() {
-        final Repository<HorseCharacter> repository;
+    public final Repository<Horse> getHorseRepository() {
+        final Repository<Horse> repository;
 
         repository = new CollectionRepository<>();
 

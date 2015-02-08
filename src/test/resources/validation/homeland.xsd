@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for HomelandTemplate XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="homeland">
 		<xs:complexType>
 			<xs:all>
@@ -49,6 +55,10 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUES LIST *********************** -->
+	<!-- ************************************************************ -->
+
 	<xs:complexType name="directedTraitsList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="directed_trait" type="descriptorNode" />
@@ -73,6 +83,11 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUE NODES *********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Name and integer -->
 	<xs:complexType name="bonusNode">
 		<xs:all>
 			<xs:element name="name" type="xs:token" />
@@ -80,6 +95,7 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Name and descriptor -->
 	<xs:complexType name="descriptorNode">
 		<xs:all>
 			<xs:element name="name" type="xs:token" />
@@ -87,6 +103,7 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Name, descriptor and integer -->
 	<xs:complexType name="skillNode">
 		<xs:all>
 			<xs:element name="name" type="xs:token" />

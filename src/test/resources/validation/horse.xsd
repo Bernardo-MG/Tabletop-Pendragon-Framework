@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Horse XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="horse">
 		<xs:complexType>
 			<xs:all>
@@ -13,6 +19,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- Attributes -->
 	<xs:complexType name="attributesList">
 		<xs:all>
 			<xs:element name="constitution" type="xs:integer" />
@@ -22,6 +29,7 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Derived attributes -->
 	<xs:complexType name="derivedList">
 		<xs:all>
 			<xs:element name="damage" type="xs:integer" />
@@ -29,6 +37,7 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Flags -->
 	<xs:complexType name="flagsList">
 		<xs:all>
 			<xs:element name="armored" type="xs:boolean" />

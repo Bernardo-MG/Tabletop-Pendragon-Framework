@@ -96,7 +96,7 @@ public final class ITReadFamilyCharacteristicTableDocumentDecoder {
         itrAttributes = familyChar.getAttributes().entrySet().iterator();
 
         entryAttribute = itrAttributes.next();
-        Assert.assertEquals(entryAttribute.getKey(), "attribute_1");
+        Assert.assertEquals(entryAttribute.getKey(), "appearance");
         Assert.assertEquals(entryAttribute.getValue(), (Integer) 7);
 
         skills = familyChar.getSkills();

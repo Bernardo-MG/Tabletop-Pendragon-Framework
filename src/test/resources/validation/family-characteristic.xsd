@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for FamilyCharacteristicTable XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="family_characteristic_table">
 		<xs:complexType>
 			<xs:all>
@@ -19,12 +25,18 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- ************************************************************ -->
+	<!-- ************** CHARACTERISTICS TABLE AND ROW *************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Rows -->
 	<xs:complexType name="intervalList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="interval" type="interval" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Limit and familu characteristic -->
 	<xs:complexType name="interval">
 		<xs:all>
 			<xs:element name="lower_limit" type="xs:integer" />
@@ -32,40 +44,69 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ******************* FAMILY CHARACTERISTIC ****************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Family characteristic -->
 	<xs:complexType name="familyCharacteristic">
 		<xs:all>
-			<xs:element name="name" type="xs:token" />
+			<xs:element name="name" type="xs:string" />
 			<xs:element name="bonus" type="bonusList" />
 		</xs:all>
 	</xs:complexType>
 
+	<!-- List of bonus -->
 	<xs:complexType name="bonusList">
 		<xs:all>
 			<xs:element name="attributes" type="attributesList"
-				minOccurs="0" />
-			<xs:element name="skills" type="skillsList" minOccurs="0" />
+				minOccurs="0">
+				<xs:unique name="uniqueAttribute">
+					<xs:selector xpath="attribute" />
+					<xs:field xpath="name" />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="skills" type="skillsList" minOccurs="0">
+				<xs:unique name="uniqueSkill">
+					<xs:selector xpath="skill" />
+					<xs:field xpath="name" />
+					<xs:field xpath="descriptor" />
+				</xs:unique>
+			</xs:element>
 		</xs:all>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUES LIST *********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Bonus to attributes -->
 	<xs:complexType name="attributesList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="attribute" type="attributeNode" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Bonus to skills -->
 	<xs:complexType name="skillsList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="skill" type="skillNode" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUE NODES *********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Attribute and integer -->
 	<xs:complexType name="attributeNode">
 		<xs:all>
-			<xs:element name="name" type="xs:token" />
+			<xs:element name="name" type="attributeType" />
 			<xs:element name="value" type="xs:integer" />
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Name, descriptor and integer -->
 	<xs:complexType name="skillNode">
 		<xs:all>
 			<xs:element name="name" type="xs:token" />
@@ -73,5 +114,20 @@
 			<xs:element name="value" type="xs:integer" />
 		</xs:all>
 	</xs:complexType>
+
+	<!-- ************************************************************ -->
+	<!-- ************************** ENUMS *************************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Attributes -->
+	<xs:simpleType name="attributeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="appearance" />
+			<xs:enumeration value="constitution" />
+			<xs:enumeration value="dexterity" />
+			<xs:enumeration value="size" />
+			<xs:enumeration value="strength" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

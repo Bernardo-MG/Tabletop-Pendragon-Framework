@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for AdditionalBelongingsTable XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="additional_belongings">
 		<xs:complexType>
 			<xs:sequence>
@@ -9,6 +15,10 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+	<!-- ************************************************************ -->
+	<!-- ***************** BELONGINGS TABLE AND ROW ***************** -->
+	<!-- ************************************************************ -->
 
 	<xs:complexType name="belongingsTable">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -23,49 +33,84 @@
 		</xs:all>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ***************** POSSIBLE OPTIONS PER ROW ***************** -->
+	<!-- ************************************************************ -->
+
 	<xs:complexType name="belongingsData">
 		<xs:all>
 			<xs:element name="money" type="moneyData" minOccurs="0" />
 			<xs:element name="reroll" type="storedReroll" minOccurs="0" />
-			<xs:element name="horses" type="storedHorse" minOccurs="0" />
-			<xs:element name="items" type="storedItem" minOccurs="0" />
-			<xs:element name="shields" type="storedShields" minOccurs="0" />
-			<xs:element name="weapons" type="storedWeapons" minOccurs="0" />
-			<xs:element name="pets" type="storedPet" minOccurs="0" />
+			<xs:element name="horses" type="storedHorse" minOccurs="0">
+				<xs:unique name="uniqueHorse">
+					<xs:selector xpath="horse" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="items" type="storedItem" minOccurs="0">
+				<xs:unique name="uniqueItem">
+					<xs:selector xpath="item" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="shields" type="storedShields" minOccurs="0">
+				<xs:unique name="uniqueShield">
+					<xs:selector xpath="shield" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="weapons" type="storedWeapons" minOccurs="0">
+				<xs:unique name="uniqueWeapon">
+					<xs:selector xpath="weapon" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="pets" type="storedPet" minOccurs="0">
+				<xs:unique name="uniquePet">
+					<xs:selector xpath="pet" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
 			<xs:element name="has_to_choose" type="xs:boolean" />
 		</xs:all>
 	</xs:complexType>
 
+	<!-- Pet -->
 	<xs:complexType name="storedPet">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:element name="pet" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Item -->
 	<xs:complexType name="storedItem">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:element name="item" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Shield -->
 	<xs:complexType name="storedShields">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:element name="shield" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Weapon -->
 	<xs:complexType name="storedWeapons">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:element name="weapon" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Horse -->
 	<xs:complexType name="storedHorse">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:element name="horse" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Reroll and table -->
 	<xs:complexType name="storedReroll">
 		<xs:sequence>
 			<xs:element name="reroll_table" type="xs:string" />
@@ -78,13 +123,14 @@
 			<xs:element name="reroll" minOccurs="0">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
-						<xs:pattern value="\d+d\d+([+-]\d+)?" />
+						<xs:pattern value="\d+d\d+([ ]*[+-][ ]*\d+)?" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Money -->
 	<xs:complexType name="moneyData">
 		<xs:all>
 			<xs:element name="name" type="xs:string" />

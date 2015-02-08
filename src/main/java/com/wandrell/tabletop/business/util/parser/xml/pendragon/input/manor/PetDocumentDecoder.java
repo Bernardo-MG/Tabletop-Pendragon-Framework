@@ -1,6 +1,8 @@
 package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.manor;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.jdom2.Document;
@@ -33,15 +35,15 @@ public class PetDocumentDecoder implements JDOMDocumentDecoder<Pet> {
         final String name;
         final IntervalTable<AnimalYearResult> results;
         final Map<Interval, AnimalYearResult> intervals;
+        final List<Integer> limits;
+        Integer pos;
+        Interval interval;
         AnimalYearResult result;
         Element puppyNode;
         Element diesNode;
         Element moneyNode;
-        Element intervalNode;
         String puppyName;
         String description;
-        Integer lowerLimit;
-        Integer upperLimit;
         Integer libra;
         Integer denarii;
         Boolean dies;
@@ -51,15 +53,17 @@ public class PetDocumentDecoder implements JDOMDocumentDecoder<Pet> {
         name = root.getChildText(ModelXMLConf.NAME);
 
         resultsNode = root.getChild(ModelXMLConf.YEAR_RESULTS_TABLE);
+
+        limits = new LinkedList<>();
+        for (final Element intervalNode : resultsNode.getChildren()) {
+            limits.add(Integer.parseInt(intervalNode
+                    .getChildText(ModelXMLConf.LOWER_LIMIT)));
+        }
+
+        pos = 0;
         intervals = new LinkedHashMap<>();
         for (final Element resultNode : resultsNode.getChildren()) {
             description = resultNode.getChildText(ModelXMLConf.DESCRIPTION);
-
-            intervalNode = resultNode.getChild(ModelXMLConf.INTERVAL);
-            lowerLimit = Integer.parseInt(intervalNode
-                    .getChildText(ModelXMLConf.LOWER_LIMIT));
-            upperLimit = Integer.parseInt(intervalNode
-                    .getChildText(ModelXMLConf.UPPER_LIMIT));
 
             puppyNode = resultNode.getChild(ModelXMLConf.PUPPY_NAME);
             if (puppyNode == null) {
@@ -89,7 +93,15 @@ public class PetDocumentDecoder implements JDOMDocumentDecoder<Pet> {
             result = getModelService().getAnimalYearResult(description,
                     puppyName, dies, libra, denarii);
 
-            intervals.put(new DefaultInterval(lowerLimit, upperLimit), result);
+            if (pos < (limits.size() - 1)) {
+                interval = new DefaultInterval(limits.get(pos),
+                        limits.get(pos + 1) - 1);
+            } else {
+                interval = new DefaultInterval(limits.get(pos), 20);
+            }
+            pos++;
+
+            intervals.put(interval, result);
         }
         results = new DefaultIntervalTable<AnimalYearResult>(intervals);
 

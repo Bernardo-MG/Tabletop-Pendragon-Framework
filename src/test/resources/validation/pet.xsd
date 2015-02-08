@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Pet XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="pet">
 		<xs:complexType>
 			<xs:all>
@@ -9,6 +15,10 @@
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
+
+	<!-- ************************************************************ -->
+	<!-- ************************ YEAR RESULT *********************** -->
+	<!-- ************************************************************ -->
 
 	<xs:complexType name="yearResults">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -19,20 +29,18 @@
 	<xs:complexType name="yearResult">
 		<xs:all>
 			<xs:element name="description" type="xs:string" />
-			<xs:element name="interval" type="intervalData" />
+			<xs:element name="lower_limit" type="xs:integer" />
 			<xs:element name="puppy_name" type="xs:string" minOccurs="0" />
 			<xs:element name="dies" type="xs:boolean" minOccurs="0" />
 			<xs:element name="money" type="moneyData" minOccurs="0" />
 		</xs:all>
 	</xs:complexType>
 
-	<xs:complexType name="intervalData">
-		<xs:all>
-			<xs:element name="lower_limit" type="xs:integer" />
-			<xs:element name="upper_limit" type="xs:integer" />
-		</xs:all>
-	</xs:complexType>
+	<!-- ************************************************************ -->
+	<!-- *********************** RESULTS DATA *********************** -->
+	<!-- ************************************************************ -->
 
+	<!-- Money -->
 	<xs:complexType name="moneyData">
 		<xs:all>
 			<xs:element name="libra" type="xs:integer" />

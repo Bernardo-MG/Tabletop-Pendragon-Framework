@@ -14,31 +14,31 @@
 		<male>
 			<attributes_bonus>
 				<attribute>
-					<name>attribute_1</name>
+					<name>appearance</name>
 					<value>1</value>
 				</attribute>
 				<attribute>
-					<name>attribute_2</name>
+					<name>constitution</name>
 					<value>2</value>
 				</attribute>
 			</attributes_bonus>
 			<attributes_random>
 				<attribute>
-					<name>attribute_1</name>
+					<name>appearance</name>
 					<value>1d6</value>
 				</attribute>
 				<attribute>
-					<name>attribute_2</name>
+					<name>constitution</name>
 					<value>2d6</value>
 				</attribute>
 			</attributes_random>
 			<traits_bonus>
 				<trait>
-					<name>trait_1</name>
+					<name>arbitrary</name>
 					<value>6</value>
 				</trait>
 				<trait>
-					<name>trait_2</name>
+					<name>chaste</name>
 					<value>12</value>
 				</trait>
 			</traits_bonus>
@@ -104,19 +104,19 @@
 		<female>
 			<attributes_bonus>
 				<attribute>
-					<name>attribute_3</name>
+					<name>dexterity</name>
 					<value>3</value>
 				</attribute>
 			</attributes_bonus>
 			<attributes_random>
 				<attribute>
-					<name>attribute_3</name>
+					<name>dexterity</name>
 					<value>10d2</value>
 				</attribute>
 			</attributes_random>
 			<traits_bonus>
 				<trait>
-					<name>trait_3</name>
+					<name>cowardly</name>
 					<value>22</value>
 				</trait>
 			</traits_bonus>

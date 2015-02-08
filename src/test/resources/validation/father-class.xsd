@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for FatherClassTemplate XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="father_class">
 		<xs:complexType>
 			<xs:all>
@@ -16,15 +22,15 @@
 				<xs:element name="money" minOccurs="0">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
-							<xs:pattern value="\d+d\d+([+-]\d+)?" />
+							<xs:pattern value="\d+d\d+([ ]*[+-][ ]*\d+)?" />
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="skills_group" type="skillsGroup"
 					minOccurs="0">
 					<xs:unique name="uniqueSkill">
-						<xs:selector xpath="name" />
-						<xs:field xpath="." />
+						<xs:selector xpath="skill" />
+						<xs:field xpath="name" />
 					</xs:unique>
 				</xs:element>
 				<xs:element name="bonus" type="bonusList" minOccurs="0" />
@@ -33,52 +39,70 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- ************************************************************ -->
+	<!-- *********************** VALUES GROUPS ********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Skills group -->
 	<xs:complexType name="skillsGroup">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="skill" type="skillNode" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Bonus list -->
 	<xs:complexType name="bonusList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="directed_traits" type="directedTraitsList">
 				<xs:unique name="uniqueDirectedBonus">
-					<xs:selector xpath="name" />
-					<xs:field xpath="." />
+					<xs:selector xpath="directed_trait" />
+					<xs:field xpath="name" />
 				</xs:unique>
 			</xs:element>
 			<xs:element name="specialty_skills" type="specialtySkillList">
 				<xs:unique name="uniqueSpecialtyBonus">
-					<xs:selector xpath="name" />
-					<xs:field xpath="." />
+					<xs:selector xpath="specialty_skill" />
+					<xs:field xpath="name" />
 				</xs:unique>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Base values list -->
 	<xs:complexType name="baseList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="directed_traits" type="directedTraitsList">
 				<xs:unique name="uniqueDirectedBase">
-					<xs:selector xpath="name" />
-					<xs:field xpath="." />
+					<xs:selector xpath="directed_trait" />
+					<xs:field xpath="name" />
 				</xs:unique>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUES LIST *********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Directed traits -->
 	<xs:complexType name="directedTraitsList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="directed_trait" type="directedTraitNode" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Specialty skills -->
 	<xs:complexType name="specialtySkillList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="specialty_skill" type="specialtySkillNode" />
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************ VALUE NODES *********************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Name and descriptor -->
 	<xs:complexType name="skillNode">
 		<xs:sequence>
 			<xs:element name="name" type="xs:string" />
@@ -86,6 +110,7 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Name, descriptor and integer -->
 	<xs:complexType name="directedTraitNode">
 		<xs:sequence>
 			<xs:element name="name" type="xs:string" />
@@ -94,6 +119,7 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Name and value -->
 	<xs:complexType name="specialtySkillNode">
 		<xs:sequence>
 			<xs:element name="name" type="xs:string" />

@@ -13,7 +13,7 @@ import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.DefaultInterval;
 import com.wandrell.tabletop.business.model.interval.Interval;
-import com.wandrell.tabletop.business.model.pendragon.character.HorseCharacter;
+import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
@@ -28,15 +28,15 @@ import com.wandrell.util.repository.Repository;
 public class AdditionalBelongingsTableDocumentDecoder implements
         JDOMDocumentDecoder<AdditionalBelongingsTable> {
 
-    private final Repository<HorseCharacter> horseRepository;
-    private final Repository<Item>           itemRepository;
-    private final ModelService               modelService;
-    private final Repository<Pet>            petRepository;
-    private final Repository<Shield>         shieldRepository;
-    private final Repository<Weapon>         weaponRepository;
+    private final Repository<Horse>  horseRepository;
+    private final Repository<Item>   itemRepository;
+    private final ModelService       modelService;
+    private final Repository<Pet>    petRepository;
+    private final Repository<Shield> shieldRepository;
+    private final Repository<Weapon> weaponRepository;
 
     public AdditionalBelongingsTableDocumentDecoder(final ModelService service,
-            final Repository<HorseCharacter> horseRepository,
+            final Repository<Horse> horseRepository,
             final Repository<Item> itemRepository,
             final Repository<Pet> petRepository,
             final Repository<Shield> shieldRepository,
@@ -94,7 +94,7 @@ public class AdditionalBelongingsTableDocumentDecoder implements
                 intervalsMap);
     }
 
-    private final Repository<HorseCharacter> getHorseRepository() {
+    private final Repository<Horse> getHorseRepository() {
         return horseRepository;
     }
 
@@ -132,7 +132,7 @@ public class AdditionalBelongingsTableDocumentDecoder implements
         final Integer denarii;
         final String rerollTable;
         final Collection<Dice> dice;
-        final Collection<HorseCharacter> horses;
+        final Collection<Horse> horses;
         final Collection<Item> items;
         final Collection<Pet> pets;
         final Collection<Shield> shields;

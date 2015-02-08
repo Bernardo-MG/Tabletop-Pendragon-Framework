@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for ReligionTemplate XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="religion">
 		<xs:complexType>
 			<xs:all>
@@ -15,6 +21,10 @@
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
+
+	<!-- ************************************************************ -->
+	<!-- *********************** VALUES LISTS *********************** -->
+	<!-- ************************************************************ -->
 
 	<xs:complexType name="bonusList">
 		<xs:all minOccurs="0">
@@ -32,7 +42,7 @@
 
 	<xs:complexType name="traitsList">
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="trait" type="xs:token" />
+			<xs:element name="trait" type="traitType" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -42,11 +52,51 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- ************************************************************ -->
+	<!-- ************************** VALUES ************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:complexType name="bonusNode">
 		<xs:all>
 			<xs:element name="name" type="xs:token" />
 			<xs:element name="value" type="xs:integer" />
 		</xs:all>
 	</xs:complexType>
+
+	<!-- ************************************************************ -->
+	<!-- ************************** ENUMS *************************** -->
+	<!-- ************************************************************ -->
+
+	<!-- Traits -->
+	<xs:simpleType name="traitType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="arbitrary" />
+			<xs:enumeration value="chaste" />
+			<xs:enumeration value="cowardly" />
+			<xs:enumeration value="cruel" />
+			<xs:enumeration value="deceitful" />
+			<xs:enumeration value="energetic" />
+			<xs:enumeration value="forgiving" />
+			<xs:enumeration value="generous" />
+			<xs:enumeration value="honest" />
+			<xs:enumeration value="indulgent" />
+			<xs:enumeration value="just" />
+			<xs:enumeration value="lazy" />
+			<xs:enumeration value="lustful" />
+			<xs:enumeration value="merciful" />
+			<xs:enumeration value="modest" />
+			<xs:enumeration value="pious" />
+			<xs:enumeration value="proud" />
+			<xs:enumeration value="prudent" />
+			<xs:enumeration value="reckless" />
+			<xs:enumeration value="selfish" />
+			<xs:enumeration value="suspicious" />
+			<xs:enumeration value="temperate" />
+			<xs:enumeration value="trusting" />
+			<xs:enumeration value="valorous" />
+			<xs:enumeration value="vengeful" />
+			<xs:enumeration value="wordly" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

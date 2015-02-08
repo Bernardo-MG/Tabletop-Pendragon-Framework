@@ -63,7 +63,7 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 1);
 
-        Assert.assertEquals(attributes.get("attribute_3"), (Integer) 3);
+        Assert.assertEquals(attributes.get("dexterity"), (Integer) 3);
     }
 
     @Test
@@ -74,8 +74,8 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 2);
 
-        Assert.assertEquals(attributes.get("attribute_1"), (Integer) 1);
-        Assert.assertEquals(attributes.get("attribute_2"), (Integer) 2);
+        Assert.assertEquals(attributes.get("appearance"), (Integer) 1);
+        Assert.assertEquals(attributes.get("constitution"), (Integer) 2);
     }
 
     @Test
@@ -86,8 +86,7 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 1);
 
-        Assert.assertEquals(attributes.get("attribute_3").getTextValue(),
-                "10d2");
+        Assert.assertEquals(attributes.get("dexterity").getTextValue(), "10d2");
     }
 
     @Test
@@ -98,8 +97,9 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 2);
 
-        Assert.assertEquals(attributes.get("attribute_1").getTextValue(), "1d6");
-        Assert.assertEquals(attributes.get("attribute_2").getTextValue(), "2d6");
+        Assert.assertEquals(attributes.get("appearance").getTextValue(), "1d6");
+        Assert.assertEquals(attributes.get("constitution").getTextValue(),
+                "2d6");
     }
 
     @Test
@@ -273,7 +273,7 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 1);
 
-        Assert.assertEquals(attributes.get("trait_3"), (Integer) 22);
+        Assert.assertEquals(attributes.get("cowardly"), (Integer) 22);
     }
 
     @Test
@@ -284,8 +284,8 @@ public final class ITReadCultureTemplateDocumentDecoder {
 
         Assert.assertEquals(attributes.size(), 2);
 
-        Assert.assertEquals(attributes.get("trait_1"), (Integer) 6);
-        Assert.assertEquals(attributes.get("trait_2"), (Integer) 12);
+        Assert.assertEquals(attributes.get("arbitrary"), (Integer) 6);
+        Assert.assertEquals(attributes.get("chaste"), (Integer) 12);
     }
 
 }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Weapon XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="weapon">
 		<xs:complexType>
 			<xs:all>
@@ -21,6 +27,10 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- ************************************************************ -->
+	<!-- *********************** VALUES LISTS *********************** -->
+	<!-- ************************************************************ -->
+
 	<xs:complexType name="bonusList">
 		<xs:all minOccurs="0">
 			<xs:element name="bonus" type="armorTypeBonus" />
@@ -34,14 +44,6 @@
 		</xs:all>
 	</xs:complexType>
 
-	<xs:simpleType name="armorType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="chain" />
-			<xs:enumeration value="leather" />
-			<xs:enumeration value="plate" />
-		</xs:restriction>
-	</xs:simpleType>
-
 	<xs:complexType name="flagsList">
 		<xs:all>
 			<xs:element name="break_enemy_on_draw" type="xs:boolean" />
@@ -51,5 +53,17 @@
 			<xs:element name="reduce_shield_to_roll" type="xs:boolean" />
 		</xs:all>
 	</xs:complexType>
+
+	<!-- ************************************************************ -->
+	<!-- ************************** ENUMS *************************** -->
+	<!-- ************************************************************ -->
+
+	<xs:simpleType name="armorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chain" />
+			<xs:enumeration value="leather" />
+			<xs:enumeration value="plate" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

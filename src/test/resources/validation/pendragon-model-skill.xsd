@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Validation file for Skills model XML files -->
+
+	<!-- ************************************************************ -->
+	<!-- *************************** ROOT *************************** -->
+	<!-- ************************************************************ -->
+
 	<xs:element name="skills">
 		<xs:complexType>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -22,7 +28,8 @@
 		<xs:attribute name="courtly" type="xs:boolean" default="false" />
 		<xs:attribute name="knightly" type="xs:boolean" default="false" />
 		<xs:attribute name="knowledge" type="xs:boolean" default="false" />
-		<xs:attribute name="repeatable" type="xs:boolean" default="false" />
+		<xs:attribute name="repeatable" type="xs:boolean"
+			default="false" />
 	</xs:complexType>
 
 </xs:schema>
