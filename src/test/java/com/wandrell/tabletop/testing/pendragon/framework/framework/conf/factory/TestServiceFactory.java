@@ -2,6 +2,8 @@ package com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory
 
 import java.util.LinkedHashMap;
 
+import com.wandrell.pattern.repository.CollectionRepository;
+import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
@@ -11,8 +13,6 @@ import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.service.TestModelService;
-import com.wandrell.util.repository.CollectionRepository;
-import com.wandrell.util.repository.Repository;
 
 public final class TestServiceFactory {
 

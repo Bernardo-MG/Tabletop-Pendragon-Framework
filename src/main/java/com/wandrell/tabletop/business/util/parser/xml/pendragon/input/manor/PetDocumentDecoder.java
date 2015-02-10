@@ -8,6 +8,7 @@ import java.util.Map;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.interval.DefaultInterval;
 import com.wandrell.tabletop.business.model.interval.DefaultIntervalTable;
@@ -16,7 +17,6 @@ import com.wandrell.tabletop.business.model.interval.IntervalTable;
 import com.wandrell.tabletop.business.model.pendragon.manor.AnimalYearResult;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public class PetDocumentDecoder implements JDOMDocumentDecoder<Pet> {
 

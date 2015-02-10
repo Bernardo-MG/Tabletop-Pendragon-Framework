@@ -6,10 +6,10 @@ import java.util.LinkedList;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public final class SpecialtySkillDocumentDecoder implements
         JDOMDocumentDecoder<SpecialtySkill> {

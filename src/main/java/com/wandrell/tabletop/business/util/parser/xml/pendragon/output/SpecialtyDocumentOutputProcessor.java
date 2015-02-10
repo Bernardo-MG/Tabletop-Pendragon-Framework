@@ -3,9 +3,9 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.output;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.output.JDOMDocumentEncoder;
 import com.wandrell.tabletop.business.conf.pendragon.FileToken;
 import com.wandrell.tabletop.business.model.pendragon.stats.SpecialtySkill;
-import com.wandrell.util.parser.xml.output.JDOMDocumentEncoder;
 
 public class SpecialtyDocumentOutputProcessor implements
         JDOMDocumentEncoder<SpecialtySkill> {

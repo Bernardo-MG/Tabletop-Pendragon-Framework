@@ -6,6 +6,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.wandrell.pattern.parser.InputParser;
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
+import com.wandrell.pattern.parser.xml.input.StAXInputParser;
+import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.CultureTemplate;
@@ -17,10 +21,6 @@ import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.Cu
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
-import com.wandrell.util.parser.InputParser;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
-import com.wandrell.util.parser.xml.input.StAXInputParser;
-import com.wandrell.util.repository.Repository;
 
 public final class ITReadCultureTemplateDocumentDecoder {
 

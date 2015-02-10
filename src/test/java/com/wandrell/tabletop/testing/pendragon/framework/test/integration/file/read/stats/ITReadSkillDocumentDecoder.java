@@ -7,16 +7,16 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.wandrell.pattern.parser.InputParser;
+import com.wandrell.pattern.parser.xml.XMLValidationType;
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
+import com.wandrell.pattern.parser.xml.input.SAXInputParser;
 import com.wandrell.tabletop.business.model.pendragon.stats.Skill;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.stats.SkillDocumentDecoder;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
-import com.wandrell.util.parser.InputParser;
-import com.wandrell.util.parser.xml.XMLValidationType;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
-import com.wandrell.util.parser.xml.input.SAXInputParser;
 
 public final class ITReadSkillDocumentDecoder {
 

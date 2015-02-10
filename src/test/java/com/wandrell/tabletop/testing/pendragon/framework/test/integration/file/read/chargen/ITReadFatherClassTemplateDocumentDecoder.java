@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.wandrell.pattern.parser.InputParser;
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
+import com.wandrell.pattern.parser.xml.input.StAXInputParser;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
@@ -12,9 +15,6 @@ import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.chargen.Fa
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
-import com.wandrell.util.parser.InputParser;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
-import com.wandrell.util.parser.xml.input.StAXInputParser;
 
 public final class ITReadFatherClassTemplateDocumentDecoder {
 

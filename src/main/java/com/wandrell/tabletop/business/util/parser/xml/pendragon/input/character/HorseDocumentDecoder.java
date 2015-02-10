@@ -3,10 +3,10 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.character
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.pendragon.character.Horse;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public class HorseDocumentDecoder implements JDOMDocumentDecoder<Horse> {
 

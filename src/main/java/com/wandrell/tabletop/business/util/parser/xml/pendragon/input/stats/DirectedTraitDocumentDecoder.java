@@ -6,10 +6,10 @@ import java.util.LinkedList;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.business.model.valuebox.SkillBox;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public final class DirectedTraitDocumentDecoder implements
         JDOMDocumentDecoder<Collection<SkillBox>> {

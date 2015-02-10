@@ -3,10 +3,10 @@ package com.wandrell.tabletop.business.util.parser.xml.pendragon.input.inventory
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public final class ShieldDocumentDecoder implements JDOMDocumentDecoder<Shield> {
 

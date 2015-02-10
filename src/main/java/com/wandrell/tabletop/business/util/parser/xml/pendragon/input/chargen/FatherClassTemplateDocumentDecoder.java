@@ -8,6 +8,7 @@ import java.util.Map;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.wandrell.pattern.parser.xml.input.JDOMDocumentDecoder;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.DefaultDice;
 import com.wandrell.tabletop.business.model.dice.Dice;
@@ -16,7 +17,6 @@ import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.business.util.DiceUtils;
-import com.wandrell.util.parser.xml.input.JDOMDocumentDecoder;
 
 public class FatherClassTemplateDocumentDecoder implements
         JDOMDocumentDecoder<FatherClassTemplate> {
