@@ -4,13 +4,16 @@ import java.util.LinkedHashMap;
 
 import com.wandrell.pattern.repository.CollectionRepository;
 import com.wandrell.pattern.repository.Repository;
+import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.pendragon.character.Horse;
+import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
+import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.service.TestModelService;
 
@@ -30,12 +33,14 @@ public final class TestServiceFactory {
             getAdditionalBelongingsTableRepository() {
         final Repository<AdditionalBelongingsTable> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<AdditionalBelongingsTable>();
 
         repository.add(getModelService().getAdditionalBelongingsTable(
-                "luck_female", new LinkedHashMap<>()));
+                "luck_female",
+                new LinkedHashMap<Interval, AdditionalBelongings>()));
         repository.add(getModelService().getAdditionalBelongingsTable(
-                "luck_male", new LinkedHashMap<>()));
+                "luck_male",
+                new LinkedHashMap<Interval, AdditionalBelongings>()));
 
         return repository;
     }
@@ -44,12 +49,14 @@ public final class TestServiceFactory {
             getFamilyCharacteristicTemplateRepository() {
         final Repository<FamilyCharacteristicTemplate> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<FamilyCharacteristicTemplate>();
 
         repository.add(getModelService().getFamilyCharacteristicTemplate(
-                "char_female", new LinkedHashMap<>(), new LinkedHashMap<>()));
+                "char_female", new LinkedHashMap<String, Integer>(),
+                new LinkedHashMap<NameAndDescriptor, Integer>()));
         repository.add(getModelService().getFamilyCharacteristicTemplate(
-                "char_male", new LinkedHashMap<>(), new LinkedHashMap<>()));
+                "char_male", new LinkedHashMap<String, Integer>(),
+                new LinkedHashMap<NameAndDescriptor, Integer>()));
 
         return repository;
     }
@@ -57,7 +64,7 @@ public final class TestServiceFactory {
     public final Repository<Horse> getHorseRepository() {
         final Repository<Horse> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<Horse>();
 
         repository.add(getModelService().getHorse("horse_1", 1, 2, 3, 4, 5, 6,
                 7, true, true, true));
@@ -76,7 +83,7 @@ public final class TestServiceFactory {
     public final Repository<Item> getItemRepository() {
         final Repository<Item> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<Item>();
 
         repository.add(getModelService().getItem("item_1", "description_1"));
         repository.add(getModelService().getItem("item_2", "description_2"));
@@ -94,7 +101,7 @@ public final class TestServiceFactory {
     public final Repository<Pet> getPetRepository() {
         final Repository<Pet> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<Pet>();
 
         repository.add(getModelService().getPet("pet_1", null));
         repository.add(getModelService().getPet("pet_2", null));
@@ -108,7 +115,7 @@ public final class TestServiceFactory {
     public final Repository<Shield> getShieldRepository() {
         final Repository<Shield> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<Shield>();
 
         repository.add(getModelService().getShield("shield_1", "description_1",
                 null, 0));
@@ -127,7 +134,7 @@ public final class TestServiceFactory {
     public final Repository<Weapon> getWeaponRepository() {
         final Repository<Weapon> repository;
 
-        repository = new CollectionRepository<>();
+        repository = new CollectionRepository<Weapon>();
 
         repository.add(getModelService().getWeapon("weapon_1", "description_1",
                 null, "skill_1", false, 0, 0, 0, 0, 0, null, false, false,

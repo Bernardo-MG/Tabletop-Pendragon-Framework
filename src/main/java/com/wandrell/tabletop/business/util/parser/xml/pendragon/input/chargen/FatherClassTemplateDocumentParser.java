@@ -110,7 +110,7 @@ public class FatherClassTemplateDocumentParser implements
         }
 
         // Skills group
-        skillsGroup = new LinkedList<>();
+        skillsGroup = new LinkedList<NameAndDescriptor>();
         skillsGroupNode = root.getChild(ModelXMLConf.SKILLS_GROUP);
         if (moneyNode != null) {
             for (final Element skill : skillsGroupNode.getChildren()) {
@@ -127,7 +127,7 @@ public class FatherClassTemplateDocumentParser implements
         }
 
         // Specialty skills
-        specialtySkills = new LinkedHashMap<>();
+        specialtySkills = new LinkedHashMap<String, Integer>();
         specialtySkillsNode = bonusNode.getChild(ModelXMLConf.SPECIALTY_SKILLS);
         if (specialtySkillsNode != null) {
             for (final Element skill : specialtySkillsNode.getChildren()) {
@@ -139,7 +139,7 @@ public class FatherClassTemplateDocumentParser implements
         }
 
         // Directed traits bonus
-        directedTraits = new LinkedHashMap<>();
+        directedTraits = new LinkedHashMap<NameAndDescriptor, Integer>();
         directedTraitsNode = bonusNode.getChild(ModelXMLConf.DIRECTED_TRAITS);
         if (directedTraitsNode != null) {
             for (final Element trait : directedTraitsNode.getChildren()) {
@@ -153,7 +153,7 @@ public class FatherClassTemplateDocumentParser implements
         }
 
         // Directed traits base
-        directedTraitsBase = new LinkedHashMap<>();
+        directedTraitsBase = new LinkedHashMap<NameAndDescriptor, Integer>();
         directedTraitsBaseNode = baseNode
                 .getChild(ModelXMLConf.DIRECTED_TRAITS);
         if (directedTraitsNode != null) {

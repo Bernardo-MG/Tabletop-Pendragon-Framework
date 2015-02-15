@@ -11,6 +11,7 @@ import org.jdom2.Element;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.interval.DefaultInterval;
@@ -69,14 +70,14 @@ public class AdditionalBelongingsTableDocumentParser implements
 
         belongingsNode = root.getChild(ModelXMLConf.BELONGINGS_TABLE);
 
-        limits = new LinkedList<>();
+        limits = new LinkedList<Integer>();
         for (final Element belongings : belongingsNode.getChildren()) {
             limits.add(Integer.parseInt(belongings
                     .getChildText(ModelXMLConf.LOWER_LIMIT)));
         }
 
         pos = 0;
-        intervalsMap = new LinkedHashMap<>();
+        intervalsMap = new LinkedHashMap<Interval, AdditionalBelongings>();
         for (final Element belongings : belongingsNode.getChildren()) {
             if (pos < (limits.size() - 1)) {
                 interval = new DefaultInterval(limits.get(pos),
@@ -155,7 +156,7 @@ public class AdditionalBelongingsTableDocumentParser implements
         }
 
         rerollNode = node.getChild(ModelXMLConf.REROLL);
-        dice = new LinkedList<>();
+        dice = new LinkedList<Dice>();
         if (rerollNode == null) {
             rerollTable = "";
         } else {
@@ -167,47 +168,84 @@ public class AdditionalBelongingsTableDocumentParser implements
         }
 
         horseNode = node.getChild(ModelXMLConf.HORSES);
-        horses = new LinkedList<>();
+        horses = new LinkedList<Horse>();
         if (horseNode != null) {
             for (final Element horse : horseNode.getChildren()) {
                 horses.addAll(getHorseRepository().getCollection(
-                        h -> h.getHorseType().equals(horse.getText())));
+                        new Filter<Horse>() {
+
+                            @Override
+                            public final Boolean isValid(final Horse entity) {
+                                return entity.getHorseType().equals(
+                                        horse.getText());
+                            }
+
+                        }));
             }
         }
 
         itemNode = node.getChild(ModelXMLConf.ITEMS);
-        items = new LinkedList<>();
+        items = new LinkedList<Item>();
         if (itemNode != null) {
             for (final Element item : itemNode.getChildren()) {
                 items.addAll(getItemRepository().getCollection(
-                        i -> i.getName().equals(item.getText())));
+                        new Filter<Item>() {
+
+                            @Override
+                            public final Boolean isValid(final Item entity) {
+                                return entity.getName().equals(item.getText());
+                            }
+
+                        }));
             }
         }
 
         petNode = node.getChild(ModelXMLConf.PETS);
-        pets = new LinkedList<>();
+        pets = new LinkedList<Pet>();
         if (petNode != null) {
             for (final Element pet : petNode.getChildren()) {
-                pets.addAll(getPetRepository().getCollection(
-                        p -> p.getName().equals(pet.getText())));
+                pets.addAll(getPetRepository().getCollection(new Filter<Pet>() {
+
+                    @Override
+                    public final Boolean isValid(final Pet entity) {
+                        return entity.getName().equals(pet.getText());
+                    }
+
+                }));
             }
         }
 
         shieldNode = node.getChild(ModelXMLConf.SHIELDS);
-        shields = new LinkedList<>();
+        shields = new LinkedList<Shield>();
         if (shieldNode != null) {
             for (final Element shield : shieldNode.getChildren()) {
                 shields.addAll(getShieldRepository().getCollection(
-                        s -> s.getName().equals(shield.getText())));
+                        new Filter<Shield>() {
+
+                            @Override
+                            public final Boolean isValid(final Shield entity) {
+                                return entity.getName()
+                                        .equals(shield.getText());
+                            }
+
+                        }));
             }
         }
 
         weaponsNode = node.getChild(ModelXMLConf.WEAPONS);
-        weapons = new LinkedList<>();
+        weapons = new LinkedList<Weapon>();
         if (weaponsNode != null) {
             for (final Element weapon : weaponsNode.getChildren()) {
                 weapons.addAll(getWeaponRepository().getCollection(
-                        w -> w.getName().equals(weapon.getText())));
+                        new Filter<Weapon>() {
+
+                            @Override
+                            public final Boolean isValid(final Weapon entity) {
+                                return entity.getName()
+                                        .equals(weapon.getText());
+                            }
+
+                        }));
             }
         }
 

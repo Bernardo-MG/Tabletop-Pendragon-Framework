@@ -34,7 +34,7 @@ public final class SkillDocumentParser implements
         Boolean knowledge;
         Boolean repeatable;
 
-        skills = new LinkedList<>();
+        skills = new LinkedList<Skill>();
         for (final Element node : doc.getRootElement().getChildren()) {
             name = node.getChildText(ModelXMLConf.NAME);
             descriptor = node.getChildText(ModelXMLConf.DESCRIPTOR);

@@ -54,14 +54,14 @@ public class PetDocumentParser implements Parser<Document, Pet> {
 
         resultsNode = root.getChild(ModelXMLConf.YEAR_RESULTS_TABLE);
 
-        limits = new LinkedList<>();
+        limits = new LinkedList<Integer>();
         for (final Element intervalNode : resultsNode.getChildren()) {
             limits.add(Integer.parseInt(intervalNode
                     .getChildText(ModelXMLConf.LOWER_LIMIT)));
         }
 
         pos = 0;
-        intervals = new LinkedHashMap<>();
+        intervals = new LinkedHashMap<Interval, AnimalYearResult>();
         for (final Element resultNode : resultsNode.getChildren()) {
             description = resultNode.getChildText(ModelXMLConf.DESCRIPTION);
 

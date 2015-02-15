@@ -34,7 +34,7 @@ public final class TextListDocumentParser implements Parser<Document, TextList> 
         name = root.getChildText(ModelXMLConf.NAME);
 
         valuesNode = root.getChild(ModelXMLConf.VALUES);
-        values = new LinkedList<>();
+        values = new LinkedList<String>();
         for (final Element value : valuesNode.getChildren()) {
             values.add(value.getText());
         }

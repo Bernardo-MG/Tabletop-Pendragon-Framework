@@ -36,7 +36,7 @@ public final class SpecialtySkillDocumentParser implements
 
         // Skills
         skillsNode = root.getChild(ModelXMLConf.SKILLS);
-        skills = new LinkedList<>();
+        skills = new LinkedList<String>();
         for (final Element skill : skillsNode.getChildren()) {
             skills.add(skill.getChildText(ModelXMLConf.NAME));
         }

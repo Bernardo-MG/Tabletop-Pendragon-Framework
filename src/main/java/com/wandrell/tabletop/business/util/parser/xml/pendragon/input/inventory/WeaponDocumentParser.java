@@ -90,7 +90,7 @@ public class WeaponDocumentParser implements Parser<Document, Weapon> {
             rof = Integer.valueOf(rofNode.getText());
         }
 
-        armorBonus = new LinkedHashMap<>();
+        armorBonus = new LinkedHashMap<ArmorType, Integer>();
         armorBonusNode = root.getChild(ModelXMLConf.VS_ARMOR_BONUS);
         if (armorBonusNode != null) {
             for (final Element node : armorBonusNode.getChildren()) {

@@ -25,7 +25,7 @@ public final class PassionDocumentParser implements
         String name;
         String descriptor;
 
-        passions = new LinkedList<>();
+        passions = new LinkedList<SkillBox>();
         for (final Element node : doc.getRootElement().getChildren()) {
             name = node.getChildText(ModelXMLConf.NAME);
 

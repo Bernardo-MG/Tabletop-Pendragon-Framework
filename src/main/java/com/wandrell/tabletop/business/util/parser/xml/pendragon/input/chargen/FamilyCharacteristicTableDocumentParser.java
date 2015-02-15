@@ -45,14 +45,14 @@ public class FamilyCharacteristicTableDocumentParser implements
         name = root.getChildText(ModelXMLConf.NAME);
 
         intervals = root.getChild(ModelXMLConf.INTERVALS);
-        limits = new LinkedList<>();
+        limits = new LinkedList<Integer>();
         for (final Element intervalNode : intervals.getChildren()) {
             limits.add(Integer.parseInt(intervalNode
                     .getChildText(ModelXMLConf.LOWER_LIMIT)));
         }
 
         pos = 0;
-        intervalsMap = new LinkedHashMap<>();
+        intervalsMap = new LinkedHashMap<Interval, FamilyCharacteristicTemplate>();
         for (final Element intervalNode : intervals.getChildren()) {
             if (pos < (limits.size() - 1)) {
                 interval = new DefaultInterval(limits.get(pos),
@@ -92,7 +92,7 @@ public class FamilyCharacteristicTableDocumentParser implements
         bonus = node.getChild(ModelXMLConf.BONUS);
 
         attributesNode = bonus.getChild(ModelXMLConf.ATTRIBUTES);
-        attributes = new LinkedHashMap<>();
+        attributes = new LinkedHashMap<String, Integer>();
         if (attributesNode != null) {
             for (final Element attribute : attributesNode.getChildren()) {
                 value = Integer.parseInt(attribute
@@ -104,7 +104,7 @@ public class FamilyCharacteristicTableDocumentParser implements
         }
 
         skillsNode = bonus.getChild(ModelXMLConf.SKILLS);
-        skills = new LinkedHashMap<>();
+        skills = new LinkedHashMap<NameAndDescriptor, Integer>();
         if (skillsNode != null) {
             for (final Element skill : skillsNode.getChildren()) {
                 value = Integer

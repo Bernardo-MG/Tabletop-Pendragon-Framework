@@ -52,7 +52,7 @@ public final class HomelandTemplateDocumentParser implements
         bonus = root.getChild(ModelXMLConf.BONUS);
 
         // Skills
-        skills = new LinkedHashMap<>();
+        skills = new LinkedHashMap<NameAndDescriptor, Integer>();
         skillsNode = bonus.getChild(ModelXMLConf.SKILLS);
         if (skillsNode != null) {
             for (final Element skill : skillsNode.getChildren()) {
@@ -69,7 +69,7 @@ public final class HomelandTemplateDocumentParser implements
         }
 
         // Specialty skills
-        specialtySkills = new LinkedHashMap<>();
+        specialtySkills = new LinkedHashMap<String, Integer>();
         specialtySkillsNode = bonus.getChild(ModelXMLConf.SPECIALTY_SKILLS);
         if (specialtySkillsNode != null) {
             for (final Element skill : specialtySkillsNode.getChildren()) {
@@ -81,7 +81,7 @@ public final class HomelandTemplateDocumentParser implements
         }
 
         // Traits
-        traits = new LinkedHashMap<>();
+        traits = new LinkedHashMap<String, Integer>();
         traitsNode = bonus.getChild(ModelXMLConf.TRAITS);
         if (traitsNode != null) {
             for (final Element trait : traitsNode.getChildren()) {
@@ -91,7 +91,7 @@ public final class HomelandTemplateDocumentParser implements
         }
 
         // Directed traits
-        directedTraits = new LinkedList<>();
+        directedTraits = new LinkedList<NameAndDescriptor>();
         directedTraitsNode = bonus.getChild(ModelXMLConf.DIRECTED_TRAITS);
         if (directedTraitsNode != null) {
             for (final Element trait : directedTraitsNode.getChildren()) {
@@ -103,7 +103,7 @@ public final class HomelandTemplateDocumentParser implements
         }
 
         // Passions
-        passions = new LinkedList<>();
+        passions = new LinkedList<NameAndDescriptor>();
         passionsNode = bonus.getChild(ModelXMLConf.PASSIONS);
         if (passionsNode != null) {
             for (final Element passion : passionsNode.getChildren()) {

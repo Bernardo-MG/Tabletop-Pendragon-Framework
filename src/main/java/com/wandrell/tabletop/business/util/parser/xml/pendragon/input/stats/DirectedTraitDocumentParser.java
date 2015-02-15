@@ -24,7 +24,7 @@ public final class DirectedTraitDocumentParser implements
         SkillBox trait;
         String name;
 
-        traits = new LinkedList<>();
+        traits = new LinkedList<SkillBox>();
         for (final Element node : doc.getRootElement().getChildren()) {
             name = node.getChildText(ModelXMLConf.NAME);
 

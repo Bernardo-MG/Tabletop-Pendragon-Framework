@@ -8,6 +8,7 @@ import org.jdom2.Element;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.Dice;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
@@ -89,21 +90,21 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
         String descriptor;
         NameAndDescriptor skill;
 
-        attributesBonus = new LinkedHashMap<>();
+        attributesBonus = new LinkedHashMap<String, Integer>();
         for (final Element child : template.getChild("attributes_bonus")
                 .getChildren()) {
             attributesBonus.put(child.getChildText("name"),
                     Integer.parseInt(child.getChildText("value")));
         }
 
-        attributesRandom = new LinkedHashMap<>();
+        attributesRandom = new LinkedHashMap<String, Dice>();
         for (final Element child : template.getChild("attributes_random")
                 .getChildren()) {
             attributesRandom.put(child.getChildText("name"),
                     DiceUtils.parseDice(child.getChildText("value")));
         }
 
-        skillsBonus = new LinkedHashMap<>();
+        skillsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
         for (final Element child : template.getChild("skills_bonus")
                 .getChildren()) {
             descriptorNode = child.getChild("descriptor");
@@ -120,14 +121,14 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
                     Integer.parseInt(child.getChildText("value")));
         }
 
-        specialtySkills = new LinkedHashMap<>();
+        specialtySkills = new LinkedHashMap<String, Integer>();
         for (final Element child : template.getChild("specialty_skills")
                 .getChildren()) {
             specialtySkills.put(child.getChildText("name"),
                     Integer.parseInt(child.getChildText("value")));
         }
 
-        passionsBonus = new LinkedHashMap<>();
+        passionsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
         for (final Element child : template.getChild("passions_bonus")
                 .getChildren()) {
             descriptorNode = child.getChild("descriptor");
@@ -144,7 +145,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
                     Integer.parseInt(child.getChildText("value")));
         }
 
-        passionsRandom = new LinkedHashMap<>();
+        passionsRandom = new LinkedHashMap<NameAndDescriptor, Dice>();
         for (final Element child : template.getChild("passions_random")
                 .getChildren()) {
             descriptorNode = child.getChild("descriptor");
@@ -161,7 +162,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
                     DiceUtils.parseDice(child.getChildText("value")));
         }
 
-        directedBonus = new LinkedHashMap<>();
+        directedBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
         for (final Element child : template.getChild("directed_traits_bonus")
                 .getChildren()) {
             descriptorNode = child.getChild("descriptor");
@@ -178,7 +179,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
                     Integer.parseInt(child.getChildText("value")));
         }
 
-        traitsBonus = new LinkedHashMap<>();
+        traitsBonus = new LinkedHashMap<String, Integer>();
         for (final Element child : template.getChild("traits_bonus")
                 .getChildren()) {
             traitsBonus.put(child.getChildText("name"),
@@ -193,7 +194,15 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
     private final AdditionalBelongingsTable getAdditionalBelongingsTableByName(
             final String name) {
         return getAdditionalBelongingsTableRepository()
-                .getCollection(c -> c.getName().equals(name)).iterator().next();
+                .getCollection(new Filter<AdditionalBelongingsTable>() {
+
+                    @Override
+                    public final Boolean isValid(
+                            final AdditionalBelongingsTable entity) {
+                        return entity.getName().equals(name);
+                    }
+
+                }).iterator().next();
     }
 
     private final Repository<AdditionalBelongingsTable>
@@ -204,7 +213,15 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
     private final FamilyCharacteristicTemplate
             getFamilyCharacteristicTemplateByName(final String name) {
         return getFamilyCharacteristicTemplateRepository()
-                .getCollection(c -> c.getName().equals(name)).iterator().next();
+                .getCollection(new Filter<FamilyCharacteristicTemplate>() {
+
+                    @Override
+                    public final Boolean isValid(
+                            final FamilyCharacteristicTemplate entity) {
+                        return entity.getName().equals(name);
+                    }
+
+                }).iterator().next();
     }
 
     private final Repository<FamilyCharacteristicTemplate>

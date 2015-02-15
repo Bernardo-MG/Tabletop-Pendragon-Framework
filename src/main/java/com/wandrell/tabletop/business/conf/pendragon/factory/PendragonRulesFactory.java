@@ -31,14 +31,14 @@ public final class PendragonRulesFactory {
 
         if (featuresCount == null) {
             // TODO: Load the configuration from a file
-            map = new TreeMap<>(new IntervalComparator());
+            map = new TreeMap<Interval, Integer>(new IntervalComparator());
             map.put(new DefaultInterval(Integer.MIN_VALUE, 6), 3);
             map.put(new DefaultInterval(7, 9), 2);
             map.put(new DefaultInterval(10, 12), 1);
             map.put(new DefaultInterval(13, 16), 2);
             map.put(new DefaultInterval(17, Integer.MAX_VALUE), 3);
 
-            featuresCount = new DefaultIntervalTable<>(map);
+            featuresCount = new DefaultIntervalTable<Integer>(map);
         }
 
         return featuresCount;

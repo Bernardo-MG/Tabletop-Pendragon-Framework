@@ -51,13 +51,13 @@ public final class ReligionTemplateDocumentParser implements
         name = root.getChildText(ModelXMLConf.NAME);
 
         // Traits
-        traits = new LinkedList<>();
+        traits = new LinkedList<String>();
         for (final Element trait : traitsNode.getChildren()) {
             traits.add(trait.getText());
         }
 
         // Derived attributes bonus
-        bonusDerived = new LinkedHashMap<>();
+        bonusDerived = new LinkedHashMap<String, Integer>();
         derived = bonus.getChild(ModelXMLConf.DERIVED_ATTRIBUTES);
         if (derived != null) {
             for (final Element attribute : derived.getChildren()) {
