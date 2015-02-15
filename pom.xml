@@ -189,6 +189,7 @@
 			<groupId>com.wandrell</groupId>
 			<artifactId>wandrell-core</artifactId>
 			<version>${wandrell.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
