@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.parser.xml.XMLFileParser;
-import com.wandrell.tabletop.business.model.pendragon.util.TextList;
-import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.parser.xml.pendragon.input.util.TextListDocumentParser;
+import com.wandrell.tabletop.pendragon.model.util.TextList;
+import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.util.parser.xml.input.util.TextListDocumentParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

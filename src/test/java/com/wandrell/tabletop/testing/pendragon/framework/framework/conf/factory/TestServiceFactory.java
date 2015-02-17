@@ -4,17 +4,17 @@ import java.util.LinkedHashMap;
 
 import com.wandrell.pattern.repository.CollectionRepository;
 import com.wandrell.pattern.repository.Repository;
-import com.wandrell.tabletop.business.model.interval.Interval;
-import com.wandrell.tabletop.business.model.pendragon.character.Horse;
-import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongings;
-import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Item;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
-import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
-import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
-import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
-import com.wandrell.tabletop.business.service.pendragon.ModelService;
+import com.wandrell.tabletop.interval.Interval;
+import com.wandrell.tabletop.pendragon.model.character.Horse;
+import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
+import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
+import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.inventory.Item;
+import com.wandrell.tabletop.pendragon.model.inventory.Shield;
+import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
+import com.wandrell.tabletop.pendragon.model.manor.Pet;
+import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.skill.NameAndDescriptor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.service.TestModelService;
 
 public final class TestServiceFactory {
