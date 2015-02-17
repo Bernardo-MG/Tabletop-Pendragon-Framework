@@ -14,6 +14,7 @@ import com.wandrell.pattern.repository.Repository;
 import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.Dice;
+import com.wandrell.tabletop.business.model.dice.StringDiceParser;
 import com.wandrell.tabletop.business.model.interval.DefaultInterval;
 import com.wandrell.tabletop.business.model.interval.Interval;
 import com.wandrell.tabletop.business.model.pendragon.character.Horse;
@@ -24,7 +25,6 @@ import com.wandrell.tabletop.business.model.pendragon.inventory.Shield;
 import com.wandrell.tabletop.business.model.pendragon.inventory.Weapon;
 import com.wandrell.tabletop.business.model.pendragon.manor.Pet;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.DiceUtils;
 
 public class AdditionalBelongingsTableDocumentParser implements
         Parser<Document, AdditionalBelongingsTable> {
@@ -54,7 +54,8 @@ public class AdditionalBelongingsTableDocumentParser implements
     }
 
     @Override
-    public final AdditionalBelongingsTable parse(final Document doc) {
+    public final AdditionalBelongingsTable parse(final Document doc)
+            throws Exception {
         final Map<Interval, AdditionalBelongings> intervalsMap;
         final Element root;
         final Element belongingsNode;
@@ -120,7 +121,7 @@ public class AdditionalBelongingsTableDocumentParser implements
     }
 
     private final AdditionalBelongings readAdditionalBelongings(
-            final Element node) {
+            final Element node) throws Exception {
         final Element moneyNode;
         final Element rerollNode;
         final Element horseNode;
@@ -139,6 +140,9 @@ public class AdditionalBelongingsTableDocumentParser implements
         final Collection<Shield> shields;
         final Collection<Weapon> weapons;
         final Boolean choose;
+        final Parser<String, Dice> diceParser;
+
+        diceParser = new StringDiceParser();
 
         choose = Boolean.valueOf(node.getChildText(ModelXMLConf.HAS_TO_CHOOSE));
 
@@ -163,7 +167,7 @@ public class AdditionalBelongingsTableDocumentParser implements
             rerollTable = rerollNode.getChildText(ModelXMLConf.REROLL_TABLE);
             for (final Element reroll : rerollNode.getChild(
                     ModelXMLConf.REROLLS).getChildren()) {
-                dice.add(DiceUtils.parseDice(reroll.getText()));
+                dice.add(diceParser.parse(reroll.getText()));
             }
         }
 

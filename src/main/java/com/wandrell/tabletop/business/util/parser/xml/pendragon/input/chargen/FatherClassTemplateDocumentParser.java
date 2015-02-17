@@ -12,11 +12,11 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.DefaultDice;
 import com.wandrell.tabletop.business.model.dice.Dice;
+import com.wandrell.tabletop.business.model.dice.StringDiceParser;
 import com.wandrell.tabletop.business.model.pendragon.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.DiceUtils;
 
 public class FatherClassTemplateDocumentParser implements
         Parser<Document, FatherClassTemplate> {
@@ -30,7 +30,7 @@ public class FatherClassTemplateDocumentParser implements
     }
 
     @Override
-    public final FatherClassTemplate parse(final Document doc) {
+    public final FatherClassTemplate parse(final Document doc) throws Exception {
         final Element root;
         final Element skillsGroupPointsNode;
         final Element skillsGroupPointsDivideNode;
@@ -53,7 +53,10 @@ public class FatherClassTemplateDocumentParser implements
         final Map<String, Integer> specialtySkills;
         final Map<NameAndDescriptor, Integer> directedTraits;
         final Map<NameAndDescriptor, Integer> directedTraitsBase;
+        final Parser<String, Dice> diceParser;
         Element descriptorNode;
+
+        diceParser = new StringDiceParser();
 
         root = doc.getRootElement();
 
@@ -106,7 +109,7 @@ public class FatherClassTemplateDocumentParser implements
         if (moneyNode == null) {
             money = new DefaultDice(0, 1);
         } else {
-            money = DiceUtils.parseDice(moneyNode.getText());
+            money = diceParser.parse(moneyNode.getText());
         }
 
         // Skills group

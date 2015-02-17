@@ -11,6 +11,7 @@ import com.wandrell.pattern.repository.Repository;
 import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.business.conf.pendragon.ModelXMLConf;
 import com.wandrell.tabletop.business.model.dice.Dice;
+import com.wandrell.tabletop.business.model.dice.StringDiceParser;
 import com.wandrell.tabletop.business.model.pendragon.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.business.model.pendragon.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.business.model.pendragon.chargen.CultureTemplate;
@@ -18,7 +19,6 @@ import com.wandrell.tabletop.business.model.pendragon.chargen.FamilyCharacterist
 import com.wandrell.tabletop.business.model.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.business.model.skill.NameAndDescriptor;
 import com.wandrell.tabletop.business.service.pendragon.ModelService;
-import com.wandrell.tabletop.business.util.DiceUtils;
 
 public class CultureDocumentParser implements Parser<Document, CultureTemplate> {
 
@@ -37,7 +37,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
     }
 
     @Override
-    public final CultureTemplate parse(final Document doc) {
+    public final CultureTemplate parse(final Document doc) throws Exception {
         final Element root;
         final Element characteristics;
         final Element initialLuck;
@@ -77,7 +77,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
     }
 
     private final CultureCharacterTemplate buildCultureCharacterTemplate(
-            final Element template) {
+            final Element template) throws Exception {
         final Map<String, Integer> attributesBonus;
         final Map<String, Dice> attributesRandom;
         final Map<NameAndDescriptor, Integer> skillsBonus;
@@ -86,9 +86,12 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
         final Map<NameAndDescriptor, Dice> passionsRandom;
         final Map<NameAndDescriptor, Integer> directedBonus;
         final Map<String, Integer> traitsBonus;
+        final Parser<String, Dice> diceParser;
         Element descriptorNode;
         String descriptor;
         NameAndDescriptor skill;
+
+        diceParser = new StringDiceParser();
 
         attributesBonus = new LinkedHashMap<String, Integer>();
         for (final Element child : template.getChild("attributes_bonus")
@@ -101,7 +104,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
         for (final Element child : template.getChild("attributes_random")
                 .getChildren()) {
             attributesRandom.put(child.getChildText("name"),
-                    DiceUtils.parseDice(child.getChildText("value")));
+                    diceParser.parse(child.getChildText("value")));
         }
 
         skillsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
@@ -159,7 +162,7 @@ public class CultureDocumentParser implements Parser<Document, CultureTemplate> 
                     descriptor);
 
             passionsRandom.put(skill,
-                    DiceUtils.parseDice(child.getChildText("value")));
+                    diceParser.parse(child.getChildText("value")));
         }
 
         directedBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
