@@ -12,7 +12,7 @@ import com.wandrell.pattern.parser.xml.XMLFileParser;
 import com.wandrell.tabletop.pendragon.model.inventory.Armor;
 import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
 import com.wandrell.tabletop.pendragon.service.ModelService;
-import com.wandrell.tabletop.pendragon.util.parser.xml.input.inventory.ArmorDocumentParser;
+import com.wandrell.tabletop.pendragon.util.parser.inventory.ArmorDocumentParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

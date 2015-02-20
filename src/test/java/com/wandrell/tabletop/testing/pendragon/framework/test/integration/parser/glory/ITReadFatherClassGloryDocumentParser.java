@@ -11,7 +11,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.parser.xml.XMLFileParser;
 import com.wandrell.tabletop.pendragon.model.glory.FatherClassGlory;
 import com.wandrell.tabletop.pendragon.service.ModelService;
-import com.wandrell.tabletop.pendragon.util.parser.xml.input.chargen.FatherClassGloryDocumentParser;
+import com.wandrell.tabletop.pendragon.util.parser.chargen.FatherClassGloryDocumentParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

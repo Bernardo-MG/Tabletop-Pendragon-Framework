@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.conf.XMLValidationType;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.parser.xml.ValidatedXMLFileParser;
-import com.wandrell.tabletop.pendragon.util.parser.xml.input.stats.PassionDocumentParser;
+import com.wandrell.tabletop.pendragon.util.parser.stats.PassionDocumentParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;

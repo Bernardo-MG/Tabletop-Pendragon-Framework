@@ -12,7 +12,7 @@ import com.wandrell.pattern.parser.xml.XMLFileParser;
 import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.service.ModelService;
-import com.wandrell.tabletop.pendragon.util.parser.xml.input.inventory.WeaponDocumentParser;
+import com.wandrell.tabletop.pendragon.util.parser.inventory.WeaponDocumentParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
