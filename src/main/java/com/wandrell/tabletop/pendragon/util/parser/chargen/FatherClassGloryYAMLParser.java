@@ -34,7 +34,7 @@ public final class FatherClassGloryYAMLParser implements
         values = (Map<String, Object>) yaml.load(reader);
 
         // Name
-        name = (String) values.get("name");
+        name = (String) values.get("father_class");
 
         // Glory
         glory = (Integer) values.get("base_glory");
