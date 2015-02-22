@@ -5,7 +5,7 @@ import org.jdom2.Document;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
 
-public class HomelandTemplateDocumentOutputProcessor implements
+public final class HomelandTemplateDocumentOutputProcessor implements
         Parser<HomelandTemplate, Document> {
 
     public HomelandTemplateDocumentOutputProcessor() {

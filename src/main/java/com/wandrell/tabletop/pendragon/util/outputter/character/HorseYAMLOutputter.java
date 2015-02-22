@@ -1,48 +1,19 @@
 package com.wandrell.tabletop.pendragon.util.outputter.character;
 
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-
-import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
+import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public class HorseYAMLOutputter implements Outputter<Horse> {
-
-    private final Yaml yaml;
-
-    {
-        final DumperOptions options;
-
-        options = new DumperOptions();
-        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-
-        yaml = new Yaml(options);
-    }
+public final class HorseYAMLOutputter extends YAMLOutputter<Horse> {
 
     public HorseYAMLOutputter() {
         super();
     }
 
     @Override
-    public final void send(final Horse value, final OutputStream stream)
-            throws Exception {
-        send(value, new BufferedWriter(new OutputStreamWriter(stream)));
-    }
-
-    @Override
-    public final void send(final Horse value, final Writer writer)
-            throws Exception {
-        getYaml().dump(buildMap(value), writer);
-    }
-
-    private final Map<String, Object> buildMap(final Horse value) {
+    protected final Map<String, Object> buildMap(final Horse value) {
         final Map<String, Object> data;
         final Map<String, Integer> attributes;
         final Map<String, Integer> derived;
@@ -72,10 +43,6 @@ public class HorseYAMLOutputter implements Outputter<Horse> {
         data.put("flags", flags);
 
         return data;
-    }
-
-    private final Yaml getYaml() {
-        return yaml;
     }
 
 }

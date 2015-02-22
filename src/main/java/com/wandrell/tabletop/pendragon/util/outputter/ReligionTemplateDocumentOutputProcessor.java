@@ -5,7 +5,7 @@ import org.jdom2.Document;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
 
-public class ReligionTemplateDocumentOutputProcessor implements
+public final class ReligionTemplateDocumentOutputProcessor implements
         Parser<ReligionTemplate, Document> {
 
     public ReligionTemplateDocumentOutputProcessor() {

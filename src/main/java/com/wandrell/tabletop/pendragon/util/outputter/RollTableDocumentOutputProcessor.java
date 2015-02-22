@@ -5,7 +5,7 @@ import org.jdom2.Document;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.IntervalTable;
 
-public class RollTableDocumentOutputProcessor implements
+public final class RollTableDocumentOutputProcessor implements
         Parser<IntervalTable<String>, Document> {
 
     public RollTableDocumentOutputProcessor() {
