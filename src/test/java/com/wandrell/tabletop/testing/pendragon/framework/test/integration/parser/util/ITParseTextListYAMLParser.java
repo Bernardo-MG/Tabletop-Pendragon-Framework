@@ -14,11 +14,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadTextListYAMLParser {
+public final class ITParseTextListYAMLParser {
 
     private TextList list;
 
-    public ITReadTextListYAMLParser() {
+    public ITParseTextListYAMLParser() {
         super();
     }
 

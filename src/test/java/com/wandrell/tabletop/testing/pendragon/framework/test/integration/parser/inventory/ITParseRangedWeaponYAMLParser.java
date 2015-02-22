@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
+import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.inventory.WeaponYAMLParser;
@@ -14,11 +15,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadDamageOverridenWeaponYAMLParser {
+public final class ITParseRangedWeaponYAMLParser {
 
     private Weapon weapon;
 
-    public ITReadDamageOverridenWeaponYAMLParser() {
+    public ITParseRangedWeaponYAMLParser() {
         super();
     }
 
@@ -32,7 +33,7 @@ public final class ITReadDamageOverridenWeaponYAMLParser {
         parser = new WeaponYAMLParser(modelService);
 
         weapon = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.WEAPON_DAMAGE_OVERRIDEN));
+                .getClassPathReader(TestModelFileConf.WEAPON_RANGED));
     }
 
     @Test
@@ -52,7 +53,7 @@ public final class ITReadDamageOverridenWeaponYAMLParser {
 
     @Test
     public final void testDamageOverride() {
-        Assert.assertEquals(weapon.getDamageOverrideDice(), (Integer) 3);
+        Assert.assertEquals(weapon.getDamageOverrideDice(), (Integer) 0);
     }
 
     @Test
@@ -67,6 +68,16 @@ public final class ITReadDamageOverridenWeaponYAMLParser {
     @Test
     public final void testName() {
         Assert.assertEquals(weapon.getName(), "test_weapon");
+    }
+
+    @Test
+    public final void testRangedWeapon() {
+        Assert.assertTrue(weapon instanceof RangedWeapon);
+
+        Assert.assertEquals(((RangedWeapon) weapon).getMaxRange(),
+                (Integer) 123);
+        Assert.assertEquals(((RangedWeapon) weapon).getRoundsToReload(),
+                (Integer) 4);
     }
 
     @Test

@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.inventory.WeaponYAMLParser;
@@ -15,11 +14,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadArmorBonusWeaponYAMLParser {
+public final class ITParseWeaponYAMLParser {
 
     private Weapon weapon;
 
-    public ITReadArmorBonusWeaponYAMLParser() {
+    public ITParseWeaponYAMLParser() {
         super();
     }
 
@@ -33,15 +32,12 @@ public final class ITReadArmorBonusWeaponYAMLParser {
         parser = new WeaponYAMLParser(modelService);
 
         weapon = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.WEAPON_ARMOR_BONUS));
+                .getClassPathReader(TestModelFileConf.WEAPON));
     }
 
     @Test
     public final void testArmorBonus() {
-        Assert.assertEquals(weapon.getArmorBonusDice().size(), 1);
-
-        Assert.assertEquals(weapon.getArmorBonusDice().get(ArmorType.LEATHER),
-                (Integer) 2);
+        Assert.assertEquals(weapon.getArmorBonusDice().size(), 0);
     }
 
     @Test

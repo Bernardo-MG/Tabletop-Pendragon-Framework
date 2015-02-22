@@ -21,11 +21,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadCultureTemplateYAMLParser {
+public final class ITParseCultureTemplateYAMLParser {
 
     private CultureTemplate culture;
 
-    public ITReadCultureTemplateYAMLParser() {
+    public ITParseCultureTemplateYAMLParser() {
         super();
     }
 

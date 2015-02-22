@@ -16,12 +16,12 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadHomelandTemplateYAMLParser {
+public final class ITParseHomelandTemplateYAMLParser {
 
     private HomelandTemplate homeland;
     private ModelService     modelService;
 
-    public ITReadHomelandTemplateYAMLParser() {
+    public ITParseHomelandTemplateYAMLParser() {
         super();
     }
 

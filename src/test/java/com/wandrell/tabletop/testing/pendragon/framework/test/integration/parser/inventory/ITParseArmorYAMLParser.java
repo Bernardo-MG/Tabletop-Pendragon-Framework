@@ -15,11 +15,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadArmorYAMLParser {
+public final class ITParseArmorYAMLParser {
 
     private Armor armor;
 
-    public ITReadArmorYAMLParser() {
+    public ITParseArmorYAMLParser() {
         super();
     }
 

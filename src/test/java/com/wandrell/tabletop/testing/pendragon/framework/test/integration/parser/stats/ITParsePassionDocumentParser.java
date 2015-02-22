@@ -17,11 +17,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadPassionDocumentParser {
+public final class ITParsePassionDocumentParser {
 
     private Collection<SkillBox> passions;
 
-    public ITReadPassionDocumentParser() {
+    public ITParsePassionDocumentParser() {
         super();
     }
 

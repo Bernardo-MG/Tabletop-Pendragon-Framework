@@ -20,11 +20,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadFamilyCharacteristicTableYAMLParser {
+public final class ITParseFamilyCharacteristicTableYAMLParser {
 
     private FamilyCharacteristicTable table;
 
-    public ITReadFamilyCharacteristicTableYAMLParser() {
+    public ITParseFamilyCharacteristicTableYAMLParser() {
         super();
     }
 

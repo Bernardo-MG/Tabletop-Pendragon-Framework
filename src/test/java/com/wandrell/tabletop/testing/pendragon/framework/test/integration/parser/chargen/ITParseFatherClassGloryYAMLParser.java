@@ -14,11 +14,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadFatherClassGloryYAMLParser {
+public final class ITParseFatherClassGloryYAMLParser {
 
     private FatherClassGlory glory;
 
-    public ITReadFatherClassGloryYAMLParser() {
+    public ITParseFatherClassGloryYAMLParser() {
         super();
     }
 

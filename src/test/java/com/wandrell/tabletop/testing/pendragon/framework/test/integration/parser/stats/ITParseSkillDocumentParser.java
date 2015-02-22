@@ -19,11 +19,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadSkillDocumentParser {
+public final class ITParseSkillDocumentParser {
 
     private Collection<Skill> skills;
 
-    public ITReadSkillDocumentParser() {
+    public ITParseSkillDocumentParser() {
         super();
     }
 

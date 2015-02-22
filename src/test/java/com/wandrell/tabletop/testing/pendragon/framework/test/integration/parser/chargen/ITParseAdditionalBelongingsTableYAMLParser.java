@@ -24,11 +24,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadAdditionalBelongingsTableYAMLParser {
+public final class ITParseAdditionalBelongingsTableYAMLParser {
 
     private AdditionalBelongingsTable table;
 
-    public ITReadAdditionalBelongingsTableYAMLParser() {
+    public ITParseAdditionalBelongingsTableYAMLParser() {
         super();
     }
 

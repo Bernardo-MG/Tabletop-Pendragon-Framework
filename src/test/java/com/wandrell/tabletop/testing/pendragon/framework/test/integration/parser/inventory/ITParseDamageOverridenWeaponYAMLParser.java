@@ -14,11 +14,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadWeaponYAMLParser {
+public final class ITParseDamageOverridenWeaponYAMLParser {
 
     private Weapon weapon;
 
-    public ITReadWeaponYAMLParser() {
+    public ITParseDamageOverridenWeaponYAMLParser() {
         super();
     }
 
@@ -32,7 +32,7 @@ public final class ITReadWeaponYAMLParser {
         parser = new WeaponYAMLParser(modelService);
 
         weapon = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.WEAPON));
+                .getClassPathReader(TestModelFileConf.WEAPON_DAMAGE_OVERRIDEN));
     }
 
     @Test
@@ -52,7 +52,7 @@ public final class ITReadWeaponYAMLParser {
 
     @Test
     public final void testDamageOverride() {
-        Assert.assertEquals(weapon.getDamageOverrideDice(), (Integer) 0);
+        Assert.assertEquals(weapon.getDamageOverrideDice(), (Integer) 3);
     }
 
     @Test

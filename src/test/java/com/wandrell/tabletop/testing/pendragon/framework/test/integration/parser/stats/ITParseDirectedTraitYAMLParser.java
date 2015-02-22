@@ -14,11 +14,11 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestMode
 import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITReadDirectedTraitYAMLParser {
+public final class ITParseDirectedTraitYAMLParser {
 
     private Collection<SkillBox> traits;
 
-    public ITReadDirectedTraitYAMLParser() {
+    public ITParseDirectedTraitYAMLParser() {
         super();
     }
 
