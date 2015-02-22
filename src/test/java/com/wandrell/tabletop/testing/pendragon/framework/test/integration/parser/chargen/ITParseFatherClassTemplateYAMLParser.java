@@ -26,14 +26,14 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final Parser<Reader, FatherClassTemplate> parserDoc;
+        final Parser<Reader, FatherClassTemplate> parser;
         final ModelService modelService;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
-        parserDoc = new FatherClassTemplateYAMLParser(modelService);
+        parser = new FatherClassTemplateYAMLParser(modelService);
 
-        fatherClass = parserDoc.parse(ResourceUtils
+        fatherClass = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.FATHER_CLASS));
     }
 
