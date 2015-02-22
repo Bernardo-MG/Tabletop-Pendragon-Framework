@@ -265,7 +265,7 @@ public final class TestModelService implements ModelService {
 
         homeland = Mockito.mock(HomelandTemplate.class);
 
-        Mockito.when(homeland.getHomeland()).thenReturn(name);
+        Mockito.when(homeland.getName()).thenReturn(name);
         Mockito.when(homeland.getSkills()).thenReturn(skills);
         Mockito.when(homeland.getSpecialtySkills()).thenReturn(specialtySkills);
         Mockito.when(homeland.getTraits()).thenReturn(traits);
@@ -356,7 +356,7 @@ public final class TestModelService implements ModelService {
         Mockito.when(religion.getDerivedAttributeBonus()).thenReturn(
                 bonusDerived);
         Mockito.when(religion.getReligiousTraits()).thenReturn(traits);
-        Mockito.when(religion.getReligion()).thenReturn(name);
+        Mockito.when(religion.getName()).thenReturn(name);
 
         return religion;
     }

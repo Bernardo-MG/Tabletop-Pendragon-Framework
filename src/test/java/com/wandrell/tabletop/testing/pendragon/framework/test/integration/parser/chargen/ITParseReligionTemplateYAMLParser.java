@@ -66,7 +66,7 @@ public final class ITParseReligionTemplateYAMLParser {
 
     @Test
     public final void testReligion() {
-        Assert.assertEquals(religion.getReligion(), "test_religion");
+        Assert.assertEquals(religion.getName(), "test_religion");
     }
 
     @Test

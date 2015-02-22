@@ -19,7 +19,6 @@ import com.wandrell.util.ResourceUtils;
 public final class ITParseHomelandTemplateYAMLParser {
 
     private HomelandTemplate homeland;
-    private ModelService     modelService;
 
     public ITParseHomelandTemplateYAMLParser() {
         super();
@@ -28,6 +27,7 @@ public final class ITParseHomelandTemplateYAMLParser {
     @BeforeClass
     public final void initialize() throws Exception {
         final Parser<Reader, HomelandTemplate> parser;
+        final ModelService modelService;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -50,7 +50,7 @@ public final class ITParseHomelandTemplateYAMLParser {
 
     @Test
     public final void testName() {
-        Assert.assertEquals(homeland.getHomeland(), "test_homeland");
+        Assert.assertEquals(homeland.getName(), "test_homeland");
     }
 
     @Test
