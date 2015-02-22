@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<father_glory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../../validation/father-glory.xsd">
-	<name>test_father_glory</name>
-	<base_glory>100</base_glory>
-	<yearly_glory>10</yearly_glory>
-</father_glory>

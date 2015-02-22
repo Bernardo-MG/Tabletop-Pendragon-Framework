@@ -1,0 +1,5 @@
+name: test_armor
+type: leather
+heavy: true
+armor_value: 11
+dexterity_modifier: -22

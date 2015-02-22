@@ -1,0 +1,16 @@
+name: test_religion
+traits:
+  - chaste
+  - honest
+  - just
+  - merciful
+  - temperate
+bonus:
+  armor_bonus: 5
+  damage_bonus: 6
+  damage_dice_bonus: 7
+  derived_attributes:
+    - name: damage_bonus
+      value: 3
+    - name: hitpoints
+      value: 2

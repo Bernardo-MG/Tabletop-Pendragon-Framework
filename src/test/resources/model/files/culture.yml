@@ -1,0 +1,89 @@
+name: culture_1
+family_characteristic:
+  male: char_male
+  female: char_female
+initial_luck:
+  male: luck_male
+  female: luck_female
+template:
+  male:
+    attributes_bonus:
+      - name: appearance
+        value: 1
+      - name: constitution
+        value: 2
+    attributes_random:
+      - name: appearance
+        value: 1d6
+      - name: constitution
+        value: 2d6
+    traits_bonus:
+      - name: arbitrary
+        value: 6
+      - name: chaste
+        value: 12
+    skills_bonus:
+      - name: skill_1
+        descriptor:
+        value: 10
+      - name: skill_2
+        descriptor: descriptor_2
+        value: 11
+    specialty_skills:
+      - name: specialty_1
+        value: 15
+      - name: specialty_2
+        value: 16
+    passions_bonus:
+      - name: passion_1
+        descriptor:
+        value: 17
+      - name: passion_2
+        descriptor: descriptor_2
+        value: 24
+    passions_random:
+      - name: passion_1
+        descriptor:
+        value: 3d6
+      - name: passion_2
+        descriptor: descriptor_2
+        value: "0"
+      - name: passion_4
+        descriptor:
+        value: "5"
+    directed_traits_bonus:
+      - name: directed_1
+        descriptor:
+        value: 30
+      - name: directed_2
+        descriptor: descriptor_2
+        value: 1
+  female:
+    attributes_bonus:
+      - name: dexterity
+        value: 3
+    attributes_random:
+      - name: dexterity
+        value: 10d2
+    traits_bonus:
+      - name: cowardly
+        value: 22
+    skills_bonus:
+      - name: skill_3
+        descriptor:
+        value: 12
+    specialty_skills:
+      - name: specialty_3
+        value: 17
+    passions_bonus:
+      - name: passion_3
+        descriptor:
+        value: 18
+    passions_random:
+      - name: passion_3
+        descriptor:
+        value: 6d6
+    directed_traits_bonus:
+      - name: directed_3
+        descriptor:
+        value: 31

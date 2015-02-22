@@ -1,0 +1,54 @@
+name: test_additional_belongings
+belongings_table:
+  -
+    lower_limit: 1
+    belongings:
+      money:
+        name: test_money
+        libra: 11
+        denarii: 22
+      has_to_choose: false
+  -
+    lower_limit: 5
+    belongings:
+      reroll:
+        reroll_table: table_1
+        rerolls:
+          - 1d6
+          - 1d20+1
+      has_to_choose: false
+  -
+    lower_limit: 7
+    belongings:
+      horses:
+        - horse_1
+        - horse_2
+      has_to_choose: true
+  -
+    lower_limit: 10
+    belongings:
+      items:
+        - item_1
+        - item_2
+      has_to_choose: false
+  -
+    lower_limit: 12
+    belongings:
+      shields:
+        - shield_1
+        - shield_2
+      has_to_choose: false
+  -
+    lower_limit: 13
+    belongings:
+      weapons:
+        - weapon_1
+        - weapon_2
+      has_to_choose: false
+  -
+    lower_limit: 15
+    belongings:
+      pets:
+        - pet_1
+        - pet_2
+      has_to_choose: false

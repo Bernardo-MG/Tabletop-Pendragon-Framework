@@ -7,7 +7,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.conf.ModelXMLConf;
 import com.wandrell.tabletop.pendragon.model.stats.Skill;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 
@@ -36,16 +35,14 @@ public final class SkillDocumentParser implements
 
         skills = new LinkedList<Skill>();
         for (final Element node : doc.getRootElement().getChildren()) {
-            name = node.getChildText(ModelXMLConf.NAME);
-            descriptor = node.getChildText(ModelXMLConf.DESCRIPTOR);
+            name = node.getChildText("name");
+            descriptor = node.getChildText("descriptor");
 
-            combat = new Boolean(node.getAttributeValue(ModelXMLConf.COMBAT));
-            court = new Boolean(node.getAttributeValue(ModelXMLConf.COURTLY));
-            knight = new Boolean(node.getAttributeValue(ModelXMLConf.KNIGHTLY));
-            knowledge = new Boolean(
-                    node.getAttributeValue(ModelXMLConf.KNOWLEDGE));
-            repeatable = new Boolean(
-                    node.getAttributeValue(ModelXMLConf.REPEATEABLE));
+            combat = new Boolean(node.getAttributeValue("combat"));
+            court = new Boolean(node.getAttributeValue("courtly"));
+            knight = new Boolean(node.getAttributeValue("knightly"));
+            knowledge = new Boolean(node.getAttributeValue("knowledge"));
+            repeatable = new Boolean(node.getAttributeValue("repeatable"));
 
             skill = getModelService().getSkill(name, descriptor, combat, court,
                     knight, knowledge, repeatable);

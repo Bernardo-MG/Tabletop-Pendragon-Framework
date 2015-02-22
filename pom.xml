@@ -91,9 +91,9 @@
 		<manifest.name>com/wandrell/tabletop/pendragon/framework</manifest.name>
 		<!-- Dependencies versions -->
 		<jdom.version>2.0.5</jdom.version>
-		<slf4j.version>1.7.7</slf4j.version>
-		<spring.version>4.0.5.RELEASE</spring.version>
 		<mockito.version>1.9.5</mockito.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<snakeyaml.version>1.14</snakeyaml.version>
 		<tabletop.version>0.1.0-SNAPSHOT</tabletop.version>
 		<testng.version>6.8.8</testng.version>
 		<!-- Plugins versions -->
@@ -157,6 +157,12 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- SnakeYAML -->
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>${snakeyaml.version}</version>
 		</dependency>
 		<dependency>
 			<!-- Tabletop core -->

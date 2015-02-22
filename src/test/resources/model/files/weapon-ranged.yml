@@ -1,0 +1,13 @@
+name: test_weapon
+skill: skill_1
+two_handed: false
+damage_bonus: 11
+dice_bonus: 22
+range: 123
+rate_of_fire: 4
+flags:
+  break_enemy_on_draw: true
+  break_on_fumble: false
+  hits_back: false
+  ignores_shield: true
+  reduce_shield_to_roll: false

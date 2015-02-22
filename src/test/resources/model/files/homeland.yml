@@ -1,0 +1,21 @@
+name: test_homeland
+bonus:
+  traits:
+    - name: honest
+      value: 2
+  skills:
+    - name: skill_1
+      descriptor: 
+      value: 3
+    - name: skill_2
+      descriptor: descriptor_skill_2
+      value: 4
+  specialty_skills:
+    - name: specialty_skill_1
+      value: 5
+  passions:
+    - name: passion_1
+      descriptor: descriptor_passion_1
+  directed_traits:
+    - name: directed_1
+      descriptor: descriptor_directed_1

@@ -7,7 +7,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.conf.ModelXMLConf;
 import com.wandrell.tabletop.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.valuebox.SkillBox;
 
@@ -27,12 +26,12 @@ public final class PassionDocumentParser implements
 
         passions = new LinkedList<SkillBox>();
         for (final Element node : doc.getRootElement().getChildren()) {
-            name = node.getChildText(ModelXMLConf.NAME);
+            name = node.getChildText("name");
 
-            if (node.getChild(ModelXMLConf.DESCRIPTOR) == null) {
+            if (node.getChild("descriptor") == null) {
                 passion = new DefaultSkillBox(name, 0, 0, Integer.MAX_VALUE);
             } else {
-                descriptor = node.getChildText(ModelXMLConf.DESCRIPTOR);
+                descriptor = node.getChildText("descriptor");
                 passion = new DefaultSkillBox(name, descriptor, 0, 0,
                         Integer.MAX_VALUE);
             }

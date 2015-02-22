@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<armor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../../validation/armor.xsd">
-	<name>test_armor</name>
-	<type>leather</type>
-	<heavy>true</heavy>
-	<armor_value>11</armor_value>
-	<dexterity_modifier>-22</dexterity_modifier>
-</armor>

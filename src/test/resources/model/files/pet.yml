@@ -1,0 +1,15 @@
+name: test_pet
+year_results_table:
+  - lower_limit: 1
+    description: description_1
+  - lower_limit: 6
+    description: description_2
+    puppy_name: puppy_1
+  - lower_limit: 11
+    description: description_3
+    dies: true
+  - lower_limit: 13
+    description: description_4
+    money:
+      libra: 11
+      denarii: 22
