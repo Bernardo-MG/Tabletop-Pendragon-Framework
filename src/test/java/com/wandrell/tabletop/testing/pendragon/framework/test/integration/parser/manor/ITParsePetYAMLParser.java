@@ -25,14 +25,14 @@ public final class ITParsePetYAMLParser {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final Parser<Reader, Pet> parserDoc;
+        final Parser<Reader, Pet> parser;
         final ModelService modelService;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
-        parserDoc = new PetYAMLParser(modelService);
+        parser = new PetYAMLParser(modelService);
 
-        pet = parserDoc.parse(ResourceUtils
+        pet = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.PET));
     }
 
