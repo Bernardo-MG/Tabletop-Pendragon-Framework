@@ -30,7 +30,7 @@ import com.wandrell.util.ResourceUtils;
 public final class ITSendPetYAMLOutputter {
 
     private static final Random  random        = new Random();
-    private static final String  TEMPLATE_PATH = "target/test_Pet_Armor_";
+    private static final String  TEMPLATE_PATH = "target/test_write_Pet_";
     private final Outputter<Pet> outputter;
 
     {

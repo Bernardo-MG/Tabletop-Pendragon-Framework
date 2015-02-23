@@ -24,14 +24,14 @@ public final class ITParseSpecialtySkillYAMLParser {
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final Parser<Reader, SpecialtySkill> parserDoc;
+        final Parser<Reader, SpecialtySkill> parser;
         final ModelService modelService;
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
-        parserDoc = new SpecialtySkillYAMLParser(modelService);
+        parser = new SpecialtySkillYAMLParser(modelService);
 
-        skill = parserDoc.parse(ResourceUtils
+        skill = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.SPECIALTY_SKILL));
     }
 
