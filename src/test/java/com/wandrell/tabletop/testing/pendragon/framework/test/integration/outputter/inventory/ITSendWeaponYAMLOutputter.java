@@ -18,7 +18,7 @@ import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.outputter.inventory.WeaponYAMLOutputter;
-import com.wandrell.tabletop.pendragon.util.parser.inventory.WeaponYAMLParser;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.WeaponYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

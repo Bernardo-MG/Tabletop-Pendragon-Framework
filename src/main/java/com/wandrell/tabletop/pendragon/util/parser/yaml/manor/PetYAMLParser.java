@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.manor;
+package com.wandrell.tabletop.pendragon.util.parser.yaml.manor;
 
 import java.io.Reader;
 import java.util.Collection;

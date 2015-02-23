@@ -21,7 +21,7 @@ import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.outputter.chargen.CultureTemplateYAMLOutputter;
-import com.wandrell.tabletop.pendragon.util.parser.chargen.CultureYAMLParser;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

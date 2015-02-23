@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.inventory;
+package com.wandrell.tabletop.pendragon.util.parser.yaml.inventory;
 
 import java.io.Reader;
 import java.util.Collection;

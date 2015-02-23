@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.stats;
+package com.wandrell.tabletop.pendragon.util.parser.yaml.stats;
 
 import java.io.Reader;
 import java.util.Collection;

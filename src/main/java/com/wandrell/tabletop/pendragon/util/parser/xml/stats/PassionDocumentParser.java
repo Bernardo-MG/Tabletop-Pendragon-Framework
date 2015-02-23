@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.stats;
+package com.wandrell.tabletop.pendragon.util.parser.xml.stats;
 
 import java.util.Collection;
 import java.util.LinkedList;

@@ -17,7 +17,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkill;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.outputter.stats.SpecialtySkillYAMLOutputter;
-import com.wandrell.tabletop.pendragon.util.parser.stats.SpecialtySkillYAMLParser;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.SpecialtySkillYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

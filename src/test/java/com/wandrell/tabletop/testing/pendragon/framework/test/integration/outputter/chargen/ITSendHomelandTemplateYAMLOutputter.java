@@ -17,7 +17,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.service.ModelService;
 import com.wandrell.tabletop.pendragon.util.outputter.chargen.HomelandTemplateYAMLOutputter;
-import com.wandrell.tabletop.pendragon.util.parser.chargen.HomelandTemplateYAMLParser;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.HomelandTemplateYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;

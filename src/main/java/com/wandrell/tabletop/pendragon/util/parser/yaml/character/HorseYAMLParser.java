@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.character;
+package com.wandrell.tabletop.pendragon.util.parser.yaml.character;
 
 import java.io.Reader;
 import java.util.Map;
