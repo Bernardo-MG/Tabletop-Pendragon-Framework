@@ -7,17 +7,19 @@ import java.io.FileWriter;
 import java.io.Reader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Random;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.outputter.Outputter;
+import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.service.ModelService;
-import com.wandrell.tabletop.pendragon.util.outputter.inventory.WeaponYAMLOutputter;
+import com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory.WeaponMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.WeaponYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -25,12 +27,12 @@ import com.wandrell.util.ResourceUtils;
 
 public final class ITSendWeaponYAMLOutputter {
 
-    private static final Random     random        = new Random();
-    private static final String     TEMPLATE_PATH = "target/test_write_Weapon_";
-    private final Outputter<Weapon> outputter;
+    private static final Random                       random        = new Random();
+    private static final String                       TEMPLATE_PATH = "target/test_write_Weapon_";
+    private final Parser<Weapon, Map<String, Object>> parserMap;
 
     {
-        outputter = new WeaponYAMLOutputter();
+        parserMap = new WeaponMapParser();
     }
 
     public ITSendWeaponYAMLOutputter() {
@@ -44,6 +46,9 @@ public final class ITSendWeaponYAMLOutputter {
         final Parser<Reader, Weapon> parser;
         final ModelService modelService;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -55,8 +60,8 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(weapon,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
@@ -90,6 +95,9 @@ public final class ITSendWeaponYAMLOutputter {
         final Parser<Reader, Weapon> parser;
         final ModelService modelService;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -101,8 +109,8 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(weapon,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
@@ -133,6 +141,9 @@ public final class ITSendWeaponYAMLOutputter {
         final Parser<Reader, Weapon> parser;
         final ModelService modelService;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -144,8 +155,8 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(weapon,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
@@ -179,6 +190,9 @@ public final class ITSendWeaponYAMLOutputter {
         final Parser<Reader, Weapon> parser;
         final ModelService modelService;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -190,8 +204,8 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(weapon,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         weaponOut = (RangedWeapon) parser.parse(new BufferedReader(
                 new FileReader(pathOut.toFile())));

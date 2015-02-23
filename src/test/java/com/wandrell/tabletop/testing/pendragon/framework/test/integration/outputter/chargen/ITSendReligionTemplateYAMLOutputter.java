@@ -7,15 +7,17 @@ import java.io.FileWriter;
 import java.io.Reader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Random;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.outputter.Outputter;
+import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.chargen.ReligionTemplateYAMLOutputter;
+import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.ReligionTemplateMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.ReligionTemplateYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -23,12 +25,12 @@ import com.wandrell.util.ResourceUtils;
 
 public final class ITSendReligionTemplateYAMLOutputter {
 
-    private static final Random               random        = new Random();
-    private static final String               TEMPLATE_PATH = "target/test_write_HomelandTemplate_";
-    private final Outputter<ReligionTemplate> outputter;
+    private static final Random                                 random        = new Random();
+    private static final String                                 TEMPLATE_PATH = "target/test_write_HomelandTemplate_";
+    private final Parser<ReligionTemplate, Map<String, Object>> parserMap;
 
     {
-        outputter = new ReligionTemplateYAMLOutputter();
+        parserMap = new ReligionTemplateMapParser();
     }
 
     public ITSendReligionTemplateYAMLOutputter() {
@@ -41,6 +43,9 @@ public final class ITSendReligionTemplateYAMLOutputter {
         final ReligionTemplate religionOut;
         final Parser<Reader, ReligionTemplate> parser;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         parser = new ReligionTemplateYAMLParser(TestServiceFactory
                 .getInstance().getModelService());
@@ -51,8 +56,8 @@ public final class ITSendReligionTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(religion,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(religion), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         religionOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));

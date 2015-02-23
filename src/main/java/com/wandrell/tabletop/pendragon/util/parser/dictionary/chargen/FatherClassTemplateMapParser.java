@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,20 +6,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 
-public final class FatherClassTemplateYAMLOutputter extends
-        YAMLOutputter<FatherClassTemplate> {
+public final class FatherClassTemplateMapParser implements
+        Parser<FatherClassTemplate, Map<String, Object>> {
 
-    public FatherClassTemplateYAMLOutputter() {
+    public FatherClassTemplateMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object>
-            buildMap(final FatherClassTemplate value) {
+    public final Map<String, Object> parse(final FatherClassTemplate value) {
         final Map<String, Object> data;
         final Collection<Map<String, Object>> skills;
         final Collection<Map<String, Object>> directed;

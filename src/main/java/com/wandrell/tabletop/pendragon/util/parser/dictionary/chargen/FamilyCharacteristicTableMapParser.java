@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,17 +6,44 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 
-public final class FamilyCharacteristicTableYAMLOutputter extends
-        YAMLOutputter<FamilyCharacteristicTable> {
+public final class FamilyCharacteristicTableMapParser implements
+        Parser<FamilyCharacteristicTable, Map<String, Object>> {
 
-    public FamilyCharacteristicTableYAMLOutputter() {
+    public FamilyCharacteristicTableMapParser() {
         super();
+    }
+
+    @Override
+    public final Map<String, Object>
+            parse(final FamilyCharacteristicTable value) {
+        final Map<String, Object> data;
+        final Collection<Map<String, Object>> intervals;
+        Map<String, Object> interval;
+
+        data = new LinkedHashMap<String, Object>();
+        intervals = new LinkedList<>();
+
+        data.put("name", value.getName());
+        data.put("intervals", intervals);
+
+        for (final Entry<Interval, FamilyCharacteristicTemplate> entry : value
+                .getIntervals().entrySet()) {
+            interval = new LinkedHashMap<String, Object>();
+
+            interval.put("lower_limit", entry.getKey().getLowerLimit());
+            interval.put("family_characteristic",
+                    getFamilyCharacteristicMap(entry.getValue()));
+
+            intervals.add(interval);
+        }
+
+        return data;
     }
 
     private final Map<String, Object> getFamilyCharacteristicMap(
@@ -65,33 +92,6 @@ public final class FamilyCharacteristicTableYAMLOutputter extends
 
         if (!bonus.isEmpty()) {
             data.put("bonus", bonus);
-        }
-
-        return data;
-    }
-
-    @Override
-    protected final Map<String, Object> buildMap(
-            final FamilyCharacteristicTable value) {
-        final Map<String, Object> data;
-        final Collection<Map<String, Object>> intervals;
-        Map<String, Object> interval;
-
-        data = new LinkedHashMap<String, Object>();
-        intervals = new LinkedList<>();
-
-        data.put("name", value.getName());
-        data.put("intervals", intervals);
-
-        for (final Entry<Interval, FamilyCharacteristicTemplate> entry : value
-                .getIntervals().entrySet()) {
-            interval = new LinkedHashMap<String, Object>();
-
-            interval.put("lower_limit", entry.getKey().getLowerLimit());
-            interval.put("family_characteristic",
-                    getFamilyCharacteristicMap(entry.getValue()));
-
-            intervals.add(interval);
         }
 
         return data;

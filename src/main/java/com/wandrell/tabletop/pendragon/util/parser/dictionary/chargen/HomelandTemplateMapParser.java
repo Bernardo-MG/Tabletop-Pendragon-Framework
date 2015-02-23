@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,19 +6,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 
-public final class HomelandTemplateYAMLOutputter extends
-        YAMLOutputter<HomelandTemplate> {
+public final class HomelandTemplateMapParser implements
+        Parser<HomelandTemplate, Map<String, Object>> {
 
-    public HomelandTemplateYAMLOutputter() {
+    public HomelandTemplateMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final HomelandTemplate value) {
+    public final Map<String, Object> parse(final HomelandTemplate value) {
         final Map<String, Object> data;
         final Map<String, Object> bonus;
         Collection<Map<String, Object>> values;

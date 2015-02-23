@@ -1,19 +1,19 @@
-package com.wandrell.tabletop.pendragon.util.outputter.inventory;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class ItemYAMLOutputter extends YAMLOutputter<Item> {
+public final class ItemMapParser implements Parser<Item, Map<String, Object>> {
 
-    public ItemYAMLOutputter() {
+    public ItemMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final Item value) {
+    public final Map<String, Object> parse(final Item value) {
         final Map<String, Object> data;
 
         data = new LinkedHashMap<String, Object>();

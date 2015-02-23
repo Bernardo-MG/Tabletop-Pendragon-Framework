@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,17 +6,47 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 
-public final class CultureTemplateYAMLOutputter extends
-        YAMLOutputter<CultureTemplate> {
+public final class CultureTemplateMapParser implements
+        Parser<CultureTemplate, Map<String, Object>> {
 
-    public CultureTemplateYAMLOutputter() {
+    public CultureTemplateMapParser() {
         super();
+    }
+
+    @Override
+    public final Map<String, Object> parse(final CultureTemplate value) {
+        final Map<String, Object> data;
+        final Map<String, Object> familyChar;
+        final Map<String, Object> initialLuck;
+        final Map<String, Object> template;
+
+        data = new LinkedHashMap<String, Object>();
+        familyChar = new LinkedHashMap<String, Object>();
+        initialLuck = new LinkedHashMap<String, Object>();
+        template = new LinkedHashMap<String, Object>();
+
+        familyChar.put("male", value.getMaleFamilyCharacteristic().getName());
+        familyChar.put("female", value.getFemaleFamilyCharacteristic()
+                .getName());
+
+        initialLuck.put("male", value.getMaleInitialLuckTable().getName());
+        initialLuck.put("female", value.getFemaleInitialLuckTable().getName());
+
+        template.put("male", buildTemplateMap(value.getMaleTemplate()));
+        template.put("female", buildTemplateMap(value.getFemaleTemplate()));
+
+        data.put("name", value.getName());
+        data.put("family_characteristic", familyChar);
+        data.put("initial_luck", initialLuck);
+        data.put("template", template);
+
+        return data;
     }
 
     private final Map<String, Object> buildTemplateMap(
@@ -144,36 +174,6 @@ public final class CultureTemplateYAMLOutputter extends
         values.put("directed_traits_bonus", valuesCol);
 
         return values;
-    }
-
-    @Override
-    protected final Map<String, Object> buildMap(final CultureTemplate value) {
-        final Map<String, Object> data;
-        final Map<String, Object> familyChar;
-        final Map<String, Object> initialLuck;
-        final Map<String, Object> template;
-
-        data = new LinkedHashMap<String, Object>();
-        familyChar = new LinkedHashMap<String, Object>();
-        initialLuck = new LinkedHashMap<String, Object>();
-        template = new LinkedHashMap<String, Object>();
-
-        familyChar.put("male", value.getMaleFamilyCharacteristic().getName());
-        familyChar.put("female", value.getFemaleFamilyCharacteristic()
-                .getName());
-
-        initialLuck.put("male", value.getMaleInitialLuckTable().getName());
-        initialLuck.put("female", value.getFemaleInitialLuckTable().getName());
-
-        template.put("male", buildTemplateMap(value.getMaleTemplate()));
-        template.put("female", buildTemplateMap(value.getFemaleTemplate()));
-
-        data.put("name", value.getName());
-        data.put("family_characteristic", familyChar);
-        data.put("initial_luck", initialLuck);
-        data.put("template", template);
-
-        return data;
     }
 
 }

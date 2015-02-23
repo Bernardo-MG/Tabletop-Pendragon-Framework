@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -13,18 +14,17 @@ import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class AdditionalBelongingsYAMLOutputter extends
-        YAMLOutputter<AdditionalBelongingsTable> {
+public final class AdditionalBelongingsMapParser implements
+        Parser<AdditionalBelongingsTable, Map<String, Object>> {
 
-    public AdditionalBelongingsYAMLOutputter() {
+    public AdditionalBelongingsMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(
-            final AdditionalBelongingsTable value) {
+    public final Map<String, Object>
+            parse(final AdditionalBelongingsTable value) {
         final Map<String, Object> data;
         final Collection<Map<String, Object>> belongings;
         Map<String, Object> belongingsData;

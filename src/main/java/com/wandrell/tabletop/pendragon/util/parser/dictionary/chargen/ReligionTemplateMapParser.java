@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,18 +6,18 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class ReligionTemplateYAMLOutputter extends
-        YAMLOutputter<ReligionTemplate> {
+public final class ReligionTemplateMapParser implements
+        Parser<ReligionTemplate, Map<String, Object>> {
 
-    public ReligionTemplateYAMLOutputter() {
+    public ReligionTemplateMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final ReligionTemplate value) {
+    public final Map<String, Object> parse(final ReligionTemplate value) {
         final Map<String, Object> data;
         final Map<String, Object> bonus;
         final Collection<Map<String, Object>> derived;

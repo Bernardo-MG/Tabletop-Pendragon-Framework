@@ -1,19 +1,19 @@
-package com.wandrell.tabletop.pendragon.util.outputter.inventory;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Armor;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class ArmorYAMLOutputter extends YAMLOutputter<Armor> {
+public final class ArmorMapParser implements Parser<Armor, Map<String, Object>> {
 
-    public ArmorYAMLOutputter() {
+    public ArmorMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final Armor value) {
+    public final Map<String, Object> parse(final Armor value) {
         final Map<String, Object> data;
 
         data = new LinkedHashMap<String, Object>();

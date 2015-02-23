@@ -1,19 +1,20 @@
-package com.wandrell.tabletop.pendragon.util.outputter.inventory;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class ShieldYAMLOutputter extends YAMLOutputter<Shield> {
+public final class ShieldMapParser implements
+        Parser<Shield, Map<String, Object>> {
 
-    public ShieldYAMLOutputter() {
+    public ShieldMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final Shield value) {
+    public final Map<String, Object> parse(final Shield value) {
         final Map<String, Object> data;
 
         data = new LinkedHashMap<String, Object>();

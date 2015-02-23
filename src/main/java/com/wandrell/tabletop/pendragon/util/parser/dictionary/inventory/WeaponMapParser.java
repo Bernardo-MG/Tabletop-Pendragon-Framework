@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.outputter.inventory;
+package com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -6,19 +6,20 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
 import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
-import com.wandrell.tabletop.pendragon.util.outputter.YAMLOutputter;
 
-public final class WeaponYAMLOutputter extends YAMLOutputter<Weapon> {
+public final class WeaponMapParser implements
+        Parser<Weapon, Map<String, Object>> {
 
-    public WeaponYAMLOutputter() {
+    public WeaponMapParser() {
         super();
     }
 
     @Override
-    protected final Map<String, Object> buildMap(final Weapon value) {
+    public final Map<String, Object> parse(final Weapon value) {
         final Map<String, Object> data;
         final Map<String, Boolean> flags;
         final Collection<Map<String, Object>> armorBonus;

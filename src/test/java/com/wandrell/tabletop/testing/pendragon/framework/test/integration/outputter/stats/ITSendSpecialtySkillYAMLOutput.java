@@ -7,16 +7,18 @@ import java.io.FileWriter;
 import java.io.Reader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Random;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.outputter.Outputter;
+import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkill;
 import com.wandrell.tabletop.pendragon.service.ModelService;
-import com.wandrell.tabletop.pendragon.util.outputter.stats.SpecialtySkillYAMLOutputter;
+import com.wandrell.tabletop.pendragon.util.parser.dictionary.stats.SpecialtySkillMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.SpecialtySkillYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -24,12 +26,12 @@ import com.wandrell.util.ResourceUtils;
 
 public final class ITSendSpecialtySkillYAMLOutput {
 
-    private static final Random             random        = new Random();
-    private static final String             TEMPLATE_PATH = "target/test_write_SpecialtySkill_";
-    private final Outputter<SpecialtySkill> outputter;
+    private static final Random                               random        = new Random();
+    private static final String                               TEMPLATE_PATH = "target/test_write_SpecialtySkill_";
+    private final Parser<SpecialtySkill, Map<String, Object>> parserMap;
 
     {
-        outputter = new SpecialtySkillYAMLOutputter();
+        parserMap = new SpecialtySkillMapParser();
     }
 
     public ITSendSpecialtySkillYAMLOutput() {
@@ -43,6 +45,9 @@ public final class ITSendSpecialtySkillYAMLOutput {
         final Parser<Reader, SpecialtySkill> parser;
         final ModelService modelService;
         final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
 
         modelService = TestServiceFactory.getInstance().getModelService();
 
@@ -54,8 +59,8 @@ public final class ITSendSpecialtySkillYAMLOutput {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(skill,
-                new BufferedWriter(new FileWriter(pathOut.toFile())));
+        outputter.send(parserMap.parse(skill), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         skillOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
