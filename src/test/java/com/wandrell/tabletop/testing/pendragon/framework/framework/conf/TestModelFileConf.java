@@ -6,6 +6,7 @@ public final class TestModelFileConf {
     public static final String ADDITIONAL_BELONGINGS_MINIMUM = "model/files/additional-belongings-minimum.yml";
     public static final String ARMOR                         = "model/files/armor.yml";
     public static final String CULTURE                       = "model/files/culture.yml";
+    public static final String CULTURE_MINIMUM               = "model/files/culture-minimum.yml";
     public static final String DIRECTED_TRAITS               = "model/files/directed-traits.yml";
     public static final String FAMILY_CHARACTERISTIC         = "model/files/family-characteristic.yml";
     public static final String FATHER_CLASS                  = "model/files/father-class.yml";

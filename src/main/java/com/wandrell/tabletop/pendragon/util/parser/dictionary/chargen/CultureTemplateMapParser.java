@@ -69,7 +69,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("attributes_bonus", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("attributes_bonus", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getAttributesRandom().isEmpty()) {
@@ -83,7 +85,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("attributes_random", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("attributes_random", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getTraits().isEmpty()) {
@@ -97,7 +101,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("traits_bonus", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("traits_bonus", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
@@ -112,7 +118,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("skills_bonus", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("skills_bonus", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getSpecialtySkills().isEmpty()) {
@@ -126,7 +134,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("specialty_skills", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("specialty_skills", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getPassions().isEmpty()) {
@@ -141,7 +151,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("passions_bonus", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("passions_bonus", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getPassionsRandom().isEmpty()) {
@@ -156,7 +168,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("passions_random", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("passions_random", valuesCol);
+        }
 
         valuesCol = new LinkedList<>();
         if (!template.getDirectedTraits().isEmpty()) {
@@ -171,7 +185,9 @@ public final class CultureTemplateMapParser implements
                 valuesCol.add(value);
             }
         }
-        values.put("directed_traits_bonus", valuesCol);
+        if (!valuesCol.isEmpty()) {
+            values.put("directed_traits_bonus", valuesCol);
+        }
 
         return values;
     }

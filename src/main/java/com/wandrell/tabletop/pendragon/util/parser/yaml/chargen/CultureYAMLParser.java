@@ -99,78 +99,103 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         diceParser = new StringDiceParser();
 
         attributesBonus = new LinkedHashMap<String, Integer>();
-        for (final Map<String, Object> child : template.get("attributes_bonus")) {
-            attributesBonus.put((String) child.get("name"),
-                    (Integer) child.get("value"));
-        }
-
         attributesRandom = new LinkedHashMap<String, Dice>();
-        for (final Map<String, Object> child : template
-                .get("attributes_random")) {
-            attributesRandom.put((String) child.get("name"),
-                    diceParser.parse((String) child.get("value")));
-        }
-
         skillsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
-        for (final Map<String, Object> child : template.get("skills_bonus")) {
-            descriptor = (String) child.get("descriptor");
-            if (descriptor == null) {
-                descriptor = "";
-            }
-            skill = new DefaultNameAndDescriptor((String) child.get("name"),
-                    descriptor);
-
-            skillsBonus.put(skill, (Integer) child.get("value"));
-        }
-
         specialtySkills = new LinkedHashMap<String, Integer>();
-        for (final Map<String, Object> child : template.get("specialty_skills")) {
-            specialtySkills.put((String) child.get("name"),
-                    (Integer) child.get("value"));
-        }
-
         passionsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
-        for (final Map<String, Object> child : template.get("passions_bonus")) {
-            descriptor = (String) child.get("descriptor");
-            if (descriptor == null) {
-                descriptor = "";
-            }
-            skill = new DefaultNameAndDescriptor((String) child.get("name"),
-                    descriptor);
-
-            passionsBonus.put(skill, (Integer) child.get("value"));
-        }
-
         passionsRandom = new LinkedHashMap<NameAndDescriptor, Dice>();
-        for (final Map<String, Object> child : template.get("passions_random")) {
-            descriptor = (String) child.get("descriptor");
-            if (descriptor == null) {
-                descriptor = "";
-            }
-            skill = new DefaultNameAndDescriptor((String) child.get("name"),
-                    descriptor);
-
-            passionsRandom.put(skill,
-                    diceParser.parse((String) child.get("value")));
-        }
-
         directedBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
-        for (final Map<String, Object> child : template
-                .get("directed_traits_bonus")) {
-            descriptor = (String) child.get("descriptor");
-            if (descriptor == null) {
-                descriptor = "";
-            }
-            skill = new DefaultNameAndDescriptor((String) child.get("name"),
-                    descriptor);
-
-            directedBonus.put(skill, (Integer) child.get("value"));
-        }
-
         traitsBonus = new LinkedHashMap<String, Integer>();
-        for (final Map<String, Object> child : template.get("traits_bonus")) {
-            traitsBonus.put((String) child.get("name"),
-                    (Integer) child.get("value"));
+
+        if (template != null) {
+            if (template.containsKey("attributes_bonus")) {
+                for (final Map<String, Object> child : template
+                        .get("attributes_bonus")) {
+                    attributesBonus.put((String) child.get("name"),
+                            (Integer) child.get("value"));
+                }
+            }
+
+            if (template.containsKey("attributes_random")) {
+                for (final Map<String, Object> child : template
+                        .get("attributes_random")) {
+                    attributesRandom.put((String) child.get("name"),
+                            diceParser.parse((String) child.get("value")));
+                }
+            }
+
+            if (template.containsKey("skills_bonus")) {
+                for (final Map<String, Object> child : template
+                        .get("skills_bonus")) {
+                    descriptor = (String) child.get("descriptor");
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+                    skill = new DefaultNameAndDescriptor(
+                            (String) child.get("name"), descriptor);
+
+                    skillsBonus.put(skill, (Integer) child.get("value"));
+                }
+            }
+
+            if (template.containsKey("specialty_skills")) {
+                for (final Map<String, Object> child : template
+                        .get("specialty_skills")) {
+                    specialtySkills.put((String) child.get("name"),
+                            (Integer) child.get("value"));
+                }
+            }
+
+            if (template.containsKey("passions_bonus")) {
+                for (final Map<String, Object> child : template
+                        .get("passions_bonus")) {
+                    descriptor = (String) child.get("descriptor");
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+                    skill = new DefaultNameAndDescriptor(
+                            (String) child.get("name"), descriptor);
+
+                    passionsBonus.put(skill, (Integer) child.get("value"));
+                }
+            }
+
+            if (template.containsKey("passions_random")) {
+                for (final Map<String, Object> child : template
+                        .get("passions_random")) {
+                    descriptor = (String) child.get("descriptor");
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+                    skill = new DefaultNameAndDescriptor(
+                            (String) child.get("name"), descriptor);
+
+                    passionsRandom.put(skill,
+                            diceParser.parse((String) child.get("value")));
+                }
+            }
+
+            if (template.containsKey("directed_traits_bonus")) {
+                for (final Map<String, Object> child : template
+                        .get("directed_traits_bonus")) {
+                    descriptor = (String) child.get("descriptor");
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+                    skill = new DefaultNameAndDescriptor(
+                            (String) child.get("name"), descriptor);
+
+                    directedBonus.put(skill, (Integer) child.get("value"));
+                }
+            }
+
+            if (template.containsKey("traits_bonus")) {
+                for (final Map<String, Object> child : template
+                        .get("traits_bonus")) {
+                    traitsBonus.put((String) child.get("name"),
+                            (Integer) child.get("value"));
+                }
+            }
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
