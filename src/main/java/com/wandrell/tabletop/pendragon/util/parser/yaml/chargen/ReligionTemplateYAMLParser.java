@@ -3,6 +3,7 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
 import java.io.Reader;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
@@ -47,7 +48,11 @@ public final class ReligionTemplateYAMLParser implements
         bonus = (Map<String, Object>) values.get("bonus");
 
         // Traits
-        traits = (Collection<String>) values.get("traits");
+        if ((values.containsKey("traits")) && (values.get("traits") != null)) {
+            traits = (Collection<String>) values.get("traits");
+        } else {
+            traits = new LinkedList<>();
+        }
 
         // Derived attributes bonus
         bonusDerived = new LinkedHashMap<String, Integer>();

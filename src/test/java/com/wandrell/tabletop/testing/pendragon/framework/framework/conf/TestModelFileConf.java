@@ -23,6 +23,7 @@ public final class TestModelFileConf {
     public static final String PASSIONS_VALIDATION           = "validation/pendragon-model-passion.xsd";
     public static final String PET                           = "model/files/pet.yml";
     public static final String RELIGION                      = "model/files/religion.yml";
+    public static final String RELIGION_MINIMUM              = "model/files/religion-minimum.yml";
     public static final String SHIELD                        = "model/files/shield.yml";
     public static final String SKILLS                        = "model/files/skills.xml";
     public static final String SKILLS_VALIDATION             = "validation/pendragon-model-skill.xsd";
