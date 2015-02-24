@@ -31,11 +31,6 @@ public final class HomelandTemplateYAMLParser implements
         final Yaml yaml;
         final Map<String, Object> values;
         final Map<String, Collection<Map<String, Object>>> bonus;
-        final Collection<Map<String, Object>> skillsMap;
-        final Collection<Map<String, Object>> specialtySkillsMap;
-        final Collection<Map<String, Object>> traitsMap;
-        final Collection<Map<String, Object>> directedTraitsMap;
-        final Collection<Map<String, Object>> passionsMap;
         final String name;
         final Map<NameAndDescriptor, Integer> skills;
         final Map<String, Integer> specialtySkills;
@@ -55,62 +50,62 @@ public final class HomelandTemplateYAMLParser implements
         bonus = (Map<String, Collection<Map<String, Object>>>) values
                 .get("bonus");
 
-        // Skills
         skills = new LinkedHashMap<NameAndDescriptor, Integer>();
-        skillsMap = bonus.get("skills");
-        if (skillsMap != null) {
-            for (final Map<String, Object> skill : skillsMap) {
-                descriptor = (String) skill.get("descriptor");
-                if (descriptor == null) {
-                    descriptor = "";
-                }
-                skillData = new DefaultNameAndDescriptor(
-                        (String) skill.get("name"), descriptor);
-                skills.put(skillData, (Integer) skill.get("value"));
-            }
-        }
-
-        // Specialty skills
         specialtySkills = new LinkedHashMap<String, Integer>();
-        specialtySkillsMap = bonus.get("specialty_skills");
-        if (specialtySkillsMap != null) {
-            for (final Map<String, Object> skill : specialtySkillsMap) {
-                specialtySkills.put((String) skill.get("name"),
-                        (Integer) skill.get("value"));
-            }
-        }
-
-        // Traits
         traits = new LinkedHashMap<String, Integer>();
-        traitsMap = bonus.get("traits");
-        if (traitsMap != null) {
-            for (final Map<String, Object> trait : traitsMap) {
-                traits.put((String) trait.get("name"),
-                        (Integer) trait.get("value"));
-            }
-        }
-
-        // Directed traits
         directedTraits = new LinkedList<NameAndDescriptor>();
-        directedTraitsMap = bonus.get("directed_traits");
-        if (directedTraitsMap != null) {
-            for (final Map<String, Object> trait : directedTraitsMap) {
-                skillData = new DefaultNameAndDescriptor(
-                        (String) trait.get("name"),
-                        (String) trait.get("descriptor"));
-                directedTraits.add(skillData);
-            }
-        }
-
-        // Passions
         passions = new LinkedList<NameAndDescriptor>();
-        passionsMap = bonus.get("passions");
-        if (passionsMap != null) {
-            for (final Map<String, Object> passion : passionsMap) {
-                skillData = new DefaultNameAndDescriptor(
-                        (String) passion.get("name"),
-                        (String) passion.get("descriptor"));
-                passions.add(skillData);
+
+        if (bonus != null) {
+            // Skills
+            if (bonus.containsKey("skills")) {
+                for (final Map<String, Object> skill : bonus.get("skills")) {
+                    descriptor = (String) skill.get("descriptor");
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+                    skillData = new DefaultNameAndDescriptor(
+                            (String) skill.get("name"), descriptor);
+                    skills.put(skillData, (Integer) skill.get("value"));
+                }
+            }
+
+            // Specialty skills
+            if (bonus.containsKey("specialty_skills")) {
+                for (final Map<String, Object> skill : bonus
+                        .get("specialty_skills")) {
+                    specialtySkills.put((String) skill.get("name"),
+                            (Integer) skill.get("value"));
+                }
+            }
+
+            // Traits
+            if (bonus.containsKey("traits")) {
+                for (final Map<String, Object> trait : bonus.get("traits")) {
+                    traits.put((String) trait.get("name"),
+                            (Integer) trait.get("value"));
+                }
+            }
+
+            // Directed traits
+            if (bonus.containsKey("directed_traits")) {
+                for (final Map<String, Object> trait : bonus
+                        .get("directed_traits")) {
+                    skillData = new DefaultNameAndDescriptor(
+                            (String) trait.get("name"),
+                            (String) trait.get("descriptor"));
+                    directedTraits.add(skillData);
+                }
+            }
+
+            // Passions
+            if (bonus.containsKey("passions")) {
+                for (final Map<String, Object> passion : bonus.get("passions")) {
+                    skillData = new DefaultNameAndDescriptor(
+                            (String) passion.get("name"),
+                            (String) passion.get("descriptor"));
+                    passions.add(skillData);
+                }
             }
         }
 

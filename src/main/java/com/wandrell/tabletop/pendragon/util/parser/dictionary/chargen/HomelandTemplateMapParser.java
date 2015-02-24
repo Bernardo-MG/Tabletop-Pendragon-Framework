@@ -91,9 +91,7 @@ public final class HomelandTemplateMapParser implements
         }
 
         data.put("name", value.getName());
-        if (!bonus.isEmpty()) {
-            data.put("bonus", bonus);
-        }
+        data.put("bonus", bonus);
 
         return data;
     }
