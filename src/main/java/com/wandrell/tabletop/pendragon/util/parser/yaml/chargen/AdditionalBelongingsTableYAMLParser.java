@@ -75,24 +75,28 @@ public class AdditionalBelongingsTableYAMLParser implements
                 .get("belongings_table");
 
         limits = new LinkedList<Integer>();
-        for (final Map<String, Object> row : belongings) {
-            limits.add((Integer) row.get("lower_limit"));
+        if (belongings != null) {
+            for (final Map<String, Object> row : belongings) {
+                limits.add((Integer) row.get("lower_limit"));
+            }
         }
 
         pos = 0;
         intervalsMap = new LinkedHashMap<Interval, AdditionalBelongings>();
-        for (final Map<String, Object> row : belongings) {
-            if (pos < (limits.size() - 1)) {
-                interval = new DefaultInterval(limits.get(pos),
-                        limits.get(pos + 1) - 1);
-            } else {
-                interval = new DefaultInterval(limits.get(pos), 20);
-            }
-            pos++;
+        if (belongings != null) {
+            for (final Map<String, Object> row : belongings) {
+                if (pos < (limits.size() - 1)) {
+                    interval = new DefaultInterval(limits.get(pos),
+                            limits.get(pos + 1) - 1);
+                } else {
+                    interval = new DefaultInterval(limits.get(pos), 20);
+                }
+                pos++;
 
-            intervalsMap.put(interval,
-                    readAdditionalBelongings((Map<String, Object>) row
-                            .get("belongings")));
+                intervalsMap.put(interval,
+                        readAdditionalBelongings((Map<String, Object>) row
+                                .get("belongings")));
+            }
         }
 
         return getModelService().getAdditionalBelongingsTable(name,
