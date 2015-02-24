@@ -1,0 +1,9 @@
+name: test_father_class
+skills_points: 5
+skills_points_non_combat: 6
+skills_points_group_bonus: 7
+skills_points_group_divide: 8
+money: 3d6+10
+skills_group:
+bonus:
+base:

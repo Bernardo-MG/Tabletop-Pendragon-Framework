@@ -54,7 +54,9 @@ public final class FatherClassTemplateMapParser implements
 
             directed.add(map);
         }
-        bonus.put("directed_traits", directed);
+        if (!directed.isEmpty()) {
+            bonus.put("directed_traits", directed);
+        }
 
         for (final Entry<String, Integer> entry : value.getSpecialtySkills()
                 .entrySet()) {
@@ -65,7 +67,9 @@ public final class FatherClassTemplateMapParser implements
 
             specialty.add(map);
         }
-        bonus.put("specialty_skills", specialty);
+        if (!specialty.isEmpty()) {
+            bonus.put("specialty_skills", specialty);
+        }
 
         for (final Entry<NameAndDescriptor, Integer> entry : value
                 .getDirectedTraitsBase().entrySet()) {
@@ -77,7 +81,9 @@ public final class FatherClassTemplateMapParser implements
 
             directedBase.add(map);
         }
-        base.put("directed_traits", directedBase);
+        if (!directedBase.isEmpty()) {
+            base.put("directed_traits", directedBase);
+        }
 
         data.put("name", value.getName());
 

@@ -12,6 +12,7 @@ public final class TestModelFileConf {
     public static final String FAMILY_CHARACTERISTIC_MINIMUM = "model/files/family-characteristic-minimum.yml";
     public static final String FATHER_CLASS                  = "model/files/father-class.yml";
     public static final String FATHER_CLASS_GLORY            = "model/files/father-glory.yml";
+    public static final String FATHER_CLASS_MINIMUM          = "model/files/father-class-minimum.yml";
     public static final String HOMELAND                      = "model/files/homeland.yml";
     public static final String HORSE                         = "model/files/horse.yml";
     public static final String HORSE_MINIMUM                 = "model/files/horse-minimum.yml";

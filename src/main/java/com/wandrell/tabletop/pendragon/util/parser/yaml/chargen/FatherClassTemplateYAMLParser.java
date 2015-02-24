@@ -34,12 +34,12 @@ public class FatherClassTemplateYAMLParser implements
             throws Exception {
         final Yaml yaml;
         final Map<String, Object> values;
-        final Collection<Map<String, Object>> skillsGroupMAp;
-        final Collection<Map<String, Object>> specialtySkillsMAp;
-        final Collection<Map<String, Object>> directedTraitsMAp;
-        final Collection<Map<String, Object>> directedTraitsBaseMAp;
-        final Map<String, Collection<Map<String, Object>>> baseMAp;
-        final Map<String, Collection<Map<String, Object>>> bonusMAp;
+        final Collection<Map<String, Object>> skillsGroupMap;
+        final Collection<Map<String, Object>> specialtySkillsMap;
+        final Collection<Map<String, Object>> directedTraitsMap;
+        final Collection<Map<String, Object>> directedTraitsBaseMap;
+        final Map<String, Collection<Map<String, Object>>> baseMap;
+        final Map<String, Collection<Map<String, Object>>> bonusMap;
         final String name;
         final Integer skillsGroupPoints;
         final Integer skillsGroupPointsDivide;
@@ -62,9 +62,9 @@ public class FatherClassTemplateYAMLParser implements
         // Name
         name = (String) values.get("name");
 
-        baseMAp = (Map<String, Collection<Map<String, Object>>>) values
+        baseMap = (Map<String, Collection<Map<String, Object>>>) values
                 .get("base");
-        bonusMAp = (Map<String, Collection<Map<String, Object>>>) values
+        bonusMap = (Map<String, Collection<Map<String, Object>>>) values
                 .get("bonus");
 
         // Skills group bonus
@@ -107,10 +107,10 @@ public class FatherClassTemplateYAMLParser implements
 
         // Skills group
         skillsGroup = new LinkedList<NameAndDescriptor>();
-        skillsGroupMAp = (Collection<Map<String, Object>>) values
+        skillsGroupMap = (Collection<Map<String, Object>>) values
                 .get("skills_group");
-        if (skillsGroupMAp != null) {
-            for (final Map<String, Object> skill : skillsGroupMAp) {
+        if (skillsGroupMap != null) {
+            for (final Map<String, Object> skill : skillsGroupMap) {
                 descriptor = (String) skill.get("descriptor");
                 if (descriptor == null) {
                     skillsGroup.add(new DefaultNameAndDescriptor((String) skill
@@ -122,39 +122,48 @@ public class FatherClassTemplateYAMLParser implements
             }
         }
 
-        // Specialty skills
         specialtySkills = new LinkedHashMap<String, Integer>();
-        specialtySkillsMAp = bonusMAp.get("specialty_skills");
-        if (specialtySkillsMAp != null) {
-            for (final Map<String, Object> skill : specialtySkillsMAp) {
-                specialtySkills.put((String) skill.get("name"),
-                        (Integer) skill.get("value"));
-            }
-        }
-
-        // Directed traits bonus
         directedTraits = new LinkedHashMap<NameAndDescriptor, Integer>();
-        directedTraitsMAp = bonusMAp.get("directed_traits");
-        if (directedTraitsMAp != null) {
-            for (final Map<String, Object> trait : directedTraitsMAp) {
-                directedTraits.put(
-                        new DefaultNameAndDescriptor(
-                                (String) trait.get("name"), (String) trait
-                                        .get("descriptor")), (Integer) trait
-                                .get("value"));
-            }
-        }
-
-        // Directed traits base
         directedTraitsBase = new LinkedHashMap<NameAndDescriptor, Integer>();
-        directedTraitsBaseMAp = baseMAp.get("directed_traits");
-        if (directedTraitsMAp != null) {
-            for (final Map<String, Object> trait : directedTraitsBaseMAp) {
-                directedTraitsBase.put(
-                        new DefaultNameAndDescriptor(
-                                (String) trait.get("name"), (String) trait
+
+        if (bonusMap != null) {
+            // Specialty skills
+            if (bonusMap.containsKey("specialty_skills")) {
+                specialtySkillsMap = bonusMap.get("specialty_skills");
+                if (specialtySkillsMap != null) {
+                    for (final Map<String, Object> skill : specialtySkillsMap) {
+                        specialtySkills.put((String) skill.get("name"),
+                                (Integer) skill.get("value"));
+                    }
+                }
+            }
+
+            // Directed traits bonus
+            if (bonusMap.containsKey("directed_traits")) {
+                directedTraitsMap = bonusMap.get("directed_traits");
+                if (directedTraitsMap != null) {
+                    for (final Map<String, Object> trait : directedTraitsMap) {
+                        directedTraits.put(
+                                new DefaultNameAndDescriptor((String) trait
+                                        .get("name"), (String) trait
                                         .get("descriptor")), (Integer) trait
-                                .get("value"));
+                                        .get("value"));
+                    }
+                }
+            }
+
+            // Directed traits base
+            if (bonusMap.containsKey("directed_traits")) {
+                directedTraitsBaseMap = baseMap.get("directed_traits");
+                if (directedTraitsBaseMap != null) {
+                    for (final Map<String, Object> trait : directedTraitsBaseMap) {
+                        directedTraitsBase.put(
+                                new DefaultNameAndDescriptor((String) trait
+                                        .get("name"), (String) trait
+                                        .get("descriptor")), (Integer) trait
+                                        .get("value"));
+                    }
+                }
             }
         }
 
