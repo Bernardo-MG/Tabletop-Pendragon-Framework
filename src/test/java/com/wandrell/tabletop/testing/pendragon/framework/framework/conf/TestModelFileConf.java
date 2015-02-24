@@ -11,6 +11,7 @@ public final class TestModelFileConf {
     public static final String FATHER_CLASS_GLORY      = "model/files/father-glory.yml";
     public static final String HOMELAND                = "model/files/homeland.yml";
     public static final String HORSE                   = "model/files/horse.yml";
+    public static final String HORSE_MINIMUM           = "model/files/horse-minimum.yml";
     public static final String ITEM                    = "model/files/item.yml";
     public static final String LIST                    = "model/files/list.yml";
     public static final String PASSIONS                = "model/files/passions.xml";

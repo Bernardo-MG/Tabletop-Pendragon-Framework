@@ -29,18 +29,26 @@ public final class HorseMapParser implements Parser<Horse, Map<String, Object>> 
         attributes.put("size", value.getSize());
         attributes.put("strength", value.getStrength());
 
-        derived.put("damage", 55);
-        derived.put("movement_rate", 66);
+        derived.put("damage", value.getDamage());
+        derived.put("movement_rate", value.getMovementRate());
 
-        flags.put("armored", value.isArmored());
-        flags.put("combat", value.isCombatHorse());
-        flags.put("hunting", value.isHuntingHorse());
+        if (value.isArmored()) {
+            flags.put("armored", value.isArmored());
+        }
+        if (value.isCombatHorse()) {
+            flags.put("combat", value.isCombatHorse());
+        }
+        if (value.isHuntingHorse()) {
+            flags.put("hunting", value.isHuntingHorse());
+        }
 
         data.put("type", value.getHorseType());
         data.put("natural_armor", value.getNaturalArmor());
         data.put("attributes", attributes);
         data.put("derived_attributes", derived);
-        data.put("flags", flags);
+        if (!flags.isEmpty()) {
+            data.put("flags", flags);
+        }
 
         return data;
     }

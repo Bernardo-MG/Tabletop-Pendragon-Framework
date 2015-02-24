@@ -55,10 +55,30 @@ public class HorseYAMLParser implements Parser<Reader, Horse> {
         damage = mapValues.get("damage");
         movement = mapValues.get("movement_rate");
 
-        mapFlags = (Map<String, Boolean>) values.get("flags");
-        armored = mapFlags.get("armored");
-        combat = mapFlags.get("combat");
-        hunting = mapFlags.get("hunting");
+        if (values.containsKey("flags")) {
+            mapFlags = (Map<String, Boolean>) values.get("flags");
+            if (mapFlags.containsKey("armored")) {
+                armored = mapFlags.get("armored");
+            } else {
+                armored = false;
+            }
+
+            if (mapFlags.containsKey("combat")) {
+                combat = mapFlags.get("combat");
+            } else {
+                combat = false;
+            }
+
+            if (mapFlags.containsKey("hunting")) {
+                hunting = mapFlags.get("hunting");
+            } else {
+                hunting = false;
+            }
+        } else {
+            armored = false;
+            combat = false;
+            hunting = false;
+        }
 
         return getModelService().getHorse(type, constitution, dexterity, size,
                 strength, damage, movement, armor, armored, combat, hunting);
