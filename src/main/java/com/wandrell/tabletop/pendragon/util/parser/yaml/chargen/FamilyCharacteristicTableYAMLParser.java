@@ -50,24 +50,31 @@ public class FamilyCharacteristicTableYAMLParser implements
 
         intervals = (Collection<Map<String, Object>>) values.get("intervals");
         limits = new LinkedList<Integer>();
-        for (final Map<String, Object> intervalNode : intervals) {
-            limits.add((Integer) intervalNode.get("lower_limit"));
+        if ((values.containsKey("intervals")) && (intervals != null)
+                && (!intervals.isEmpty())) {
+            for (final Map<String, Object> intervalNode : intervals) {
+                limits.add((Integer) intervalNode.get("lower_limit"));
+            }
         }
 
         pos = 0;
         intervalsMap = new LinkedHashMap<Interval, FamilyCharacteristicTemplate>();
-        for (final Map<String, Object> intervalNode : intervals) {
-            if (pos < (limits.size() - 1)) {
-                interval = new DefaultInterval(limits.get(pos),
-                        limits.get(pos + 1) - 1);
-            } else {
-                interval = new DefaultInterval(limits.get(pos), 20);
-            }
-            pos++;
+        if ((values.containsKey("intervals")) && (intervals != null)
+                && (!intervals.isEmpty())) {
+            for (final Map<String, Object> intervalNode : intervals) {
+                if (pos < (limits.size() - 1)) {
+                    interval = new DefaultInterval(limits.get(pos),
+                            limits.get(pos + 1) - 1);
+                } else {
+                    interval = new DefaultInterval(limits.get(pos), 20);
+                }
+                pos++;
 
-            intervalsMap.put(interval,
-                    readFamilyCharacteristic((Map<String, Object>) intervalNode
-                            .get("family_characteristic")));
+                intervalsMap
+                        .put(interval,
+                                readFamilyCharacteristic((Map<String, Object>) intervalNode
+                                        .get("family_characteristic")));
+            }
         }
 
         return getModelService().getFamilyCharacteristicTable(name,
@@ -80,48 +87,48 @@ public class FamilyCharacteristicTableYAMLParser implements
 
     @SuppressWarnings("unchecked")
     private final FamilyCharacteristicTemplate readFamilyCharacteristic(
-            final Map<String, Object> node) {
+            final Map<String, Object> template) {
         final String name;
         final Map<String, Integer> attributes;
         final Map<NameAndDescriptor, Integer> skills;
-        final Collection<Map<String, Object>> attributesMap;
-        final Collection<Map<String, Object>> skillsMap;
         final Map<String, Collection<Map<String, Object>>> bonus;
         NameAndDescriptor skillData;
         String descriptor;
         Integer value;
 
-        name = (String) node.get("name");
+        name = (String) template.get("name");
 
-        bonus = (Map<String, Collection<Map<String, Object>>>) node
-                .get("bonus");
-
-        attributesMap = bonus.get("attributes");
         attributes = new LinkedHashMap<String, Integer>();
-        if (attributesMap != null) {
-            for (final Map<String, Object> attribute : attributesMap) {
-                value = (Integer) attribute.get("value");
-
-                attributes.put((String) attribute.get("name"), value);
-            }
-        }
-
-        skillsMap = bonus.get("skills");
         skills = new LinkedHashMap<NameAndDescriptor, Integer>();
-        if (skillsMap != null) {
-            for (final Map<String, Object> skill : skillsMap) {
-                value = (Integer) skill.get("value");
 
-                descriptor = (String) skill.get("descriptor");
+        if (template.containsKey("bonus")) {
+            bonus = (Map<String, Collection<Map<String, Object>>>) template
+                    .get("bonus");
 
-                if (descriptor == null) {
-                    descriptor = "";
+            if (bonus.containsKey("attributes")) {
+                for (final Map<String, Object> attribute : bonus
+                        .get("attributes")) {
+                    value = (Integer) attribute.get("value");
+
+                    attributes.put((String) attribute.get("name"), value);
                 }
+            }
 
-                skillData = new DefaultNameAndDescriptor(
-                        (String) skill.get("name"), descriptor);
+            if (bonus.containsKey("skills")) {
+                for (final Map<String, Object> skill : bonus.get("skills")) {
+                    value = (Integer) skill.get("value");
 
-                skills.put(skillData, value);
+                    descriptor = (String) skill.get("descriptor");
+
+                    if (descriptor == null) {
+                        descriptor = "";
+                    }
+
+                    skillData = new DefaultNameAndDescriptor(
+                            (String) skill.get("name"), descriptor);
+
+                    skills.put(skillData, value);
+                }
             }
         }
 
