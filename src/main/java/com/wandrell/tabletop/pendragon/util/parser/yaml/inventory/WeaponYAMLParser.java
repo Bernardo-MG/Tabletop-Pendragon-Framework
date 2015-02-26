@@ -28,7 +28,6 @@ public class WeaponYAMLParser implements Parser<Reader, Weapon> {
         final Yaml yaml;
         final Map<String, Object> values;
         final Map<String, Boolean> flags;
-        final Collection<Map<String, Object>> armorBonusMap;
         final String name;
         final String skill;
         final Boolean twoHanded;
@@ -56,13 +55,41 @@ public class WeaponYAMLParser implements Parser<Reader, Weapon> {
         damageBonus = (Integer) values.get("damage_bonus");
         diceBonus = (Integer) values.get("dice_bonus");
 
-        flags = (Map<String, Boolean>) values.get("flags");
+        if (values.containsKey("flags")) {
+            flags = (Map<String, Boolean>) values.get("flags");
 
-        breakEnemyDraw = flags.get("break_enemy_on_draw");
-        breakFumble = flags.get("break_on_fumble");
-        hitsBack = flags.get("hits_back");
-        ignoresShield = flags.get("ignores_shield");
-        shieldToRoll = flags.get("reduce_shield_to_roll");
+            if (flags.containsKey("break_enemy_on_draw")) {
+                breakEnemyDraw = flags.get("break_enemy_on_draw");
+            } else {
+                breakEnemyDraw = false;
+            }
+            if (flags.containsKey("break_on_fumble")) {
+                breakFumble = flags.get("break_on_fumble");
+            } else {
+                breakFumble = false;
+            }
+            if (flags.containsKey("hits_back")) {
+                hitsBack = flags.get("hits_back");
+            } else {
+                hitsBack = false;
+            }
+            if (flags.containsKey("ignores_shield")) {
+                ignoresShield = flags.get("ignores_shield");
+            } else {
+                ignoresShield = false;
+            }
+            if (flags.containsKey("reduce_shield_to_roll")) {
+                shieldToRoll = flags.get("reduce_shield_to_roll");
+            } else {
+                shieldToRoll = false;
+            }
+        } else {
+            breakEnemyDraw = false;
+            breakFumble = false;
+            hitsBack = false;
+            ignoresShield = false;
+            shieldToRoll = false;
+        }
 
         if (values.containsKey("damage_override")) {
             damageOverride = (Integer) values.get("damage_override");
@@ -83,10 +110,9 @@ public class WeaponYAMLParser implements Parser<Reader, Weapon> {
         }
 
         armorBonus = new LinkedHashMap<ArmorType, Integer>();
-        armorBonusMap = (Collection<Map<String, Object>>) values
-                .get("vs_armor_bonus");
-        if (armorBonusMap != null) {
-            for (final Map<String, Object> node : armorBonusMap) {
+        if (values.containsKey("vs_armor_bonus")) {
+            for (final Map<String, Object> node : (Collection<Map<String, Object>>) values
+                    .get("vs_armor_bonus")) {
                 armorType = ArmorType.valueOf(((String) node.get("armor_type"))
                         .toUpperCase());
                 value = (Integer) node.get("dice_bonus");

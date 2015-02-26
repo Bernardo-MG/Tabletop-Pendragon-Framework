@@ -43,6 +43,39 @@ public final class ITSendFamilyCharacteristicTableYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final FamilyCharacteristicTable table;
+        final FamilyCharacteristicTable tableOut;
+        final Parser<Reader, FamilyCharacteristicTable> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new FamilyCharacteristicTableYAMLParser(modelService);
+
+        table = parser
+                .parse(ResourceUtils
+                        .getClassPathReader(TestModelFileConf.FAMILY_CHARACTERISTIC_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(table), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        tableOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(tableOut.getName(), table.getName());
+
+        assertEquals(tableOut.getIntervals(), table.getIntervals());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final FamilyCharacteristicTable table;
         final FamilyCharacteristicTable tableOut;

@@ -49,6 +49,53 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final AdditionalBelongingsTable table;
+        final AdditionalBelongingsTable tableOut;
+        final Parser<Reader, AdditionalBelongingsTable> parser;
+        final TestServiceFactory factory;
+        final ModelService modelService;
+        final Repository<Horse> horseRepository;
+        final Repository<Item> itemRepository;
+        final Repository<Pet> petRepository;
+        final Repository<Shield> shieldRepository;
+        final Repository<Weapon> weaponRepository;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        factory = TestServiceFactory.getInstance();
+
+        modelService = factory.getModelService();
+
+        horseRepository = factory.getHorseRepository();
+        itemRepository = factory.getItemRepository();
+        petRepository = factory.getPetRepository();
+        shieldRepository = factory.getShieldRepository();
+        weaponRepository = factory.getWeaponRepository();
+
+        parser = new AdditionalBelongingsTableYAMLParser(modelService,
+                horseRepository, itemRepository, petRepository,
+                shieldRepository, weaponRepository);
+
+        table = parser
+                .parse(ResourceUtils
+                        .getClassPathReader(TestModelFileConf.ADDITIONAL_BELONGINGS_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(table), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        tableOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        testEquals(table, tableOut);
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final AdditionalBelongingsTable table;
         final AdditionalBelongingsTable tableOut;

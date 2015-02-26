@@ -39,6 +39,56 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final FatherClassTemplate father;
+        final FatherClassTemplate fatherOut;
+        final Parser<Reader, FatherClassTemplate> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new FatherClassTemplateYAMLParser(modelService);
+
+        father = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.FATHER_CLASS_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(father), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        fatherOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(father.getName(), fatherOut.getName());
+
+        Assert.assertEquals(father.getSkillsPoints(),
+                fatherOut.getSkillsPoints());
+        Assert.assertEquals(father.getNonCombatSkillBonus(),
+                fatherOut.getNonCombatSkillBonus());
+        Assert.assertEquals(father.getSkillsGroupBonusPoints(),
+                fatherOut.getSkillsGroupBonusPoints());
+        Assert.assertEquals(father.getSkillsGroupDividePoints(),
+                fatherOut.getSkillsGroupDividePoints());
+
+        Assert.assertEquals(father.getMoney().getTextValue(), fatherOut
+                .getMoney().getTextValue());
+
+        Assert.assertEquals(father.getSkillsGroup(), fatherOut.getSkillsGroup());
+        Assert.assertEquals(father.getDirectedTraits(),
+                fatherOut.getDirectedTraits());
+        Assert.assertEquals(father.getDirectedTraitsBase(),
+                fatherOut.getDirectedTraitsBase());
+        Assert.assertEquals(father.getSpecialtySkills(),
+                fatherOut.getSpecialtySkills());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final FatherClassTemplate father;
         final FatherClassTemplate fatherOut;

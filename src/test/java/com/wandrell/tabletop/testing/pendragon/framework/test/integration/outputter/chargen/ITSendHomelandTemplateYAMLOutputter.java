@@ -39,6 +39,43 @@ public final class ITSendHomelandTemplateYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final HomelandTemplate homeland;
+        final HomelandTemplate homelandOut;
+        final Parser<Reader, HomelandTemplate> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new HomelandTemplateYAMLParser(modelService);
+
+        homeland = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.HOMELAND_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(homeland), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        homelandOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(homelandOut.getName(), homeland.getName());
+        Assert.assertEquals(homelandOut.getDirectedTraits(),
+                homeland.getDirectedTraits());
+        Assert.assertEquals(homelandOut.getPassions(), homeland.getPassions());
+        Assert.assertEquals(homelandOut.getSkills(), homeland.getSkills());
+        Assert.assertEquals(homelandOut.getSpecialtySkills(),
+                homeland.getSpecialtySkills());
+        Assert.assertEquals(homelandOut.getTraits(), homeland.getTraits());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final HomelandTemplate homeland;
         final HomelandTemplate homelandOut;

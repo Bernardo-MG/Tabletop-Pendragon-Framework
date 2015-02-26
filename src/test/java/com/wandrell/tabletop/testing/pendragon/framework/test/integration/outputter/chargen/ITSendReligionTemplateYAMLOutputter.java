@@ -38,6 +38,44 @@ public final class ITSendReligionTemplateYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final ReligionTemplate religion;
+        final ReligionTemplate religionOut;
+        final Parser<Reader, ReligionTemplate> parser;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        parser = new ReligionTemplateYAMLParser(TestServiceFactory
+                .getInstance().getModelService());
+
+        religion = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(religion), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        religionOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(religionOut.getName(), religion.getName());
+        Assert.assertEquals(religionOut.getReligiousTraits(),
+                religion.getReligiousTraits());
+        Assert.assertEquals(religionOut.getDerivedAttributeBonus(),
+                religion.getDerivedAttributeBonus());
+        Assert.assertEquals(religionOut.getArmorBonus(),
+                religion.getArmorBonus());
+        Assert.assertEquals(religionOut.getDamageBonus(),
+                religion.getDamageBonus());
+        Assert.assertEquals(religionOut.getDamageDiceBonus(),
+                religion.getDamageDiceBonus());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final ReligionTemplate religion;
         final ReligionTemplate religionOut;

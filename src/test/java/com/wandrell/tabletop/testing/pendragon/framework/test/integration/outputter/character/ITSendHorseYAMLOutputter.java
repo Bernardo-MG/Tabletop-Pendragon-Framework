@@ -39,6 +39,50 @@ public final class ITSendHorseYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final Horse horse;
+        final Horse horseOut;
+        final Parser<Reader, Horse> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new HorseYAMLParser(modelService);
+
+        horse = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.HORSE_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(horse), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        horseOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(horse.getHorseType(), horseOut.getHorseType());
+
+        Assert.assertEquals(horse.getNaturalArmor(), horseOut.getNaturalArmor());
+
+        Assert.assertEquals(horse.getConstitution(), horseOut.getConstitution());
+        Assert.assertEquals(horse.getDexterity(), horseOut.getDexterity());
+        Assert.assertEquals(horse.getSize(), horseOut.getSize());
+        Assert.assertEquals(horse.getStrength(), horseOut.getStrength());
+
+        Assert.assertEquals(horse.getDamage(), horseOut.getDamage());
+        Assert.assertEquals(horse.getMovementRate(), horseOut.getMovementRate());
+
+        Assert.assertEquals(horse.isArmored(), horseOut.isArmored());
+        Assert.assertEquals(horse.isCombatHorse(), horseOut.isCombatHorse());
+        Assert.assertEquals(horse.isHuntingHorse(), horseOut.isHuntingHorse());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final Horse horse;
         final Horse horseOut;

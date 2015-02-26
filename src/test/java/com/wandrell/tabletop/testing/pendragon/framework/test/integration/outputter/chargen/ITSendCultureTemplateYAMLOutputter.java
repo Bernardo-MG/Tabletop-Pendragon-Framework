@@ -43,6 +43,59 @@ public final class ITSendCultureTemplateYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final CultureTemplate culture;
+        final CultureTemplate cultureOut;
+        final Parser<Reader, CultureTemplate> parser;
+        final TestServiceFactory factory;
+        final ModelService modelService;
+        final Repository<AdditionalBelongingsTable> belongingsRepository;
+        final Repository<FamilyCharacteristicTemplate> characteristicRepository;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        factory = TestServiceFactory.getInstance();
+
+        modelService = factory.getModelService();
+
+        belongingsRepository = factory.getAdditionalBelongingsTableRepository();
+        characteristicRepository = factory
+                .getFamilyCharacteristicTemplateRepository();
+
+        parser = new CultureYAMLParser(modelService, characteristicRepository,
+                belongingsRepository);
+
+        culture = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.CULTURE_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(culture), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        cultureOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(cultureOut.getName(), culture.getName());
+
+        Assert.assertEquals(culture.getMaleFamilyCharacteristic().getName(),
+                cultureOut.getMaleFamilyCharacteristic().getName());
+        Assert.assertEquals(culture.getFemaleFamilyCharacteristic().getName(),
+                cultureOut.getFemaleFamilyCharacteristic().getName());
+
+        Assert.assertEquals(culture.getMaleInitialLuckTable().getName(),
+                cultureOut.getMaleInitialLuckTable().getName());
+        Assert.assertEquals(culture.getFemaleInitialLuckTable().getName(),
+                cultureOut.getFemaleInitialLuckTable().getName());
+
+        assertEqual(cultureOut.getMaleTemplate(), culture.getMaleTemplate());
+        assertEqual(cultureOut.getFemaleTemplate(), culture.getFemaleTemplate());
+    }
+
+    @Test
     public final void testWriteFile() throws Exception {
         final CultureTemplate culture;
         final CultureTemplate cultureOut;
