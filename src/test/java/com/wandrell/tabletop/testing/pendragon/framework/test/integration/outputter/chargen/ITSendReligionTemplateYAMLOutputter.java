@@ -38,7 +38,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile_Minimum() throws Exception {
+    public final void testWriteFile() throws Exception {
         final ReligionTemplate religion;
         final ReligionTemplate religionOut;
         final Parser<Reader, ReligionTemplate> parser;
@@ -51,7 +51,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
                 .getInstance().getModelService());
 
         religion = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));
+                .getClassPathReader(TestModelFileConf.RELIGION));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
@@ -76,7 +76,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile() throws Exception {
+    public final void testWriteFile_Minimum() throws Exception {
         final ReligionTemplate religion;
         final ReligionTemplate religionOut;
         final Parser<Reader, ReligionTemplate> parser;
@@ -89,7 +89,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
                 .getInstance().getModelService());
 
         religion = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.RELIGION));
+                .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();

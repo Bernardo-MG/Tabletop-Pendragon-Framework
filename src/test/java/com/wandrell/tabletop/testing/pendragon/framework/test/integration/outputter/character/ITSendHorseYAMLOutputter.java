@@ -39,7 +39,7 @@ public final class ITSendHorseYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile_Minimum() throws Exception {
+    public final void testWriteFile() throws Exception {
         final Horse horse;
         final Horse horseOut;
         final Parser<Reader, Horse> parser;
@@ -54,7 +54,7 @@ public final class ITSendHorseYAMLOutputter {
         parser = new HorseYAMLParser(modelService);
 
         horse = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.HORSE_MINIMUM));
+                .getClassPathReader(TestModelFileConf.HORSE));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
@@ -83,7 +83,7 @@ public final class ITSendHorseYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile() throws Exception {
+    public final void testWriteFile_Minimum() throws Exception {
         final Horse horse;
         final Horse horseOut;
         final Parser<Reader, Horse> parser;
@@ -98,7 +98,7 @@ public final class ITSendHorseYAMLOutputter {
         parser = new HorseYAMLParser(modelService);
 
         horse = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.HORSE));
+                .getClassPathReader(TestModelFileConf.HORSE_MINIMUM));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();

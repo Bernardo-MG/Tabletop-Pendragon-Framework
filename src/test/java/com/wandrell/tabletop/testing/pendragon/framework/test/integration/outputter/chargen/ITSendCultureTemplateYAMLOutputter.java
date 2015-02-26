@@ -43,7 +43,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile_Minimum() throws Exception {
+    public final void testWriteFile() throws Exception {
         final CultureTemplate culture;
         final CultureTemplate cultureOut;
         final Parser<Reader, CultureTemplate> parser;
@@ -68,7 +68,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
                 belongingsRepository);
 
         culture = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.CULTURE_MINIMUM));
+                .getClassPathReader(TestModelFileConf.CULTURE));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
@@ -96,7 +96,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile() throws Exception {
+    public final void testWriteFile_Minimum() throws Exception {
         final CultureTemplate culture;
         final CultureTemplate cultureOut;
         final Parser<Reader, CultureTemplate> parser;
@@ -121,7 +121,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
                 belongingsRepository);
 
         culture = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.CULTURE));
+                .getClassPathReader(TestModelFileConf.CULTURE_MINIMUM));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();

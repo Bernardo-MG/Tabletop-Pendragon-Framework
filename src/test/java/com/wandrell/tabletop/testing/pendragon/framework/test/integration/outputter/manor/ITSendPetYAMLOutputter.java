@@ -75,6 +75,39 @@ public final class ITSendPetYAMLOutputter {
                 .getAnnualCheckMap().getIntervals());
     }
 
+    @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final Pet pet;
+        final Pet petOut;
+        final Parser<Reader, Pet> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new PetYAMLParser(modelService);
+
+        pet = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.PET_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(pet), new BufferedWriter(new FileWriter(
+                pathOut.toFile())));
+
+        petOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(petOut.getName(), pet.getName());
+
+        assertEquals(petOut.getAnnualCheckMap().getIntervals(), pet
+                .getAnnualCheckMap().getIntervals());
+    }
+
     private final void assertEquals(
             final Map<Interval, AnimalYearResult> actual,
             final Map<Interval, AnimalYearResult> expected) {

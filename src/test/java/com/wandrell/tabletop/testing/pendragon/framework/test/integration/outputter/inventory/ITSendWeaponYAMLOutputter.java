@@ -184,6 +184,55 @@ public final class ITSendWeaponYAMLOutputter {
     }
 
     @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final Weapon weapon;
+        final Weapon weaponOut;
+        final Parser<Reader, Weapon> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new WeaponYAMLParser(modelService);
+
+        weapon = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.WEAPON_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(weapon.getName(), weaponOut.getName());
+
+        Assert.assertEquals(weapon.getSkill(), weaponOut.getSkill());
+        Assert.assertEquals(weapon.isTwoHanded(), weaponOut.isTwoHanded());
+        Assert.assertEquals(weapon.getDamageBonus(), weaponOut.getDamageBonus());
+        Assert.assertEquals(weapon.getDamageDiceBonus(),
+                weaponOut.getDamageDiceBonus());
+
+        Assert.assertEquals(weapon.isBreakingEnemyOnDraw(),
+                weaponOut.isBreakingEnemyOnDraw());
+        Assert.assertEquals(weapon.isBreakingOnFumble(),
+                weaponOut.isBreakingOnFumble());
+        Assert.assertEquals(weapon.isHittingBack(), weaponOut.isHittingBack());
+        Assert.assertEquals(weapon.isIgnoringShield(),
+                weaponOut.isIgnoringShield());
+        Assert.assertEquals(weapon.isReducingShieldToRoll(),
+                weaponOut.isReducingShieldToRoll());
+
+        Assert.assertEquals(weapon.getArmorBonusDice(),
+                weaponOut.getArmorBonusDice());
+    }
+
+    @Test
     public final void testWriteFile_Ranged() throws Exception {
         final RangedWeapon weapon;
         final RangedWeapon weaponOut;
@@ -231,55 +280,6 @@ public final class ITSendWeaponYAMLOutputter {
         Assert.assertEquals(weapon.getMaxRange(), weaponOut.getMaxRange());
         Assert.assertEquals(weapon.getRoundsToReload(),
                 weaponOut.getRoundsToReload());
-    }
-
-    @Test
-    public final void testWriteFile_Minimum() throws Exception {
-        final Weapon weapon;
-        final Weapon weaponOut;
-        final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
-        final Path pathOut;
-        final Outputter<Object> outputter;
-
-        outputter = new YAMLOutputter();
-
-        modelService = TestServiceFactory.getInstance().getModelService();
-
-        parser = new WeaponYAMLParser(modelService);
-
-        weapon = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.WEAPON_MINIMUM));
-
-        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
-                .toAbsolutePath();
-
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
-                new FileWriter(pathOut.toFile())));
-
-        weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
-                .toFile())));
-
-        Assert.assertEquals(weapon.getName(), weaponOut.getName());
-
-        Assert.assertEquals(weapon.getSkill(), weaponOut.getSkill());
-        Assert.assertEquals(weapon.isTwoHanded(), weaponOut.isTwoHanded());
-        Assert.assertEquals(weapon.getDamageBonus(), weaponOut.getDamageBonus());
-        Assert.assertEquals(weapon.getDamageDiceBonus(),
-                weaponOut.getDamageDiceBonus());
-
-        Assert.assertEquals(weapon.isBreakingEnemyOnDraw(),
-                weaponOut.isBreakingEnemyOnDraw());
-        Assert.assertEquals(weapon.isBreakingOnFumble(),
-                weaponOut.isBreakingOnFumble());
-        Assert.assertEquals(weapon.isHittingBack(), weaponOut.isHittingBack());
-        Assert.assertEquals(weapon.isIgnoringShield(),
-                weaponOut.isIgnoringShield());
-        Assert.assertEquals(weapon.isReducingShieldToRoll(),
-                weaponOut.isReducingShieldToRoll());
-
-        Assert.assertEquals(weapon.getArmorBonusDice(),
-                weaponOut.getArmorBonusDice());
     }
 
     private final Integer getRandomID() {

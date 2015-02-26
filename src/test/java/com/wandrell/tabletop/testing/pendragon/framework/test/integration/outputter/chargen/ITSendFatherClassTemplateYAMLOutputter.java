@@ -39,7 +39,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile_Minimum() throws Exception {
+    public final void testWriteFile() throws Exception {
         final FatherClassTemplate father;
         final FatherClassTemplate fatherOut;
         final Parser<Reader, FatherClassTemplate> parser;
@@ -54,7 +54,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         parser = new FatherClassTemplateYAMLParser(modelService);
 
         father = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.FATHER_CLASS_MINIMUM));
+                .getClassPathReader(TestModelFileConf.FATHER_CLASS));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
@@ -89,7 +89,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile() throws Exception {
+    public final void testWriteFile_Minimum() throws Exception {
         final FatherClassTemplate father;
         final FatherClassTemplate fatherOut;
         final Parser<Reader, FatherClassTemplate> parser;
@@ -104,7 +104,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         parser = new FatherClassTemplateYAMLParser(modelService);
 
         father = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.FATHER_CLASS));
+                .getClassPathReader(TestModelFileConf.FATHER_CLASS_MINIMUM));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();

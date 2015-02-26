@@ -39,7 +39,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile_Minimum() throws Exception {
+    public final void testWriteFile() throws Exception {
         final HomelandTemplate homeland;
         final HomelandTemplate homelandOut;
         final Parser<Reader, HomelandTemplate> parser;
@@ -54,7 +54,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
         parser = new HomelandTemplateYAMLParser(modelService);
 
         homeland = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.HOMELAND_MINIMUM));
+                .getClassPathReader(TestModelFileConf.HOMELAND));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
@@ -76,7 +76,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
     }
 
     @Test
-    public final void testWriteFile() throws Exception {
+    public final void testWriteFile_Minimum() throws Exception {
         final HomelandTemplate homeland;
         final HomelandTemplate homelandOut;
         final Parser<Reader, HomelandTemplate> parser;
@@ -91,7 +91,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
         parser = new HomelandTemplateYAMLParser(modelService);
 
         homeland = parser.parse(ResourceUtils
-                .getClassPathReader(TestModelFileConf.HOMELAND));
+                .getClassPathReader(TestModelFileConf.HOMELAND_MINIMUM));
 
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();

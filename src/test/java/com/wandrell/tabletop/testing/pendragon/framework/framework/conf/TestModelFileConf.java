@@ -22,6 +22,7 @@ public final class TestModelFileConf {
     public static final String PASSIONS                      = "model/files/passions.xml";
     public static final String PASSIONS_VALIDATION           = "validation/pendragon-model-passion.xsd";
     public static final String PET                           = "model/files/pet.yml";
+    public static final String PET_MINIMUM                   = "model/files/pet-minimum.yml";
     public static final String RELIGION                      = "model/files/religion.yml";
     public static final String RELIGION_MINIMUM              = "model/files/religion-minimum.yml";
     public static final String SHIELD                        = "model/files/shield.yml";
@@ -29,9 +30,9 @@ public final class TestModelFileConf {
     public static final String SKILLS_VALIDATION             = "validation/pendragon-model-skill.xsd";
     public static final String SPECIALTY_SKILL               = "model/files/specialty-skill.yml";
     public static final String WEAPON                        = "model/files/weapon.yml";
-    public static final String WEAPON_MINIMUM                = "model/files/weapon-minimum.yml";
     public static final String WEAPON_ARMOR_BONUS            = "model/files/weapon-armor-bonus.yml";
     public static final String WEAPON_DAMAGE_OVERRIDEN       = "model/files/weapon-damage-overriden.yml";
+    public static final String WEAPON_MINIMUM                = "model/files/weapon-minimum.yml";
     public static final String WEAPON_RANGED                 = "model/files/weapon-ranged.yml";
 
     private TestModelFileConf() {
