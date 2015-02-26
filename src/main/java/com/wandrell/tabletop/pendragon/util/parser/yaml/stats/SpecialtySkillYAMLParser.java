@@ -2,6 +2,7 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.stats;
 
 import java.io.Reader;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
@@ -37,7 +38,11 @@ public final class SpecialtySkillYAMLParser implements
         name = (String) values.get("name");
 
         // Skills
-        skills = (Collection<String>) values.get("skills");
+        if ((values.containsKey("skills")) && (values.get("skills") != null)) {
+            skills = (Collection<String>) values.get("skills");
+        } else {
+            skills = new LinkedList<>();
+        }
 
         return getModelService().getSpecialtySkill(name, skills);
     }

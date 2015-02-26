@@ -29,6 +29,7 @@ public final class TestModelFileConf {
     public static final String SKILLS                        = "model/files/skills.xml";
     public static final String SKILLS_VALIDATION             = "validation/pendragon-model-skill.xsd";
     public static final String SPECIALTY_SKILL               = "model/files/specialty-skill.yml";
+    public static final String SPECIALTY_SKILL_MINIMUM       = "model/files/specialty-skill-minimum.yml";
     public static final String WEAPON                        = "model/files/weapon.yml";
     public static final String WEAPON_ARMOR_BONUS            = "model/files/weapon-armor-bonus.yml";
     public static final String WEAPON_DAMAGE_OVERRIDEN       = "model/files/weapon-damage-overriden.yml";

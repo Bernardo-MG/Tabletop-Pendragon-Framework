@@ -70,6 +70,38 @@ public final class ITSendSpecialtySkillYAMLOutput {
                 skill.getSurrogatedSkills());
     }
 
+    @Test
+    public final void testWriteFileMinimum() throws Exception {
+        final SpecialtySkill skill;
+        final SpecialtySkill skillOut;
+        final Parser<Reader, SpecialtySkill> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new SpecialtySkillYAMLParser(modelService);
+
+        skill = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.SPECIALTY_SKILL_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(skill), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        skillOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(skillOut.getName(), skill.getName());
+        Assert.assertEquals(skillOut.getSurrogatedSkills(),
+                skill.getSurrogatedSkills());
+    }
+
     private final Integer getRandomID() {
         return random.nextInt(Integer.MAX_VALUE);
     }
