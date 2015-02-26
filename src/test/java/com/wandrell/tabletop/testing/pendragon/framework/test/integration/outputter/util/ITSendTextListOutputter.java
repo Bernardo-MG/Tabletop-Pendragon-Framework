@@ -69,6 +69,37 @@ public final class ITSendTextListOutputter {
         Assert.assertEquals(listOut.getValues(), list.getValues());
     }
 
+    @Test
+    public final void testWriteFile_Minimum() throws Exception {
+        final TextList list;
+        final TextList listOut;
+        final Parser<Reader, TextList> parser;
+        final ModelService modelService;
+        final Path pathOut;
+        final Outputter<Object> outputter;
+
+        outputter = new YAMLOutputter();
+
+        modelService = TestServiceFactory.getInstance().getModelService();
+
+        parser = new TextListYAMLParser(modelService);
+
+        list = parser.parse(ResourceUtils
+                .getClassPathReader(TestModelFileConf.LIST_MINIMUM));
+
+        pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
+                .toAbsolutePath();
+
+        outputter.send(parserMap.parse(list), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
+
+        listOut = parser.parse(new BufferedReader(new FileReader(pathOut
+                .toFile())));
+
+        Assert.assertEquals(listOut.getName(), list.getName());
+        Assert.assertEquals(listOut.getValues(), list.getValues());
+    }
+
     private final Integer getRandomID() {
         return random.nextInt(Integer.MAX_VALUE);
     }

@@ -2,6 +2,7 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.util;
 
 import java.io.Reader;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
@@ -35,7 +36,11 @@ public final class TextListYAMLParser implements Parser<Reader, TextList> {
         // Name
         name = (String) values.get("name");
 
-        texts = (Collection<String>) values.get("values");
+        if ((values.containsKey("values")) && (values.get("values") != null)) {
+            texts = (Collection<String>) values.get("values");
+        } else {
+            texts = new LinkedList<>();
+        }
 
         return getModelService().getTextList(name, texts);
     }

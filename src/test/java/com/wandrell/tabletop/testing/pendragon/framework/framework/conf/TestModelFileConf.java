@@ -19,6 +19,7 @@ public final class TestModelFileConf {
     public static final String HORSE_MINIMUM                 = "model/files/horse-minimum.yml";
     public static final String ITEM                          = "model/files/item.yml";
     public static final String LIST                          = "model/files/list.yml";
+    public static final String LIST_MINIMUM                  = "model/files/list-minimum.yml";
     public static final String PASSIONS                      = "model/files/passions.xml";
     public static final String PASSIONS_VALIDATION           = "validation/pendragon-model-passion.xsd";
     public static final String PET                           = "model/files/pet.yml";
