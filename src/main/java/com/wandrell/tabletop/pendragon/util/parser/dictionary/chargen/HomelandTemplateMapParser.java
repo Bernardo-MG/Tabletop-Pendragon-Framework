@@ -18,82 +18,93 @@ public final class HomelandTemplateMapParser implements
     }
 
     @Override
-    public final Map<String, Object> parse(final HomelandTemplate value) {
+    public final Map<String, Object> parse(final HomelandTemplate homeland) {
         final Map<String, Object> data;
+
+        data = new LinkedHashMap<String, Object>();
+
+        data.put("name", homeland.getName());
+        data.put("bonus", getBonus(homeland));
+
+        return data;
+    }
+
+    private final Map<String, Object> getBonus(final HomelandTemplate homeland) {
         final Map<String, Object> bonus;
         Collection<Map<String, Object>> values;
         Map<String, Object> valuesMap;
-
-        data = new LinkedHashMap<String, Object>();
         bonus = new LinkedHashMap<String, Object>();
 
-        values = new LinkedList<>();
-        for (final Entry<String, Integer> entry : value.getTraits().entrySet()) {
-            valuesMap = new LinkedHashMap<String, Object>();
-            valuesMap.put("name", entry.getKey());
-            valuesMap.put("value", entry.getValue());
+        // Traits
+        if (!homeland.getTraits().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<String, Integer> entry : homeland.getTraits()
+                    .entrySet()) {
+                valuesMap = new LinkedHashMap<String, Object>();
+                valuesMap.put("name", entry.getKey());
+                valuesMap.put("value", entry.getValue());
 
-            values.add(valuesMap);
-        }
-        if (!values.isEmpty()) {
+                values.add(valuesMap);
+            }
             bonus.put("traits", values);
         }
 
-        values = new LinkedList<>();
-        for (final Entry<NameAndDescriptor, Integer> entry : value.getSkills()
-                .entrySet()) {
-            valuesMap = new LinkedHashMap<String, Object>();
-            valuesMap.put("name", entry.getKey().getName());
-            valuesMap.put("descriptor", entry.getKey().getDescriptor());
-            valuesMap.put("value", entry.getValue());
+        // Skills
+        if (!homeland.getSkills().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<NameAndDescriptor, Integer> entry : homeland
+                    .getSkills().entrySet()) {
+                valuesMap = new LinkedHashMap<String, Object>();
+                valuesMap.put("name", entry.getKey().getName());
+                valuesMap.put("descriptor", entry.getKey().getDescriptor());
+                valuesMap.put("value", entry.getValue());
 
-            values.add(valuesMap);
-        }
-        if (!values.isEmpty()) {
+                values.add(valuesMap);
+            }
             bonus.put("skills", values);
         }
 
-        values = new LinkedList<>();
-        for (final Entry<String, Integer> entry : value.getSpecialtySkills()
-                .entrySet()) {
-            valuesMap = new LinkedHashMap<String, Object>();
-            valuesMap.put("name", entry.getKey());
-            valuesMap.put("value", entry.getValue());
+        // Specialty Skills
+        if (!homeland.getSpecialtySkills().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<String, Integer> entry : homeland
+                    .getSpecialtySkills().entrySet()) {
+                valuesMap = new LinkedHashMap<String, Object>();
+                valuesMap.put("name", entry.getKey());
+                valuesMap.put("value", entry.getValue());
 
-            values.add(valuesMap);
-        }
-        if (!values.isEmpty()) {
+                values.add(valuesMap);
+            }
             bonus.put("specialty_skills", values);
         }
 
-        values = new LinkedList<>();
-        for (final NameAndDescriptor passion : value.getPassions()) {
-            valuesMap = new LinkedHashMap<String, Object>();
-            valuesMap.put("name", passion.getName());
-            valuesMap.put("descriptor", passion.getDescriptor());
+        // Passions
+        if (!homeland.getPassions().isEmpty()) {
+            values = new LinkedList<>();
+            for (final NameAndDescriptor passion : homeland.getPassions()) {
+                valuesMap = new LinkedHashMap<String, Object>();
+                valuesMap.put("name", passion.getName());
+                valuesMap.put("descriptor", passion.getDescriptor());
 
-            values.add(valuesMap);
-        }
-        if (!values.isEmpty()) {
+                values.add(valuesMap);
+            }
             bonus.put("passions", values);
         }
 
-        values = new LinkedList<>();
-        for (final NameAndDescriptor passion : value.getDirectedTraits()) {
-            valuesMap = new LinkedHashMap<String, Object>();
-            valuesMap.put("name", passion.getName());
-            valuesMap.put("descriptor", passion.getDescriptor());
+        // Directed Traits
+        if (!homeland.getDirectedTraits().isEmpty()) {
+            values = new LinkedList<>();
+            for (final NameAndDescriptor passion : homeland.getDirectedTraits()) {
+                valuesMap = new LinkedHashMap<String, Object>();
+                valuesMap.put("name", passion.getName());
+                valuesMap.put("descriptor", passion.getDescriptor());
 
-            values.add(valuesMap);
-        }
-        if (!values.isEmpty()) {
+                values.add(valuesMap);
+            }
             bonus.put("directed_traits", values);
         }
 
-        data.put("name", value.getName());
-        data.put("bonus", bonus);
-
-        return data;
+        return bonus;
     }
 
 }

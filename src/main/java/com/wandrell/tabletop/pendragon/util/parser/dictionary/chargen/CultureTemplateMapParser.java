@@ -31,16 +31,20 @@ public final class CultureTemplateMapParser implements
         initialLuck = new LinkedHashMap<String, Object>();
         template = new LinkedHashMap<String, Object>();
 
+        // Family characteristics
         familyChar.put("male", value.getMaleFamilyCharacteristic().getName());
         familyChar.put("female", value.getFemaleFamilyCharacteristic()
                 .getName());
 
+        // Initial luck
         initialLuck.put("male", value.getMaleInitialLuckTable().getName());
         initialLuck.put("female", value.getFemaleInitialLuckTable().getName());
 
+        // Templates
         template.put("male", buildTemplateMap(value.getMaleTemplate()));
         template.put("female", buildTemplateMap(value.getFemaleTemplate()));
 
+        // Culture data
         data.put("name", value.getName());
         data.put("family_characteristic", familyChar);
         data.put("initial_luck", initialLuck);
@@ -57,6 +61,7 @@ public final class CultureTemplateMapParser implements
 
         values = new LinkedHashMap<String, Object>();
 
+        // Attributes
         valuesCol = new LinkedList<>();
         if (!template.getAttributes().isEmpty()) {
             for (final Entry<String, Integer> entry : template.getAttributes()
@@ -68,11 +73,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("attributes_bonus", valuesCol);
         }
 
+        // Random attributes
         valuesCol = new LinkedList<>();
         if (!template.getAttributesRandom().isEmpty()) {
             for (final Entry<String, Dice> entry : template
@@ -84,11 +88,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("attributes_random", valuesCol);
         }
 
+        // Traits
         valuesCol = new LinkedList<>();
         if (!template.getTraits().isEmpty()) {
             for (final Entry<String, Integer> entry : template.getTraits()
@@ -100,11 +103,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("traits_bonus", valuesCol);
         }
 
+        // Skills
         valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
             for (final Entry<NameAndDescriptor, Integer> entry : template
@@ -117,11 +119,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("skills_bonus", valuesCol);
         }
 
+        // Specialty Skills
         valuesCol = new LinkedList<>();
         if (!template.getSpecialtySkills().isEmpty()) {
             for (final Entry<String, Integer> entry : template
@@ -133,11 +134,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("specialty_skills", valuesCol);
         }
 
+        // Passions
         valuesCol = new LinkedList<>();
         if (!template.getPassions().isEmpty()) {
             for (final Entry<NameAndDescriptor, Integer> entry : template
@@ -150,11 +150,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("passions_bonus", valuesCol);
         }
 
+        // Random passions
         valuesCol = new LinkedList<>();
         if (!template.getPassionsRandom().isEmpty()) {
             for (final Entry<NameAndDescriptor, Dice> entry : template
@@ -167,11 +166,10 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("passions_random", valuesCol);
         }
 
+        // Directed Traits
         valuesCol = new LinkedList<>();
         if (!template.getDirectedTraits().isEmpty()) {
             for (final Entry<NameAndDescriptor, Integer> entry : template
@@ -184,8 +182,6 @@ public final class CultureTemplateMapParser implements
 
                 valuesCol.add(value);
             }
-        }
-        if (!valuesCol.isEmpty()) {
             values.put("directed_traits_bonus", valuesCol);
         }
 

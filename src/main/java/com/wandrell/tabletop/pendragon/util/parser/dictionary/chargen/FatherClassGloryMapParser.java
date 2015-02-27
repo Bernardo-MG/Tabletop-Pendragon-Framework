@@ -19,8 +19,11 @@ public final class FatherClassGloryMapParser implements
 
         data = new LinkedHashMap<String, Object>();
 
+        // Father class
         data.put("father_class", glory.getFatherClass());
+        // Base glory
         data.put("base_glory", glory.getBaseGlory());
+        // Yearly glory
         data.put("yearly_glory", glory.getYearlyGlory());
 
         return data;

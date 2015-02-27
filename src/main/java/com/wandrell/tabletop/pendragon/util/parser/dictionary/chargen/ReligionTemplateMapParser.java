@@ -17,39 +17,50 @@ public final class ReligionTemplateMapParser implements
     }
 
     @Override
-    public final Map<String, Object> parse(final ReligionTemplate value) {
+    public final Map<String, Object> parse(final ReligionTemplate religion) {
         final Map<String, Object> data;
-        final Map<String, Object> bonus;
-        final Collection<Map<String, Object>> derived;
-        Map<String, Object> dataMap;
 
         data = new LinkedHashMap<String, Object>();
-        bonus = new LinkedHashMap<String, Object>();
-        derived = new LinkedList<>();
 
-        for (final Entry<String, Integer> entry : value
-                .getDerivedAttributeBonus().entrySet()) {
-            dataMap = new LinkedHashMap<String, Object>();
-            dataMap.put("name", entry.getKey());
-            dataMap.put("value", entry.getValue());
-
-            derived.add(dataMap);
+        data.put("name", religion.getName());
+        if (!religion.getReligiousTraits().isEmpty()) {
+            data.put("traits", religion.getReligiousTraits());
         }
-
-        bonus.put("armor_bonus", value.getArmorBonus());
-        bonus.put("damage_bonus", value.getDamageBonus());
-        bonus.put("damage_dice_bonus", value.getDamageDiceBonus());
-        bonus.put("derived_attributes", derived);
-
-        data.put("name", value.getName());
-        if (!value.getReligiousTraits().isEmpty()) {
-            data.put("traits", value.getReligiousTraits());
-        }
-        if (!bonus.isEmpty()) {
-            data.put("bonus", bonus);
-        }
+        data.put("bonus", getBonus(religion));
 
         return data;
+    }
+
+    private final Map<String, Object> getBonus(final ReligionTemplate religion) {
+        final Map<String, Object> bonus;
+
+        bonus = new LinkedHashMap<String, Object>();
+
+        bonus.put("armor_bonus", religion.getArmorBonus());
+        bonus.put("damage_bonus", religion.getDamageBonus());
+        bonus.put("damage_dice_bonus", religion.getDamageDiceBonus());
+        bonus.put("derived_attributes", getDerivedAttributes(religion));
+
+        return bonus;
+    }
+
+    private final Collection<Map<String, Object>> getDerivedAttributes(
+            final ReligionTemplate religion) {
+        final Collection<Map<String, Object>> derived;
+        Map<String, Object> value;
+
+        derived = new LinkedList<>();
+
+        for (final Entry<String, Integer> entry : religion
+                .getDerivedAttributeBonus().entrySet()) {
+            value = new LinkedHashMap<String, Object>();
+            value.put("name", entry.getKey());
+            value.put("value", entry.getValue());
+
+            derived.add(value);
+        }
+
+        return derived;
     }
 
 }

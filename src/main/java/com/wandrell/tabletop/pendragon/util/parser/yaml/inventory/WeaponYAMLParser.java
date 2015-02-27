@@ -103,8 +103,8 @@ public class WeaponYAMLParser implements Parser<Reader, Weapon> {
             range = 0;
         }
 
-        if (values.containsKey("rate_of_fire")) {
-            rof = (Integer) values.get("rate_of_fire");
+        if (values.containsKey("rounds_to_reload")) {
+            rof = (Integer) values.get("rounds_to_reload");
         } else {
             rof = 0;
         }

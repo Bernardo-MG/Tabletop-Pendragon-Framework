@@ -19,24 +19,49 @@ public final class WeaponMapParser implements
     }
 
     @Override
-    public final Map<String, Object> parse(final Weapon value) {
+    public final Map<String, Object> parse(final Weapon weapon) {
         final Map<String, Object> data;
-        final Map<String, Boolean> flags;
         final Collection<Map<String, Object>> armorBonus;
         final RangedWeapon ranged;
-        Map<String, Object> bonus;
+        final Map<String, Boolean> flags;
 
         data = new LinkedHashMap<String, Object>();
-        flags = new LinkedHashMap<String, Boolean>();
+
+        data.put("name", weapon.getName());
+        data.put("skill", weapon.getSkill());
+        data.put("two_handed", weapon.isTwoHanded());
+        data.put("damage_bonus", weapon.getDamageBonus());
+        data.put("dice_bonus", weapon.getDamageDiceBonus());
+        data.put("damage_override", weapon.getDamageOverrideDice());
+
+        if (weapon instanceof RangedWeapon) {
+            ranged = (RangedWeapon) weapon;
+
+            data.put("range", ranged.getMaxRange());
+            data.put("rounds_to_reload", ranged.getRoundsToReload());
+        }
+
+        flags = getFlags(weapon);
+        if (!flags.isEmpty()) {
+            data.put("flags", flags);
+        }
+
+        armorBonus = getArmorBonus(weapon);
+        if (!armorBonus.isEmpty()) {
+            data.put("vs_armor_bonus", armorBonus);
+        }
+
+        return data;
+    }
+
+    private final Collection<Map<String, Object>> getArmorBonus(
+            final Weapon weapon) {
+        final Collection<Map<String, Object>> armorBonus;
+        Map<String, Object> bonus;
+
         armorBonus = new LinkedList<>();
 
-        flags.put("break_enemy_on_draw", value.isBreakingEnemyOnDraw());
-        flags.put("break_on_fumble", value.isBreakingOnFumble());
-        flags.put("hits_back", value.isHittingBack());
-        flags.put("ignores_shield", value.isIgnoringShield());
-        flags.put("reduce_shield_to_roll", value.isReducingShieldToRoll());
-
-        for (final Entry<ArmorType, Integer> entry : value.getArmorBonusDice()
+        for (final Entry<ArmorType, Integer> entry : weapon.getArmorBonusDice()
                 .entrySet()) {
             bonus = new LinkedHashMap<String, Object>();
 
@@ -46,30 +71,31 @@ public final class WeaponMapParser implements
             armorBonus.add(bonus);
         }
 
-        data.put("name", value.getName());
-        data.put("skill", value.getSkill());
-        data.put("two_handed", value.isTwoHanded());
-        data.put("damage_bonus", value.getDamageBonus());
-        data.put("dice_bonus", value.getDamageDiceBonus());
+        return armorBonus;
+    }
 
-        data.put("damage_override", value.getDamageOverrideDice());
+    private final Map<String, Boolean> getFlags(final Weapon weapon) {
+        final Map<String, Boolean> flags;
 
-        if (!flags.isEmpty()) {
-            data.put("flags", flags);
+        flags = new LinkedHashMap<String, Boolean>();
+
+        if (weapon.isBreakingEnemyOnDraw()) {
+            flags.put("break_enemy_on_draw", weapon.isBreakingEnemyOnDraw());
+        }
+        if (weapon.isBreakingOnFumble()) {
+            flags.put("break_on_fumble", weapon.isBreakingOnFumble());
+        }
+        if (weapon.isHittingBack()) {
+            flags.put("hits_back", weapon.isHittingBack());
+        }
+        if (weapon.isIgnoringShield()) {
+            flags.put("ignores_shield", weapon.isIgnoringShield());
+        }
+        if (weapon.isReducingShieldToRoll()) {
+            flags.put("reduce_shield_to_roll", weapon.isReducingShieldToRoll());
         }
 
-        if (!armorBonus.isEmpty()) {
-            data.put("vs_armor_bonus", armorBonus);
-        }
-
-        if (value instanceof RangedWeapon) {
-            ranged = (RangedWeapon) value;
-
-            data.put("range", ranged.getMaxRange());
-            data.put("rate_of_fire", ranged.getRoundsToReload());
-        }
-
-        return data;
+        return flags;
     }
 
 }

@@ -18,25 +18,16 @@ public final class FatherClassTemplateMapParser implements
     }
 
     @Override
-    public final Map<String, Object> parse(final FatherClassTemplate value) {
+    public final Map<String, Object> parse(final FatherClassTemplate father) {
         final Map<String, Object> data;
         final Collection<Map<String, Object>> skills;
-        final Collection<Map<String, Object>> directed;
-        final Collection<Map<String, Object>> directedBase;
-        final Collection<Map<String, Object>> specialty;
-        final Map<String, Object> bonus;
-        final Map<String, Object> base;
+        final String money;
         Map<String, Object> map;
 
         data = new LinkedHashMap<String, Object>();
-        bonus = new LinkedHashMap<String, Object>();
-        base = new LinkedHashMap<String, Object>();
         skills = new LinkedList<>();
-        specialty = new LinkedList<>();
-        directed = new LinkedList<>();
-        directedBase = new LinkedList<>();
 
-        for (final NameAndDescriptor skill : value.getSkillsGroup()) {
+        for (final NameAndDescriptor skill : father.getSkillsGroup()) {
             map = new LinkedHashMap<String, Object>();
             map.put("name", skill.getName());
             map.put("descriptor", skill.getDescriptor());
@@ -44,62 +35,92 @@ public final class FatherClassTemplateMapParser implements
             skills.add(map);
         }
 
-        for (final Entry<NameAndDescriptor, Integer> entry : value
-                .getDirectedTraits().entrySet()) {
-            map = new LinkedHashMap<String, Object>();
+        data.put("name", father.getName());
 
-            map.put("name", entry.getKey().getName());
-            map.put("descriptor", entry.getKey().getDescriptor());
-            map.put("value", entry.getValue());
-
-            directed.add(map);
-        }
-        if (!directed.isEmpty()) {
-            bonus.put("directed_traits", directed);
-        }
-
-        for (final Entry<String, Integer> entry : value.getSpecialtySkills()
-                .entrySet()) {
-            map = new LinkedHashMap<String, Object>();
-
-            map.put("name", entry.getKey());
-            map.put("value", entry.getValue());
-
-            specialty.add(map);
-        }
-        if (!specialty.isEmpty()) {
-            bonus.put("specialty_skills", specialty);
-        }
-
-        for (final Entry<NameAndDescriptor, Integer> entry : value
-                .getDirectedTraitsBase().entrySet()) {
-            map = new LinkedHashMap<String, Object>();
-
-            map.put("name", entry.getKey().getName());
-            map.put("descriptor", entry.getKey().getDescriptor());
-            map.put("value", entry.getValue());
-
-            directedBase.add(map);
-        }
-        if (!directedBase.isEmpty()) {
-            base.put("directed_traits", directedBase);
-        }
-
-        data.put("name", value.getName());
-
-        data.put("skills_points", value.getSkillsPoints());
-        data.put("skills_points_non_combat", value.getNonCombatSkillBonus());
-        data.put("skills_points_group_bonus", value.getSkillsGroupBonusPoints());
+        data.put("skills_points", father.getSkillsPoints());
+        data.put("skills_points_non_combat", father.getNonCombatSkillBonus());
+        data.put("skills_points_group_bonus",
+                father.getSkillsGroupBonusPoints());
         data.put("skills_points_group_divide",
-                value.getSkillsGroupDividePoints());
+                father.getSkillsGroupDividePoints());
 
-        data.put("money", value.getMoney().getTextValue());
+        money = father.getMoney().getTextValue();
+        if (!money.isEmpty()) {
+            data.put("money", father.getMoney().getTextValue());
+        }
 
         data.put("skills_group", skills);
-        data.put("bonus", bonus);
-        data.put("base", base);
+        data.put("bonus", getBonus(father));
+        data.put("base", getBaseValues(father));
 
         return data;
+    }
+
+    private final Map<String, Object> getBaseValues(
+            final FatherClassTemplate father) {
+        final Map<String, Object> base;
+        Collection<Map<String, Object>> values;
+        Map<String, Object> value;
+
+        base = new LinkedHashMap<String, Object>();
+
+        if (!father.getDirectedTraitsBase().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<NameAndDescriptor, Integer> entry : father
+                    .getDirectedTraitsBase().entrySet()) {
+                value = new LinkedHashMap<String, Object>();
+
+                value.put("name", entry.getKey().getName());
+                value.put("descriptor", entry.getKey().getDescriptor());
+                value.put("value", entry.getValue());
+
+                values.add(value);
+            }
+            base.put("directed_traits", values);
+        }
+
+        return base;
+    }
+
+    private final Map<String, Object>
+            getBonus(final FatherClassTemplate father) {
+        final Map<String, Object> bonus;
+        Collection<Map<String, Object>> values;
+        Map<String, Object> value;
+
+        bonus = new LinkedHashMap<String, Object>();
+
+        if (!father.getDirectedTraits().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<NameAndDescriptor, Integer> entry : father
+                    .getDirectedTraits().entrySet()) {
+                value = new LinkedHashMap<String, Object>();
+
+                value.put("name", entry.getKey().getName());
+                value.put("descriptor", entry.getKey().getDescriptor());
+                value.put("value", entry.getValue());
+
+                values.add(value);
+
+            }
+            bonus.put("directed_traits", values);
+        }
+
+        if (!father.getSpecialtySkills().isEmpty()) {
+            values = new LinkedList<>();
+            for (final Entry<String, Integer> entry : father
+                    .getSpecialtySkills().entrySet()) {
+                value = new LinkedHashMap<String, Object>();
+
+                value.put("name", entry.getKey());
+                value.put("value", entry.getValue());
+
+                values.add(value);
+            }
+            bonus.put("specialty_skills", values);
+        }
+
+        return bonus;
     }
 
 }

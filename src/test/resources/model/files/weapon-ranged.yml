@@ -4,7 +4,7 @@ two_handed: false
 damage_bonus: 11
 dice_bonus: 22
 range: 123
-rate_of_fire: 4
+rounds_to_reload: 4
 flags:
   break_enemy_on_draw: true
   break_on_fumble: false

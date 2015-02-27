@@ -47,7 +47,7 @@ public final class ITParseMinimumFatherClassTemplateYAMLParser {
 
     @Test
     public final void testMoney() {
-        Assert.assertEquals(fatherClass.getMoney().getTextValue(), "3d6+10");
+        Assert.assertEquals(fatherClass.getMoney().getTextValue(), "0d1");
     }
 
     @Test

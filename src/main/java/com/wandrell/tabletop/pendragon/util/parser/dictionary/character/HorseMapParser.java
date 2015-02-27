@@ -13,44 +13,71 @@ public final class HorseMapParser implements Parser<Horse, Map<String, Object>> 
     }
 
     @Override
-    public final Map<String, Object> parse(final Horse value) {
+    public final Map<String, Object> parse(final Horse horse) {
         final Map<String, Object> data;
-        final Map<String, Integer> attributes;
-        final Map<String, Integer> derived;
         final Map<String, Boolean> flags;
 
         data = new LinkedHashMap<String, Object>();
-        attributes = new LinkedHashMap<String, Integer>();
-        derived = new LinkedHashMap<String, Integer>();
-        flags = new LinkedHashMap<String, Boolean>();
 
-        attributes.put("constitution", value.getConstitution());
-        attributes.put("dexterity", value.getDexterity());
-        attributes.put("size", value.getSize());
-        attributes.put("strength", value.getStrength());
+        // Horse specific info
+        data.put("type", horse.getHorseType());
+        data.put("natural_armor", horse.getNaturalArmor());
 
-        derived.put("damage", value.getDamage());
-        derived.put("movement_rate", value.getMovementRate());
+        // Attributes
+        data.put("attributes", getAttributes(horse));
 
-        if (value.isArmored()) {
-            flags.put("armored", value.isArmored());
-        }
-        if (value.isCombatHorse()) {
-            flags.put("combat", value.isCombatHorse());
-        }
-        if (value.isHuntingHorse()) {
-            flags.put("hunting", value.isHuntingHorse());
-        }
+        // Derived attributes
+        data.put("derived_attributes", getDerivedAttributes(horse));
 
-        data.put("type", value.getHorseType());
-        data.put("natural_armor", value.getNaturalArmor());
-        data.put("attributes", attributes);
-        data.put("derived_attributes", derived);
+        // Flags
+        flags = getFlags(horse);
         if (!flags.isEmpty()) {
             data.put("flags", flags);
         }
 
         return data;
+    }
+
+    private final Map<String, Integer> getAttributes(final Horse horse) {
+        final Map<String, Integer> attributes;
+
+        attributes = new LinkedHashMap<String, Integer>();
+
+        attributes.put("constitution", horse.getConstitution());
+        attributes.put("dexterity", horse.getDexterity());
+        attributes.put("size", horse.getSize());
+        attributes.put("strength", horse.getStrength());
+
+        return attributes;
+    }
+
+    private final Map<String, Integer> getDerivedAttributes(final Horse horse) {
+        final Map<String, Integer> derived;
+
+        derived = new LinkedHashMap<String, Integer>();
+
+        derived.put("damage", horse.getDamage());
+        derived.put("movement_rate", horse.getMovementRate());
+
+        return derived;
+    }
+
+    private final Map<String, Boolean> getFlags(final Horse horse) {
+        final Map<String, Boolean> flags;
+
+        flags = new LinkedHashMap<String, Boolean>();
+
+        if (horse.isArmored()) {
+            flags.put("armored", horse.isArmored());
+        }
+        if (horse.isCombatHorse()) {
+            flags.put("combat", horse.isCombatHorse());
+        }
+        if (horse.isHuntingHorse()) {
+            flags.put("hunting", horse.isHuntingHorse());
+        }
+
+        return flags;
     }
 
 }

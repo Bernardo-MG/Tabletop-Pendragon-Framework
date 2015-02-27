@@ -20,15 +20,22 @@ public final class PetMapParser implements Parser<Pet, Map<String, Object>> {
     @Override
     public final Map<String, Object> parse(final Pet value) {
         final Map<String, Object> data;
+
+        data = new LinkedHashMap<String, Object>();
+
+        data.put("name", value.getName());
+        data.put("year_results_table", getYearResults(value));
+
+        return data;
+    }
+
+    private final Collection<Map<String, Object>>
+            getYearResults(final Pet value) {
         final Collection<Map<String, Object>> year_results;
         Map<String, Object> year_result;
         Map<String, Object> money;
 
-        data = new LinkedHashMap<String, Object>();
         year_results = new LinkedList<>();
-
-        data.put("name", value.getName());
-        data.put("year_results_table", year_results);
 
         for (final Entry<Interval, AnimalYearResult> row : value
                 .getAnnualCheckMap().getIntervals().entrySet()) {
@@ -37,14 +44,17 @@ public final class PetMapParser implements Parser<Pet, Map<String, Object>> {
             year_result.put("lower_limit", row.getKey().getLowerLimit());
             year_result.put("description", row.getValue().getDescription());
 
+            // Puppy
             if (!row.getValue().getPuppy().isEmpty()) {
                 year_result.put("puppy_name", row.getValue().getPuppy());
             }
 
+            // Dies
             if (row.getValue().isDying()) {
                 year_result.put("dies", row.getValue().isDying());
             }
 
+            // Money
             if ((row.getValue().getMoney().getLibra() > 0)
                     && (row.getValue().getMoney().getDenarii() > 0)) {
                 money = new LinkedHashMap<String, Object>();
@@ -57,7 +67,7 @@ public final class PetMapParser implements Parser<Pet, Map<String, Object>> {
             year_results.add(year_result);
         }
 
-        return data;
+        return year_results;
     }
 
 }

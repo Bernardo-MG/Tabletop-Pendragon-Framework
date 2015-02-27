@@ -21,18 +21,81 @@ public final class FamilyCharacteristicTableMapParser implements
 
     @Override
     public final Map<String, Object>
-            parse(final FamilyCharacteristicTable value) {
+            parse(final FamilyCharacteristicTable table) {
         final Map<String, Object> data;
+
+        data = new LinkedHashMap<String, Object>();
+
+        data.put("name", table.getName());
+        data.put("intervals", getIntervals(table));
+
+        return data;
+    }
+
+    private final Map<String, Object> getFamilyCharacteristicMap(
+            final FamilyCharacteristicTemplate characteristic) {
+        final Map<String, Object> data;
+        final Map<String, Object> bonus;
+        Collection<Map<String, Object>> values;
+        Map<String, Object> value;
+
+        data = new LinkedHashMap<String, Object>();
+        bonus = new LinkedHashMap<String, Object>();
+
+        // Name
+        data.put("name", characteristic.getName());
+
+        // Skills
+        if (!characteristic.getSkills().isEmpty()) {
+            values = new LinkedList<>();
+
+            for (final Entry<NameAndDescriptor, Integer> entry : characteristic
+                    .getSkills().entrySet()) {
+                value = new LinkedHashMap<String, Object>();
+
+                value.put("name", entry.getKey().getName());
+                value.put("descriptor", entry.getKey().getDescriptor());
+                value.put("value", entry.getValue());
+
+                values.add(value);
+            }
+
+            bonus.put("skills", values);
+        }
+
+        // Attributes
+        if (!characteristic.getAttributes().isEmpty()) {
+            values = new LinkedList<>();
+
+            for (final Entry<String, Integer> entry : characteristic
+                    .getAttributes().entrySet()) {
+                value = new LinkedHashMap<String, Object>();
+
+                value.put("name", entry.getKey());
+                value.put("value", entry.getValue());
+
+                values.add(value);
+            }
+
+            bonus.put("attributes", values);
+        }
+
+        // Bonus map
+        if (!bonus.isEmpty()) {
+            data.put("bonus", bonus);
+        }
+
+        return data;
+    }
+
+    private final Collection<Map<String, Object>> getIntervals(
+            final FamilyCharacteristicTable table) {
         final Collection<Map<String, Object>> intervals;
         Map<String, Object> interval;
 
-        data = new LinkedHashMap<String, Object>();
         intervals = new LinkedList<>();
 
-        data.put("name", value.getName());
-        data.put("intervals", intervals);
-
-        for (final Entry<Interval, FamilyCharacteristicTemplate> entry : value
+        for (final Entry<Interval, FamilyCharacteristicTemplate> entry : table
                 .getIntervals().entrySet()) {
             interval = new LinkedHashMap<String, Object>();
 
@@ -43,58 +106,7 @@ public final class FamilyCharacteristicTableMapParser implements
             intervals.add(interval);
         }
 
-        return data;
-    }
-
-    private final Map<String, Object> getFamilyCharacteristicMap(
-            final FamilyCharacteristicTemplate characteristic) {
-        final Map<String, Object> data;
-        final Map<String, Object> bonus;
-        final Collection<Map<String, Object>> skills;
-        final Collection<Map<String, Object>> attributes;
-        Map<String, Object> value;
-
-        data = new LinkedHashMap<String, Object>();
-        bonus = new LinkedHashMap<String, Object>();
-        skills = new LinkedList<Map<String, Object>>();
-        attributes = new LinkedList<Map<String, Object>>();
-
-        data.put("name", characteristic.getName());
-
-        for (final Entry<NameAndDescriptor, Integer> entry : characteristic
-                .getSkills().entrySet()) {
-            value = new LinkedHashMap<String, Object>();
-
-            value.put("name", entry.getKey().getName());
-            value.put("descriptor", entry.getKey().getDescriptor());
-            value.put("value", entry.getValue());
-
-            skills.add(value);
-        }
-
-        for (final Entry<String, Integer> entry : characteristic
-                .getAttributes().entrySet()) {
-            value = new LinkedHashMap<String, Object>();
-
-            value.put("name", entry.getKey());
-            value.put("value", entry.getValue());
-
-            attributes.add(value);
-        }
-
-        if (!skills.isEmpty()) {
-            bonus.put("skills", skills);
-        }
-
-        if (!attributes.isEmpty()) {
-            bonus.put("attributes", attributes);
-        }
-
-        if (!bonus.isEmpty()) {
-            data.put("bonus", bonus);
-        }
-
-        return data;
+        return intervals;
     }
 
 }
