@@ -1,0 +1,5 @@
+name: test_weapon
+skill: skill_1
+two_handed: false
+damage_bonus: 11
+dice_bonus: 22

@@ -1,0 +1,10 @@
+name: culture_1
+family_characteristic:
+  male: char_male
+  female: char_female
+initial_luck:
+  male: luck_male
+  female: luck_female
+template:
+  male:
+  female:

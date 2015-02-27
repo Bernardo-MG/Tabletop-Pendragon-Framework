@@ -1,0 +1,7 @@
+name: test_religion
+traits:
+bonus:
+  armor_bonus: 5
+  damage_bonus: 6
+  damage_dice_bonus: 7
+  derived_attributes:

@@ -1,0 +1,10 @@
+type: test_horse
+natural_armor: 77
+attributes:
+  constitution: 11
+  dexterity: 22
+  size: 33
+  strength: 44
+derived_attributes:
+  damage: 55
+  movement_rate: 66
