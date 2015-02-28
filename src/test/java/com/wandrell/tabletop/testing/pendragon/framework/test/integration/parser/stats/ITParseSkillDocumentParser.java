@@ -39,7 +39,7 @@ public final class ITParseSkillDocumentParser {
         parserFile = new ValidatedXMLFileParser(
                 XMLValidationType.XSD,
                 ResourceUtils
-                        .getClassPathInputStream(TestModelFileConf.SKILLS_VALIDATION));
+                        .getClassPathReader(TestModelFileConf.SKILLS_VALIDATION));
 
         skills = parserDoc.parse(parserFile.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.SKILLS)));

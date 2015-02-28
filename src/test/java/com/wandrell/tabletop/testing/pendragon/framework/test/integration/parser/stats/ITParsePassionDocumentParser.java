@@ -34,7 +34,7 @@ public final class ITParsePassionDocumentParser {
         parserFile = new ValidatedXMLFileParser(
                 XMLValidationType.XSD,
                 ResourceUtils
-                        .getClassPathInputStream(TestModelFileConf.PASSIONS_VALIDATION));
+                        .getClassPathReader(TestModelFileConf.PASSIONS_VALIDATION));
 
         passions = parserDoc.parse(parserFile.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.PASSIONS)));
