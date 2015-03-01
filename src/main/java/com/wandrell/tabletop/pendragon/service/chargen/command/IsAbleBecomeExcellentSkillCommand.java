@@ -11,13 +11,14 @@ import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.tabletop.pendragon.model.stats.Skill;
 import com.wandrell.util.ResourceUtils;
 
-public final class IsAbleBecomeExcellentCommand implements
+public final class IsAbleBecomeExcellentSkillCommand implements
         ReturnCommand<Boolean> {
 
     private final Gender gender;
     private final Skill  skill;
 
-    public IsAbleBecomeExcellentCommand(final Skill skill, final Gender gender) {
+    public IsAbleBecomeExcellentSkillCommand(final Skill skill,
+            final Gender gender) {
         super();
 
         this.gender = gender;
@@ -27,7 +28,6 @@ public final class IsAbleBecomeExcellentCommand implements
     @SuppressWarnings("unchecked")
     @Override
     public final Boolean execute() {
-        final Boolean result;
         final Boolean valid;
         final Yaml yaml;
         final Collection<String> skills;
@@ -35,25 +35,29 @@ public final class IsAbleBecomeExcellentCommand implements
 
         switch (gender) {
             case MALE:
-                result = true;
+                valid = true;
                 break;
             case FEMALE:
-                yaml = new Yaml();
+                if (!skill.isCombatSkill()) {
+                    valid = true;
+                } else {
+                    yaml = new Yaml();
 
-                values = (Map<String, Object>) yaml.load(ResourceUtils
-                        .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
-                values = (Map<String, Object>) values.get("excellentSkills");
-                skills = (Collection<String>) values.get("female");
+                    values = (Map<String, Object>) yaml
+                            .load(ResourceUtils
+                                    .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
+                    values = (Map<String, Object>) values
+                            .get("excellentSkills");
+                    skills = (Collection<String>) values.get("female");
 
-                valid = skills.contains(skill.getName());
-
-                result = ((valid) || (!skill.isCombatSkill()));
+                    valid = skills.contains(skill.getName());
+                }
                 break;
             default:
-                result = false;
+                valid = false;
         }
 
-        return result;
+        return valid;
     }
 
 }

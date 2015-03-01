@@ -5,9 +5,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.pendragon.model.stats.Skill;
-import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleAddIndividualDiffCommand;
-import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleBecomeExcellentCommand;
-import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleBecomeExtraCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleAddIndividualDiffSkillCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleBecomeExcellentSkillCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleBecomeExtraSkillCommand;
 
 public final class DefaultCharGenRulesetService implements
         CharGenRulesetService {
@@ -23,24 +23,24 @@ public final class DefaultCharGenRulesetService implements
     }
 
     @Override
-    public final Boolean canAddIndividualDifference(final Skill skill,
+    public final Boolean canAddIndividualDifferenceSkill(final Skill skill,
             final Gender gender) {
         return getCommandExecutor().execute(
-                new IsAbleAddIndividualDiffCommand(skill));
+                new IsAbleAddIndividualDiffSkillCommand(skill));
     }
 
     @Override
     public final Boolean canBecomeExcellentSkill(final Skill skill,
             final Gender gender) {
         return getCommandExecutor().execute(
-                new IsAbleBecomeExcellentCommand(skill, gender));
+                new IsAbleBecomeExcellentSkillCommand(skill, gender));
     }
 
     @Override
     public final Boolean canBecomeExtraSkill(final Skill skill,
             final Gender gender) {
         return getCommandExecutor().execute(
-                new IsAbleBecomeExtraCommand(skill, gender));
+                new IsAbleBecomeExtraSkillCommand(skill, gender));
     }
 
     private final CommandExecutor getCommandExecutor() {

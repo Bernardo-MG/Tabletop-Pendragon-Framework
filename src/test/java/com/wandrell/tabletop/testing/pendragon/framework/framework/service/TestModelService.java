@@ -358,12 +358,15 @@ public final class TestModelService implements ModelService {
     public final Shield getShield(final String name, final String description,
             final Integer armorValue) {
         final Shield shield;
+        final Money money;
+
+        money = getMoney(0, 0);
 
         shield = Mockito.mock(Shield.class);
 
         Mockito.when(shield.getName()).thenReturn(name);
         Mockito.when(shield.getDescription()).thenReturn(description);
-        Mockito.when(shield.getMoney()).thenReturn(getMoney(0, 0));
+        Mockito.when(shield.getMoney()).thenReturn(money);
         Mockito.when(shield.getArmorValue()).thenReturn(armorValue);
 
         return shield;
@@ -426,6 +429,9 @@ public final class TestModelService implements ModelService {
             final Boolean hitsBack, final Boolean ignoresShield,
             final Boolean reducesShieldToRoll) {
         final Weapon weapon;
+        final Money money;
+
+        money = getMoney(0, 0);
 
         if ((maxRange <= 0) || (reload <= 0)) {
             weapon = Mockito.mock(Weapon.class);
@@ -440,7 +446,7 @@ public final class TestModelService implements ModelService {
 
         Mockito.when(weapon.getName()).thenReturn(name);
         Mockito.when(weapon.getDescription()).thenReturn(description);
-        Mockito.when(weapon.getMoney()).thenReturn(getMoney(0, 0));
+        Mockito.when(weapon.getMoney()).thenReturn(money);
 
         Mockito.when(weapon.getSkill()).thenReturn(skill);
         Mockito.when(weapon.isTwoHanded()).thenReturn(twoHanded);

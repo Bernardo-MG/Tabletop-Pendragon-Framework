@@ -2,3 +2,7 @@ excellentSkills:
   female:
     - dagger
     - siege
+
+individualDiff:
+  skill:
+    max: 15
