@@ -16,7 +16,7 @@ import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public class PetYAMLParser implements Parser<Reader, Pet> {
 
@@ -91,7 +91,8 @@ public class PetYAMLParser implements Parser<Reader, Pet> {
                     }
 
                     result = getModelService().getAnimalYearResult(description,
-                            puppyName, dies, libra, denarii);
+                            puppyName, dies,
+                            getModelService().getMoney(libra, denarii));
 
                     if (pos < (limits.size() - 1)) {
                         interval = new DefaultInterval(limits.get(pos),

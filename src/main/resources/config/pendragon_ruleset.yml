@@ -1,0 +1,34 @@
+traitBonus:
+  chivaldry:
+    treshold: 80
+    traits:
+      - energetic
+      - generous
+      - just
+      - merciful
+      - modest
+      - valorous
+  gentlewoman:
+    treshold: 80
+    traits:
+      - chaste
+      - energetic
+      - honest
+      - modest
+      - prudent
+      - temperate
+  religious:
+    treshold: 16
+
+distinctiveFeatures:
+  outOfTableValue: 3
+  intervals:
+    - value: 2
+      lowerLimit: 7
+      upperLimit: 9
+    - value: 1
+      lowerLimit: 10
+      upperLimit: 12
+    - value: 2
+      lowerLimit: 13
+      upperLimit: 16

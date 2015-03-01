@@ -23,7 +23,7 @@ import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public class AdditionalBelongingsTableYAMLParser implements
         Parser<Reader, AdditionalBelongingsTable> {
@@ -257,7 +257,7 @@ public class AdditionalBelongingsTableYAMLParser implements
         }
 
         return getModelService().getAdditionaBelongings(choose, moneyName,
-                libra, denarii, rerollTable, dice, horses, items, pets,
-                shields, weapons);
+                getModelService().getMoney(libra, denarii), rerollTable, dice,
+                horses, items, pets, shields, weapons);
     }
 }

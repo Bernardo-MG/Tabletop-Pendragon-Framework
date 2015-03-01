@@ -7,7 +7,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public final class ItemYAMLParser implements Parser<Reader, Item> {
 

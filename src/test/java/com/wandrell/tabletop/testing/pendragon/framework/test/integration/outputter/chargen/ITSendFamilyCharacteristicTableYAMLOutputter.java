@@ -21,7 +21,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.FamilyCharacteristicTableMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FamilyCharacteristicTableYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;

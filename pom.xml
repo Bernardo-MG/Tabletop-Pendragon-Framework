@@ -177,6 +177,12 @@
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>
+			<!-- Tabletop's Pendragon Core -->
+			<groupId>com.wandrell.tabletop</groupId>
+			<artifactId>tabletop-pendragon-core</artifactId>
+			<version>${tabletop.version}</version>
+		</dependency>
+		<dependency>
 			<!-- Tabletop's Pendragon Framework API -->
 			<groupId>com.wandrell.tabletop</groupId>
 			<artifactId>tabletop-pendragon-framework-api</artifactId>

@@ -8,7 +8,7 @@ import org.jdom2.Element;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.stats.Skill;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public final class SkillDocumentParser implements
         Parser<Document, Collection<Skill>> {
@@ -44,8 +44,8 @@ public final class SkillDocumentParser implements
             knowledge = new Boolean(node.getAttributeValue("knowledge"));
             repeatable = new Boolean(node.getAttributeValue("repeatable"));
 
-            skill = getModelService().getSkill(name, descriptor, combat, court,
-                    knight, knowledge, repeatable);
+            skill = getModelService().getSkill(name, repeatable, descriptor,
+                    combat, court, knight, knowledge);
 
             skills.add(skill);
         }

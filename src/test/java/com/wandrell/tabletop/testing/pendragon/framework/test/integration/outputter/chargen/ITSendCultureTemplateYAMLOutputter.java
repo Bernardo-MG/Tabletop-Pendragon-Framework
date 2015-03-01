@@ -21,7 +21,7 @@ import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.CultureTemplateMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;

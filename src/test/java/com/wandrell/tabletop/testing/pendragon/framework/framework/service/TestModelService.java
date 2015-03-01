@@ -31,24 +31,21 @@ import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.model.stats.Skill;
 import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkill;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 
 public final class TestModelService implements ModelService {
 
     @Override
     public final AdditionalBelongings getAdditionaBelongings(
-            final Boolean choose, final String moneyName, final Integer libra,
-            final Integer denarii, final String rerollTable,
-            final Collection<Dice> dice, final Collection<Horse> horses,
-            final Collection<Item> items, final Collection<Pet> pets,
-            final Collection<Shield> shields, final Collection<Weapon> weapons) {
+            final Boolean choose, final String moneyName, final Money money,
+            final String rerollTable, final Collection<Dice> dice,
+            final Collection<Horse> horses, final Collection<Item> items,
+            final Collection<Pet> pets, final Collection<Shield> shields,
+            final Collection<Weapon> weapons) {
         final AdditionalBelongings belongings;
-        final Money money;
 
         belongings = Mockito.mock(AdditionalBelongings.class);
-
-        money = getMoney(libra, denarii);
 
         Mockito.when(belongings.hasToChoose()).thenReturn(choose);
         Mockito.when(belongings.getMoney()).thenReturn(money);
@@ -80,14 +77,10 @@ public final class TestModelService implements ModelService {
 
     @Override
     public final AnimalYearResult getAnimalYearResult(final String description,
-            final String puppy, final Boolean dies, final Integer libra,
-            final Integer denarii) {
+            final String puppy, final Boolean dies, final Money money) {
         final AnimalYearResult result;
-        final Money money;
 
         result = Mockito.mock(AnimalYearResult.class);
-
-        money = getMoney(libra, denarii);
 
         Mockito.when(result.getDescription()).thenReturn(description);
         Mockito.when(result.getPuppy()).thenReturn(puppy);
@@ -363,23 +356,23 @@ public final class TestModelService implements ModelService {
 
     @Override
     public final Shield getShield(final String name, final String description,
-            final Money money, final Integer armorValue) {
+            final Integer armorValue) {
         final Shield shield;
 
         shield = Mockito.mock(Shield.class);
 
         Mockito.when(shield.getName()).thenReturn(name);
         Mockito.when(shield.getDescription()).thenReturn(description);
-        Mockito.when(shield.getMoney()).thenReturn(money);
+        Mockito.when(shield.getMoney()).thenReturn(getMoney(0, 0));
         Mockito.when(shield.getArmorValue()).thenReturn(armorValue);
 
         return shield;
     }
 
     @Override
-    public final Skill getSkill(final String name, final String descriptor,
-            final Boolean combat, final Boolean court, final Boolean knight,
-            final Boolean knowledge, final Boolean repeat) {
+    public final Skill getSkill(final String name, final Boolean described,
+            final String descriptor, final Boolean combat, final Boolean court,
+            final Boolean knight, final Boolean knowledge) {
         final Skill skill;
 
         skill = Mockito.mock(Skill.class);
@@ -387,7 +380,7 @@ public final class TestModelService implements ModelService {
         Mockito.when(skill.getName()).thenReturn(name);
         Mockito.when(skill.getDescriptor()).thenReturn(descriptor);
 
-        Mockito.when(skill.isDescribed()).thenReturn(repeat);
+        Mockito.when(skill.isDescribed()).thenReturn(described);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(combat);
         Mockito.when(skill.isCourtlySkill()).thenReturn(court);
@@ -425,29 +418,29 @@ public final class TestModelService implements ModelService {
 
     @Override
     public final Weapon getWeapon(final String name, final String description,
-            final Money money, final String skill, final Boolean twoHanded,
+            final String skill, final Boolean twoHanded,
             final Integer damageBonus, final Integer diceBonus,
-            final Integer damageOverride, final Integer range,
-            final Integer rof, final Map<ArmorType, Integer> armorBonus,
+            final Integer damageOverride, final Integer maxRange,
+            final Integer reload, final Map<ArmorType, Integer> armorBonus,
             final Boolean breaksEnemyOnDraw, final Boolean breaksOnFumble,
             final Boolean hitsBack, final Boolean ignoresShield,
             final Boolean reducesShieldToRoll) {
         final Weapon weapon;
 
-        if ((range <= 0) || (rof <= 0)) {
+        if ((maxRange <= 0) || (reload <= 0)) {
             weapon = Mockito.mock(Weapon.class);
         } else {
             weapon = Mockito.mock(RangedWeapon.class);
 
             Mockito.when(((RangedWeapon) weapon).getMaxRange()).thenReturn(
-                    range);
+                    maxRange);
             Mockito.when(((RangedWeapon) weapon).getRoundsToReload())
-                    .thenReturn(rof);
+                    .thenReturn(reload);
         }
 
         Mockito.when(weapon.getName()).thenReturn(name);
         Mockito.when(weapon.getDescription()).thenReturn(description);
-        Mockito.when(weapon.getMoney()).thenReturn(money);
+        Mockito.when(weapon.getMoney()).thenReturn(getMoney(0, 0));
 
         Mockito.when(weapon.getSkill()).thenReturn(skill);
         Mockito.when(weapon.isTwoHanded()).thenReturn(twoHanded);

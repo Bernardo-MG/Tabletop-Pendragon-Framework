@@ -13,7 +13,7 @@ import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.service.TestModelService;
 
@@ -118,15 +118,15 @@ public final class TestServiceFactory {
         repository = new CollectionRepository<Shield>();
 
         repository.add(getModelService().getShield("shield_1", "description_1",
-                null, 0));
+                0));
         repository.add(getModelService().getShield("shield_2", "description_2",
-                null, 0));
+                0));
         repository.add(getModelService().getShield("shield_3", "description_3",
-                null, 0));
+                0));
         repository.add(getModelService().getShield("shield_4", "description_4",
-                null, 0));
+                0));
         repository.add(getModelService().getShield("shield_5", "description_5",
-                null, 0));
+                0));
 
         return repository;
     }
@@ -137,20 +137,20 @@ public final class TestServiceFactory {
         repository = new CollectionRepository<Weapon>();
 
         repository.add(getModelService().getWeapon("weapon_1", "description_1",
-                null, "skill_1", false, 0, 0, 0, 0, 0, null, false, false,
-                false, false, false));
+                "skill_1", false, 0, 0, 0, 0, 0, null, false, false, false,
+                false, false));
         repository.add(getModelService().getWeapon("weapon_2", "description_2",
-                null, "skill_2", false, 0, 0, 0, 0, 0, null, false, false,
-                false, false, false));
+                "skill_2", false, 0, 0, 0, 0, 0, null, false, false, false,
+                false, false));
         repository.add(getModelService().getWeapon("weapon_3", "description_3",
-                null, "skill_3", false, 0, 0, 0, 0, 0, null, false, false,
-                false, false, false));
+                "skill_3", false, 0, 0, 0, 0, 0, null, false, false, false,
+                false, false));
         repository.add(getModelService().getWeapon("weapon_4", "description_4",
-                null, "skill_4", false, 0, 0, 0, 0, 0, null, false, false,
-                false, false, false));
+                "skill_4", false, 0, 0, 0, 0, 0, null, false, false, false,
+                false, false));
         repository.add(getModelService().getWeapon("weapon_5", "description_5",
-                null, "skill_5", false, 0, 0, 0, 0, 0, null, false, false,
-                false, false, false));
+                "skill_5", false, 0, 0, 0, 0, 0, null, false, false, false,
+                false, false));
 
         return repository;
     }

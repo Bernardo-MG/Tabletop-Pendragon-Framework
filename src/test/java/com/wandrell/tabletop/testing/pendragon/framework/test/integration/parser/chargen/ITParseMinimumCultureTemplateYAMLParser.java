@@ -13,7 +13,7 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;

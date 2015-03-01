@@ -13,7 +13,7 @@ import com.wandrell.tabletop.dice.DefaultDice;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 

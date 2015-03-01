@@ -10,7 +10,7 @@ import org.yaml.snakeyaml.Yaml;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public class WeaponYAMLParser implements Parser<Reader, Weapon> {
 
@@ -120,8 +120,7 @@ public class WeaponYAMLParser implements Parser<Reader, Weapon> {
             }
         }
 
-        return getModelService().getWeapon(name, "",
-                getModelService().getMoney(0, 0), skill, twoHanded,
+        return getModelService().getWeapon(name, "", skill, twoHanded,
                 damageBonus, diceBonus, damageOverride, range, rof, armorBonus,
                 breakEnemyDraw, breakFumble, hitsBack, ignoresShield,
                 shieldToRoll);

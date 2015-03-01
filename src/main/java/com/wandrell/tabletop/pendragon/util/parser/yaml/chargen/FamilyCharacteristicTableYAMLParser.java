@@ -14,7 +14,7 @@ import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
 import com.wandrell.tabletop.skill.NameAndDescriptor;
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test_data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<data>
+		<size>0</size>
+		<constitution>0</constitution>
+		<result>0</result>
+	</data>
+	<data>
+		<size>1</size>
+		<constitution>0</constitution>
+		<result>1</result>
+	</data>
+	<data>
+		<size>10</size>
+		<constitution>5</constitution>
+		<result>15</result>
+	</data>
+	<data>
+		<size>20</size>
+		<constitution>20</constitution>
+		<result>40</result>
+	</data>
+</test_data>

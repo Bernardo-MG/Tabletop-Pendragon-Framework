@@ -17,7 +17,7 @@ import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory.ShieldMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.ShieldYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;

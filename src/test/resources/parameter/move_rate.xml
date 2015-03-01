@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test_data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<data>
+		<strength>0</strength>
+		<dexterity>0</dexterity>
+		<result>0</result>
+	</data>
+	<data>
+		<strength>1</strength>
+		<dexterity>0</dexterity>
+		<result>1</result>
+	</data>
+	<data>
+		<strength>10</strength>
+		<dexterity>5</dexterity>
+		<result>15</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<dexterity>20</dexterity>
+		<result>40</result>
+	</data>
+</test_data>

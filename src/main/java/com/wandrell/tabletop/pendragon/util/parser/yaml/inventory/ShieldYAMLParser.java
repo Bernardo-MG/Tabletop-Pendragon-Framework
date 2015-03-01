@@ -7,7 +7,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
-import com.wandrell.tabletop.pendragon.service.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelService;
 
 public final class ShieldYAMLParser implements Parser<Reader, Shield> {
 
@@ -35,8 +35,7 @@ public final class ShieldYAMLParser implements Parser<Reader, Shield> {
 
         armorValue = (Integer) values.get("armor_value");
 
-        return getModelService().getShield(name, "",
-                getModelService().getMoney(0, 0), armorValue);
+        return getModelService().getShield(name, "", armorValue);
     }
 
     private final ModelService getModelService() {
