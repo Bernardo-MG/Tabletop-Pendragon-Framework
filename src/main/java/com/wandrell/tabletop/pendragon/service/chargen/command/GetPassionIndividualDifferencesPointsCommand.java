@@ -8,9 +8,10 @@ import com.wandrell.pattern.command.ReturnCommand;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetTraitPointsCommand implements ReturnCommand<Integer> {
+public final class GetPassionIndividualDifferencesPointsCommand implements
+        ReturnCommand<Integer> {
 
-    public GetTraitPointsCommand() {
+    public GetPassionIndividualDifferencesPointsCommand() {
         super();
     }
 
@@ -26,7 +27,7 @@ public final class GetTraitPointsCommand implements ReturnCommand<Integer> {
         values = (Map<String, Object>) yaml.load(ResourceUtils
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("individualDiff");
-        values = (Map<String, Object>) values.get("trait");
+        values = (Map<String, Object>) values.get("passion");
         value = (Integer) values.get("points");
 
         return value;

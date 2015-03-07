@@ -8,7 +8,6 @@ import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExcellentSkillValueCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExtraSkillMaxPicksCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExtraSkillValueCommand;
-import com.wandrell.tabletop.pendragon.service.chargen.command.GetFamousTraitValueCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetIndividualDifferencesRaisesCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetIndividualDifferencesSkillPointsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetNoCombatSkillPointsCommand;
@@ -19,13 +18,12 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToGetSkillR
 import com.wandrell.tabletop.pendragon.service.chargen.command.IsIndividualDifferencesSkillAbleToGetPointsCommand;
 
 public final class FemaleIndividualDifferencesRulesetService implements
-        IndividualDifferencesRulesetService {
+        CharGenIndividualDifferencesRulesetService {
 
     private final CommandExecutor comExec;
     private Integer               excellent;
     private Integer               extra;
     private Integer               extraPicks;
-    private Integer               famousTrait;
     private Integer               noCombat;
     private Integer               raise;
     private Integer               raises;
@@ -68,16 +66,6 @@ public final class FemaleIndividualDifferencesRulesetService implements
         }
 
         return extra;
-    }
-
-    @Override
-    public final Integer getFamousTraitValue() {
-        if (famousTrait == null) {
-            famousTrait = getCommandExecutor().execute(
-                    new GetFamousTraitValueCommand());
-        }
-
-        return famousTrait;
     }
 
     @Override
