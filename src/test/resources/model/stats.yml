@@ -1,0 +1,7 @@
+- name: stat_1
+  descriptor: descriptor_1
+  value: 0
+- name: stat_2
+  descriptor: 
+  value: 1
+  described: false

@@ -17,7 +17,7 @@ import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.glory.FatherClassGlory;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.FatherClassGloryMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FatherClassGloryYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -43,13 +43,14 @@ public final class ITSendFatherClassGloryYAMLOutputter {
         final FatherClassGlory glory;
         final FatherClassGlory gloryOut;
         final Parser<Reader, FatherClassGlory> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new FatherClassGloryYAMLParser(modelService);
 

@@ -22,6 +22,7 @@ public final class GetUnconciousCommand implements ReturnCommand<Integer> {
         con = new Float(constitution);
         siz = new Float(size);
 
+        // TODO: Better use the real hitpoints value
         return Math.round((con + siz) / 4);
     }
 

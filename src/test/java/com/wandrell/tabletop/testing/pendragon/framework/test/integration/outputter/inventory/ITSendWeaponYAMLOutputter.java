@@ -18,7 +18,7 @@ import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory.WeaponMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.WeaponYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -44,13 +44,14 @@ public final class ITSendWeaponYAMLOutputter {
         final Weapon weapon;
         final Weapon weaponOut;
         final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new WeaponYAMLParser(modelService);
 
@@ -93,13 +94,14 @@ public final class ITSendWeaponYAMLOutputter {
         final Weapon weapon;
         final Weapon weaponOut;
         final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new WeaponYAMLParser(modelService);
 
@@ -139,13 +141,14 @@ public final class ITSendWeaponYAMLOutputter {
         final Weapon weapon;
         final Weapon weaponOut;
         final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new WeaponYAMLParser(modelService);
 
@@ -188,13 +191,14 @@ public final class ITSendWeaponYAMLOutputter {
         final Weapon weapon;
         final Weapon weaponOut;
         final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new WeaponYAMLParser(modelService);
 
@@ -237,13 +241,14 @@ public final class ITSendWeaponYAMLOutputter {
         final RangedWeapon weapon;
         final RangedWeapon weaponOut;
         final Parser<Reader, Weapon> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new WeaponYAMLParser(modelService);
 

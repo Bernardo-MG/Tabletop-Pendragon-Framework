@@ -9,13 +9,13 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public final class TextListYAMLParser implements Parser<Reader, TextList> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public TextListYAMLParser(final ModelService service) {
+    public TextListYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -45,7 +45,7 @@ public final class TextListYAMLParser implements Parser<Reader, TextList> {
         return getModelService().getTextList(name, texts);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

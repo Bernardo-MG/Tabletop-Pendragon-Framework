@@ -14,16 +14,17 @@ import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 
 public class FamilyCharacteristicTableYAMLParser implements
         Parser<Reader, FamilyCharacteristicTable> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public FamilyCharacteristicTableYAMLParser(final ModelService service) {
+    public FamilyCharacteristicTableYAMLParser(
+            final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -81,7 +82,7 @@ public class FamilyCharacteristicTableYAMLParser implements
                 intervalsMap);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 
@@ -90,16 +91,16 @@ public class FamilyCharacteristicTableYAMLParser implements
             final Map<String, Object> template) {
         final String name;
         final Map<String, Integer> attributes;
-        final Map<NameAndDescriptor, Integer> skills;
+        final Map<SkillName, Integer> skills;
         final Map<String, Collection<Map<String, Object>>> bonus;
-        NameAndDescriptor skillData;
+        SkillName skillData;
         String descriptor;
         Integer value;
 
         name = (String) template.get("name");
 
         attributes = new LinkedHashMap<String, Integer>();
-        skills = new LinkedHashMap<NameAndDescriptor, Integer>();
+        skills = new LinkedHashMap<SkillName, Integer>();
 
         if (template.containsKey("bonus")) {
             bonus = (Map<String, Collection<Map<String, Object>>>) template
@@ -124,7 +125,7 @@ public class FamilyCharacteristicTableYAMLParser implements
                         descriptor = "";
                     }
 
-                    skillData = new DefaultNameAndDescriptor(
+                    skillData = new DefaultSkillName(
                             (String) skill.get("name"), descriptor);
 
                     skills.put(skillData, value);

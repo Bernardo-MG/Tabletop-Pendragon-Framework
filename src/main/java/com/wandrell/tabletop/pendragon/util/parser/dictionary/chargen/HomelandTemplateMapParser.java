@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
+import com.wandrell.tabletop.skill.SkillName;
 
 public final class HomelandTemplateMapParser implements
         Parser<HomelandTemplate, Map<String, Object>> {
@@ -24,6 +24,9 @@ public final class HomelandTemplateMapParser implements
         data = new LinkedHashMap<String, Object>();
 
         data.put("name", homeland.getName());
+        if (homeland.getRegion() != null) {
+            data.put("region", homeland.getRegion().getName());
+        }
         data.put("bonus", getBonus(homeland));
 
         return data;
@@ -35,25 +38,11 @@ public final class HomelandTemplateMapParser implements
         Map<String, Object> valuesMap;
         bonus = new LinkedHashMap<String, Object>();
 
-        // Traits
-        if (!homeland.getTraits().isEmpty()) {
-            values = new LinkedList<>();
-            for (final Entry<String, Integer> entry : homeland.getTraits()
-                    .entrySet()) {
-                valuesMap = new LinkedHashMap<String, Object>();
-                valuesMap.put("name", entry.getKey());
-                valuesMap.put("value", entry.getValue());
-
-                values.add(valuesMap);
-            }
-            bonus.put("traits", values);
-        }
-
         // Skills
         if (!homeland.getSkills().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<NameAndDescriptor, Integer> entry : homeland
-                    .getSkills().entrySet()) {
+            for (final Entry<SkillName, Integer> entry : homeland.getSkills()
+                    .entrySet()) {
                 valuesMap = new LinkedHashMap<String, Object>();
                 valuesMap.put("name", entry.getKey().getName());
                 valuesMap.put("descriptor", entry.getKey().getDescriptor());
@@ -81,7 +70,7 @@ public final class HomelandTemplateMapParser implements
         // Passions
         if (!homeland.getPassions().isEmpty()) {
             values = new LinkedList<>();
-            for (final NameAndDescriptor passion : homeland.getPassions()) {
+            for (final SkillName passion : homeland.getPassions()) {
                 valuesMap = new LinkedHashMap<String, Object>();
                 valuesMap.put("name", passion.getName());
                 valuesMap.put("descriptor", passion.getDescriptor());
@@ -94,7 +83,7 @@ public final class HomelandTemplateMapParser implements
         // Directed Traits
         if (!homeland.getDirectedTraits().isEmpty()) {
             values = new LinkedList<>();
-            for (final NameAndDescriptor passion : homeland.getDirectedTraits()) {
+            for (final SkillName passion : homeland.getDirectedTraits()) {
                 valuesMap = new LinkedHashMap<String, Object>();
                 valuesMap.put("name", passion.getName());
                 valuesMap.put("descriptor", passion.getDescriptor());

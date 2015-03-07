@@ -26,7 +26,7 @@ public final class ITParseMinimumReligionTemplateYAMLParser {
         final Parser<Reader, ReligionTemplate> parser;
 
         parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelService());
+                .getInstance().getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));

@@ -21,7 +21,7 @@ import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.CultureTemplateMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -48,7 +48,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
         final CultureTemplate cultureOut;
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<AdditionalBelongingsTable> belongingsRepository;
         final Repository<FamilyCharacteristicTemplate> characteristicRepository;
         final Path pathOut;
@@ -58,7 +58,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         belongingsRepository = factory.getAdditionalBelongingsTableRepository();
         characteristicRepository = factory
@@ -101,7 +101,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
         final CultureTemplate cultureOut;
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<AdditionalBelongingsTable> belongingsRepository;
         final Repository<FamilyCharacteristicTemplate> characteristicRepository;
         final Path pathOut;
@@ -111,7 +111,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         belongingsRepository = factory.getAdditionalBelongingsTableRepository();
         characteristicRepository = factory

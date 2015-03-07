@@ -48,7 +48,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
         outputter = new YAMLOutputter();
 
         parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelService());
+                .getInstance().getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION));
@@ -86,7 +86,7 @@ public final class ITSendReligionTemplateYAMLOutputter {
         outputter = new YAMLOutputter();
 
         parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelService());
+                .getInstance().getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));

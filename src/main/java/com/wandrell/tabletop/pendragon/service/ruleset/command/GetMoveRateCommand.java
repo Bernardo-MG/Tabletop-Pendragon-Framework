@@ -16,7 +16,13 @@ public final class GetMoveRateCommand implements ReturnCommand<Integer> {
 
     @Override
     public final Integer execute() {
-        return strength + dexterity;
+        final Float str;
+        final Float dex;
+
+        str = new Float(strength);
+        dex = new Float(dexterity);
+
+        return Math.round((str + dex) / 10);
     }
 
 }

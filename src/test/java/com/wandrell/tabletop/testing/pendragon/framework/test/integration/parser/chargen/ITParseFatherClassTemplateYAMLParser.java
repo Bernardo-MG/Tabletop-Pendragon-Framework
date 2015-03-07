@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FatherClassTemplateYAMLParser;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
@@ -27,9 +27,10 @@ public final class ITParseFatherClassTemplateYAMLParser {
     @BeforeClass
     public final void initialize() throws Exception {
         final Parser<Reader, FatherClassTemplate> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new FatherClassTemplateYAMLParser(modelService);
 
@@ -39,30 +40,30 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testBaseDirectedTraits() {
-        NameAndDescriptor trait;
+        SkillName trait;
 
         Assert.assertEquals(fatherClass.getDirectedTraitsBase().size(), 1);
 
-        trait = new DefaultNameAndDescriptor("directed_trait_2", "descriptor_2");
+        trait = new DefaultSkillName("directed_trait_2", "descriptor_2");
         Assert.assertEquals(fatherClass.getDirectedTraitsBase().get(trait),
                 (Integer) 10);
     }
 
     @Test
     public final void testDirectedTraits() {
-        NameAndDescriptor trait;
+        SkillName trait;
 
         Assert.assertEquals(fatherClass.getDirectedTraits().size(), 3);
 
-        trait = new DefaultNameAndDescriptor("directed_trait_1", "descriptor_1");
+        trait = new DefaultSkillName("directed_trait_1", "descriptor_1");
         Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
                 (Integer) 5);
 
-        trait = new DefaultNameAndDescriptor("directed_trait_2", "descriptor_2");
+        trait = new DefaultSkillName("directed_trait_2", "descriptor_2");
         Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
                 (Integer) 6);
 
-        trait = new DefaultNameAndDescriptor("directed_trait_3", "descriptor_3");
+        trait = new DefaultSkillName("directed_trait_3", "descriptor_3");
         Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
                 (Integer) 7);
     }
@@ -89,14 +90,14 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testSkillsGroup() {
-        NameAndDescriptor skill;
+        SkillName skill;
 
         Assert.assertEquals(fatherClass.getSkillsGroup().size(), 2);
 
-        skill = new DefaultNameAndDescriptor("skill_1", "");
+        skill = new DefaultSkillName("skill_1", "");
         Assert.assertTrue(fatherClass.getSkillsGroup().contains(skill));
 
-        skill = new DefaultNameAndDescriptor("skill_2", "descriptor_2");
+        skill = new DefaultSkillName("skill_2", "descriptor_2");
         Assert.assertTrue(fatherClass.getSkillsGroup().contains(skill));
     }
 

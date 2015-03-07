@@ -57,6 +57,36 @@
 	</data>
 	<data>
 		<strength>20</strength>
+		<size>6</size>
+		<result>4</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<size>7</size>
+		<result>5</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<size>12</size>
+		<result>5</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<size>13</size>
+		<result>6</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<size>18</size>
+		<result>6</result>
+	</data>
+	<data>
+		<strength>20</strength>
+		<size>19</size>
+		<result>7</result>
+	</data>
+	<data>
+		<strength>20</strength>
 		<size>20</size>
 		<result>7</result>
 	</data>

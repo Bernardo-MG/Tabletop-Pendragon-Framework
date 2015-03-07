@@ -7,13 +7,13 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public final class ItemYAMLParser implements Parser<Reader, Item> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public ItemYAMLParser(final ModelService service) {
+    public ItemYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -37,7 +37,7 @@ public final class ItemYAMLParser implements Parser<Reader, Item> {
         return getModelService().getItem(name, description);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

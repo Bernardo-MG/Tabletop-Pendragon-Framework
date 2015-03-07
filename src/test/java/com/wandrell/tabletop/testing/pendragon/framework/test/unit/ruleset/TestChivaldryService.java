@@ -5,18 +5,23 @@ import org.testng.annotations.Test;
 
 import com.wandrell.pattern.command.DefaultCommandExecutor;
 import com.wandrell.tabletop.pendragon.service.ruleset.ChivaldryService;
-import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
+import com.wandrell.tabletop.pendragon.service.ruleset.DefaultChivaldryService;
 
 public final class TestChivaldryService {
 
-    private final TraitsAchievementService service;
+    private final ChivaldryService service;
 
     {
-        service = new ChivaldryService(new DefaultCommandExecutor());
+        service = new DefaultChivaldryService(new DefaultCommandExecutor());
     }
 
     public TestChivaldryService() {
         super();
+    }
+
+    @Test
+    public final void testArmor() {
+        Assert.assertEquals(service.getChivaldryArmorBonus(), (Integer) 3);
     }
 
     @Test

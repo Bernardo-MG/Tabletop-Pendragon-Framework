@@ -14,7 +14,7 @@ import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.AdditionalBelongingsTableYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -32,7 +32,7 @@ public final class ITParseMinimumAdditionalBelongingsTableYAMLParser {
     public final void initialize() throws Exception {
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<Horse> horseRepository;
         final Repository<Item> itemRepository;
         final Repository<Pet> petRepository;
@@ -41,7 +41,7 @@ public final class ITParseMinimumAdditionalBelongingsTableYAMLParser {
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         horseRepository = factory.getHorseRepository();
         itemRepository = factory.getItemRepository();

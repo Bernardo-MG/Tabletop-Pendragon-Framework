@@ -1,0 +1,8 @@
+- name: concern
+  descriptor: my_commoners
+  value: 7
+  roll: 2d6
+- name: loyalty
+  descriptor: vassals
+  value: 13
+  roll: 3d6+2

@@ -13,9 +13,9 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
@@ -32,13 +32,13 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
     public final void initialize() throws Exception {
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<AdditionalBelongingsTable> belongingsRepository;
         final Repository<FamilyCharacteristicTemplate> characteristicRepository;
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         belongingsRepository = factory.getAdditionalBelongingsTableRepository();
         characteristicRepository = factory
@@ -89,7 +89,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraitsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> dirTraits;
+        final Map<SkillName, Integer> dirTraits;
 
         dirTraits = culture.getFemaleTemplate().getDirectedTraits();
 
@@ -98,7 +98,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraitsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> dirTraits;
+        final Map<SkillName, Integer> dirTraits;
 
         dirTraits = culture.getMaleTemplate().getDirectedTraits();
 
@@ -128,7 +128,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> passions;
+        final Map<SkillName, Integer> passions;
 
         passions = culture.getFemaleTemplate().getPassions();
 
@@ -137,7 +137,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> passions;
+        final Map<SkillName, Integer> passions;
 
         passions = culture.getMaleTemplate().getPassions();
 
@@ -146,7 +146,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Female() {
-        final Map<NameAndDescriptor, Dice> passions;
+        final Map<SkillName, Dice> passions;
 
         passions = culture.getFemaleTemplate().getPassionsRandom();
 
@@ -155,7 +155,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Male() {
-        final Map<NameAndDescriptor, Dice> passions;
+        final Map<SkillName, Dice> passions;
 
         passions = culture.getMaleTemplate().getPassionsRandom();
 
@@ -164,7 +164,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSkillsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> skills;
+        final Map<SkillName, Integer> skills;
 
         skills = culture.getFemaleTemplate().getSkills();
 
@@ -173,7 +173,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSkillsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> skills;
+        final Map<SkillName, Integer> skills;
 
         skills = culture.getMaleTemplate().getSkills();
 

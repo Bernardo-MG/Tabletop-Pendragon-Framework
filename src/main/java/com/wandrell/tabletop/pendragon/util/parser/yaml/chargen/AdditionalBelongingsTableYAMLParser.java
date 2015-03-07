@@ -9,9 +9,9 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
+import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
-import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.interval.DefaultInterval;
@@ -23,19 +23,20 @@ import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public class AdditionalBelongingsTableYAMLParser implements
         Parser<Reader, AdditionalBelongingsTable> {
 
-    private final Repository<Horse>  horseRepository;
-    private final Repository<Item>   itemRepository;
-    private final ModelService       modelService;
-    private final Repository<Pet>    petRepository;
-    private final Repository<Shield> shieldRepository;
-    private final Repository<Weapon> weaponRepository;
+    private final Repository<Horse>       horseRepository;
+    private final Repository<Item>        itemRepository;
+    private final ModelConstructorService modelService;
+    private final Repository<Pet>         petRepository;
+    private final Repository<Shield>      shieldRepository;
+    private final Repository<Weapon>      weaponRepository;
 
-    public AdditionalBelongingsTableYAMLParser(final ModelService service,
+    public AdditionalBelongingsTableYAMLParser(
+            final ModelConstructorService service,
             final Repository<Horse> horseRepository,
             final Repository<Item> itemRepository,
             final Repository<Pet> petRepository,
@@ -111,7 +112,7 @@ public class AdditionalBelongingsTableYAMLParser implements
         return itemRepository;
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 
@@ -182,10 +183,10 @@ public class AdditionalBelongingsTableYAMLParser implements
         if (horseNames != null) {
             for (final String horse : horseNames) {
                 horses.addAll(getHorseRepository().getCollection(
-                        new Filter<Horse>() {
+                        new Predicate<Horse>() {
 
                             @Override
-                            public final Boolean isValid(final Horse entity) {
+                            public final boolean apply(final Horse entity) {
                                 return entity.getHorseType().equals(horse);
                             }
 
@@ -198,10 +199,10 @@ public class AdditionalBelongingsTableYAMLParser implements
         if (itemNames != null) {
             for (final String item : itemNames) {
                 items.addAll(getItemRepository().getCollection(
-                        new Filter<Item>() {
+                        new Predicate<Item>() {
 
                             @Override
-                            public final Boolean isValid(final Item entity) {
+                            public final boolean apply(final Item entity) {
                                 return entity.getName().equals(item);
                             }
 
@@ -213,14 +214,15 @@ public class AdditionalBelongingsTableYAMLParser implements
         pets = new LinkedList<Pet>();
         if (petNames != null) {
             for (final String pet : petNames) {
-                pets.addAll(getPetRepository().getCollection(new Filter<Pet>() {
+                pets.addAll(getPetRepository().getCollection(
+                        new Predicate<Pet>() {
 
-                    @Override
-                    public final Boolean isValid(final Pet entity) {
-                        return entity.getName().equals(pet);
-                    }
+                            @Override
+                            public final boolean apply(final Pet entity) {
+                                return entity.getName().equals(pet);
+                            }
 
-                }));
+                        }));
             }
         }
 
@@ -229,10 +231,10 @@ public class AdditionalBelongingsTableYAMLParser implements
         if (shieldNames != null) {
             for (final String shield : shieldNames) {
                 shields.addAll(getShieldRepository().getCollection(
-                        new Filter<Shield>() {
+                        new Predicate<Shield>() {
 
                             @Override
-                            public final Boolean isValid(final Shield entity) {
+                            public final boolean apply(final Shield entity) {
                                 return entity.getName().equals(shield);
                             }
 
@@ -245,10 +247,10 @@ public class AdditionalBelongingsTableYAMLParser implements
         if (weaponsNames != null) {
             for (final String weapon : weaponsNames) {
                 weapons.addAll(getWeaponRepository().getCollection(
-                        new Filter<Weapon>() {
+                        new Predicate<Weapon>() {
 
                             @Override
-                            public final Boolean isValid(final Weapon entity) {
+                            public final boolean apply(final Weapon entity) {
                                 return entity.getName().equals(weapon);
                             }
 

@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.command.ReturnCommand;
-import com.wandrell.tabletop.pendragon.model.stats.Skill;
-import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleAddIndividualDiffSkillCommand;
+import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToGetSkillRaiseCommand;
 
 public final class TestIsAbleAddIndividualDiffSkillCommand {
 
@@ -16,45 +16,45 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
     @Test
     public final void testIsAble_Combat_Able() throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(true);
         Mockito.when(skill.getValue()).thenReturn(0);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(command.execute());
     }
 
     @Test
     public final void testIsAble_Combat_AboveLimit_NotAble() throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(true);
         Mockito.when(skill.getValue()).thenReturn(20);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(!command.execute());
     }
 
     @Test
     public final void testIsAble_Combat_OnLimit_NotAble() throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(true);
         Mockito.when(skill.getValue()).thenReturn(15);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(!command.execute());
     }
@@ -62,45 +62,45 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_NotCombat_AboveLimit_NotAble()
             throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(false);
         Mockito.when(skill.getValue()).thenReturn(20);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(!command.execute());
     }
 
     @Test
     public final void testIsAble_NotCombat_OnLimit_NotAble() throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(false);
         Mockito.when(skill.getValue()).thenReturn(15);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(!command.execute());
     }
 
     @Test
     public final void testIsAble_NotCombat_Zero_NotAble() throws Exception {
-        final Skill skill;
+        final PendragonSkillBox skill;
         final ReturnCommand<Boolean> command;
 
-        skill = Mockito.mock(Skill.class);
+        skill = Mockito.mock(PendragonSkillBox.class);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(false);
         Mockito.when(skill.getValue()).thenReturn(0);
 
-        command = new IsAbleAddIndividualDiffSkillCommand(skill);
+        command = new IsAbleToGetSkillRaiseCommand(skill);
 
         Assert.assertTrue(!command.execute());
     }

@@ -7,13 +7,13 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public class HorseYAMLParser implements Parser<Reader, Horse> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public HorseYAMLParser(final ModelService service) {
+    public HorseYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -84,7 +84,7 @@ public class HorseYAMLParser implements Parser<Reader, Horse> {
                 strength, damage, movement, armor, armored, combat, hunting);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

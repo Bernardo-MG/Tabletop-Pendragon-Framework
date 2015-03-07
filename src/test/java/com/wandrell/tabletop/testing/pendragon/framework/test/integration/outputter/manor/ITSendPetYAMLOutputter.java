@@ -21,7 +21,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.manor.PetMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.manor.PetYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -47,13 +47,14 @@ public final class ITSendPetYAMLOutputter {
         final Pet pet;
         final Pet petOut;
         final Parser<Reader, Pet> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new PetYAMLParser(modelService);
 
@@ -80,13 +81,14 @@ public final class ITSendPetYAMLOutputter {
         final Pet pet;
         final Pet petOut;
         final Parser<Reader, Pet> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new PetYAMLParser(modelService);
 

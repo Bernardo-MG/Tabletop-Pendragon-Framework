@@ -10,7 +10,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.SkillName;
 
 public final class FamilyCharacteristicTableMapParser implements
         Parser<FamilyCharacteristicTable, Map<String, Object>> {
@@ -49,7 +49,7 @@ public final class FamilyCharacteristicTableMapParser implements
         if (!characteristic.getSkills().isEmpty()) {
             values = new LinkedList<>();
 
-            for (final Entry<NameAndDescriptor, Integer> entry : characteristic
+            for (final Entry<SkillName, Integer> entry : characteristic
                     .getSkills().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 

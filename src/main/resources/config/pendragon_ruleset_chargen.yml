@@ -6,3 +6,33 @@ excellentSkills:
 individualDiff:
   skill:
     max: 15
+    excellent: 15
+    extra: 
+      value: 10
+      count: 3
+    raise: 5
+    noCombatPoints: 10
+
+points:
+  attributes: 60
+
+rolls:
+  homelandPassion: 4d6+1
+  commonPassion: 3d6+4
+
+attributeRolls:
+  male:
+    appearance: 3d6+1
+    constitution: 3d6+1
+    dexterity: 3d6+1
+    size: 3d6+4
+    strength: 3d6+1
+  female:
+    appearance: 3d6+5
+    constitution: 3d6+1
+    dexterity: 3d6+1
+    size: 2d6+2
+    strength: 2d6+2
+
+glory:
+  knight: 6d6+150

@@ -16,13 +16,13 @@ import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public class PetYAMLParser implements Parser<Reader, Pet> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public PetYAMLParser(final ModelService service) {
+    public PetYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -111,7 +111,7 @@ public class PetYAMLParser implements Parser<Reader, Pet> {
         return getModelService().getPet(name, results);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

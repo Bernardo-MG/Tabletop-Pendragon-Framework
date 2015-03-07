@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.ShieldYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -25,9 +25,10 @@ public final class ITParseShieldYAMLParser {
     @BeforeClass
     public final void initialize() throws Exception {
         final Parser<Reader, Shield> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new ShieldYAMLParser(modelService);
 

@@ -8,16 +8,41 @@
 	<data>
 		<strength>1</strength>
 		<dexterity>0</dexterity>
+		<result>0</result>
+	</data>
+	<data>
+		<strength>4</strength>
+		<dexterity>0</dexterity>
+		<result>0</result>
+	</data>
+	<data>
+		<strength>5</strength>
+		<dexterity>0</dexterity>
+		<result>1</result>
+	</data>
+	<data>
+		<strength>6</strength>
+		<dexterity>0</dexterity>
+		<result>1</result>
+	</data>
+	<data>
+		<strength>10</strength>
+		<dexterity>4</dexterity>
 		<result>1</result>
 	</data>
 	<data>
 		<strength>10</strength>
 		<dexterity>5</dexterity>
-		<result>15</result>
+		<result>2</result>
+	</data>
+	<data>
+		<strength>10</strength>
+		<dexterity>6</dexterity>
+		<result>2</result>
 	</data>
 	<data>
 		<strength>20</strength>
 		<dexterity>20</dexterity>
-		<result>40</result>
+		<result>4</result>
 	</data>
 </test_data>

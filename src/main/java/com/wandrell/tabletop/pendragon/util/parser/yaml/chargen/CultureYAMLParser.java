@@ -7,26 +7,26 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
+import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
-import com.wandrell.pattern.repository.Repository.Filter;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 
 public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final Repository<AdditionalBelongingsTable>    addBelongRepo;
     private final Repository<FamilyCharacteristicTemplate> famCharRepo;
-    private final ModelService                             modelService;
+    private final ModelConstructorService                  modelService;
 
-    public CultureYAMLParser(final ModelService service,
+    public CultureYAMLParser(final ModelConstructorService service,
             final Repository<FamilyCharacteristicTemplate> fcRepo,
             final Repository<AdditionalBelongingsTable> abRepo) {
         super();
@@ -86,25 +86,25 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
             throws Exception {
         final Map<String, Integer> attributesBonus;
         final Map<String, Dice> attributesRandom;
-        final Map<NameAndDescriptor, Integer> skillsBonus;
+        final Map<SkillName, Integer> skillsBonus;
         final Map<String, Integer> specialtySkills;
-        final Map<NameAndDescriptor, Integer> passionsBonus;
-        final Map<NameAndDescriptor, Dice> passionsRandom;
-        final Map<NameAndDescriptor, Integer> directedBonus;
+        final Map<SkillName, Integer> passionsBonus;
+        final Map<SkillName, Dice> passionsRandom;
+        final Map<SkillName, Integer> directedBonus;
         final Map<String, Integer> traitsBonus;
         final Parser<String, Dice> diceParser;
         String descriptor;
-        NameAndDescriptor skill;
+        SkillName skill;
 
         diceParser = new StringDiceParser();
 
         attributesBonus = new LinkedHashMap<String, Integer>();
         attributesRandom = new LinkedHashMap<String, Dice>();
-        skillsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
+        skillsBonus = new LinkedHashMap<SkillName, Integer>();
         specialtySkills = new LinkedHashMap<String, Integer>();
-        passionsBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
-        passionsRandom = new LinkedHashMap<NameAndDescriptor, Dice>();
-        directedBonus = new LinkedHashMap<NameAndDescriptor, Integer>();
+        passionsBonus = new LinkedHashMap<SkillName, Integer>();
+        passionsRandom = new LinkedHashMap<SkillName, Dice>();
+        directedBonus = new LinkedHashMap<SkillName, Integer>();
         traitsBonus = new LinkedHashMap<String, Integer>();
 
         if (template != null) {
@@ -131,8 +131,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultNameAndDescriptor(
-                            (String) child.get("name"), descriptor);
+                    skill = new DefaultSkillName((String) child.get("name"),
+                            descriptor);
 
                     skillsBonus.put(skill, (Integer) child.get("value"));
                 }
@@ -153,8 +153,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultNameAndDescriptor(
-                            (String) child.get("name"), descriptor);
+                    skill = new DefaultSkillName((String) child.get("name"),
+                            descriptor);
 
                     passionsBonus.put(skill, (Integer) child.get("value"));
                 }
@@ -167,8 +167,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultNameAndDescriptor(
-                            (String) child.get("name"), descriptor);
+                    skill = new DefaultSkillName((String) child.get("name"),
+                            descriptor);
 
                     passionsRandom.put(skill,
                             diceParser.parse((String) child.get("value")));
@@ -182,8 +182,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultNameAndDescriptor(
-                            (String) child.get("name"), descriptor);
+                    skill = new DefaultSkillName((String) child.get("name"),
+                            descriptor);
 
                     directedBonus.put(skill, (Integer) child.get("value"));
                 }
@@ -206,10 +206,10 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     private final AdditionalBelongingsTable getAdditionalBelongingsTableByName(
             final String name) {
         return getAdditionalBelongingsTableRepository()
-                .getCollection(new Filter<AdditionalBelongingsTable>() {
+                .getCollection(new Predicate<AdditionalBelongingsTable>() {
 
                     @Override
-                    public final Boolean isValid(
+                    public final boolean apply(
                             final AdditionalBelongingsTable entity) {
                         return entity.getName().equals(name);
                     }
@@ -225,10 +225,10 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     private final FamilyCharacteristicTemplate
             getFamilyCharacteristicTemplateByName(final String name) {
         return getFamilyCharacteristicTemplateRepository()
-                .getCollection(new Filter<FamilyCharacteristicTemplate>() {
+                .getCollection(new Predicate<FamilyCharacteristicTemplate>() {
 
                     @Override
-                    public final Boolean isValid(
+                    public final boolean apply(
                             final FamilyCharacteristicTemplate entity) {
                         return entity.getName().equals(name);
                     }
@@ -241,7 +241,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         return famCharRepo;
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

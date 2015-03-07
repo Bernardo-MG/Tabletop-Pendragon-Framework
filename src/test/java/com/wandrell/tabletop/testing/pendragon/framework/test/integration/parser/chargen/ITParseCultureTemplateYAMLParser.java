@@ -13,10 +13,10 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
@@ -33,13 +33,13 @@ public final class ITParseCultureTemplateYAMLParser {
     public final void initialize() throws Exception {
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<AdditionalBelongingsTable> belongingsRepository;
         final Repository<FamilyCharacteristicTemplate> characteristicRepository;
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         belongingsRepository = factory.getAdditionalBelongingsTableRepository();
         characteristicRepository = factory
@@ -101,30 +101,30 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraitsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getFemaleTemplate().getDirectedTraits();
 
         Assert.assertEquals(attributes.size(), 1);
 
-        key = new DefaultNameAndDescriptor("directed_3", "");
+        key = new DefaultSkillName("directed_3", "");
         Assert.assertEquals(attributes.get(key), (Integer) 31);
     }
 
     @Test
     public final void testDirectedTraitsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getMaleTemplate().getDirectedTraits();
 
         Assert.assertEquals(attributes.size(), 2);
 
-        key = new DefaultNameAndDescriptor("directed_1", "");
+        key = new DefaultSkillName("directed_1", "");
         Assert.assertEquals(attributes.get(key), (Integer) 30);
 
-        key = new DefaultNameAndDescriptor("directed_2", "descriptor_2");
+        key = new DefaultSkillName("directed_2", "descriptor_2");
         Assert.assertEquals(attributes.get(key), (Integer) 1);
     }
 
@@ -151,91 +151,91 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getFemaleTemplate().getPassions();
 
         Assert.assertEquals(attributes.size(), 1);
 
-        key = new DefaultNameAndDescriptor("passion_3", "");
+        key = new DefaultSkillName("passion_3", "");
         Assert.assertEquals(attributes.get(key), (Integer) 18);
     }
 
     @Test
     public final void testPassionsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getMaleTemplate().getPassions();
 
         Assert.assertEquals(attributes.size(), 2);
 
-        key = new DefaultNameAndDescriptor("passion_1", "");
+        key = new DefaultSkillName("passion_1", "");
         Assert.assertEquals(attributes.get(key), (Integer) 17);
 
-        key = new DefaultNameAndDescriptor("passion_2", "descriptor_2");
+        key = new DefaultSkillName("passion_2", "descriptor_2");
         Assert.assertEquals(attributes.get(key), (Integer) 24);
     }
 
     @Test
     public final void testPassionsRandom_Female() {
-        final Map<NameAndDescriptor, Dice> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Dice> attributes;
+        SkillName key;
 
         attributes = culture.getFemaleTemplate().getPassionsRandom();
 
         Assert.assertEquals(attributes.size(), 1);
 
-        key = new DefaultNameAndDescriptor("passion_3", "");
+        key = new DefaultSkillName("passion_3", "");
         Assert.assertEquals(attributes.get(key).getTextValue(), "6d6");
     }
 
     @Test
     public final void testPassionsRandom_Male() {
-        final Map<NameAndDescriptor, Dice> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Dice> attributes;
+        SkillName key;
 
         attributes = culture.getMaleTemplate().getPassionsRandom();
 
         Assert.assertEquals(attributes.size(), 3);
 
-        key = new DefaultNameAndDescriptor("passion_1", "");
+        key = new DefaultSkillName("passion_1", "");
         Assert.assertEquals(attributes.get(key).getTextValue(), "3d6");
 
-        key = new DefaultNameAndDescriptor("passion_2", "descriptor_2");
+        key = new DefaultSkillName("passion_2", "descriptor_2");
         Assert.assertEquals(attributes.get(key).getTextValue(), "0d1");
 
-        key = new DefaultNameAndDescriptor("passion_4", "");
+        key = new DefaultSkillName("passion_4", "");
         Assert.assertEquals(attributes.get(key).getTextValue(), "0d1+5");
     }
 
     @Test
     public final void testSkillsBonus_Female() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getFemaleTemplate().getSkills();
 
         Assert.assertEquals(attributes.size(), 1);
 
-        key = new DefaultNameAndDescriptor("skill_3", "");
+        key = new DefaultSkillName("skill_3", "");
         Assert.assertEquals(attributes.get(key), (Integer) 12);
     }
 
     @Test
     public final void testSkillsBonus_Male() {
-        final Map<NameAndDescriptor, Integer> attributes;
-        NameAndDescriptor key;
+        final Map<SkillName, Integer> attributes;
+        SkillName key;
 
         attributes = culture.getMaleTemplate().getSkills();
 
         Assert.assertEquals(attributes.size(), 2);
 
-        key = new DefaultNameAndDescriptor("skill_1", "");
+        key = new DefaultSkillName("skill_1", "");
         Assert.assertEquals(attributes.get(key), (Integer) 10);
 
-        key = new DefaultNameAndDescriptor("skill_2", "descriptor_2");
+        key = new DefaultSkillName("skill_2", "descriptor_2");
         Assert.assertEquals(attributes.get(key), (Integer) 11);
     }
 

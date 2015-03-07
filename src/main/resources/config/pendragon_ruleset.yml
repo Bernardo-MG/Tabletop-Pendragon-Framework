@@ -1,6 +1,7 @@
 traitBonus:
   chivaldry:
     treshold: 80
+    armor: 3
     traits:
       - energetic
       - generous
@@ -32,3 +33,6 @@ distinctiveFeatures:
     - value: 2
       lowerLimit: 13
       upperLimit: 16
+
+glory:
+  knighted: 1000

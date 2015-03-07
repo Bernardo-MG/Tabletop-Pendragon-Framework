@@ -7,14 +7,14 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.glory.FatherClassGlory;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public final class FatherClassGloryYAMLParser implements
         Parser<Reader, FatherClassGlory> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public FatherClassGloryYAMLParser(final ModelService service) {
+    public FatherClassGloryYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -43,7 +43,7 @@ public final class FatherClassGloryYAMLParser implements
         return getModelService().getFatherClassGlory(name, glory, yearlyGlory);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

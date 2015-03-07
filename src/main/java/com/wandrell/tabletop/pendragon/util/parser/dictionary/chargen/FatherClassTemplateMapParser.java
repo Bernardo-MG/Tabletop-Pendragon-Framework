@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.SkillName;
 
 public final class FatherClassTemplateMapParser implements
         Parser<FatherClassTemplate, Map<String, Object>> {
@@ -27,7 +27,7 @@ public final class FatherClassTemplateMapParser implements
         data = new LinkedHashMap<String, Object>();
         skills = new LinkedList<>();
 
-        for (final NameAndDescriptor skill : father.getSkillsGroup()) {
+        for (final SkillName skill : father.getSkillsGroup()) {
             map = new LinkedHashMap<String, Object>();
             map.put("name", skill.getName());
             map.put("descriptor", skill.getDescriptor());
@@ -66,7 +66,7 @@ public final class FatherClassTemplateMapParser implements
 
         if (!father.getDirectedTraitsBase().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<NameAndDescriptor, Integer> entry : father
+            for (final Entry<SkillName, Integer> entry : father
                     .getDirectedTraitsBase().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 
@@ -92,7 +92,7 @@ public final class FatherClassTemplateMapParser implements
 
         if (!father.getDirectedTraits().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<NameAndDescriptor, Integer> entry : father
+            for (final Entry<SkillName, Integer> entry : father
                     .getDirectedTraits().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 

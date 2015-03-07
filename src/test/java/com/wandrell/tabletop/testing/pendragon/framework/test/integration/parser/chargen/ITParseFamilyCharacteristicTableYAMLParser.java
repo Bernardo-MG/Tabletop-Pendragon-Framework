@@ -13,9 +13,9 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FamilyCharacteristicTableYAMLParser;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
@@ -31,9 +31,10 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
     @BeforeClass
     public final void initialize() throws Exception {
         final Parser<Reader, FamilyCharacteristicTable> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
 
         parser = new FamilyCharacteristicTableYAMLParser(modelService);
 
@@ -44,9 +45,9 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
     @Test
     public final void testFamilyCharacteristic_First() {
         final FamilyCharacteristicTemplate familyChar;
-        final Map<NameAndDescriptor, Integer> skills;
-        final Iterator<Entry<NameAndDescriptor, Integer>> itr;
-        Entry<NameAndDescriptor, Integer> entry;
+        final Map<SkillName, Integer> skills;
+        final Iterator<Entry<SkillName, Integer>> itr;
+        Entry<SkillName, Integer> entry;
 
         familyChar = table.getIntervals().values().iterator().next();
 
@@ -74,12 +75,12 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
     @Test
     public final void testFamilyCharacteristic_Second() {
         final FamilyCharacteristicTemplate familyChar;
-        final Map<NameAndDescriptor, Integer> skills;
+        final Map<SkillName, Integer> skills;
         final Iterator<FamilyCharacteristicTemplate> itrValues;
         final Iterator<Entry<String, Integer>> itrAttributes;
-        final Iterator<Entry<NameAndDescriptor, Integer>> itrSkills;
+        final Iterator<Entry<SkillName, Integer>> itrSkills;
         Entry<String, Integer> entryAttribute;
-        Entry<NameAndDescriptor, Integer> entrySkill;
+        Entry<SkillName, Integer> entrySkill;
 
         itrValues = table.getIntervals().values().iterator();
         itrValues.next();

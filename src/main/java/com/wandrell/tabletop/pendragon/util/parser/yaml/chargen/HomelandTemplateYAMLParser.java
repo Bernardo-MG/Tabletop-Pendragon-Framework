@@ -8,21 +8,27 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
+import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.pattern.repository.Repository;
+import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 
 public final class HomelandTemplateYAMLParser implements
         Parser<Reader, HomelandTemplate> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService    modelService;
+    private final Repository<RegionTemplate> regionRepo;
 
-    public HomelandTemplateYAMLParser(final ModelService service) {
+    public HomelandTemplateYAMLParser(final ModelConstructorService service,
+            final Repository<RegionTemplate> regionRepo) {
         super();
 
         modelService = service;
+        this.regionRepo = regionRepo;
     }
 
     @SuppressWarnings("unchecked")
@@ -32,12 +38,12 @@ public final class HomelandTemplateYAMLParser implements
         final Map<String, Object> values;
         final Map<String, Collection<Map<String, Object>>> bonus;
         final String name;
-        final Map<NameAndDescriptor, Integer> skills;
+        final Map<SkillName, Integer> skills;
         final Map<String, Integer> specialtySkills;
-        final Map<String, Integer> traits;
-        final Collection<NameAndDescriptor> passions;
-        final Collection<NameAndDescriptor> directedTraits;
-        NameAndDescriptor skillData;
+        final Collection<SkillName> passions;
+        final Collection<SkillName> directedTraits;
+        final RegionTemplate region;
+        SkillName skillData;
         String descriptor;
 
         yaml = new Yaml();
@@ -47,14 +53,27 @@ public final class HomelandTemplateYAMLParser implements
         // Name
         name = (String) values.get("name");
 
+        if (values.containsKey("region")) {
+            region = getRegionRepository()
+                    .getCollection(new Predicate<RegionTemplate>() {
+
+                        @Override
+                        public final boolean apply(final RegionTemplate input) {
+                            return input.getName().equals(values.get("region"));
+                        }
+
+                    }).iterator().next();
+        } else {
+            region = null;
+        }
+
         bonus = (Map<String, Collection<Map<String, Object>>>) values
                 .get("bonus");
 
-        skills = new LinkedHashMap<NameAndDescriptor, Integer>();
+        skills = new LinkedHashMap<SkillName, Integer>();
         specialtySkills = new LinkedHashMap<String, Integer>();
-        traits = new LinkedHashMap<String, Integer>();
-        directedTraits = new LinkedList<NameAndDescriptor>();
-        passions = new LinkedList<NameAndDescriptor>();
+        directedTraits = new LinkedList<SkillName>();
+        passions = new LinkedList<SkillName>();
 
         if (bonus != null) {
             // Skills
@@ -64,7 +83,7 @@ public final class HomelandTemplateYAMLParser implements
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skillData = new DefaultNameAndDescriptor(
+                    skillData = new DefaultSkillName(
                             (String) skill.get("name"), descriptor);
                     skills.put(skillData, (Integer) skill.get("value"));
                 }
@@ -79,19 +98,11 @@ public final class HomelandTemplateYAMLParser implements
                 }
             }
 
-            // Traits
-            if (bonus.containsKey("traits")) {
-                for (final Map<String, Object> trait : bonus.get("traits")) {
-                    traits.put((String) trait.get("name"),
-                            (Integer) trait.get("value"));
-                }
-            }
-
             // Directed traits
             if (bonus.containsKey("directed_traits")) {
                 for (final Map<String, Object> trait : bonus
                         .get("directed_traits")) {
-                    skillData = new DefaultNameAndDescriptor(
+                    skillData = new DefaultSkillName(
                             (String) trait.get("name"),
                             (String) trait.get("descriptor"));
                     directedTraits.add(skillData);
@@ -101,7 +112,7 @@ public final class HomelandTemplateYAMLParser implements
             // Passions
             if (bonus.containsKey("passions")) {
                 for (final Map<String, Object> passion : bonus.get("passions")) {
-                    skillData = new DefaultNameAndDescriptor(
+                    skillData = new DefaultSkillName(
                             (String) passion.get("name"),
                             (String) passion.get("descriptor"));
                     passions.add(skillData);
@@ -109,12 +120,16 @@ public final class HomelandTemplateYAMLParser implements
             }
         }
 
-        return getModelService().getHomelandTemplate(name, skills,
-                specialtySkills, traits, directedTraits, passions);
+        return getModelService().getHomelandTemplate(name, region, skills,
+                specialtySkills, directedTraits, passions);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
+    }
+
+    private final Repository<RegionTemplate> getRegionRepository() {
+        return regionRepo;
     }
 
 }

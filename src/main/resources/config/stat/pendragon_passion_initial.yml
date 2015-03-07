@@ -1,0 +1,8 @@
+- name: loyalty
+  descriptor: lord
+- name: love
+  descriptor: family
+- name: hospitality
+  described: false
+- name: honor
+  described: false

@@ -8,23 +8,23 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkill;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
 
 public final class SpecialtySkillYAMLParser implements
-        Parser<Reader, SpecialtySkill> {
+        Parser<Reader, SpecialtySkillBox> {
 
-    private final ModelService modelService;
+    private final StatConstructorService statService;
 
-    public SpecialtySkillYAMLParser(final ModelService service) {
+    public SpecialtySkillYAMLParser(final StatConstructorService service) {
         super();
 
-        modelService = service;
+        statService = service;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final SpecialtySkill parse(final Reader reader) {
+    public final SpecialtySkillBox parse(final Reader reader) {
         final Yaml yaml;
         final Map<String, Object> values;
         final String name;
@@ -44,11 +44,11 @@ public final class SpecialtySkillYAMLParser implements
             skills = new LinkedList<>();
         }
 
-        return getModelService().getSpecialtySkill(name, skills);
+        return getStatConstructorService().getSpecialtySkill(name, 0, skills);
     }
 
-    private final ModelService getModelService() {
-        return modelService;
+    private final StatConstructorService getStatConstructorService() {
+        return statService;
     }
 
 }

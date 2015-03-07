@@ -10,14 +10,14 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public final class ReligionTemplateYAMLParser implements
         Parser<Reader, ReligionTemplate> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public ReligionTemplateYAMLParser(final ModelService service) {
+    public ReligionTemplateYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -90,7 +90,7 @@ public final class ReligionTemplateYAMLParser implements
                 bonusDerived, bonusArmor, bonusDamage, bonusDamageDice);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

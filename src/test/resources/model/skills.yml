@@ -1,0 +1,9 @@
+- name: skill_1
+- name: skill_2
+  combat: true
+  knightly: true
+- name: skill_3
+  descriptor: descriptor_3
+  courtly: true
+  knightly: true
+  knowledge: true

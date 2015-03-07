@@ -27,7 +27,7 @@ import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.AdditionalBelongingsMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.AdditionalBelongingsTableYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
@@ -54,7 +54,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         final AdditionalBelongingsTable tableOut;
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<Horse> horseRepository;
         final Repository<Item> itemRepository;
         final Repository<Pet> petRepository;
@@ -67,7 +67,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         horseRepository = factory.getHorseRepository();
         itemRepository = factory.getItemRepository();
@@ -100,7 +100,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         final AdditionalBelongingsTable tableOut;
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
         final Repository<Horse> horseRepository;
         final Repository<Item> itemRepository;
         final Repository<Pet> petRepository;
@@ -113,7 +113,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
 
         factory = TestServiceFactory.getInstance();
 
-        modelService = factory.getModelService();
+        modelService = factory.getModelConstructorService();
 
         horseRepository = factory.getHorseRepository();
         itemRepository = factory.getItemRepository();

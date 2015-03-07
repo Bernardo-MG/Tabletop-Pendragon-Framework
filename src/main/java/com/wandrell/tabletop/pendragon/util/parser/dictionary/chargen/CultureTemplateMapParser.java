@@ -10,7 +10,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.skill.SkillName;
 
 public final class CultureTemplateMapParser implements
         Parser<CultureTemplate, Map<String, Object>> {
@@ -109,8 +109,8 @@ public final class CultureTemplateMapParser implements
         // Skills
         valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
-            for (final Entry<NameAndDescriptor, Integer> entry : template
-                    .getSkills().entrySet()) {
+            for (final Entry<SkillName, Integer> entry : template.getSkills()
+                    .entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 
                 value.put("name", entry.getKey().getName());
@@ -140,8 +140,8 @@ public final class CultureTemplateMapParser implements
         // Passions
         valuesCol = new LinkedList<>();
         if (!template.getPassions().isEmpty()) {
-            for (final Entry<NameAndDescriptor, Integer> entry : template
-                    .getPassions().entrySet()) {
+            for (final Entry<SkillName, Integer> entry : template.getPassions()
+                    .entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 
                 value.put("name", entry.getKey().getName());
@@ -156,7 +156,7 @@ public final class CultureTemplateMapParser implements
         // Random passions
         valuesCol = new LinkedList<>();
         if (!template.getPassionsRandom().isEmpty()) {
-            for (final Entry<NameAndDescriptor, Dice> entry : template
+            for (final Entry<SkillName, Dice> entry : template
                     .getPassionsRandom().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 
@@ -172,7 +172,7 @@ public final class CultureTemplateMapParser implements
         // Directed Traits
         valuesCol = new LinkedList<>();
         if (!template.getDirectedTraits().isEmpty()) {
-            for (final Entry<NameAndDescriptor, Integer> entry : template
+            for (final Entry<SkillName, Integer> entry : template
                     .getDirectedTraits().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 

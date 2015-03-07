@@ -13,16 +13,16 @@ import com.wandrell.tabletop.dice.DefaultDice;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
-import com.wandrell.tabletop.skill.DefaultNameAndDescriptor;
-import com.wandrell.tabletop.skill.NameAndDescriptor;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
+import com.wandrell.tabletop.skill.DefaultSkillName;
+import com.wandrell.tabletop.skill.SkillName;
 
 public class FatherClassTemplateYAMLParser implements
         Parser<Reader, FatherClassTemplate> {
 
-    private final ModelService modelService;
+    private final ModelConstructorService modelService;
 
-    public FatherClassTemplateYAMLParser(final ModelService service) {
+    public FatherClassTemplateYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -46,10 +46,10 @@ public class FatherClassTemplateYAMLParser implements
         final Integer skillsPoints;
         final Integer skillsNonCombatPoints;
         final Dice money;
-        final Collection<NameAndDescriptor> skillsGroup;
+        final Collection<SkillName> skillsGroup;
         final Map<String, Integer> specialtySkills;
-        final Map<NameAndDescriptor, Integer> directedTraits;
-        final Map<NameAndDescriptor, Integer> directedTraitsBase;
+        final Map<SkillName, Integer> directedTraits;
+        final Map<SkillName, Integer> directedTraitsBase;
         final Parser<String, Dice> diceParser;
         String descriptor;
 
@@ -106,25 +106,25 @@ public class FatherClassTemplateYAMLParser implements
         }
 
         // Skills group
-        skillsGroup = new LinkedList<NameAndDescriptor>();
+        skillsGroup = new LinkedList<SkillName>();
         skillsGroupMap = (Collection<Map<String, Object>>) values
                 .get("skills_group");
         if (skillsGroupMap != null) {
             for (final Map<String, Object> skill : skillsGroupMap) {
                 descriptor = (String) skill.get("descriptor");
                 if (descriptor == null) {
-                    skillsGroup.add(new DefaultNameAndDescriptor((String) skill
+                    skillsGroup.add(new DefaultSkillName((String) skill
                             .get("name"), ""));
                 } else {
-                    skillsGroup.add(new DefaultNameAndDescriptor((String) skill
+                    skillsGroup.add(new DefaultSkillName((String) skill
                             .get("name"), descriptor));
                 }
             }
         }
 
         specialtySkills = new LinkedHashMap<String, Integer>();
-        directedTraits = new LinkedHashMap<NameAndDescriptor, Integer>();
-        directedTraitsBase = new LinkedHashMap<NameAndDescriptor, Integer>();
+        directedTraits = new LinkedHashMap<SkillName, Integer>();
+        directedTraitsBase = new LinkedHashMap<SkillName, Integer>();
 
         if (bonusMap != null) {
             // Specialty skills
@@ -144,10 +144,10 @@ public class FatherClassTemplateYAMLParser implements
                 if (directedTraitsMap != null) {
                     for (final Map<String, Object> trait : directedTraitsMap) {
                         directedTraits.put(
-                                new DefaultNameAndDescriptor((String) trait
-                                        .get("name"), (String) trait
-                                        .get("descriptor")), (Integer) trait
-                                        .get("value"));
+                                new DefaultSkillName(
+                                        (String) trait.get("name"),
+                                        (String) trait.get("descriptor")),
+                                (Integer) trait.get("value"));
                     }
                 }
             }
@@ -158,10 +158,10 @@ public class FatherClassTemplateYAMLParser implements
                 if (directedTraitsBaseMap != null) {
                     for (final Map<String, Object> trait : directedTraitsBaseMap) {
                         directedTraitsBase.put(
-                                new DefaultNameAndDescriptor((String) trait
-                                        .get("name"), (String) trait
-                                        .get("descriptor")), (Integer) trait
-                                        .get("value"));
+                                new DefaultSkillName(
+                                        (String) trait.get("name"),
+                                        (String) trait.get("descriptor")),
+                                (Integer) trait.get("value"));
                     }
                 }
             }
@@ -173,7 +173,7 @@ public class FatherClassTemplateYAMLParser implements
                 directedTraits, directedTraitsBase);
     }
 
-    private final ModelService getModelService() {
+    private final ModelConstructorService getModelService() {
         return modelService;
     }
 

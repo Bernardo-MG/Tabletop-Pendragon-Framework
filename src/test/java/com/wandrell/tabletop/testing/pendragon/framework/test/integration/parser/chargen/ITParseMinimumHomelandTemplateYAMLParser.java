@@ -7,8 +7,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.HomelandTemplate;
-import com.wandrell.tabletop.pendragon.service.model.ModelService;
+import com.wandrell.pattern.repository.Repository;
+import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
+import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.HomelandTemplateYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.conf.factory.TestServiceFactory;
@@ -25,11 +27,14 @@ public final class ITParseMinimumHomelandTemplateYAMLParser {
     @BeforeClass
     public final void initialize() throws Exception {
         final Parser<Reader, HomelandTemplate> parser;
-        final ModelService modelService;
+        final ModelConstructorService modelService;
+        final Repository<RegionTemplate> regionRepo;
 
-        modelService = TestServiceFactory.getInstance().getModelService();
+        modelService = TestServiceFactory.getInstance()
+                .getModelConstructorService();
+        regionRepo = TestServiceFactory.getInstance().getRegionRepository();
 
-        parser = new HomelandTemplateYAMLParser(modelService);
+        parser = new HomelandTemplateYAMLParser(modelService, regionRepo);
 
         homeland = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.HOMELAND_MINIMUM));
@@ -48,6 +53,11 @@ public final class ITParseMinimumHomelandTemplateYAMLParser {
     @Test
     public final void testPassions() {
         Assert.assertTrue(homeland.getPassions().isEmpty());
+    }
+
+    @Test
+    public final void testRegion() {
+        Assert.assertEquals(homeland.getRegion(), null);
     }
 
     @Test
