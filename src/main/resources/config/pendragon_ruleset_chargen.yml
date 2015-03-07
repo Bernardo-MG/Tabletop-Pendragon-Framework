@@ -4,7 +4,9 @@ excellentSkills:
     - siege
 
 individualDiff:
+  raises: 4
   skill:
+    points: 10
     max: 15
     excellent: 15
     extra: 
@@ -12,13 +14,26 @@ individualDiff:
       count: 3
     raise: 5
     noCombatPoints: 10
+  trait:
+    famous: 16
+    points: 6
+  passion:
+    points: 3
 
 points:
   attributes: 60
+  traitsRandom: 3
+  
+max:
+  trait: 19
+  passion: 20
 
 rolls:
   homelandPassion: 4d6+1
   commonPassion: 3d6+4
+  trait: 3d6
+  directedTrait: 1d6+1
+  femaleValorousMod: 1d6+3
 
 attributeRolls:
   male:
@@ -36,3 +51,6 @@ attributeRolls:
 
 glory:
   knight: 6d6+150
+  
+religion:
+  traitBonus: 3

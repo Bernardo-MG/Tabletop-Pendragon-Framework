@@ -9,19 +9,21 @@ import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributeRollCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetCommonPassionRollCommand;
-import com.wandrell.tabletop.pendragon.service.chargen.command.GetHomelandPassionRollCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetLandlordPassionRollCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitRandomPointsCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitRollCommand;
 
-public final class DefaultChargenRandomRulesetService implements
-        ChargenRandomRulesetService {
+public final class DefaultCharGenRandomRulesetService implements
+        CharGenRandomRulesetService {
 
     private Map<String, Dice>     attributeRollFemale;
     private Map<String, Dice>     attributeRollMale;
     private final CommandExecutor comExec;
     private Dice                  common;
-    private Dice                  homeland;
+    private Dice                  trait;
+    private Integer               traitPoints;
 
-    public DefaultChargenRandomRulesetService(final CommandExecutor executor) {
+    public DefaultCharGenRandomRulesetService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");
@@ -62,20 +64,29 @@ public final class DefaultChargenRandomRulesetService implements
     }
 
     @Override
-    public final Dice getHomelandPassionRoll() {
-        if (homeland == null) {
-            homeland = getCommandExecutor().execute(
-                    new GetHomelandPassionRollCommand());
-        }
-
-        return homeland;
-    }
-
-    @Override
     public final Dice getLandlordPassionRoll(final String passion,
             final String descriptor) {
         return getCommandExecutor().execute(
                 new GetLandlordPassionRollCommand(passion, descriptor));
+    }
+
+    @Override
+    public final Integer getTraitPoints() {
+        if (traitPoints == null) {
+            traitPoints = getCommandExecutor().execute(
+                    new GetTraitRandomPointsCommand());
+        }
+
+        return traitPoints;
+    }
+
+    @Override
+    public final Dice getTraitRoll() {
+        if (trait == null) {
+            trait = getCommandExecutor().execute(new GetTraitRollCommand());
+        }
+
+        return trait;
     }
 
     private final CommandExecutor getCommandExecutor() {
