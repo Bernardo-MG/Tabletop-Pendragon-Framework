@@ -12,8 +12,7 @@ public final class DefaultCharGenDirectedTraitsService implements
     private final CommandExecutor comExec;
     private Dice                  initialDirTrait;
 
-    public DefaultCharGenDirectedTraitsService(
-            final CommandExecutor executor) {
+    public DefaultCharGenDirectedTraitsService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

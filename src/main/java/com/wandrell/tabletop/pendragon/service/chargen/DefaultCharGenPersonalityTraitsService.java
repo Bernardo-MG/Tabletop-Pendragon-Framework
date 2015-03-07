@@ -20,8 +20,7 @@ public final class DefaultCharGenPersonalityTraitsService implements
     private Integer               randomPoints;
     private Dice                  randomRoll;
 
-    public DefaultCharGenPersonalityTraitsService(
-            final CommandExecutor executor) {
+    public DefaultCharGenPersonalityTraitsService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

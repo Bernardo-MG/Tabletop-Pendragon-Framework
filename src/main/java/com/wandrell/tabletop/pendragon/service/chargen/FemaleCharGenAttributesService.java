@@ -10,15 +10,13 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributePointsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributeRollCommand;
 
-public class DefaultCharGenAttributesService implements
-        CharGenAttributesService {
+public class FemaleCharGenAttributesService implements CharGenAttributesService {
 
-    private Map<String, Dice>     attributeRollFemale;
-    private Map<String, Dice>     attributeRollMale;
+    private Map<String, Dice>     attributeRolls;
     private Integer               attributes;
     private final CommandExecutor comExec;
 
-    public DefaultCharGenAttributesService(final CommandExecutor executor) {
+    public FemaleCharGenAttributesService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");
@@ -27,25 +25,8 @@ public class DefaultCharGenAttributesService implements
     }
 
     @Override
-    public final Dice getAttributeRoll(final String attribute,
-            final Gender gender) {
-        final Dice roll;
-
-        if ((gender == Gender.FEMALE) && (attributeRollFemale == null)) {
-            attributeRollFemale = getCommandExecutor().execute(
-                    new GetAttributeRollCommand(gender));
-        } else if (attributeRollMale == null) {
-            attributeRollMale = getCommandExecutor().execute(
-                    new GetAttributeRollCommand(gender));
-        }
-
-        if (gender == Gender.MALE) {
-            roll = attributeRollMale.get(attribute);
-        } else {
-            roll = attributeRollFemale.get(attribute);
-        }
-
-        return roll;
+    public final Dice getAppearanceRoll() {
+        return getAttributesRolls().get("appearance");
     }
 
     @Override
@@ -56,6 +37,35 @@ public class DefaultCharGenAttributesService implements
         }
 
         return attributes;
+    }
+
+    @Override
+    public final Dice getConstitutionRoll() {
+        return getAttributesRolls().get("constitution");
+    }
+
+    @Override
+    public final Dice getDexterityRoll() {
+        return getAttributesRolls().get("dexterity");
+    }
+
+    @Override
+    public final Dice getSizeRoll() {
+        return getAttributesRolls().get("size");
+    }
+
+    @Override
+    public final Dice getStrengthRoll() {
+        return getAttributesRolls().get("strength");
+    }
+
+    private final Map<String, Dice> getAttributesRolls() {
+        if (attributeRolls == null) {
+            attributeRolls = getCommandExecutor().execute(
+                    new GetAttributeRollCommand(Gender.FEMALE));
+        }
+
+        return attributeRolls;
     }
 
     private final CommandExecutor getCommandExecutor() {

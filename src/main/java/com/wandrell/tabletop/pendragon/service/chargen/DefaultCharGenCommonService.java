@@ -7,8 +7,7 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetPassionMaxComm
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetReligiousTraitBonusCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitMaxCommand;
 
-public final class DefaultCharGenCommonService implements
-        CharGenCommonService {
+public final class DefaultCharGenCommonService implements CharGenCommonService {
 
     private final CommandExecutor comExec;
     private Integer               passionMax;
