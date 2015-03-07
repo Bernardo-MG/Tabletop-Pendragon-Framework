@@ -4,7 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.service.chargen.command.GetDirectedTraitInitialValueCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.GetDirectedTraitInitialRollCommand;
 
 public final class DefaultCharGenDirectedTraitsService implements
         CharGenDirectedTraitsService {
@@ -24,7 +24,7 @@ public final class DefaultCharGenDirectedTraitsService implements
     public final Dice getInitialValue() {
         if (initialDirTrait == null) {
             initialDirTrait = getCommandExecutor().execute(
-                    new GetDirectedTraitInitialValueCommand());
+                    new GetDirectedTraitInitialRollCommand());
         }
 
         return initialDirTrait;

@@ -13,8 +13,8 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributeRollC
 public class FemaleCharGenAttributesService implements CharGenAttributesService {
 
     private Map<String, Dice>     attributeRolls;
-    private Integer               attributes;
     private final CommandExecutor comExec;
+    private Integer               points;
 
     public FemaleCharGenAttributesService(final CommandExecutor executor) {
         super();
@@ -31,12 +31,12 @@ public class FemaleCharGenAttributesService implements CharGenAttributesService 
 
     @Override
     public final Integer getAttributesPoints() {
-        if (attributes == null) {
-            attributes = getCommandExecutor().execute(
+        if (points == null) {
+            points = getCommandExecutor().execute(
                     new GetAttributePointsCommand());
         }
 
-        return attributes;
+        return points;
     }
 
     @Override

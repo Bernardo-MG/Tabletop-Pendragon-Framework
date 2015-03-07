@@ -10,10 +10,10 @@ import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetDirectedTraitInitialValueCommand implements
+public final class GetKnightStartingGloryRollCommand implements
         ReturnCommand<Dice> {
 
-    public GetDirectedTraitInitialValueCommand() {
+    public GetKnightStartingGloryRollCommand() {
         super();
     }
 
@@ -30,9 +30,9 @@ public final class GetDirectedTraitInitialValueCommand implements
 
         values = (Map<String, Object>) yaml.load(ResourceUtils
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
-        values = (Map<String, Object>) values.get("rolls");
+        values = (Map<String, Object>) values.get("glory");
 
-        return parser.parse((String) values.get("trait"));
+        return parser.parse((String) values.get("knight"));
     }
 
 }

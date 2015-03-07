@@ -4,12 +4,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.service.chargen.command.GetKnightStartingGloryCommand;
+import com.wandrell.tabletop.pendragon.service.chargen.command.GetKnightStartingGloryRollCommand;
 
 public final class DefaultCharGenGloryService implements CharGenGloryService {
 
     private final CommandExecutor comExec;
-    private Dice                  gloryKnight;
+    private Dice                  initialKnightGlory;
 
     public DefaultCharGenGloryService(final CommandExecutor executor) {
         super();
@@ -21,12 +21,12 @@ public final class DefaultCharGenGloryService implements CharGenGloryService {
 
     @Override
     public final Dice getKnightStartingGlory() {
-        if (gloryKnight == null) {
-            gloryKnight = getCommandExecutor().execute(
-                    new GetKnightStartingGloryCommand());
+        if (initialKnightGlory == null) {
+            initialKnightGlory = getCommandExecutor().execute(
+                    new GetKnightStartingGloryRollCommand());
         }
 
-        return gloryKnight;
+        return initialKnightGlory;
     }
 
     private final CommandExecutor getCommandExecutor() {

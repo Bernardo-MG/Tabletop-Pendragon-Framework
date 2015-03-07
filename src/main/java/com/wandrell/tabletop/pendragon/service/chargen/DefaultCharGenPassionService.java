@@ -31,7 +31,7 @@ public final class DefaultCharGenPassionService implements
     }
 
     @Override
-    public final Dice getCommonPassionRoll() {
+    public final Dice getCommonPassionValue() {
         if (common == null) {
             common = getCommandExecutor().execute(
                     new GetCommonPassionRollCommand());
