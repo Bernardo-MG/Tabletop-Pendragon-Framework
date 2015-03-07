@@ -6,13 +6,13 @@ import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetKnightStartingGloryCommand;
 
-public final class DefaultCharGenGloryRulesetService implements
-        CharGenGloryRulesetService {
+public final class DefaultCharGenGloryService implements
+        CharGenGloryService {
 
     private final CommandExecutor comExec;
     private Dice                  gloryKnight;
 
-    public DefaultCharGenGloryRulesetService(final CommandExecutor executor) {
+    public DefaultCharGenGloryService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

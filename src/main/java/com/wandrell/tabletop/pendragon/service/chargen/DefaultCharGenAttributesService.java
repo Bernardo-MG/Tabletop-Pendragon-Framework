@@ -10,15 +10,15 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributePointsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributeRollCommand;
 
-public class DefaultCharGenAttributesRulesetService implements
-        CharGenAttributesRulesetService {
+public class DefaultCharGenAttributesService implements
+        CharGenAttributesService {
 
     private Map<String, Dice>     attributeRollFemale;
     private Map<String, Dice>     attributeRollMale;
     private Integer               attributes;
     private final CommandExecutor comExec;
 
-    public DefaultCharGenAttributesRulesetService(final CommandExecutor executor) {
+    public DefaultCharGenAttributesService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

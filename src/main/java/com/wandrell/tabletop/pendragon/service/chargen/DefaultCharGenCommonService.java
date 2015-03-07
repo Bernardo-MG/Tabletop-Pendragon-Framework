@@ -7,15 +7,15 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetPassionMaxComm
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetReligiousTraitBonusCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitMaxCommand;
 
-public final class DefaultCharGenCommonRulesetService implements
-        CharGenCommonRulesetService {
+public final class DefaultCharGenCommonService implements
+        CharGenCommonService {
 
     private final CommandExecutor comExec;
     private Integer               passionMax;
     private Integer               religious;
     private Integer               traitMax;
 
-    public DefaultCharGenCommonRulesetService(final CommandExecutor executor) {
+    public DefaultCharGenCommonService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

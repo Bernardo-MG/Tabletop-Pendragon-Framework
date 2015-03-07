@@ -10,8 +10,8 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitIndividua
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitRandomPointsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitRollCommand;
 
-public final class DefaultCharGenPersonalityTraitsRulesetService implements
-        CharGenPersonalityTraitsRulesetService {
+public final class DefaultCharGenPersonalityTraitsService implements
+        CharGenPersonalityTraitsService {
 
     private final CommandExecutor comExec;
     private Integer               diffPoints;
@@ -20,7 +20,7 @@ public final class DefaultCharGenPersonalityTraitsRulesetService implements
     private Integer               randomPoints;
     private Dice                  randomRoll;
 
-    public DefaultCharGenPersonalityTraitsRulesetService(
+    public DefaultCharGenPersonalityTraitsService(
             final CommandExecutor executor) {
         super();
 

@@ -13,8 +13,8 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetLandlordPassio
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetPassionIndividualDifferencesPointsCommand;
 import com.wandrell.tabletop.valuebox.SkillBox;
 
-public final class DefaultCharGenPassionRulesetService implements
-        CharGenPassionRulesetService {
+public final class DefaultCharGenPassionService implements
+        CharGenPassionService {
 
     private final CommandExecutor comExec;
     private Dice                  common;
@@ -22,7 +22,7 @@ public final class DefaultCharGenPassionRulesetService implements
     private Collection<SkillBox>  landlord;
     private Integer               passionPoints;
 
-    public DefaultCharGenPassionRulesetService(final CommandExecutor executor) {
+    public DefaultCharGenPassionService(final CommandExecutor executor) {
         super();
 
         checkNotNull(executor, "Received a null pointer as command executor");

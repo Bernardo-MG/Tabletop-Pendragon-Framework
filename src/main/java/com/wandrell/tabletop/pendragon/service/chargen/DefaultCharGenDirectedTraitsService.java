@@ -6,13 +6,13 @@ import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetDirectedTraitInitialValueCommand;
 
-public final class DefaultCharGenDirectedTraitsRulesetService implements
-        CharGenDirectedTraitsRulesetService {
+public final class DefaultCharGenDirectedTraitsService implements
+        CharGenDirectedTraitsService {
 
     private final CommandExecutor comExec;
     private Dice                  initialDirTrait;
 
-    public DefaultCharGenDirectedTraitsRulesetService(
+    public DefaultCharGenDirectedTraitsService(
             final CommandExecutor executor) {
         super();
 

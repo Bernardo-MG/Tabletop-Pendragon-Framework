@@ -17,8 +17,8 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToBecomeExt
 import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToGetSkillRaiseCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.IsIndividualDifferencesSkillAbleToGetPointsCommand;
 
-public final class FemaleIndividualDifferencesRulesetService implements
-        CharGenIndividualDifferencesRulesetService {
+public final class MaleCharGenIndividualDifferencesService implements
+        CharGenIndividualDifferencesService {
 
     private final CommandExecutor comExec;
     private Integer               excellent;
@@ -29,7 +29,7 @@ public final class FemaleIndividualDifferencesRulesetService implements
     private Integer               raises;
     private Integer               skillPoints;
 
-    public FemaleIndividualDifferencesRulesetService(
+    public MaleCharGenIndividualDifferencesService(
             final CommandExecutor executor) {
         super();
 
@@ -112,14 +112,14 @@ public final class FemaleIndividualDifferencesRulesetService implements
     public final Boolean isAbleToBecomeExcellentSkill(
             final PendragonSkillBox skill) {
         return getCommandExecutor().execute(
-                new IsAbleToBecomeExcellentSkillCommand(skill, Gender.FEMALE));
+                new IsAbleToBecomeExcellentSkillCommand(skill, Gender.MALE));
     }
 
     @Override
     public final Boolean
             isAbleToBecomeExtraSkill(final PendragonSkillBox skill) {
         return getCommandExecutor().execute(
-                new IsAbleToBecomeExtraSkillCommand(skill, Gender.FEMALE));
+                new IsAbleToBecomeExtraSkillCommand(skill, Gender.MALE));
     }
 
     @Override
