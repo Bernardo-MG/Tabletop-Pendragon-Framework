@@ -6,7 +6,7 @@
 	<test name="pendragon_integration">
 		<packages>
 			<package
-				name="com.wandrell.tabletop.testing.pendragon.framework.test.integration.*" />
+				name="com.wandrell.tabletop.testing.pendragon.test.integration.*" />
 		</packages>
 	</test>
 
