@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.interval.IntervalTable;
+import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetDamageCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetDistinctiveFeaturesTableCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetHealingRateCommand;
@@ -27,76 +29,70 @@ public final class DefaultDerivedAttributesService implements
     }
 
     @Override
-    public final Integer getDamage(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer getDamage(final PendragonBaseCharacter character) {
         return getCommandExecutor().execute(
-                new GetDamageCommand(size, strength));
+                new GetDamageCommand(character.getSize(), character
+                        .getStrength()));
     }
 
     @Override
-    public final Integer getDistinctiveFeatures(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer
+            getDexterityRoll(final PendragonBaseCharacter character) {
+        return character.getDexterity();
+    }
+
+    @Override
+    public final Integer getDistinctiveFeatures(
+            final PendragonHumanCharacter character) {
         if (tableFeatures == null) {
             tableFeatures = getCommandExecutor().execute(
                     new GetDistinctiveFeaturesTableCommand());
         }
 
-        return tableFeatures.getValue(appearance);
+        return tableFeatures.getValue(character.getAppearance());
     }
 
     @Override
-    public final Integer getHealingRate(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer getHealingRate(final PendragonBaseCharacter character) {
         return getCommandExecutor().execute(
-                new GetHealingRateCommand(constitution, strength));
+                new GetHealingRateCommand(character.getConstitution(),
+                        character.getStrength()));
     }
 
     @Override
-    public final Integer getHitPoints(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer getHitPoints(final PendragonBaseCharacter character) {
         return getCommandExecutor().execute(
-                new GetHitPointsCommand(constitution, size));
+                new GetHitPointsCommand(character.getConstitution(), character
+                        .getSize()));
     }
 
     @Override
-    public final Integer getKnockdown(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
-        return size;
+    public final Integer getKnockdown(final PendragonBaseCharacter character) {
+        return character.getSize();
     }
 
     @Override
-    public final Integer getMajorWound(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
-        return constitution;
+    public final Integer getMajorWound(final PendragonBaseCharacter character) {
+        return character.getConstitution();
     }
 
     @Override
-    public final Integer getMoveRate(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer getMoveRate(final PendragonBaseCharacter character) {
         return getCommandExecutor().execute(
-                new GetMoveRateCommand(dexterity, strength));
+                new GetMoveRateCommand(character.getDexterity(), character
+                        .getStrength()));
     }
 
     @Override
-    public final Integer getUnconcious(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
+    public final Integer getUnconcious(final PendragonBaseCharacter character) {
         return getCommandExecutor().execute(
-                new GetUnconciousCommand(constitution, size));
+                new GetUnconciousCommand(character.getHitPoints()));
     }
 
     @Override
-    public final Integer getWeight(final Integer appearance,
-            final Integer constitution, final Integer dexterity,
-            final Integer size, final Integer strength) {
-        return getCommandExecutor().execute(new GetWeightCommand(size));
+    public final Integer getWeight(final PendragonBaseCharacter character) {
+        return getCommandExecutor().execute(
+                new GetWeightCommand(character.getSize()));
     }
 
     private final CommandExecutor getCommandExecutor() {

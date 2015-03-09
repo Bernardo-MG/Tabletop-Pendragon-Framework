@@ -4,26 +4,22 @@ import com.wandrell.pattern.command.ReturnCommand;
 
 public final class GetUnconciousCommand implements ReturnCommand<Integer> {
 
-    private final Integer constitution;
-    private final Integer size;
+    private final Integer hitpoints;
 
-    public GetUnconciousCommand(final Integer constitution, final Integer size) {
+    public GetUnconciousCommand(final Integer hitpoints) {
         super();
 
-        this.constitution = constitution;
-        this.size = size;
+        this.hitpoints = hitpoints;
     }
 
     @Override
     public final Integer execute() {
-        final Float con;
-        final Float siz;
+        final Float hp;
 
-        con = new Float(constitution);
-        siz = new Float(size);
+        hp = new Float(hitpoints);
 
         // TODO: Better use the real hitpoints value
-        return Math.round((con + siz) / 4);
+        return Math.round(hp / 4);
     }
 
 }

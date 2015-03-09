@@ -2,4 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="PendragonFrameworkUnit" parallel="instances" thread-count="4">
 
+	<test name="pendragon_integration">
+		<packages>
+			<package
+				name="com.wandrell.tabletop.testing.pendragon.framework.test.unit.*" />
+		</packages>
+	</test>
+
 </suite>

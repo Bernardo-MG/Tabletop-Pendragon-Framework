@@ -15,6 +15,7 @@ import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.D
 import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.HealingRateParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.HitPointsParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.MoveRateParser;
+import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.UnconciousParser;
 import com.wandrell.tabletop.testing.pendragon.framework.framework.util.parser.WeightParser;
 import com.wandrell.util.ResourceUtils;
 
@@ -139,7 +140,7 @@ public final class DerivedAttributesTestParameters {
         final Parser<Document, Collection<Collection<Object>>> parserParams;
 
         parserFile = new XMLFileParser();
-        parserParams = new HitPointsParser();
+        parserParams = new UnconciousParser();
 
         return parserParams
                 .parse(parserFile.parse(ResourceUtils

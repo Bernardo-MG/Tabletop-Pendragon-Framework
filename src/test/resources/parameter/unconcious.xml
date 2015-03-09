@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test_data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<data>
-		<size>0</size>
-		<constitution>0</constitution>
+		<hitpoints>0</hitpoints>
 		<result>0</result>
 	</data>
 	<data>
-		<size>1</size>
-		<constitution>0</constitution>
+		<hitpoints>1</hitpoints>
 		<result>0</result>
 	</data>
 	<data>
-		<size>1</size>
-		<constitution>1</constitution>
+		<hitpoints>2</hitpoints>
 		<result>1</result>
 	</data>
 	<data>
-		<size>2</size>
-		<constitution>2</constitution>
+		<hitpoints>4</hitpoints>
 		<result>1</result>
 	</data>
 	<data>
-		<size>2</size>
-		<constitution>3</constitution>
+		<hitpoints>5</hitpoints>
 		<result>1</result>
 	</data>
 	<data>
-		<size>3</size>
-		<constitution>3</constitution>
+		<hitpoints>6</hitpoints>
 		<result>2</result>
 	</data>
 	<data>
-		<size>10</size>
-		<constitution>5</constitution>
+		<hitpoints>15</hitpoints>
 		<result>4</result>
 	</data>
 	<data>
-		<size>20</size>
-		<constitution>20</constitution>
+		<hitpoints>40</hitpoints>
 		<result>10</result>
 	</data>
 </test_data>

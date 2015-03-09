@@ -24,11 +24,12 @@ public final class TestGetUnconciousCommand {
     }
 
     @Test(dataProvider = DATA)
-    public final void testValid(final Integer constitution, final Integer size,
-            final Integer expected) throws Exception {
+    public final void
+            testValid(final Integer hitpoints, final Integer expected)
+                    throws Exception {
         final ReturnCommand<Integer> command;
 
-        command = new GetUnconciousCommand(constitution, size);
+        command = new GetUnconciousCommand(hitpoints);
 
         Assert.assertEquals(command.execute(), expected);
     }
