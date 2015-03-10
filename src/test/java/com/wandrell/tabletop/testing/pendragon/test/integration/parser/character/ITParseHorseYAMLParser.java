@@ -47,7 +47,7 @@ public final class ITParseHorseYAMLParser {
     @Test
     public final void testDerivedAttributes() {
         Assert.assertEquals(horse.getDamage(), (Integer) 55);
-        Assert.assertEquals(horse.getMovementRate(), (Integer) 66);
+        Assert.assertEquals(horse.getMoveRate(), (Integer) 66);
     }
 
     @Test

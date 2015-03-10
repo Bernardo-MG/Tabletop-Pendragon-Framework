@@ -76,7 +76,7 @@ public final class ITSendHorseYAMLOutputter {
         Assert.assertEquals(horse.getStrength(), horseOut.getStrength());
 
         Assert.assertEquals(horse.getDamage(), horseOut.getDamage());
-        Assert.assertEquals(horse.getMovementRate(), horseOut.getMovementRate());
+        Assert.assertEquals(horse.getMoveRate(), horseOut.getMoveRate());
 
         Assert.assertEquals(horse.isArmored(), horseOut.isArmored());
         Assert.assertEquals(horse.isCombatHorse(), horseOut.isCombatHorse());
@@ -121,7 +121,7 @@ public final class ITSendHorseYAMLOutputter {
         Assert.assertEquals(horse.getStrength(), horseOut.getStrength());
 
         Assert.assertEquals(horse.getDamage(), horseOut.getDamage());
-        Assert.assertEquals(horse.getMovementRate(), horseOut.getMovementRate());
+        Assert.assertEquals(horse.getMoveRate(), horseOut.getMoveRate());
 
         Assert.assertEquals(horse.isArmored(), horseOut.isArmored());
         Assert.assertEquals(horse.isCombatHorse(), horseOut.isCombatHorse());

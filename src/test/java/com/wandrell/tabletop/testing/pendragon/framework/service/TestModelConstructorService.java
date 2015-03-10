@@ -287,7 +287,7 @@ public final class TestModelConstructorService implements
         Mockito.when(horse.getStrength()).thenReturn(strength);
 
         Mockito.when(horse.getDamage()).thenReturn(damage);
-        Mockito.when(horse.getMovementRate()).thenReturn(movement);
+        Mockito.when(horse.getMoveRate()).thenReturn(movement);
 
         Mockito.when(horse.getNaturalArmor()).thenReturn(armor);
 

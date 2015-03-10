@@ -57,7 +57,7 @@ public final class HorseMapParser implements Parser<Horse, Map<String, Object>> 
         derived = new LinkedHashMap<String, Integer>();
 
         derived.put("damage", horse.getDamage());
-        derived.put("movement_rate", horse.getMovementRate());
+        derived.put("movement_rate", horse.getMoveRate());
 
         return derived;
     }
