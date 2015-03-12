@@ -8,8 +8,8 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
-import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.ArmorType;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public class WeaponYAMLParser implements Parser<Reader, Weapon> {

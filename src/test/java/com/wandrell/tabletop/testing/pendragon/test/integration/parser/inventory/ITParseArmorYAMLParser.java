@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.Armor;
-import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Armor;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.ArmorType;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.ArmorYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;

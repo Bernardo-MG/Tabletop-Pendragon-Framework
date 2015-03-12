@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.procedure.stats.ReligiousTraitsEvaluator;
 import com.wandrell.tabletop.pendragon.service.ruleset.ReligiousService;
 
@@ -23,7 +23,7 @@ public final class DefaultReligiousTraitsEvaluator implements
 
     @Override
     public final Boolean isFulfilling(final PendragonHumanCharacter character,
-            final ReligionTemplate religion) {
+            final Religion religion) {
         final Map<String, Integer> traits;
         final Iterator<Entry<String, Integer>> itrTraits;
         Entry<String, Integer> trait;

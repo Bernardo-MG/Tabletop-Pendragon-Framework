@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
+package com.wandrell.tabletop.pendragon.util.parser.yaml.character.background;
 
 import java.io.Reader;
 import java.util.Collection;
@@ -9,15 +9,14 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
-public final class ReligionTemplateYAMLParser implements
-        Parser<Reader, ReligionTemplate> {
+public final class ReligionYAMLParser implements Parser<Reader, Religion> {
 
     private final ModelConstructorService modelService;
 
-    public ReligionTemplateYAMLParser(final ModelConstructorService service) {
+    public ReligionYAMLParser(final ModelConstructorService service) {
         super();
 
         modelService = service;
@@ -25,7 +24,7 @@ public final class ReligionTemplateYAMLParser implements
 
     @SuppressWarnings("unchecked")
     @Override
-    public final ReligionTemplate parse(final Reader reader) {
+    public final Religion parse(final Reader reader) {
         final Yaml yaml;
         final Map<String, Object> values;
         final Map<String, Object> bonus;
@@ -86,8 +85,8 @@ public final class ReligionTemplateYAMLParser implements
             bonusDamageDice = 0;
         }
 
-        return getModelService().getReligionTemplate(name, traits,
-                bonusDerived, bonusArmor, bonusDamage, bonusDamageDice);
+        return getModelService().getReligion(name, traits, bonusDerived,
+                bonusArmor, bonusDamage, bonusDamageDice);
     }
 
     private final ModelConstructorService getModelService() {

@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.procedure.stats.ReligiousTraitsEvaluator;
 import com.wandrell.tabletop.pendragon.procedure.util.stats.DefaultReligiousTraitsEvaluator;
 import com.wandrell.tabletop.pendragon.service.ruleset.ReligiousService;
@@ -16,7 +16,7 @@ import com.wandrell.tabletop.pendragon.service.ruleset.ReligiousService;
 public final class TestDefaultReligiousTraitsEvaluator {
 
     private final ReligiousTraitsEvaluator evaluator;
-    private final ReligionTemplate         religion;
+    private final Religion                 religion;
 
     {
         final ReligiousService service;
@@ -33,7 +33,7 @@ public final class TestDefaultReligiousTraitsEvaluator {
 
         evaluator = new DefaultReligiousTraitsEvaluator(service);
 
-        religion = Mockito.mock(ReligionTemplate.class);
+        religion = Mockito.mock(Religion.class);
 
         traits = new LinkedList<>();
 

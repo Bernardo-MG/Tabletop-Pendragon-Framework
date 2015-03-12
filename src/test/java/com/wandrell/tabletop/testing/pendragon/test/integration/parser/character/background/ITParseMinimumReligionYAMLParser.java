@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
+package com.wandrell.tabletop.testing.pendragon.test.integration.parser.character.background;
 
 import java.io.Reader;
 
@@ -7,26 +7,26 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
-import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.ReligionTemplateYAMLParser;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.character.background.ReligionYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITParseMinimumReligionTemplateYAMLParser {
+public final class ITParseMinimumReligionYAMLParser {
 
-    private ReligionTemplate religion;
+    private Religion religion;
 
-    public ITParseMinimumReligionTemplateYAMLParser() {
+    public ITParseMinimumReligionYAMLParser() {
         super();
     }
 
     @BeforeClass
     public final void initialize() throws Exception {
-        final Parser<Reader, ReligionTemplate> parser;
+        final Parser<Reader, Religion> parser;
 
-        parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelConstructorService());
+        parser = new ReligionYAMLParser(TestServiceFactory.getInstance()
+                .getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));

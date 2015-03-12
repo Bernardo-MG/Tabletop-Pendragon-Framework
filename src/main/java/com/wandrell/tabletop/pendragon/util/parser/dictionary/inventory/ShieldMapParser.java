@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.Shield;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Shield;
 
 public final class ShieldMapParser implements
         Parser<Shield, Map<String, Object>> {

@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.Armor;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Armor;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.inventory.ArmorMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.inventory.ArmorYAMLParser;

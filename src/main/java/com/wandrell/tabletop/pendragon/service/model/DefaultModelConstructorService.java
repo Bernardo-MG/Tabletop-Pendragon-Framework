@@ -8,6 +8,8 @@ import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.DefaultHorse;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
+import com.wandrell.tabletop.pendragon.model.character.background.DefaultReligion;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
 import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
@@ -19,29 +21,27 @@ import com.wandrell.tabletop.pendragon.model.chargen.DefaultCultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.DefaultFamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.DefaultFamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.DefaultFatherClassTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultReligionTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.DefaultHomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.DefaultRegionTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.model.glory.DefaultFatherClassGlory;
 import com.wandrell.tabletop.pendragon.model.glory.FatherClassGlory;
-import com.wandrell.tabletop.pendragon.model.inventory.Armor;
-import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
-import com.wandrell.tabletop.pendragon.model.inventory.DefaultArmor;
 import com.wandrell.tabletop.pendragon.model.inventory.DefaultItem;
 import com.wandrell.tabletop.pendragon.model.inventory.DefaultMoney;
-import com.wandrell.tabletop.pendragon.model.inventory.DefaultRangedWeapon;
-import com.wandrell.tabletop.pendragon.model.inventory.DefaultShield;
-import com.wandrell.tabletop.pendragon.model.inventory.DefaultWeapon;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.Money;
-import com.wandrell.tabletop.pendragon.model.inventory.Shield;
-import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Armor;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.ArmorType;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.DefaultArmor;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.DefaultShield;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Shield;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.DefaultRangedWeapon;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.DefaultWeapon;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.DefaultAnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.DefaultPet;
@@ -205,12 +205,12 @@ public final class DefaultModelConstructorService implements
     }
 
     @Override
-    public final ReligionTemplate getReligionTemplate(final String name,
+    public final Religion getReligion(final String name,
             final Collection<String> traits,
             final Map<String, Integer> bonusDerived, final Integer bonusArmor,
             final Integer bonusDamage, final Integer bonusDamageDice) {
-        return new DefaultReligionTemplate(name, traits, bonusDerived,
-                bonusArmor, bonusDamage, bonusDamageDice);
+        return new DefaultReligion(name, traits, bonusDerived, bonusArmor,
+                bonusDamage, bonusDamageDice);
     }
 
     @Override

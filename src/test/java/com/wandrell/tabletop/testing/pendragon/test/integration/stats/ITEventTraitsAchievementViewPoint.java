@@ -9,6 +9,7 @@ import com.wandrell.tabletop.pendragon.model.character.DefaultPendragonHumanChar
 import com.wandrell.tabletop.pendragon.model.character.DerivedAttributeBuilder;
 import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.stats.TraitsAchievementViewPoint;
 import com.wandrell.tabletop.valuebox.ValueBox;
@@ -59,7 +60,12 @@ public final class ITEventTraitsAchievementViewPoint {
     }
 
     {
-        character = new DefaultPendragonHumanCharacter("name", derivedBuilder);
+        final Religion religion;
+
+        religion = Mockito.mock(Religion.class);
+
+        character = new DefaultPendragonHumanCharacter("name", derivedBuilder,
+                "culture", religion);
 
         service = new TraitsAchievementService() {
 

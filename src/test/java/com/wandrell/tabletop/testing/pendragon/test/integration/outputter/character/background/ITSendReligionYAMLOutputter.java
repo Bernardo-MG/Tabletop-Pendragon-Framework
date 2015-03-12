@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.pendragon.test.integration.outputter.chargen;
+package com.wandrell.tabletop.testing.pendragon.test.integration.outputter.character.background;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,39 +16,39 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.chargen.ReligionTemplate;
+import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.ReligionTemplateMapParser;
-import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.ReligionTemplateYAMLParser;
+import com.wandrell.tabletop.pendragon.util.parser.yaml.character.background.ReligionYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
 import com.wandrell.util.ResourceUtils;
 
-public final class ITSendReligionTemplateYAMLOutputter {
+public final class ITSendReligionYAMLOutputter {
 
-    private static final Random                                 random        = new Random();
-    private static final String                                 TEMPLATE_PATH = "target/test_write_HomelandTemplate_";
-    private final Parser<ReligionTemplate, Map<String, Object>> parserMap;
+    private static final Random                         random        = new Random();
+    private static final String                         TEMPLATE_PATH = "target/test_write_HomelandTemplate_";
+    private final Parser<Religion, Map<String, Object>> parserMap;
 
     {
         parserMap = new ReligionTemplateMapParser();
     }
 
-    public ITSendReligionTemplateYAMLOutputter() {
+    public ITSendReligionYAMLOutputter() {
         super();
     }
 
     @Test
     public final void testWriteFile() throws Exception {
-        final ReligionTemplate religion;
-        final ReligionTemplate religionOut;
-        final Parser<Reader, ReligionTemplate> parser;
+        final Religion religion;
+        final Religion religionOut;
+        final Parser<Reader, Religion> parser;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelConstructorService());
+        parser = new ReligionYAMLParser(TestServiceFactory.getInstance()
+                .getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION));
@@ -77,16 +77,16 @@ public final class ITSendReligionTemplateYAMLOutputter {
 
     @Test
     public final void testWriteFile_Minimum() throws Exception {
-        final ReligionTemplate religion;
-        final ReligionTemplate religionOut;
-        final Parser<Reader, ReligionTemplate> parser;
+        final Religion religion;
+        final Religion religionOut;
+        final Parser<Reader, Religion> parser;
         final Path pathOut;
         final Outputter<Object> outputter;
 
         outputter = new YAMLOutputter();
 
-        parser = new ReligionTemplateYAMLParser(TestServiceFactory
-                .getInstance().getModelConstructorService());
+        parser = new ReligionYAMLParser(TestServiceFactory.getInstance()
+                .getModelConstructorService());
 
         religion = parser.parse(ResourceUtils
                 .getClassPathReader(TestModelFileConf.RELIGION_MINIMUM));

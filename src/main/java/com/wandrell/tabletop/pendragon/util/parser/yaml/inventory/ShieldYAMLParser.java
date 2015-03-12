@@ -6,7 +6,7 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.Shield;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.Shield;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 
 public final class ShieldYAMLParser implements Parser<Reader, Shield> {

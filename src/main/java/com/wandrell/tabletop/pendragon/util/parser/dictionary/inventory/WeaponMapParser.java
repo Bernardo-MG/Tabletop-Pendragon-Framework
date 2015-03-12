@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.inventory.ArmorType;
-import com.wandrell.tabletop.pendragon.model.inventory.RangedWeapon;
-import com.wandrell.tabletop.pendragon.model.inventory.Weapon;
+import com.wandrell.tabletop.pendragon.model.inventory.armor.ArmorType;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.RangedWeapon;
+import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;
 
 public final class WeaponMapParser implements
         Parser<Weapon, Map<String, Object>> {
