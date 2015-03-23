@@ -65,7 +65,7 @@ public final class ITEventTraitsAchievementViewPoint {
         religion = Mockito.mock(Religion.class);
 
         character = new DefaultPendragonHumanCharacter("name", derivedBuilder,
-                "culture", religion);
+                "culture", religion, "", "", "");
 
         service = new TraitsAchievementService() {
 
