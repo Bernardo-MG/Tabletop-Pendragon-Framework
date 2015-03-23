@@ -177,9 +177,9 @@
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Tabletop's Pendragon Core -->
+			<!-- Tabletop's Pendragon Model -->
 			<groupId>com.wandrell.tabletop</groupId>
-			<artifactId>tabletop-pendragon-core</artifactId>
+			<artifactId>tabletop-pendragon-model</artifactId>
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>
