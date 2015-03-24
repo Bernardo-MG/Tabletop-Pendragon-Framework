@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.wandrell.tabletop</groupId>
-	<artifactId>tabletop-pendragon-framework</artifactId>
+	<artifactId>tabletop-pendragon-ruleset</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Tabletop's Pendragon Framework</name>
+	<name>Tabletop's Pendragon Ruleset</name>
 	<url />
-	<description>Core library for the RPG Pendragon, part of the Tabletop project.</description>
+	<description>Ruleset for the RPG Pendragon.</description>
 
 	<licenses>
 		<license>
@@ -22,20 +22,20 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework.git</connection>
-		<developerConnection>scm:git:https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework.git</developerConnection>
+		<connection>scm:git:https://github.com/Bernardo-MG/Tabletop-Pendragon-Ruleset.git</connection>
+		<developerConnection>scm:git:https://github.com/Bernardo-MG/Tabletop-Pendragon-Ruleset.git</developerConnection>
 		<tag>head</tag>
-		<url>https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework</url>
+		<url>https://github.com/Bernardo-MG/Tabletop-Pendragon-Ruleset</url>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/Bernardo-MG/Tabletop-Pendragon-Framework/issues</url>
+		<url>https://github.com/Bernardo-MG/Tabletop-Pendragon-Ruleset/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/Bernardo-MG/Tabletop-Pendragon-Framework</url>
+		<url>https://travis-ci.org/Bernardo-MG/Tabletop-Pendragon-Ruleset</url>
 		<notifiers />
 	</ciManagement>
 
@@ -44,7 +44,7 @@
 			<uniqueVersion>false</uniqueVersion>
 			<id>wandrell-releases</id>
 			<name>Wandrell releases repository</name>
-			<url>https://api.bintray.com/maven/bernardo-mg/maven/tabletop-pendragon-framework</url>
+			<url>https://api.bintray.com/maven/bernardo-mg/maven/tabletop-pendragon-ruleset</url>
 		</repository>
 		<snapshotRepository>
 			<uniqueVersion>true</uniqueVersion>
@@ -64,7 +64,7 @@
 				<site>
 					<id>wandrell-site</id>
 					<name>Wandrell Maven sites</name>
-					<url>ftp://docs.wandrell.com/tabletop-pendragon-framework</url>
+					<url>ftp://docs.wandrell.com/tabletop-pendragon-ruleset</url>
 				</site>
 			</distributionManagement>
 		</profile>
@@ -74,7 +74,7 @@
 				<site>
 					<id>wandrell-site-development</id>
 					<name>Wandrell Development Maven sites</name>
-					<url>ftp://docs.wandrell.com/tabletop-pendragon-framework</url>
+					<url>ftp://docs.wandrell.com/tabletop-pendragon-ruleset</url>
 				</site>
 			</distributionManagement>
 		</profile>
@@ -109,7 +109,7 @@
 		<java.version.source>1.7</java.version.source>
 		<java.version.target>${java.version.source}</java.version.target>
 		<!-- Manifest data -->
-		<manifest.name>com/wandrell/tabletop/pendragon/framework</manifest.name>
+		<manifest.name>com/wandrell/tabletop/pendragon/ruleset</manifest.name>
 		<!-- Dependencies versions -->
 		<jdom.version>2.0.5</jdom.version>
 		<mockito.version>1.9.5</mockito.version>
@@ -198,9 +198,9 @@
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Tabletop's Pendragon Framework API -->
+			<!-- Tabletop's Pendragon Ruleset API -->
 			<groupId>com.wandrell.tabletop</groupId>
-			<artifactId>tabletop-pendragon-framework-api</artifactId>
+			<artifactId>tabletop-pendragon-ruleset-api</artifactId>
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>

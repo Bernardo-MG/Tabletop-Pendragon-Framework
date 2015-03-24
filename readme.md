@@ -1,5 +1,5 @@
-# Tabletop's Pendragon Framework library
-Default implementation of the Pendragon's Framework API extension for the library for the Tabletop project.
+# Tabletop's Pendragon Ruleset
+Ruleset for the RPG Pendragon.
 
 ### Webpage
 Currently the project has no webpage.
