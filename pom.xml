@@ -109,7 +109,7 @@
 		<java.version.source>1.7</java.version.source>
 		<java.version.target>${java.version.source}</java.version.target>
 		<!-- Manifest data -->
-		<manifest.name>com/wandrell/tabletop/pendragon/ruleset</manifest.name>
+		<manifest.name>com/wandrell/tabletop/pendragon/ruleset/imp</manifest.name>
 		<!-- Dependencies versions -->
 		<jdom.version>2.0.5</jdom.version>
 		<mockito.version>1.9.5</mockito.version>
