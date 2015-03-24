@@ -4,7 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.character.Gender;
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExcellentSkillValueCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExtraSkillMaxPicksCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetExtraSkillValueCommand;

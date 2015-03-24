@@ -93,13 +93,13 @@ public final class ITEventTraitsAchievementViewPoint {
 
         viewPoint = new TraitsAchievementViewPoint(character, service);
 
-        character.setChaste(10);
-        character.setValorous(10);
-        character.setLazy(5);
+        character.getTraits().setChaste(10);
+        character.getTraits().setValorous(10);
+        character.getTraits().setLazy(5);
 
         Assert.assertEquals(viewPoint.getValue(), (Integer) 25);
 
-        character.setLazy(10);
+        character.getTraits().setLazy(10);
 
         Assert.assertEquals(viewPoint.getValue(), (Integer) 30);
     }

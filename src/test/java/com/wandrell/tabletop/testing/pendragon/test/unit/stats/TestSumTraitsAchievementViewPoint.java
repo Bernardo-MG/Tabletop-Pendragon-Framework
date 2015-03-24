@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.stats.TraitsAchievementViewPoint;
 import com.wandrell.tabletop.valuebox.derived.DerivedValueViewPoint;
@@ -15,11 +16,17 @@ public final class TestSumTraitsAchievementViewPoint {
     private final TraitsAchievementService service;
 
     {
+        final TraitsHolder traits;
+
+        traits = Mockito.mock(TraitsHolder.class);
+
+        Mockito.when(traits.getChaste()).thenReturn(10);
+        Mockito.when(traits.getValorous()).thenReturn(10);
+        Mockito.when(traits.getLazy()).thenReturn(5);
+
         character = Mockito.mock(PendragonHumanCharacter.class);
 
-        Mockito.when(character.getChaste()).thenReturn(10);
-        Mockito.when(character.getValorous()).thenReturn(10);
-        Mockito.when(character.getLazy()).thenReturn(5);
+        Mockito.when(character.getTraits()).thenReturn(traits);
 
         service = new TraitsAchievementService() {
 

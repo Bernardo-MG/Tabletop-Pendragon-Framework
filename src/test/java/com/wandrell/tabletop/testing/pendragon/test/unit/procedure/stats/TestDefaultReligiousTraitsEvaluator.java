@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.procedure.stats.ReligiousTraitsEvaluator;
 import com.wandrell.tabletop.pendragon.procedure.util.stats.DefaultReligiousTraitsEvaluator;
 import com.wandrell.tabletop.pendragon.service.ruleset.ReligiousService;
@@ -50,26 +51,34 @@ public final class TestDefaultReligiousTraitsEvaluator {
 
     @Test
     public final void testIsFulfilling_Fulfills() {
+        final TraitsHolder traits;
         final PendragonHumanCharacter character;
 
+        traits = Mockito.mock(TraitsHolder.class);
         character = Mockito.mock(PendragonHumanCharacter.class);
 
-        Mockito.when(character.getChaste()).thenReturn(10);
-        Mockito.when(character.getValorous()).thenReturn(10);
-        Mockito.when(character.getLazy()).thenReturn(5);
+        Mockito.when(traits.getChaste()).thenReturn(10);
+        Mockito.when(traits.getValorous()).thenReturn(10);
+        Mockito.when(traits.getLazy()).thenReturn(5);
+
+        Mockito.when(character.getTraits()).thenReturn(traits);
 
         Assert.assertTrue(evaluator.isFulfilling(character, religion));
     }
 
     @Test
     public final void testIsFulfilling_NotFulfills() {
+        final TraitsHolder traits;
         final PendragonHumanCharacter character;
 
+        traits = Mockito.mock(TraitsHolder.class);
         character = Mockito.mock(PendragonHumanCharacter.class);
 
-        Mockito.when(character.getChaste()).thenReturn(10);
-        Mockito.when(character.getValorous()).thenReturn(10);
-        Mockito.when(character.getLazy()).thenReturn(4);
+        Mockito.when(traits.getChaste()).thenReturn(10);
+        Mockito.when(traits.getValorous()).thenReturn(10);
+        Mockito.when(traits.getLazy()).thenReturn(4);
+
+        Mockito.when(character.getTraits()).thenReturn(traits);
 
         Assert.assertTrue(evaluator.isFulfilling(character, religion));
     }

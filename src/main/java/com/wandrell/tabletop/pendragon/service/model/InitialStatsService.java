@@ -5,7 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Collection;
 
 import com.wandrell.pattern.command.CommandExecutor;
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialDirectedTraitsCommand;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialPassionsCommand;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialSkillsCommand;

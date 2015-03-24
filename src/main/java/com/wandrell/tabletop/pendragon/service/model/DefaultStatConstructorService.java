@@ -2,10 +2,10 @@ package com.wandrell.tabletop.pendragon.service.model;
 
 import java.util.Collection;
 
-import com.wandrell.tabletop.pendragon.model.stats.DefaultPendragonSkillBox;
-import com.wandrell.tabletop.pendragon.model.stats.DefaultSpecialtySkillBox;
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
-import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultPendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultSpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.SpecialtySkillBox;
 import com.wandrell.tabletop.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.valuebox.SkillBox;
 

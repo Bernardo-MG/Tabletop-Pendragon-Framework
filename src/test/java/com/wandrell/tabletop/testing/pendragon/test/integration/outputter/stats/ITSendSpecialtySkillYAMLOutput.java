@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.SpecialtySkillBox;
 import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.dictionary.stats.SpecialtySkillMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.SpecialtySkillYAMLParser;

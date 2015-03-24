@@ -8,7 +8,7 @@ import org.yaml.snakeyaml.Yaml;
 import com.wandrell.pattern.command.ReturnCommand;
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class IsAbleToBecomeExtraSkillCommand implements

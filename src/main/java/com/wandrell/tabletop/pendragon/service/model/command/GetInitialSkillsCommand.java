@@ -9,7 +9,7 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.command.ReturnCommand;
 import com.wandrell.pattern.repository.Repository;
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.util.tag.service.PendragonSkillBoxRepositoryAware;
 import com.wandrell.util.ResourceUtils;
 

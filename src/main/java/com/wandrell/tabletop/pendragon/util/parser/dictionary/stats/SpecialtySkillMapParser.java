@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.SpecialtySkillBox;
 
 public final class SpecialtySkillMapParser implements
         Parser<SpecialtySkillBox, Map<String, Object>> {

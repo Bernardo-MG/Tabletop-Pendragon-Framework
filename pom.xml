@@ -192,12 +192,6 @@
 			<version>${tabletop.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Tabletop's Pendragon API -->
-			<groupId>com.wandrell.tabletop</groupId>
-			<artifactId>tabletop-pendragon-api</artifactId>
-			<version>${tabletop.version}</version>
-		</dependency>
-		<dependency>
 			<!-- Tabletop's Pendragon Model -->
 			<groupId>com.wandrell.tabletop</groupId>
 			<artifactId>tabletop-pendragon-model</artifactId>

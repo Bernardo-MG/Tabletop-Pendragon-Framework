@@ -4,8 +4,8 @@ import java.util.Collection;
 
 import org.mockito.Mockito;
 
-import com.wandrell.tabletop.pendragon.model.stats.PendragonSkillBox;
-import com.wandrell.tabletop.pendragon.model.stats.SpecialtySkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.SpecialtySkillBox;
 import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
 import com.wandrell.tabletop.valuebox.SkillBox;
 
