@@ -11,7 +11,7 @@ import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
-import com.wandrell.tabletop.pendragon.stats.TraitsAchievementValueBox;
+import com.wandrell.tabletop.pendragon.valuebox.TraitsAchievementValueBox;
 import com.wandrell.tabletop.valuebox.ValueBox;
 
 public final class ITEventTraitsAchievementViewPoint {

@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.stats;
+package com.wandrell.tabletop.pendragon.character.stats.derived;
 
 import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;

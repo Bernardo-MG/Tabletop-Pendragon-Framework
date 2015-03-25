@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.stats;
+package com.wandrell.tabletop.pendragon.valuebox;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;

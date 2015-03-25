@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.pendragon.stats;
+package com.wandrell.tabletop.pendragon.character.stats.derived;
 
 import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
@@ -6,12 +6,12 @@ import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterL
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
 import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
-public final class UnconciousValueBox extends AbstractValueBox {
+public final class MajorWoundsValueBox extends AbstractValueBox {
 
     private final PendragonBaseCharacter   character;
     private final DerivedAttributesService derivedService;
 
-    public UnconciousValueBox(final PendragonBaseCharacter character,
+    public MajorWoundsValueBox(final PendragonBaseCharacter character,
             final DerivedAttributesService derivedService) {
         super();
 
@@ -22,7 +22,7 @@ public final class UnconciousValueBox extends AbstractValueBox {
                 .addPendragonCharacterListener(new PendragonCharacterListenerAdapter() {
 
                     @Override
-                    public final void hitPointsChanged(
+                    public final void constitutionChanged(
                             final ValueChangeEvent event) {
                         fireValueChangedEvent(new ValueChangeEvent(this, 0, 0));
                     }
@@ -32,7 +32,7 @@ public final class UnconciousValueBox extends AbstractValueBox {
 
     @Override
     public final Integer getValue() {
-        return derivedService.getUnconcious(character);
+        return derivedService.getMajorWound(character);
     }
 
 }

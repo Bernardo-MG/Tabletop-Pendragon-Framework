@@ -1,14 +1,14 @@
 package com.wandrell.tabletop.pendragon.model.character;
 
+import com.wandrell.tabletop.pendragon.character.stats.derived.DamageValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.DexterityRollValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.HealingRateValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.HitPointsValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.MajorWoundsValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.MoveRateValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.UnconciousValueBox;
+import com.wandrell.tabletop.pendragon.character.stats.derived.WeightValueBox;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.pendragon.stats.DamageValueBox;
-import com.wandrell.tabletop.pendragon.stats.DexterityRollValueBox;
-import com.wandrell.tabletop.pendragon.stats.HealingRateValueBox;
-import com.wandrell.tabletop.pendragon.stats.HitPointsValueBox;
-import com.wandrell.tabletop.pendragon.stats.MajorWoundsValueBox;
-import com.wandrell.tabletop.pendragon.stats.MoveRateValueBox;
-import com.wandrell.tabletop.pendragon.stats.UnconciousValueBox;
-import com.wandrell.tabletop.pendragon.stats.WeightValueBox;
 import com.wandrell.tabletop.valuebox.ValueBox;
 
 public final class DefaultDerivedAttributeBuilder implements
