@@ -1,9 +1,8 @@
 package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 
 import java.io.Reader;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -15,9 +14,9 @@ import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FamilyCharacteristicTableYAMLParser;
-import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
+import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseFamilyCharacteristicTableYAMLParser {
@@ -45,9 +44,9 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
     @Test
     public final void testFamilyCharacteristic_First() {
         final FamilyCharacteristicTemplate familyChar;
-        final Map<SkillName, Integer> skills;
-        final Iterator<Entry<SkillName, Integer>> itr;
-        Entry<SkillName, Integer> entry;
+        final Collection<SkillBox> skills;
+        final Iterator<SkillBox> itr;
+        SkillBox entry;
 
         familyChar = table.getIntervals().values().iterator().next();
 
@@ -58,29 +57,28 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
         skills = familyChar.getSkills();
         Assert.assertEquals(skills.size(), 2);
 
-        itr = skills.entrySet().iterator();
+        itr = skills.iterator();
 
         entry = itr.next();
-        Assert.assertEquals(entry.getKey().getName(), "skill_1");
-        Assert.assertEquals(entry.getKey().getDescriptor(), "");
+        Assert.assertEquals(entry.getName(), "skill_1");
+        Assert.assertEquals(entry.getDescriptor(), "");
         Assert.assertEquals(entry.getValue(), (Integer) 3);
 
         entry = itr.next();
-        Assert.assertEquals(entry.getKey().getName(), "skill_2");
-        Assert.assertEquals(entry.getKey().getDescriptor(),
-                "descriptor_skill_2");
+        Assert.assertEquals(entry.getName(), "skill_2");
+        Assert.assertEquals(entry.getDescriptor(), "descriptor_skill_2");
         Assert.assertEquals(entry.getValue(), (Integer) 4);
     }
 
     @Test
     public final void testFamilyCharacteristic_Second() {
         final FamilyCharacteristicTemplate familyChar;
-        final Map<SkillName, Integer> skills;
+        final Collection<SkillBox> skills;
         final Iterator<FamilyCharacteristicTemplate> itrValues;
-        final Iterator<Entry<String, Integer>> itrAttributes;
-        final Iterator<Entry<SkillName, Integer>> itrSkills;
-        Entry<String, Integer> entryAttribute;
-        Entry<SkillName, Integer> entrySkill;
+        final Iterator<SkillBox> itrAttributes;
+        final Iterator<SkillBox> itrSkills;
+        SkillBox entryAttribute;
+        SkillBox entrySkill;
 
         itrValues = table.getIntervals().values().iterator();
         itrValues.next();
@@ -90,20 +88,20 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
 
         Assert.assertEquals(familyChar.getAttributes().size(), 1);
 
-        itrAttributes = familyChar.getAttributes().entrySet().iterator();
+        itrAttributes = familyChar.getAttributes().iterator();
 
         entryAttribute = itrAttributes.next();
-        Assert.assertEquals(entryAttribute.getKey(), "appearance");
+        Assert.assertEquals(entryAttribute.getName(), "appearance");
         Assert.assertEquals(entryAttribute.getValue(), (Integer) 7);
 
         skills = familyChar.getSkills();
         Assert.assertEquals(skills.size(), 1);
 
-        itrSkills = skills.entrySet().iterator();
+        itrSkills = skills.iterator();
 
         entrySkill = itrSkills.next();
-        Assert.assertEquals(entrySkill.getKey().getName(), "skill_1");
-        Assert.assertEquals(entrySkill.getKey().getDescriptor(), "");
+        Assert.assertEquals(entrySkill.getName(), "skill_1");
+        Assert.assertEquals(entrySkill.getDescriptor(), "");
         Assert.assertEquals(entrySkill.getValue(), (Integer) 3);
     }
 

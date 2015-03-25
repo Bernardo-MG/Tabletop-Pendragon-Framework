@@ -32,7 +32,7 @@ import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class TestModelConstructorService implements
         ModelConstructorService {
@@ -113,14 +113,14 @@ public final class TestModelConstructorService implements
 
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
-            final Map<String, Integer> attributesBonus,
+            final Collection<SkillBox> attributesBonus,
             final Map<String, Dice> attributesRandom,
-            final Map<SkillName, Integer> skillsBonus,
-            final Map<String, Integer> specialtySkills,
-            final Map<SkillName, Integer> passionsBonus,
-            final Map<SkillName, Dice> passionsRandom,
-            final Map<SkillName, Integer> directedBonus,
-            final Map<String, Integer> traits) {
+            final Collection<SkillBox> skillsBonus,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> passionsBonus,
+            final Map<SkillBox, Dice> passionsRandom,
+            final Collection<SkillBox> directedBonus,
+            final Collection<SkillBox> traitsBonus) {
         final CultureCharacterTemplate template;
 
         template = Mockito.mock(CultureCharacterTemplate.class);
@@ -133,7 +133,7 @@ public final class TestModelConstructorService implements
         Mockito.when(template.getPassionsRandom()).thenReturn(passionsRandom);
         Mockito.when(template.getSkills()).thenReturn(skillsBonus);
         Mockito.when(template.getSpecialtySkills()).thenReturn(specialtySkills);
-        Mockito.when(template.getTraits()).thenReturn(traits);
+        Mockito.when(template.getTraits()).thenReturn(traitsBonus);
 
         return template;
     }
@@ -182,8 +182,8 @@ public final class TestModelConstructorService implements
 
     @Override
     public final FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
-            final String name, final Map<String, Integer> attributes,
-            final Map<SkillName, Integer> skills) {
+            final String name, final Collection<SkillBox> attributes,
+            final Collection<SkillBox> skills) {
         final FamilyCharacteristicTemplate template;
 
         template = Mockito.mock(FamilyCharacteristicTemplate.class);
@@ -214,10 +214,10 @@ public final class TestModelConstructorService implements
             final Integer skillsGroupPoints,
             final Integer skillsGroupPointsDivide, final Integer skillsPoints,
             final Integer skillsNonCombatPoints, final Dice money,
-            final Collection<SkillName> skillsGroup,
-            final Map<String, Integer> specialtySkills,
-            final Map<SkillName, Integer> directedTraits,
-            final Map<SkillName, Integer> directedTraitsBase) {
+            final Collection<SkillBox> skillsGroup,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> directedTraits,
+            final Collection<SkillBox> directedTraitsBase) {
         final FatherClassTemplate fatherClass;
 
         fatherClass = Mockito.mock(FatherClassTemplate.class);
@@ -250,10 +250,10 @@ public final class TestModelConstructorService implements
 
     @Override
     public final HomelandTemplate getHomelandTemplate(final String name,
-            final RegionTemplate region, final Map<SkillName, Integer> skills,
-            final Map<String, Integer> specialtySkills,
-            final Collection<SkillName> directedTraits,
-            final Collection<SkillName> passions) {
+            final RegionTemplate region, final Collection<SkillBox> skills,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> directedTraits,
+            final Collection<SkillBox> passions) {
         final HomelandTemplate homeland;
 
         homeland = Mockito.mock(HomelandTemplate.class);
@@ -337,7 +337,7 @@ public final class TestModelConstructorService implements
 
     @Override
     public final RegionTemplate getRegionTemplate(final String name,
-            final Map<String, Integer> traits) {
+            final Collection<SkillBox> traits) {
         final RegionTemplate region;
 
         region = Mockito.mock(RegionTemplate.class);
@@ -351,7 +351,7 @@ public final class TestModelConstructorService implements
     @Override
     public final Religion getReligion(final String name,
             final Collection<String> traits,
-            final Map<String, Integer> bonusDerived, final Integer bonusArmor,
+            final Collection<SkillBox> bonusDerived, final Integer bonusArmor,
             final Integer bonusDamage, final Integer bonusDamageDice) {
         final Religion religion;
 

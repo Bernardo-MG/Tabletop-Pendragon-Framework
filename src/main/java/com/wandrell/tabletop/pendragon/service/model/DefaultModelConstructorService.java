@@ -50,7 +50,7 @@ import com.wandrell.tabletop.pendragon.model.manor.DefaultPet;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.model.util.DefaultTextList;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class DefaultModelConstructorService implements
         ModelConstructorService {
@@ -93,14 +93,14 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
-            final Map<String, Integer> attributesBonus,
+            final Collection<SkillBox> attributesBonus,
             final Map<String, Dice> attributesRandom,
-            final Map<SkillName, Integer> skillsBonus,
-            final Map<String, Integer> specialtySkills,
-            final Map<SkillName, Integer> passionsBonus,
-            final Map<SkillName, Dice> passionsRandom,
-            final Map<SkillName, Integer> directedBonus,
-            final Map<String, Integer> traitsBonus) {
+            final Collection<SkillBox> skillsBonus,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> passionsBonus,
+            final Map<SkillBox, Dice> passionsRandom,
+            final Collection<SkillBox> directedBonus,
+            final Collection<SkillBox> traitsBonus) {
         return new DefaultCultureCharacterTemplate(attributesBonus,
                 attributesRandom, skillsBonus, specialtySkills, traitsBonus,
                 directedBonus, passionsBonus, passionsRandom);
@@ -127,8 +127,8 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
-            String name, Map<String, Integer> attributes,
-            Map<SkillName, Integer> skills) {
+            String name, Collection<SkillBox> attributes,
+            Collection<SkillBox> skills) {
         return new DefaultFamilyCharacteristicTemplate(name, attributes, skills);
     }
 
@@ -143,10 +143,10 @@ public final class DefaultModelConstructorService implements
             final Integer skillsGroupPoints,
             final Integer skillsGroupPointsDivide, final Integer skillsPoints,
             final Integer skillsNonCombatPoints, final Dice money,
-            final Collection<SkillName> skillsGroup,
-            final Map<String, Integer> specialtySkills,
-            final Map<SkillName, Integer> directedTraits,
-            final Map<SkillName, Integer> directedTraitsBase) {
+            final Collection<SkillBox> skillsGroup,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> directedTraits,
+            final Collection<SkillBox> directedTraitsBase) {
         return new DefaultFatherClassTemplate(name, skillsGroupPoints,
                 skillsGroupPointsDivide, skillsPoints, skillsNonCombatPoints,
                 money, skillsGroup, specialtySkills, directedTraits,
@@ -155,10 +155,10 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final HomelandTemplate getHomelandTemplate(final String name,
-            final RegionTemplate region, final Map<SkillName, Integer> skills,
-            final Map<String, Integer> specialtySkills,
-            final Collection<SkillName> directedTraits,
-            final Collection<SkillName> passions) {
+            final RegionTemplate region, final Collection<SkillBox> skills,
+            final Collection<SkillBox> specialtySkills,
+            final Collection<SkillBox> directedTraits,
+            final Collection<SkillBox> passions) {
         return new DefaultHomelandTemplate(name, region, skills,
                 specialtySkills, directedTraits, passions);
     }
@@ -200,14 +200,14 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final RegionTemplate getRegionTemplate(final String name,
-            final Map<String, Integer> traits) {
+            final Collection<SkillBox> traits) {
         return new DefaultRegionTemplate(name, traits);
     }
 
     @Override
     public final Religion getReligion(final String name,
             final Collection<String> traits,
-            final Map<String, Integer> bonusDerived, final Integer bonusArmor,
+            final Collection<SkillBox> bonusDerived, final Integer bonusArmor,
             final Integer bonusDamage, final Integer bonusDamageDice) {
         return new DefaultReligion(name, traits, bonusDerived, bonusArmor,
                 bonusDamage, bonusDamageDice);

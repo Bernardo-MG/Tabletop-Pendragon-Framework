@@ -4,11 +4,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class FatherClassTemplateMapParser implements
         Parser<FatherClassTemplate, Map<String, Object>> {
@@ -27,7 +26,7 @@ public final class FatherClassTemplateMapParser implements
         data = new LinkedHashMap<String, Object>();
         skills = new LinkedList<>();
 
-        for (final SkillName skill : father.getSkillsGroup()) {
+        for (final SkillBox skill : father.getSkillsGroup()) {
             map = new LinkedHashMap<String, Object>();
             map.put("name", skill.getName());
             map.put("descriptor", skill.getDescriptor());
@@ -66,13 +65,12 @@ public final class FatherClassTemplateMapParser implements
 
         if (!father.getDirectedTraitsBase().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<SkillName, Integer> entry : father
-                    .getDirectedTraitsBase().entrySet()) {
+            for (final SkillBox box : father.getDirectedTraitsBase()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 values.add(value);
             }
@@ -92,13 +90,12 @@ public final class FatherClassTemplateMapParser implements
 
         if (!father.getDirectedTraits().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<SkillName, Integer> entry : father
-                    .getDirectedTraits().entrySet()) {
+            for (final SkillBox box : father.getDirectedTraits()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 values.add(value);
 
@@ -108,12 +105,11 @@ public final class FatherClassTemplateMapParser implements
 
         if (!father.getSpecialtySkills().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<String, Integer> entry : father
-                    .getSpecialtySkills().entrySet()) {
+            for (final SkillBox box : father.getSpecialtySkills()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("value", box.getValue());
 
                 values.add(value);
             }

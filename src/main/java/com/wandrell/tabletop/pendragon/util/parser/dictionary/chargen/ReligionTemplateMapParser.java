@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class ReligionTemplateMapParser implements
         Parser<Religion, Map<String, Object>> {
@@ -51,11 +51,10 @@ public final class ReligionTemplateMapParser implements
 
         derived = new LinkedList<>();
 
-        for (final Entry<String, Integer> entry : religion
-                .getDerivedAttributeBonus().entrySet()) {
+        for (final SkillBox box : religion.getDerivedAttributeBonus()) {
             value = new LinkedHashMap<String, Object>();
-            value.put("name", entry.getKey());
-            value.put("value", entry.getValue());
+            value.put("name", box.getName());
+            value.put("value", box.getValue());
 
             derived.add(value);
         }

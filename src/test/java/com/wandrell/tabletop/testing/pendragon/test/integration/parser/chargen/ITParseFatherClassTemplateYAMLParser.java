@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 
 import java.io.Reader;
+import java.util.Iterator;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -10,10 +11,9 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FatherClassTemplateYAMLParser;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
+import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseFatherClassTemplateYAMLParser {
@@ -40,32 +40,41 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testBaseDirectedTraits() {
-        SkillName trait;
+        final Iterator<SkillBox> itr;
+        SkillBox trait;
 
         Assert.assertEquals(fatherClass.getDirectedTraitsBase().size(), 1);
 
-        trait = new DefaultSkillName("directed_trait_2", "descriptor_2");
-        Assert.assertEquals(fatherClass.getDirectedTraitsBase().get(trait),
-                (Integer) 10);
+        itr = fatherClass.getDirectedTraitsBase().iterator();
+        trait = itr.next();
+        Assert.assertEquals(trait.getName(), "directed_trait_2");
+        Assert.assertEquals(trait.getDescriptor(), "descriptor_2");
+        Assert.assertEquals(trait.getValue(), (Integer) 10);
     }
 
     @Test
     public final void testDirectedTraits() {
-        SkillName trait;
+        final Iterator<SkillBox> itr;
+        SkillBox trait;
 
         Assert.assertEquals(fatherClass.getDirectedTraits().size(), 3);
 
-        trait = new DefaultSkillName("directed_trait_1", "descriptor_1");
-        Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
-                (Integer) 5);
+        itr = fatherClass.getDirectedTraitsBase().iterator();
 
-        trait = new DefaultSkillName("directed_trait_2", "descriptor_2");
-        Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
-                (Integer) 6);
+        trait = itr.next();
+        Assert.assertEquals(trait.getName(), "directed_trait_1");
+        Assert.assertEquals(trait.getDescriptor(), "descriptor_1");
+        Assert.assertEquals(trait.getValue(), (Integer) 5);
 
-        trait = new DefaultSkillName("directed_trait_3", "descriptor_3");
-        Assert.assertEquals(fatherClass.getDirectedTraits().get(trait),
-                (Integer) 7);
+        trait = itr.next();
+        Assert.assertEquals(trait.getName(), "directed_trait_2");
+        Assert.assertEquals(trait.getDescriptor(), "descriptor_2");
+        Assert.assertEquals(trait.getValue(), (Integer) 6);
+
+        trait = itr.next();
+        Assert.assertEquals(trait.getName(), "directed_trait_3");
+        Assert.assertEquals(trait.getDescriptor(), "descriptor_3");
+        Assert.assertEquals(trait.getValue(), (Integer) 7);
     }
 
     @Test
@@ -90,15 +99,20 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testSkillsGroup() {
-        SkillName skill;
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
 
         Assert.assertEquals(fatherClass.getSkillsGroup().size(), 2);
 
-        skill = new DefaultSkillName("skill_1", "");
-        Assert.assertTrue(fatherClass.getSkillsGroup().contains(skill));
+        itr = fatherClass.getSkillsGroup().iterator();
 
-        skill = new DefaultSkillName("skill_2", "descriptor_2");
-        Assert.assertTrue(fatherClass.getSkillsGroup().contains(skill));
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "skill_1");
+        Assert.assertEquals(skill.getDescriptor(), "");
+
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "skill_2");
+        Assert.assertEquals(skill.getDescriptor(), "descriptor_2");
     }
 
     @Test
@@ -115,11 +129,16 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testSpecialtySkills() {
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
+
         Assert.assertEquals(fatherClass.getSpecialtySkills().size(), 1);
 
-        Assert.assertEquals(
-                fatherClass.getSpecialtySkills().get("specialty_skill_1"),
-                (Integer) 12);
+        itr = fatherClass.getSpecialtySkills().iterator();
+
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "specialty_skill_1");
+        Assert.assertEquals(skill.getValue(), (Integer) 12);
     }
 
 }

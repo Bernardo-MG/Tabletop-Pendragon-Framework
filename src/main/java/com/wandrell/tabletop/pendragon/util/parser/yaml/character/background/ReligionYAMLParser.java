@@ -2,7 +2,6 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.character.background;
 
 import java.io.Reader;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -11,6 +10,8 @@ import org.yaml.snakeyaml.Yaml;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
+import com.wandrell.tabletop.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class ReligionYAMLParser implements Parser<Reader, Religion> {
 
@@ -31,7 +32,7 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
         final Collection<Map<String, Object>> derived;
         final String name;
         final Collection<String> traits;
-        final Map<String, Integer> bonusDerived;
+        final Collection<SkillBox> bonusDerived;
         final Integer bonusArmor;
         final Integer bonusDamage;
         final Integer bonusDamageDice;
@@ -54,13 +55,14 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
         }
 
         // Derived attributes bonus
-        bonusDerived = new LinkedHashMap<String, Integer>();
+        bonusDerived = new LinkedList<SkillBox>();
         derived = (Collection<Map<String, Object>>) bonus
                 .get("derived_attributes");
         if (derived != null) {
             for (final Map<String, Object> attribute : derived) {
-                bonusDerived.put((String) attribute.get("name"),
-                        (Integer) attribute.get("value"));
+                bonusDerived.add(new DefaultSkillBox((String) attribute
+                        .get("name"), (Integer) attribute.get("value"), 0,
+                        Integer.MAX_VALUE));
             }
         }
 

@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class RegionTemplateMapParser implements
         Parser<RegionTemplate, Map<String, Object>> {
@@ -37,11 +37,10 @@ public final class RegionTemplateMapParser implements
         // Traits
         if (!region.getTraits().isEmpty()) {
             values = new LinkedList<>();
-            for (final Entry<String, Integer> entry : region.getTraits()
-                    .entrySet()) {
+            for (final SkillBox box : region.getTraits()) {
                 valuesMap = new LinkedHashMap<String, Object>();
-                valuesMap.put("name", entry.getKey());
-                valuesMap.put("value", entry.getValue());
+                valuesMap.put("name", box.getName());
+                valuesMap.put("value", box.getValue());
 
                 values.add(valuesMap);
             }

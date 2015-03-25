@@ -3,6 +3,7 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
 import java.io.Reader;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
@@ -17,8 +18,8 @@ import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
@@ -84,35 +85,36 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     private final CultureCharacterTemplate buildCultureCharacterTemplate(
             final Map<String, Collection<Map<String, Object>>> template)
             throws Exception {
-        final Map<String, Integer> attributesBonus;
+        final Collection<SkillBox> attributesBonus;
         final Map<String, Dice> attributesRandom;
-        final Map<SkillName, Integer> skillsBonus;
-        final Map<String, Integer> specialtySkills;
-        final Map<SkillName, Integer> passionsBonus;
-        final Map<SkillName, Dice> passionsRandom;
-        final Map<SkillName, Integer> directedBonus;
-        final Map<String, Integer> traitsBonus;
+        final Collection<SkillBox> skillsBonus;
+        final Collection<SkillBox> specialtySkills;
+        final Collection<SkillBox> passionsBonus;
+        final Map<SkillBox, Dice> passionsRandom;
+        final Collection<SkillBox> directedBonus;
+        final Collection<SkillBox> traitsBonus;
         final Parser<String, Dice> diceParser;
         String descriptor;
-        SkillName skill;
+        SkillBox skill;
 
         diceParser = new StringDiceParser();
 
-        attributesBonus = new LinkedHashMap<String, Integer>();
+        attributesBonus = new LinkedList<>();
         attributesRandom = new LinkedHashMap<String, Dice>();
-        skillsBonus = new LinkedHashMap<SkillName, Integer>();
-        specialtySkills = new LinkedHashMap<String, Integer>();
-        passionsBonus = new LinkedHashMap<SkillName, Integer>();
-        passionsRandom = new LinkedHashMap<SkillName, Dice>();
-        directedBonus = new LinkedHashMap<SkillName, Integer>();
-        traitsBonus = new LinkedHashMap<String, Integer>();
+        skillsBonus = new LinkedList<>();
+        specialtySkills = new LinkedList<>();
+        passionsBonus = new LinkedList<>();
+        passionsRandom = new LinkedHashMap<SkillBox, Dice>();
+        directedBonus = new LinkedList<>();
+        traitsBonus = new LinkedList<>();
 
         if (template != null) {
             if (template.containsKey("attributes_bonus")) {
                 for (final Map<String, Object> child : template
                         .get("attributes_bonus")) {
-                    attributesBonus.put((String) child.get("name"),
-                            (Integer) child.get("value"));
+                    attributesBonus.add(new DefaultSkillBox(child.get("name")
+                            .toString(), (Integer) child.get("value"), 0,
+                            Integer.MAX_VALUE));
                 }
             }
 
@@ -131,18 +133,18 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultSkillName((String) child.get("name"),
-                            descriptor);
-
-                    skillsBonus.put(skill, (Integer) child.get("value"));
+                    skillsBonus.add(new DefaultSkillBox(child.get("name")
+                            .toString(), descriptor, (Integer) child
+                            .get("value"), 0, Integer.MAX_VALUE));
                 }
             }
 
             if (template.containsKey("specialty_skills")) {
                 for (final Map<String, Object> child : template
                         .get("specialty_skills")) {
-                    specialtySkills.put((String) child.get("name"),
-                            (Integer) child.get("value"));
+                    specialtySkills.add(new DefaultSkillBox(child.get("name")
+                            .toString(), (Integer) child.get("value"), 0,
+                            Integer.MAX_VALUE));
                 }
             }
 
@@ -153,10 +155,9 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultSkillName((String) child.get("name"),
-                            descriptor);
-
-                    passionsBonus.put(skill, (Integer) child.get("value"));
+                    passionsBonus.add(new DefaultSkillBox(child.get("name")
+                            .toString(), descriptor, (Integer) child
+                            .get("value"), 0, Integer.MAX_VALUE));
                 }
             }
 
@@ -167,8 +168,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultSkillName((String) child.get("name"),
-                            descriptor);
+                    skill = new DefaultSkillBox((String) child.get("name"),
+                            descriptor, 0, 0, Integer.MAX_VALUE);
 
                     passionsRandom.put(skill,
                             diceParser.parse((String) child.get("value")));
@@ -182,18 +183,18 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultSkillName((String) child.get("name"),
-                            descriptor);
-
-                    directedBonus.put(skill, (Integer) child.get("value"));
+                    directedBonus.add(new DefaultSkillBox(child.get("name")
+                            .toString(), descriptor, (Integer) child
+                            .get("value"), 0, Integer.MAX_VALUE));
                 }
             }
 
             if (template.containsKey("traits_bonus")) {
                 for (final Map<String, Object> child : template
                         .get("traits_bonus")) {
-                    traitsBonus.put((String) child.get("name"),
-                            (Integer) child.get("value"));
+                    directedBonus.add(new DefaultSkillBox(child.get("name")
+                            .toString(), (Integer) child.get("value"), 0,
+                            Integer.MAX_VALUE));
                 }
             }
         }

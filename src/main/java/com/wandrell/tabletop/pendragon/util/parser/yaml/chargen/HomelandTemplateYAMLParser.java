@@ -2,7 +2,6 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
 
 import java.io.Reader;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -14,8 +13,8 @@ import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class HomelandTemplateYAMLParser implements
         Parser<Reader, HomelandTemplate> {
@@ -38,12 +37,12 @@ public final class HomelandTemplateYAMLParser implements
         final Map<String, Object> values;
         final Map<String, Collection<Map<String, Object>>> bonus;
         final String name;
-        final Map<SkillName, Integer> skills;
-        final Map<String, Integer> specialtySkills;
-        final Collection<SkillName> passions;
-        final Collection<SkillName> directedTraits;
+        final Collection<SkillBox> skills;
+        final Collection<SkillBox> specialtySkills;
+        final Collection<SkillBox> passions;
+        final Collection<SkillBox> directedTraits;
         final RegionTemplate region;
-        SkillName skillData;
+        SkillBox skillData;
         String descriptor;
 
         yaml = new Yaml();
@@ -70,10 +69,10 @@ public final class HomelandTemplateYAMLParser implements
         bonus = (Map<String, Collection<Map<String, Object>>>) values
                 .get("bonus");
 
-        skills = new LinkedHashMap<SkillName, Integer>();
-        specialtySkills = new LinkedHashMap<String, Integer>();
-        directedTraits = new LinkedList<SkillName>();
-        passions = new LinkedList<SkillName>();
+        skills = new LinkedList<SkillBox>();
+        specialtySkills = new LinkedList<SkillBox>();
+        directedTraits = new LinkedList<SkillBox>();
+        passions = new LinkedList<SkillBox>();
 
         if (bonus != null) {
             // Skills
@@ -83,9 +82,10 @@ public final class HomelandTemplateYAMLParser implements
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skillData = new DefaultSkillName(
-                            (String) skill.get("name"), descriptor);
-                    skills.put(skillData, (Integer) skill.get("value"));
+                    skillData = new DefaultSkillBox((String) skill.get("name"),
+                            descriptor, (Integer) skill.get("value"), 0,
+                            Integer.MAX_VALUE);
+                    skills.add(skillData);
                 }
             }
 
@@ -93,8 +93,9 @@ public final class HomelandTemplateYAMLParser implements
             if (bonus.containsKey("specialty_skills")) {
                 for (final Map<String, Object> skill : bonus
                         .get("specialty_skills")) {
-                    specialtySkills.put((String) skill.get("name"),
-                            (Integer) skill.get("value"));
+                    specialtySkills.add(new DefaultSkillBox((String) skill
+                            .get("name"), (Integer) skill.get("value"), 0,
+                            Integer.MAX_VALUE));
                 }
             }
 
@@ -102,9 +103,9 @@ public final class HomelandTemplateYAMLParser implements
             if (bonus.containsKey("directed_traits")) {
                 for (final Map<String, Object> trait : bonus
                         .get("directed_traits")) {
-                    skillData = new DefaultSkillName(
-                            (String) trait.get("name"),
-                            (String) trait.get("descriptor"));
+                    skillData = new DefaultSkillBox((String) trait.get("name"),
+                            (String) trait.get("descriptor"), 0, 0,
+                            Integer.MAX_VALUE);
                     directedTraits.add(skillData);
                 }
             }
@@ -112,9 +113,10 @@ public final class HomelandTemplateYAMLParser implements
             // Passions
             if (bonus.containsKey("passions")) {
                 for (final Map<String, Object> passion : bonus.get("passions")) {
-                    skillData = new DefaultSkillName(
+                    skillData = new DefaultSkillBox(
                             (String) passion.get("name"),
-                            (String) passion.get("descriptor"));
+                            (String) passion.get("descriptor"), 0, 0,
+                            Integer.MAX_VALUE);
                     passions.add(skillData);
                 }
             }

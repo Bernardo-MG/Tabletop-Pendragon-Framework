@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 
 import java.io.Reader;
+import java.util.Collection;
 import java.util.Map;
 
 import org.testng.Assert;
@@ -15,9 +16,9 @@ import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
-import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
+import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseMinimumCultureTemplateYAMLParser {
@@ -53,7 +54,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Female() {
-        final Map<String, Integer> attributes;
+        final Collection<SkillBox> attributes;
 
         attributes = culture.getFemaleTemplate().getAttributes();
 
@@ -62,7 +63,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Male() {
-        final Map<String, Integer> attributes;
+        final Collection<SkillBox> attributes;
 
         attributes = culture.getMaleTemplate().getAttributes();
 
@@ -89,7 +90,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraitsBonus_Female() {
-        final Map<SkillName, Integer> dirTraits;
+        final Collection<SkillBox> dirTraits;
 
         dirTraits = culture.getFemaleTemplate().getDirectedTraits();
 
@@ -98,7 +99,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraitsBonus_Male() {
-        final Map<SkillName, Integer> dirTraits;
+        final Collection<SkillBox> dirTraits;
 
         dirTraits = culture.getMaleTemplate().getDirectedTraits();
 
@@ -128,7 +129,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsBonus_Female() {
-        final Map<SkillName, Integer> passions;
+        final Collection<SkillBox> passions;
 
         passions = culture.getFemaleTemplate().getPassions();
 
@@ -137,7 +138,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsBonus_Male() {
-        final Map<SkillName, Integer> passions;
+        final Collection<SkillBox> passions;
 
         passions = culture.getMaleTemplate().getPassions();
 
@@ -146,7 +147,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Female() {
-        final Map<SkillName, Dice> passions;
+        final Map<SkillBox, Dice> passions;
 
         passions = culture.getFemaleTemplate().getPassionsRandom();
 
@@ -155,7 +156,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Male() {
-        final Map<SkillName, Dice> passions;
+        final Map<SkillBox, Dice> passions;
 
         passions = culture.getMaleTemplate().getPassionsRandom();
 
@@ -164,7 +165,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSkillsBonus_Female() {
-        final Map<SkillName, Integer> skills;
+        final Collection<SkillBox> skills;
 
         skills = culture.getFemaleTemplate().getSkills();
 
@@ -173,7 +174,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSkillsBonus_Male() {
-        final Map<SkillName, Integer> skills;
+        final Collection<SkillBox> skills;
 
         skills = culture.getMaleTemplate().getSkills();
 
@@ -182,7 +183,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSpecialtySkills_Female() {
-        final Map<String, Integer> skills;
+        final Collection<SkillBox> skills;
 
         skills = culture.getFemaleTemplate().getSpecialtySkills();
 
@@ -191,7 +192,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testSpecialtySkills_Male() {
-        final Map<String, Integer> skills;
+        final Collection<SkillBox> skills;
 
         skills = culture.getMaleTemplate().getSpecialtySkills();
 
@@ -200,7 +201,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testTraitsBonus_Female() {
-        final Map<String, Integer> traits;
+        final Collection<SkillBox> traits;
 
         traits = culture.getFemaleTemplate().getTraits();
 
@@ -209,7 +210,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testTraitsBonus_Male() {
-        final Map<String, Integer> traits;
+        final Collection<SkillBox> traits;
 
         traits = culture.getMaleTemplate().getTraits();
 

@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.testing.pendragon.framework.conf.factory;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 import com.wandrell.pattern.repository.CollectionRepository;
 import com.wandrell.pattern.repository.Repository;
@@ -16,9 +17,9 @@ import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
-import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.service.TestModelConstructorService;
 import com.wandrell.tabletop.testing.pendragon.framework.service.TestStatConstructorService;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class TestServiceFactory {
 
@@ -54,14 +55,16 @@ public final class TestServiceFactory {
 
         repository = new CollectionRepository<FamilyCharacteristicTemplate>();
 
-        repository.add(getModelConstructorService()
-                .getFamilyCharacteristicTemplate("char_female",
-                        new LinkedHashMap<String, Integer>(),
-                        new LinkedHashMap<SkillName, Integer>()));
-        repository.add(getModelConstructorService()
-                .getFamilyCharacteristicTemplate("char_male",
-                        new LinkedHashMap<String, Integer>(),
-                        new LinkedHashMap<SkillName, Integer>()));
+        repository
+                .add(getModelConstructorService()
+                        .getFamilyCharacteristicTemplate("char_female",
+                                new LinkedList<SkillBox>(),
+                                new LinkedList<SkillBox>()));
+        repository
+                .add(getModelConstructorService()
+                        .getFamilyCharacteristicTemplate("char_male",
+                                new LinkedList<SkillBox>(),
+                                new LinkedList<SkillBox>()));
 
         return repository;
     }

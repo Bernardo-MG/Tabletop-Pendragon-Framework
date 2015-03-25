@@ -10,7 +10,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class CultureTemplateMapParser implements
         Parser<CultureTemplate, Map<String, Object>> {
@@ -64,12 +64,11 @@ public final class CultureTemplateMapParser implements
         // Attributes
         valuesCol = new LinkedList<>();
         if (!template.getAttributes().isEmpty()) {
-            for (final Entry<String, Integer> entry : template.getAttributes()
-                    .entrySet()) {
+            for (final SkillBox box : template.getAttributes()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }
@@ -94,12 +93,11 @@ public final class CultureTemplateMapParser implements
         // Traits
         valuesCol = new LinkedList<>();
         if (!template.getTraits().isEmpty()) {
-            for (final Entry<String, Integer> entry : template.getTraits()
-                    .entrySet()) {
+            for (final SkillBox box : template.getTraits()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }
@@ -109,13 +107,12 @@ public final class CultureTemplateMapParser implements
         // Skills
         valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
-            for (final Entry<SkillName, Integer> entry : template.getSkills()
-                    .entrySet()) {
+            for (final SkillBox box : template.getSkills()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }
@@ -125,12 +122,11 @@ public final class CultureTemplateMapParser implements
         // Specialty Skills
         valuesCol = new LinkedList<>();
         if (!template.getSpecialtySkills().isEmpty()) {
-            for (final Entry<String, Integer> entry : template
-                    .getSpecialtySkills().entrySet()) {
+            for (final SkillBox box : template.getSpecialtySkills()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }
@@ -140,13 +136,12 @@ public final class CultureTemplateMapParser implements
         // Passions
         valuesCol = new LinkedList<>();
         if (!template.getPassions().isEmpty()) {
-            for (final Entry<SkillName, Integer> entry : template.getPassions()
-                    .entrySet()) {
+            for (final SkillBox box : template.getPassions()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }
@@ -156,7 +151,7 @@ public final class CultureTemplateMapParser implements
         // Random passions
         valuesCol = new LinkedList<>();
         if (!template.getPassionsRandom().isEmpty()) {
-            for (final Entry<SkillName, Dice> entry : template
+            for (final Entry<SkillBox, Dice> entry : template
                     .getPassionsRandom().entrySet()) {
                 value = new LinkedHashMap<String, Object>();
 
@@ -172,13 +167,12 @@ public final class CultureTemplateMapParser implements
         // Directed Traits
         valuesCol = new LinkedList<>();
         if (!template.getDirectedTraits().isEmpty()) {
-            for (final Entry<SkillName, Integer> entry : template
-                    .getDirectedTraits().entrySet()) {
+            for (final SkillBox box : template.getDirectedTraits()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 valuesCol.add(value);
             }

@@ -15,8 +15,8 @@ import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public class FamilyCharacteristicTableYAMLParser implements
         Parser<Reader, FamilyCharacteristicTable> {
@@ -90,17 +90,17 @@ public class FamilyCharacteristicTableYAMLParser implements
     private final FamilyCharacteristicTemplate readFamilyCharacteristic(
             final Map<String, Object> template) {
         final String name;
-        final Map<String, Integer> attributes;
-        final Map<SkillName, Integer> skills;
+        final Collection<SkillBox> attributes;
+        final Collection<SkillBox> skills;
         final Map<String, Collection<Map<String, Object>>> bonus;
-        SkillName skillData;
+        SkillBox skillData;
         String descriptor;
         Integer value;
 
         name = (String) template.get("name");
 
-        attributes = new LinkedHashMap<String, Integer>();
-        skills = new LinkedHashMap<SkillName, Integer>();
+        attributes = new LinkedList<SkillBox>();
+        skills = new LinkedList<SkillBox>();
 
         if (template.containsKey("bonus")) {
             bonus = (Map<String, Collection<Map<String, Object>>>) template
@@ -110,8 +110,8 @@ public class FamilyCharacteristicTableYAMLParser implements
                 for (final Map<String, Object> attribute : bonus
                         .get("attributes")) {
                     value = (Integer) attribute.get("value");
-
-                    attributes.put((String) attribute.get("name"), value);
+                    attributes.add(new DefaultSkillBox((String) attribute
+                            .get("name"), value, 0, Integer.MAX_VALUE));
                 }
             }
 
@@ -125,10 +125,10 @@ public class FamilyCharacteristicTableYAMLParser implements
                         descriptor = "";
                     }
 
-                    skillData = new DefaultSkillName(
-                            (String) skill.get("name"), descriptor);
+                    skillData = new DefaultSkillBox((String) skill.get("name"),
+                            descriptor, value, 0, Integer.MAX_VALUE);
 
-                    skills.put(skillData, value);
+                    skills.add(skillData);
                 }
             }
         }

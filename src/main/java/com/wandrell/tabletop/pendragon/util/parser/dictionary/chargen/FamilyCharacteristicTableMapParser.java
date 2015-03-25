@@ -10,7 +10,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class FamilyCharacteristicTableMapParser implements
         Parser<FamilyCharacteristicTable, Map<String, Object>> {
@@ -49,13 +49,12 @@ public final class FamilyCharacteristicTableMapParser implements
         if (!characteristic.getSkills().isEmpty()) {
             values = new LinkedList<>();
 
-            for (final Entry<SkillName, Integer> entry : characteristic
-                    .getSkills().entrySet()) {
+            for (final SkillBox box : characteristic.getSkills()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("descriptor", box.getDescriptor());
+                value.put("value", box.getValue());
 
                 values.add(value);
             }
@@ -67,12 +66,11 @@ public final class FamilyCharacteristicTableMapParser implements
         if (!characteristic.getAttributes().isEmpty()) {
             values = new LinkedList<>();
 
-            for (final Entry<String, Integer> entry : characteristic
-                    .getAttributes().entrySet()) {
+            for (final SkillBox box : characteristic.getAttributes()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue());
+                value.put("name", box.getName());
+                value.put("value", box.getValue());
 
                 values.add(value);
             }

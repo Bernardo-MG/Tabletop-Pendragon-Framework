@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 
 import java.io.Reader;
+import java.util.Iterator;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -12,10 +13,9 @@ import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.HomelandTemplateYAMLParser;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
+import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseHomelandTemplateYAMLParser {
@@ -44,12 +44,16 @@ public final class ITParseHomelandTemplateYAMLParser {
 
     @Test
     public final void testDirectedTraits() {
-        SkillName skill;
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
 
         Assert.assertEquals(homeland.getDirectedTraits().size(), 1);
 
-        skill = new DefaultSkillName("directed_1", "descriptor_directed_1");
-        Assert.assertTrue(homeland.getDirectedTraits().contains(skill));
+        itr = homeland.getDirectedTraits().iterator();
+
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "directed_1");
+        Assert.assertEquals(skill.getDescriptor(), "descriptor_directed_1");
     }
 
     @Test
@@ -59,12 +63,16 @@ public final class ITParseHomelandTemplateYAMLParser {
 
     @Test
     public final void testPassions() {
-        SkillName skill;
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
 
         Assert.assertEquals(homeland.getPassions().size(), 1);
 
-        skill = new DefaultSkillName("passion_1", "descriptor_passion_1");
-        Assert.assertTrue(homeland.getPassions().contains(skill));
+        itr = homeland.getPassions().iterator();
+
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "passion_1");
+        Assert.assertEquals(skill.getDescriptor(), "descriptor_passion_1");
     }
 
     @Test
@@ -74,30 +82,37 @@ public final class ITParseHomelandTemplateYAMLParser {
 
     @Test
     public final void testSkills() {
-        SkillName skill;
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
 
         Assert.assertEquals(homeland.getSkills().size(), 2);
 
-        skill = new DefaultSkillName("skill_1", "");
-        Assert.assertTrue(homeland.getSkills().containsKey(skill));
-        Assert.assertEquals(homeland.getSkills().get(skill), (Integer) 3);
+        itr = homeland.getSkills().iterator();
 
-        skill = new DefaultSkillName("skill_2", "descriptor_skill_2");
-        Assert.assertTrue(homeland.getSkills().containsKey(skill));
-        Assert.assertEquals(homeland.getSkills().get(skill), (Integer) 4);
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "skill_1");
+        Assert.assertEquals(skill.getDescriptor(), "");
+        Assert.assertEquals(skill.getValue(), (Integer) 3);
+
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "skill_2");
+        Assert.assertEquals(skill.getDescriptor(), "descriptor_skill_2");
+        Assert.assertEquals(skill.getValue(), (Integer) 4);
 
     }
 
     @Test
     public final void testSpecialtySkills() {
+        final Iterator<SkillBox> itr;
+        SkillBox skill;
+
         Assert.assertEquals(homeland.getSpecialtySkills().size(), 1);
 
-        Assert.assertTrue(homeland.getSpecialtySkills().containsKey(
-                "specialty_skill_1"));
+        itr = homeland.getSkills().iterator();
 
-        Assert.assertEquals(
-                homeland.getSpecialtySkills().get("specialty_skill_1"),
-                (Integer) 5);
+        skill = itr.next();
+        Assert.assertEquals(skill.getName(), "specialty_skill_1");
+        Assert.assertEquals(skill.getValue(), (Integer) 5);
     }
 
 }

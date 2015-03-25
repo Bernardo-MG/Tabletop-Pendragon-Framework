@@ -2,7 +2,6 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
 
 import java.io.Reader;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -14,8 +13,8 @@ import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.skill.DefaultSkillName;
-import com.wandrell.tabletop.skill.SkillName;
+import com.wandrell.tabletop.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.valuebox.SkillBox;
 
 public class FatherClassTemplateYAMLParser implements
         Parser<Reader, FatherClassTemplate> {
@@ -46,10 +45,10 @@ public class FatherClassTemplateYAMLParser implements
         final Integer skillsPoints;
         final Integer skillsNonCombatPoints;
         final Dice money;
-        final Collection<SkillName> skillsGroup;
-        final Map<String, Integer> specialtySkills;
-        final Map<SkillName, Integer> directedTraits;
-        final Map<SkillName, Integer> directedTraitsBase;
+        final Collection<SkillBox> skillsGroup;
+        final Collection<SkillBox> specialtySkills;
+        final Collection<SkillBox> directedTraits;
+        final Collection<SkillBox> directedTraitsBase;
         final Parser<String, Dice> diceParser;
         String descriptor;
 
@@ -106,25 +105,25 @@ public class FatherClassTemplateYAMLParser implements
         }
 
         // Skills group
-        skillsGroup = new LinkedList<SkillName>();
+        skillsGroup = new LinkedList<SkillBox>();
         skillsGroupMap = (Collection<Map<String, Object>>) values
                 .get("skills_group");
         if (skillsGroupMap != null) {
             for (final Map<String, Object> skill : skillsGroupMap) {
                 descriptor = (String) skill.get("descriptor");
                 if (descriptor == null) {
-                    skillsGroup.add(new DefaultSkillName((String) skill
-                            .get("name"), ""));
+                    skillsGroup.add(new DefaultSkillBox((String) skill
+                            .get("name"), "", 0, 0, Integer.MAX_VALUE));
                 } else {
-                    skillsGroup.add(new DefaultSkillName((String) skill
-                            .get("name"), descriptor));
+                    skillsGroup.add(new DefaultSkillBox((String) skill
+                            .get("name"), descriptor, 0, 0, Integer.MAX_VALUE));
                 }
             }
         }
 
-        specialtySkills = new LinkedHashMap<String, Integer>();
-        directedTraits = new LinkedHashMap<SkillName, Integer>();
-        directedTraitsBase = new LinkedHashMap<SkillName, Integer>();
+        specialtySkills = new LinkedList<SkillBox>();
+        directedTraits = new LinkedList<SkillBox>();
+        directedTraitsBase = new LinkedList<SkillBox>();
 
         if (bonusMap != null) {
             // Specialty skills
@@ -132,8 +131,9 @@ public class FatherClassTemplateYAMLParser implements
                 specialtySkillsMap = bonusMap.get("specialty_skills");
                 if (specialtySkillsMap != null) {
                     for (final Map<String, Object> skill : specialtySkillsMap) {
-                        specialtySkills.put((String) skill.get("name"),
-                                (Integer) skill.get("value"));
+                        specialtySkills.add(new DefaultSkillBox((String) skill
+                                .get("name"), (Integer) skill.get("value"), 0,
+                                Integer.MAX_VALUE));
                     }
                 }
             }
@@ -143,11 +143,10 @@ public class FatherClassTemplateYAMLParser implements
                 directedTraitsMap = bonusMap.get("directed_traits");
                 if (directedTraitsMap != null) {
                     for (final Map<String, Object> trait : directedTraitsMap) {
-                        directedTraits.put(
-                                new DefaultSkillName(
-                                        (String) trait.get("name"),
-                                        (String) trait.get("descriptor")),
-                                (Integer) trait.get("value"));
+                        directedTraits.add(new DefaultSkillBox((String) trait
+                                .get("name"), (String) trait.get("descriptor"),
+                                (Integer) trait.get("value"), 0,
+                                Integer.MAX_VALUE));
                     }
                 }
             }
@@ -157,11 +156,10 @@ public class FatherClassTemplateYAMLParser implements
                 directedTraitsBaseMap = baseMap.get("directed_traits");
                 if (directedTraitsBaseMap != null) {
                     for (final Map<String, Object> trait : directedTraitsBaseMap) {
-                        directedTraitsBase.put(
-                                new DefaultSkillName(
-                                        (String) trait.get("name"),
-                                        (String) trait.get("descriptor")),
-                                (Integer) trait.get("value"));
+                        directedTraitsBase.add(new DefaultSkillBox(
+                                (String) trait.get("name"), (String) trait
+                                        .get("descriptor"), (Integer) trait
+                                        .get("value"), 0, Integer.MAX_VALUE));
                     }
                 }
             }
