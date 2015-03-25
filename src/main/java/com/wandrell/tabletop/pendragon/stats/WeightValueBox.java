@@ -4,14 +4,14 @@ import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.valuebox.derived.AbstractDerivedValueViewPoint;
+import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
-public final class WeightViewPoint extends AbstractDerivedValueViewPoint {
+public final class WeightValueBox extends AbstractValueBox {
 
     private final PendragonBaseCharacter   character;
     private final DerivedAttributesService derivedService;
 
-    public WeightViewPoint(final PendragonBaseCharacter character,
+    public WeightValueBox(final PendragonBaseCharacter character,
             final DerivedAttributesService derivedService) {
         super();
 

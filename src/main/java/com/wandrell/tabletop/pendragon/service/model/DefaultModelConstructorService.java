@@ -226,8 +226,8 @@ public final class DefaultModelConstructorService implements
             final Boolean knowledge) {
         final PendragonSkillBox skill;
 
-        skill = new DefaultPendragonSkillBox(name, 0, 0, Integer.MAX_VALUE,
-                combat, knight, knowledge, court);
+        skill = new DefaultPendragonSkillBox(name, 0, combat, knight,
+                knowledge, court);
 
         if (described) {
             skill.setDescriptor(descriptor);

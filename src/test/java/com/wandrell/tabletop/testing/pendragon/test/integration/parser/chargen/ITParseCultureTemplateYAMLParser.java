@@ -221,7 +221,7 @@ public final class ITParseCultureTemplateYAMLParser {
 
         Assert.assertEquals(attributes.size(), 1);
 
-        key = new DefaultSkillBox("passion_3", "", 0, 0, Integer.MAX_VALUE);
+        key = new DefaultSkillBox("passion_3", "", 0);
         Assert.assertEquals(attributes.get(key).getTextValue(), "6d6");
     }
 
@@ -234,14 +234,13 @@ public final class ITParseCultureTemplateYAMLParser {
 
         Assert.assertEquals(attributes.size(), 3);
 
-        key = new DefaultSkillBox("passion_1", "", 0, 0, Integer.MAX_VALUE);
+        key = new DefaultSkillBox("passion_1", "", 0);
         Assert.assertEquals(attributes.get(key).getTextValue(), "3d6");
 
-        key = new DefaultSkillBox("passion_2", "descriptor_2", 0, 0,
-                Integer.MAX_VALUE);
+        key = new DefaultSkillBox("passion_2", "descriptor_2", 0);
         Assert.assertEquals(attributes.get(key).getTextValue(), "0d1");
 
-        key = new DefaultSkillBox("passion_4", "", 0, 0, Integer.MAX_VALUE);
+        key = new DefaultSkillBox("passion_4", "", 0);
         Assert.assertEquals(attributes.get(key).getTextValue(), "0d1+5");
     }
 

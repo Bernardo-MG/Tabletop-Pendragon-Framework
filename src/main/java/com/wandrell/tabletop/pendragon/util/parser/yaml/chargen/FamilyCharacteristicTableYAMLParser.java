@@ -111,7 +111,7 @@ public class FamilyCharacteristicTableYAMLParser implements
                         .get("attributes")) {
                     value = (Integer) attribute.get("value");
                     attributes.add(new DefaultSkillBox((String) attribute
-                            .get("name"), value, 0, Integer.MAX_VALUE));
+                            .get("name"), value));
                 }
             }
 
@@ -126,7 +126,7 @@ public class FamilyCharacteristicTableYAMLParser implements
                     }
 
                     skillData = new DefaultSkillBox((String) skill.get("name"),
-                            descriptor, value, 0, Integer.MAX_VALUE);
+                            descriptor, value);
 
                     skills.add(skillData);
                 }

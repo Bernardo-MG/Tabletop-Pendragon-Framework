@@ -113,8 +113,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 for (final Map<String, Object> child : template
                         .get("attributes_bonus")) {
                     attributesBonus.add(new DefaultSkillBox(child.get("name")
-                            .toString(), (Integer) child.get("value"), 0,
-                            Integer.MAX_VALUE));
+                            .toString(), (Integer) child.get("value")));
                 }
             }
 
@@ -135,7 +134,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     }
                     skillsBonus.add(new DefaultSkillBox(child.get("name")
                             .toString(), descriptor, (Integer) child
-                            .get("value"), 0, Integer.MAX_VALUE));
+                            .get("value")));
                 }
             }
 
@@ -143,8 +142,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 for (final Map<String, Object> child : template
                         .get("specialty_skills")) {
                     specialtySkills.add(new DefaultSkillBox(child.get("name")
-                            .toString(), (Integer) child.get("value"), 0,
-                            Integer.MAX_VALUE));
+                            .toString(), (Integer) child.get("value")));
                 }
             }
 
@@ -157,7 +155,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     }
                     passionsBonus.add(new DefaultSkillBox(child.get("name")
                             .toString(), descriptor, (Integer) child
-                            .get("value"), 0, Integer.MAX_VALUE));
+                            .get("value")));
                 }
             }
 
@@ -169,7 +167,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                         descriptor = "";
                     }
                     skill = new DefaultSkillBox((String) child.get("name"),
-                            descriptor, 0, 0, Integer.MAX_VALUE);
+                            descriptor, 0);
 
                     passionsRandom.put(skill,
                             diceParser.parse((String) child.get("value")));
@@ -185,7 +183,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     }
                     directedBonus.add(new DefaultSkillBox(child.get("name")
                             .toString(), descriptor, (Integer) child
-                            .get("value"), 0, Integer.MAX_VALUE));
+                            .get("value")));
                 }
             }
 
@@ -193,8 +191,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 for (final Map<String, Object> child : template
                         .get("traits_bonus")) {
                     directedBonus.add(new DefaultSkillBox(child.get("name")
-                            .toString(), (Integer) child.get("value"), 0,
-                            Integer.MAX_VALUE));
+                            .toString(), (Integer) child.get("value")));
                 }
             }
         }

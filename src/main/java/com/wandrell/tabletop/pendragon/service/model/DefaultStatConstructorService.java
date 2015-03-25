@@ -21,7 +21,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name, value, 0, Integer.MAX_VALUE);
+        skill = new DefaultSkillBox(name, value);
 
         if (!descriptor.isEmpty()) {
             skill.setDescriptor(descriptor);
@@ -35,7 +35,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name, value, 0, Integer.MAX_VALUE);
+        skill = new DefaultSkillBox(name, value);
 
         if (!descriptor.isEmpty()) {
             skill.setDescriptor(descriptor);
@@ -51,8 +51,8 @@ public final class DefaultStatConstructorService implements
             final Boolean knowledgeSkill, final Boolean courtlySkill) {
         final PendragonSkillBox skill;
 
-        skill = new DefaultPendragonSkillBox(name, value, 0, Integer.MAX_VALUE,
-                combatSkill, knightlySkill, knowledgeSkill, courtlySkill);
+        skill = new DefaultPendragonSkillBox(name, value, combatSkill,
+                knightlySkill, knowledgeSkill, courtlySkill);
 
         if (!descriptor.isEmpty()) {
             skill.setDescriptor(descriptor);
@@ -64,8 +64,7 @@ public final class DefaultStatConstructorService implements
     @Override
     public final SpecialtySkillBox getSpecialtySkill(final String name,
             final Integer value, final Collection<String> skills) {
-        return new DefaultSpecialtySkillBox(name, value, 0, Integer.MAX_VALUE,
-                skills);
+        return new DefaultSpecialtySkillBox(name, value, skills);
     }
 
 }

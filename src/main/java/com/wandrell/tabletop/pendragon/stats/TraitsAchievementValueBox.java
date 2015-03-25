@@ -10,16 +10,15 @@ import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
-import com.wandrell.tabletop.valuebox.derived.AbstractDerivedValueViewPoint;
+import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
-public final class TraitsAchievementViewPoint extends
-        AbstractDerivedValueViewPoint {
+public final class TraitsAchievementValueBox extends AbstractValueBox {
 
     private final PendragonHumanCharacter  character;
     private final TraitsAchievementService serviceTraits;
     private Integer                        sum;
 
-    public TraitsAchievementViewPoint(final PendragonHumanCharacter character,
+    public TraitsAchievementValueBox(final PendragonHumanCharacter character,
             final TraitsAchievementService service) {
         super();
 

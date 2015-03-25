@@ -4,14 +4,14 @@ import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.valuebox.derived.AbstractDerivedValueViewPoint;
+import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
-public final class MajorWoundsViewPoint extends AbstractDerivedValueViewPoint {
+public final class UnconciousValueBox extends AbstractValueBox {
 
     private final PendragonBaseCharacter   character;
     private final DerivedAttributesService derivedService;
 
-    public MajorWoundsViewPoint(final PendragonBaseCharacter character,
+    public UnconciousValueBox(final PendragonBaseCharacter character,
             final DerivedAttributesService derivedService) {
         super();
 
@@ -22,7 +22,7 @@ public final class MajorWoundsViewPoint extends AbstractDerivedValueViewPoint {
                 .addPendragonCharacterListener(new PendragonCharacterListenerAdapter() {
 
                     @Override
-                    public final void constitutionChanged(
+                    public final void hitPointsChanged(
                             final ValueChangeEvent event) {
                         fireValueChangedEvent(new ValueChangeEvent(this, 0, 0));
                     }
@@ -32,7 +32,7 @@ public final class MajorWoundsViewPoint extends AbstractDerivedValueViewPoint {
 
     @Override
     public final Integer getValue() {
-        return derivedService.getMajorWound(character);
+        return derivedService.getUnconcious(character);
     }
 
 }

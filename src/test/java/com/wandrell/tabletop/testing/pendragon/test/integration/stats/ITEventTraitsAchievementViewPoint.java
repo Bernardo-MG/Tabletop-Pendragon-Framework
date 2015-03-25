@@ -11,9 +11,8 @@ import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
-import com.wandrell.tabletop.pendragon.stats.TraitsAchievementViewPoint;
+import com.wandrell.tabletop.pendragon.stats.TraitsAchievementValueBox;
 import com.wandrell.tabletop.valuebox.ValueBox;
-import com.wandrell.tabletop.valuebox.derived.DerivedValueViewPoint;
 
 public final class ITEventTraitsAchievementViewPoint {
 
@@ -89,9 +88,9 @@ public final class ITEventTraitsAchievementViewPoint {
 
     @Test
     public final void testTraitsSumChanges() {
-        final DerivedValueViewPoint viewPoint;
+        final ValueBox viewPoint;
 
-        viewPoint = new TraitsAchievementViewPoint(character, service);
+        viewPoint = new TraitsAchievementValueBox(character, service);
 
         character.getTraits().setChaste(10);
         character.getTraits().setValorous(10);

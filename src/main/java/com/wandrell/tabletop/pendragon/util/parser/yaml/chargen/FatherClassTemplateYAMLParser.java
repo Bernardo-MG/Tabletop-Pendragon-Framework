@@ -113,10 +113,10 @@ public class FatherClassTemplateYAMLParser implements
                 descriptor = (String) skill.get("descriptor");
                 if (descriptor == null) {
                     skillsGroup.add(new DefaultSkillBox((String) skill
-                            .get("name"), "", 0, 0, Integer.MAX_VALUE));
+                            .get("name"), "", 0));
                 } else {
                     skillsGroup.add(new DefaultSkillBox((String) skill
-                            .get("name"), descriptor, 0, 0, Integer.MAX_VALUE));
+                            .get("name"), descriptor, 0));
                 }
             }
         }
@@ -132,8 +132,7 @@ public class FatherClassTemplateYAMLParser implements
                 if (specialtySkillsMap != null) {
                     for (final Map<String, Object> skill : specialtySkillsMap) {
                         specialtySkills.add(new DefaultSkillBox((String) skill
-                                .get("name"), (Integer) skill.get("value"), 0,
-                                Integer.MAX_VALUE));
+                                .get("name"), (Integer) skill.get("value")));
                     }
                 }
             }
@@ -145,8 +144,7 @@ public class FatherClassTemplateYAMLParser implements
                     for (final Map<String, Object> trait : directedTraitsMap) {
                         directedTraits.add(new DefaultSkillBox((String) trait
                                 .get("name"), (String) trait.get("descriptor"),
-                                (Integer) trait.get("value"), 0,
-                                Integer.MAX_VALUE));
+                                (Integer) trait.get("value")));
                     }
                 }
             }
@@ -159,7 +157,7 @@ public class FatherClassTemplateYAMLParser implements
                         directedTraitsBase.add(new DefaultSkillBox(
                                 (String) trait.get("name"), (String) trait
                                         .get("descriptor"), (Integer) trait
-                                        .get("value"), 0, Integer.MAX_VALUE));
+                                        .get("value")));
                     }
                 }
             }

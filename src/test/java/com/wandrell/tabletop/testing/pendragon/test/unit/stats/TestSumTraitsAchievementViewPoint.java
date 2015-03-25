@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
-import com.wandrell.tabletop.pendragon.stats.TraitsAchievementViewPoint;
-import com.wandrell.tabletop.valuebox.derived.DerivedValueViewPoint;
+import com.wandrell.tabletop.pendragon.stats.TraitsAchievementValueBox;
+import com.wandrell.tabletop.valuebox.ValueBox;
 
 public final class TestSumTraitsAchievementViewPoint {
 
@@ -50,9 +50,9 @@ public final class TestSumTraitsAchievementViewPoint {
 
     @Test
     public final void testTraitsSum() {
-        final DerivedValueViewPoint viewPoint;
+        final ValueBox viewPoint;
 
-        viewPoint = new TraitsAchievementViewPoint(character, service);
+        viewPoint = new TraitsAchievementValueBox(character, service);
 
         Assert.assertEquals(viewPoint.getValue(), (Integer) 25);
     }

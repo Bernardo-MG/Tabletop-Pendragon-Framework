@@ -1,16 +1,15 @@
 package com.wandrell.tabletop.pendragon.model.character;
 
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.pendragon.stats.DamageViewPoint;
-import com.wandrell.tabletop.pendragon.stats.DexterityRollViewPoint;
-import com.wandrell.tabletop.pendragon.stats.HealingRateViewPoint;
-import com.wandrell.tabletop.pendragon.stats.HitPointsViewPoint;
-import com.wandrell.tabletop.pendragon.stats.MajorWoundsViewPoint;
-import com.wandrell.tabletop.pendragon.stats.MoveRateViewPoint;
-import com.wandrell.tabletop.pendragon.stats.UnconciousViewPoint;
-import com.wandrell.tabletop.pendragon.stats.WeightViewPoint;
+import com.wandrell.tabletop.pendragon.stats.DamageValueBox;
+import com.wandrell.tabletop.pendragon.stats.DexterityRollValueBox;
+import com.wandrell.tabletop.pendragon.stats.HealingRateValueBox;
+import com.wandrell.tabletop.pendragon.stats.HitPointsValueBox;
+import com.wandrell.tabletop.pendragon.stats.MajorWoundsValueBox;
+import com.wandrell.tabletop.pendragon.stats.MoveRateValueBox;
+import com.wandrell.tabletop.pendragon.stats.UnconciousValueBox;
+import com.wandrell.tabletop.pendragon.stats.WeightValueBox;
 import com.wandrell.tabletop.valuebox.ValueBox;
-import com.wandrell.tabletop.valuebox.derived.DerivedValueBox;
 
 public final class DefaultDerivedAttributeBuilder implements
         DerivedAttributeBuilder {
@@ -26,54 +25,47 @@ public final class DefaultDerivedAttributeBuilder implements
 
     @Override
     public final ValueBox getDamage(final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new DamageViewPoint(character,
-                getDerivedAttributesService()));
+        return new DamageValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getDexterityRoll(
             final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new DexterityRollViewPoint(character,
-                getDerivedAttributesService()));
+        return new DexterityRollValueBox(character,
+                getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox
             getHealingRate(final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new HealingRateViewPoint(character,
-                getDerivedAttributesService()));
+        return new HealingRateValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getHitPoints(final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new HitPointsViewPoint(character,
-                getDerivedAttributesService()));
+        return new HitPointsValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getMajorWoundTreshold(
             final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new MajorWoundsViewPoint(character,
-                getDerivedAttributesService()));
+        return new MajorWoundsValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getMoveRate(final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new MoveRateViewPoint(character,
-                getDerivedAttributesService()));
+        return new MoveRateValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getUnconciousTreshold(
             final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new UnconciousViewPoint(character,
-                getDerivedAttributesService()));
+        return new UnconciousValueBox(character, getDerivedAttributesService());
     }
 
     @Override
     public final ValueBox getWeight(final PendragonBaseCharacter character) {
-        return new DerivedValueBox(new WeightViewPoint(character,
-                getDerivedAttributesService()));
+        return new WeightValueBox(character, getDerivedAttributesService());
     }
 
     private final DerivedAttributesService getDerivedAttributesService() {

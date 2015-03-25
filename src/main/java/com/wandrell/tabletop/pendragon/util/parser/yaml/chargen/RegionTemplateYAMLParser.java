@@ -50,7 +50,7 @@ public final class RegionTemplateYAMLParser implements
             if (bonus.containsKey("traits")) {
                 for (final Map<String, Object> trait : bonus.get("traits")) {
                     traits.add(new DefaultSkillBox((String) trait.get("name"),
-                            (Integer) trait.get("value"), 0, Integer.MAX_VALUE));
+                            (Integer) trait.get("value")));
                 }
             }
         }

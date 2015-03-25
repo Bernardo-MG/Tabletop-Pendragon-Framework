@@ -32,8 +32,7 @@ public final class ITParseMinimumStatsYAMLParser {
             @Override
             public final SkillBox getStat(final String name,
                     final String descriptor, final Integer value) {
-                return new DefaultSkillBox(name, descriptor, 0, 0,
-                        Integer.MAX_VALUE);
+                return new DefaultSkillBox(name, descriptor, 0);
             }
 
         });

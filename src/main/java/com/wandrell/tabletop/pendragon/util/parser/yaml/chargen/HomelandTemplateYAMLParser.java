@@ -83,8 +83,7 @@ public final class HomelandTemplateYAMLParser implements
                         descriptor = "";
                     }
                     skillData = new DefaultSkillBox((String) skill.get("name"),
-                            descriptor, (Integer) skill.get("value"), 0,
-                            Integer.MAX_VALUE);
+                            descriptor, (Integer) skill.get("value"));
                     skills.add(skillData);
                 }
             }
@@ -94,8 +93,7 @@ public final class HomelandTemplateYAMLParser implements
                 for (final Map<String, Object> skill : bonus
                         .get("specialty_skills")) {
                     specialtySkills.add(new DefaultSkillBox((String) skill
-                            .get("name"), (Integer) skill.get("value"), 0,
-                            Integer.MAX_VALUE));
+                            .get("name"), (Integer) skill.get("value")));
                 }
             }
 
@@ -104,8 +102,7 @@ public final class HomelandTemplateYAMLParser implements
                 for (final Map<String, Object> trait : bonus
                         .get("directed_traits")) {
                     skillData = new DefaultSkillBox((String) trait.get("name"),
-                            (String) trait.get("descriptor"), 0, 0,
-                            Integer.MAX_VALUE);
+                            (String) trait.get("descriptor"), 0);
                     directedTraits.add(skillData);
                 }
             }
@@ -115,8 +112,7 @@ public final class HomelandTemplateYAMLParser implements
                 for (final Map<String, Object> passion : bonus.get("passions")) {
                     skillData = new DefaultSkillBox(
                             (String) passion.get("name"),
-                            (String) passion.get("descriptor"), 0, 0,
-                            Integer.MAX_VALUE);
+                            (String) passion.get("descriptor"), 0);
                     passions.add(skillData);
                 }
             }

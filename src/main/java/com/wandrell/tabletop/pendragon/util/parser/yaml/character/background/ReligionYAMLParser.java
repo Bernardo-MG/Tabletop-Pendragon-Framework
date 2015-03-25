@@ -61,8 +61,7 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
         if (derived != null) {
             for (final Map<String, Object> attribute : derived) {
                 bonusDerived.add(new DefaultSkillBox((String) attribute
-                        .get("name"), (Integer) attribute.get("value"), 0,
-                        Integer.MAX_VALUE));
+                        .get("name"), (Integer) attribute.get("value")));
             }
         }
 
