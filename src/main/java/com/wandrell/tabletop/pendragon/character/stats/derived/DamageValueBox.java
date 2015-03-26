@@ -36,7 +36,7 @@ public final class DamageValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
+    public final DamageValueBox createNewInstance() {
         return new DamageValueBox(character, derivedService);
     }
 

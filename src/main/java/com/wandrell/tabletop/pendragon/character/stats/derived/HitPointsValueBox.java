@@ -36,8 +36,8 @@ public final class HitPointsValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final HitPointsValueBox createNewInstance() {
+        return new HitPointsValueBox(character, derivedService);
     }
 
     @Override

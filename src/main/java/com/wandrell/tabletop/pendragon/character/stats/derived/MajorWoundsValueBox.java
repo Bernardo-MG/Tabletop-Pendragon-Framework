@@ -31,8 +31,8 @@ public final class MajorWoundsValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final MajorWoundsValueBox createNewInstance() {
+        return new MajorWoundsValueBox(character, derivedService);
     }
 
     @Override

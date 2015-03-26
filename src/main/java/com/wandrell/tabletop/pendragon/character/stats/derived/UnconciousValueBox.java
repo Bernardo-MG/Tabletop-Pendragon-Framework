@@ -31,8 +31,8 @@ public final class UnconciousValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final UnconciousValueBox createNewInstance() {
+        return new UnconciousValueBox(character, derivedService);
     }
 
     @Override

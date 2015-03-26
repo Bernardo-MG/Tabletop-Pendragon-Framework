@@ -37,8 +37,8 @@ public final class HealingRateValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final HealingRateValueBox createNewInstance() {
+        return new HealingRateValueBox(character, derivedService);
     }
 
     @Override

@@ -37,8 +37,8 @@ public final class MoveRateValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final MoveRateValueBox createNewInstance() {
+        return new MoveRateValueBox(character, derivedService);
     }
 
     @Override

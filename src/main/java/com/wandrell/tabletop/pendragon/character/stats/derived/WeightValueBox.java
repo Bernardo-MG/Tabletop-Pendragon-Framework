@@ -30,8 +30,8 @@ public final class WeightValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+    public final WeightValueBox createNewInstance() {
+        return new WeightValueBox(character, derivedService);
     }
 
     @Override
