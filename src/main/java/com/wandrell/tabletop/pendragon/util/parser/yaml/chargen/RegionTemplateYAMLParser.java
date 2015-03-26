@@ -67,57 +67,57 @@ public final class RegionTemplateYAMLParser implements
         traitsHolder = new DefaultTraitsHolder();
 
         for (final Map<String, Object> child : traits) {
-            if (child.get("text").equals("arbitrary")) {
+            if (child.get("name").equals("arbitrary")) {
                 traitsHolder.setArbitrary((Integer) child.get("value"));
-            } else if (child.get("text").equals("chaste")) {
+            } else if (child.get("name").equals("chaste")) {
                 traitsHolder.setChaste((Integer) child.get("value"));
-            } else if (child.get("text").equals("cowardly")) {
+            } else if (child.get("name").equals("cowardly")) {
                 traitsHolder.setCowardly((Integer) child.get("value"));
-            } else if (child.get("text").equals("cruel")) {
+            } else if (child.get("name").equals("cruel")) {
                 traitsHolder.setCruel((Integer) child.get("value"));
-            } else if (child.get("text").equals("deceitful")) {
+            } else if (child.get("name").equals("deceitful")) {
                 traitsHolder.setDeceitful((Integer) child.get("value"));
-            } else if (child.get("text").equals("energetic")) {
+            } else if (child.get("name").equals("energetic")) {
                 traitsHolder.setEnergetic((Integer) child.get("value"));
-            } else if (child.get("text").equals("forgiving")) {
+            } else if (child.get("name").equals("forgiving")) {
                 traitsHolder.setForgiving((Integer) child.get("value"));
-            } else if (child.get("text").equals("generous")) {
+            } else if (child.get("name").equals("generous")) {
                 traitsHolder.setGenerous((Integer) child.get("value"));
-            } else if (child.get("text").equals("honest")) {
+            } else if (child.get("name").equals("honest")) {
                 traitsHolder.setHonest((Integer) child.get("value"));
-            } else if (child.get("text").equals("indulgent")) {
+            } else if (child.get("name").equals("indulgent")) {
                 traitsHolder.setIndulgent((Integer) child.get("value"));
-            } else if (child.get("text").equals("just")) {
+            } else if (child.get("name").equals("just")) {
                 traitsHolder.setJust((Integer) child.get("value"));
-            } else if (child.get("text").equals("lazy")) {
+            } else if (child.get("name").equals("lazy")) {
                 traitsHolder.setLazy((Integer) child.get("value"));
-            } else if (child.get("text").equals("lustful")) {
+            } else if (child.get("name").equals("lustful")) {
                 traitsHolder.setLustful((Integer) child.get("value"));
-            } else if (child.get("text").equals("merciful")) {
+            } else if (child.get("name").equals("merciful")) {
                 traitsHolder.setMerciful((Integer) child.get("value"));
-            } else if (child.get("text").equals("modest")) {
+            } else if (child.get("name").equals("modest")) {
                 traitsHolder.setModest((Integer) child.get("value"));
-            } else if (child.get("text").equals("pious")) {
+            } else if (child.get("name").equals("pious")) {
                 traitsHolder.setPious((Integer) child.get("value"));
-            } else if (child.get("text").equals("proud")) {
+            } else if (child.get("name").equals("proud")) {
                 traitsHolder.setProud((Integer) child.get("value"));
-            } else if (child.get("text").equals("prudent")) {
+            } else if (child.get("name").equals("prudent")) {
                 traitsHolder.setPrudent((Integer) child.get("value"));
-            } else if (child.get("text").equals("reckless")) {
+            } else if (child.get("name").equals("reckless")) {
                 traitsHolder.setReckless((Integer) child.get("value"));
-            } else if (child.get("text").equals("selfish")) {
+            } else if (child.get("name").equals("selfish")) {
                 traitsHolder.setSelfish((Integer) child.get("value"));
-            } else if (child.get("text").equals("suspicious")) {
+            } else if (child.get("name").equals("suspicious")) {
                 traitsHolder.setSuspicious((Integer) child.get("value"));
-            } else if (child.get("text").equals("temperate")) {
+            } else if (child.get("name").equals("temperate")) {
                 traitsHolder.setTemperate((Integer) child.get("value"));
-            } else if (child.get("text").equals("trusting")) {
+            } else if (child.get("name").equals("trusting")) {
                 traitsHolder.setTrusting((Integer) child.get("value"));
-            } else if (child.get("text").equals("valorous")) {
+            } else if (child.get("name").equals("valorous")) {
                 traitsHolder.setValorous((Integer) child.get("value"));
-            } else if (child.get("text").equals("vengeful")) {
+            } else if (child.get("name").equals("vengeful")) {
                 traitsHolder.setVengeful((Integer) child.get("value"));
-            } else if (child.get("text").equals("wordly")) {
+            } else if (child.get("name").equals("wordly")) {
                 traitsHolder.setWorldly((Integer) child.get("value"));
             }
         }
