@@ -59,7 +59,7 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
         Assert.assertEquals(fatherClass.getDirectedTraits().size(), 3);
 
-        itr = fatherClass.getDirectedTraitsBase().iterator();
+        itr = fatherClass.getDirectedTraits().iterator();
 
         trait = itr.next();
         Assert.assertEquals(trait.getName(), "directed_trait_1");

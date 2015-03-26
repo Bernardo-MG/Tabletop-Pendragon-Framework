@@ -190,7 +190,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
             if (template.containsKey("traits_bonus")) {
                 for (final Map<String, Object> child : template
                         .get("traits_bonus")) {
-                    directedBonus.add(new DefaultSkillBox(child.get("name")
+                    traitsBonus.add(new DefaultSkillBox(child.get("name")
                             .toString(), (Integer) child.get("value")));
                 }
             }

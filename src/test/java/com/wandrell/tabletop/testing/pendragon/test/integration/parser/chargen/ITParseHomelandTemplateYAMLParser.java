@@ -108,7 +108,7 @@ public final class ITParseHomelandTemplateYAMLParser {
 
         Assert.assertEquals(homeland.getSpecialtySkills().size(), 1);
 
-        itr = homeland.getSkills().iterator();
+        itr = homeland.getSpecialtySkills().iterator();
 
         skill = itr.next();
         Assert.assertEquals(skill.getName(), "specialty_skill_1");

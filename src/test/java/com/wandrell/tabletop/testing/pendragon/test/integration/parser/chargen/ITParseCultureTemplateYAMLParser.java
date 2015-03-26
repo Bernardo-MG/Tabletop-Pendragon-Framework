@@ -149,7 +149,7 @@ public final class ITParseCultureTemplateYAMLParser {
         box = itr.next();
         Assert.assertEquals(box.getName(), "directed_2");
         Assert.assertEquals(box.getDescriptor(), "descriptor_2");
-        Assert.assertEquals(box.getValue(), (Integer) 30);
+        Assert.assertEquals(box.getValue(), (Integer) 1);
     }
 
     @Test
