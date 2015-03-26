@@ -39,6 +39,12 @@ public final class TraitsAchievementValueBox extends AbstractValueBox {
     }
 
     @Override
+    public final AbstractValueBox createNewInstance() {
+        return new TraitsAchievementValueBox(getCharacter(),
+                getTraitsAchievementService());
+    }
+
+    @Override
     public final Integer getValue() {
         return sum;
     }

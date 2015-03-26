@@ -31,6 +31,11 @@ public final class DexterityRollValueBox extends AbstractValueBox {
     }
 
     @Override
+    public final AbstractValueBox createNewInstance() {
+        return new DamageValueBox(character, derivedService);
+    }
+
+    @Override
     public final Integer getValue() {
         return derivedService.getDexterityRoll(character);
     }
