@@ -11,13 +11,14 @@ import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.model.glory.FatherClassGlory;
@@ -120,7 +121,7 @@ public final class TestModelConstructorService implements
             final Collection<SkillBox> passionsBonus,
             final Map<SkillBox, Dice> passionsRandom,
             final Collection<SkillBox> directedBonus,
-            final Collection<SkillBox> traitsBonus) {
+            final TraitsHolder traitsBonus) {
         final CultureCharacterTemplate template;
 
         template = Mockito.mock(CultureCharacterTemplate.class);
@@ -337,7 +338,7 @@ public final class TestModelConstructorService implements
 
     @Override
     public final RegionTemplate getRegionTemplate(final String name,
-            final Collection<SkillBox> traits) {
+            final TraitsHolder traits) {
         final RegionTemplate region;
 
         region = Mockito.mock(RegionTemplate.class);

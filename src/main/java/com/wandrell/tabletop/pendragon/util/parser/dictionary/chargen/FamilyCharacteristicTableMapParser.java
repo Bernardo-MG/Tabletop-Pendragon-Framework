@@ -8,8 +8,8 @@ import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class FamilyCharacteristicTableMapParser implements

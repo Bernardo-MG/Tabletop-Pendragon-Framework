@@ -10,8 +10,8 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 

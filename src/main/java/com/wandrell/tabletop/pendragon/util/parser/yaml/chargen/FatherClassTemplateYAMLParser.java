@@ -11,7 +11,7 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.DefaultDice;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
-import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FatherClassTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.valuebox.SkillBox;

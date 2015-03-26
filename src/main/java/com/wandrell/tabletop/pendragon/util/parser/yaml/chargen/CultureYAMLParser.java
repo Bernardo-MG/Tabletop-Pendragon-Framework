@@ -13,10 +13,12 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultTraitsHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.valuebox.SkillBox;
@@ -92,7 +94,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         final Collection<SkillBox> passionsBonus;
         final Map<SkillBox, Dice> passionsRandom;
         final Collection<SkillBox> directedBonus;
-        final Collection<SkillBox> traitsBonus;
+        final TraitsHolder traitsBonus;
         final Parser<String, Dice> diceParser;
         String descriptor;
         SkillBox skill;
@@ -106,7 +108,6 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         passionsBonus = new LinkedList<>();
         passionsRandom = new LinkedHashMap<SkillBox, Dice>();
         directedBonus = new LinkedList<>();
-        traitsBonus = new LinkedList<>();
 
         if (template != null) {
             if (template.containsKey("attributes_bonus")) {
@@ -188,12 +189,12 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
             }
 
             if (template.containsKey("traits_bonus")) {
-                for (final Map<String, Object> child : template
-                        .get("traits_bonus")) {
-                    traitsBonus.add(new DefaultSkillBox(child.get("name")
-                            .toString(), (Integer) child.get("value")));
-                }
+                traitsBonus = getTraits(template.get("traits_bonus"));
+            } else {
+                traitsBonus = new DefaultTraitsHolder();
             }
+        } else {
+            traitsBonus = new DefaultTraitsHolder();
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
@@ -241,6 +242,71 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final ModelConstructorService getModelService() {
         return modelService;
+    }
+
+    private final TraitsHolder getTraits(
+            final Collection<Map<String, Object>> traits) {
+        final TraitsHolder traitsHolder;
+
+        traitsHolder = new DefaultTraitsHolder();
+
+        for (final Map<String, Object> child : traits) {
+            if (child.get("text").equals("arbitrary")) {
+                traitsHolder.setArbitrary((Integer) child.get("value"));
+            } else if (child.get("text").equals("chaste")) {
+                traitsHolder.setChaste((Integer) child.get("value"));
+            } else if (child.get("text").equals("cowardly")) {
+                traitsHolder.setCowardly((Integer) child.get("value"));
+            } else if (child.get("text").equals("cruel")) {
+                traitsHolder.setCruel((Integer) child.get("value"));
+            } else if (child.get("text").equals("deceitful")) {
+                traitsHolder.setDeceitful((Integer) child.get("value"));
+            } else if (child.get("text").equals("energetic")) {
+                traitsHolder.setEnergetic((Integer) child.get("value"));
+            } else if (child.get("text").equals("forgiving")) {
+                traitsHolder.setForgiving((Integer) child.get("value"));
+            } else if (child.get("text").equals("generous")) {
+                traitsHolder.setGenerous((Integer) child.get("value"));
+            } else if (child.get("text").equals("honest")) {
+                traitsHolder.setHonest((Integer) child.get("value"));
+            } else if (child.get("text").equals("indulgent")) {
+                traitsHolder.setIndulgent((Integer) child.get("value"));
+            } else if (child.get("text").equals("just")) {
+                traitsHolder.setJust((Integer) child.get("value"));
+            } else if (child.get("text").equals("lazy")) {
+                traitsHolder.setLazy((Integer) child.get("value"));
+            } else if (child.get("text").equals("lustful")) {
+                traitsHolder.setLustful((Integer) child.get("value"));
+            } else if (child.get("text").equals("merciful")) {
+                traitsHolder.setMerciful((Integer) child.get("value"));
+            } else if (child.get("text").equals("modest")) {
+                traitsHolder.setModest((Integer) child.get("value"));
+            } else if (child.get("text").equals("pious")) {
+                traitsHolder.setPious((Integer) child.get("value"));
+            } else if (child.get("text").equals("proud")) {
+                traitsHolder.setProud((Integer) child.get("value"));
+            } else if (child.get("text").equals("prudent")) {
+                traitsHolder.setPrudent((Integer) child.get("value"));
+            } else if (child.get("text").equals("reckless")) {
+                traitsHolder.setReckless((Integer) child.get("value"));
+            } else if (child.get("text").equals("selfish")) {
+                traitsHolder.setSelfish((Integer) child.get("value"));
+            } else if (child.get("text").equals("suspicious")) {
+                traitsHolder.setSuspicious((Integer) child.get("value"));
+            } else if (child.get("text").equals("temperate")) {
+                traitsHolder.setTemperate((Integer) child.get("value"));
+            } else if (child.get("text").equals("trusting")) {
+                traitsHolder.setTrusting((Integer) child.get("value"));
+            } else if (child.get("text").equals("valorous")) {
+                traitsHolder.setValorous((Integer) child.get("value"));
+            } else if (child.get("text").equals("vengeful")) {
+                traitsHolder.setVengeful((Integer) child.get("value"));
+            } else if (child.get("text").equals("wordly")) {
+                traitsHolder.setWorldly((Integer) child.get("value"));
+            }
+        }
+
+        return traitsHolder;
     }
 
 }

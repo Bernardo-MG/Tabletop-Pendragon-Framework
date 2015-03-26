@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
@@ -197,24 +197,6 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
         skills = culture.getMaleTemplate().getSpecialtySkills();
 
         Assert.assertTrue(skills.isEmpty());
-    }
-
-    @Test
-    public final void testTraitsBonus_Female() {
-        final Collection<SkillBox> traits;
-
-        traits = culture.getFemaleTemplate().getTraits();
-
-        Assert.assertTrue(traits.isEmpty());
-    }
-
-    @Test
-    public final void testTraitsBonus_Male() {
-        final Collection<SkillBox> traits;
-
-        traits = culture.getMaleTemplate().getTraits();
-
-        Assert.assertTrue(traits.isEmpty());
     }
 
 }

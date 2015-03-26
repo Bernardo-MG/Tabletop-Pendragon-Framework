@@ -41,9 +41,4 @@ public final class ITParseMinimumRegionTemplateYAMLParser {
         Assert.assertEquals(region.getName(), "test_region");
     }
 
-    @Test
-    public final void testTraits() {
-        Assert.assertEquals(region.getTraits().size(), 0);
-    }
-
 }

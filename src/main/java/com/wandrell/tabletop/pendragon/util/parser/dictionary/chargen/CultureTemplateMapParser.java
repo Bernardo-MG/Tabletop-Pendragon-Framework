@@ -8,8 +8,9 @@ import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class CultureTemplateMapParser implements
@@ -91,21 +92,10 @@ public final class CultureTemplateMapParser implements
         }
 
         // Traits
-        valuesCol = new LinkedList<>();
-        if (!template.getTraits().isEmpty()) {
-            for (final SkillBox box : template.getTraits()) {
-                value = new LinkedHashMap<String, Object>();
-
-                value.put("name", box.getName());
-                value.put("value", box.getValue());
-
-                valuesCol.add(value);
-            }
-            values.put("traits_bonus", valuesCol);
-        }
+        valuesCol = getTraitsValues(template.getTraits());
+        values.put("traits_bonus", valuesCol);
 
         // Skills
-        valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
             for (final SkillBox box : template.getSkills()) {
                 value = new LinkedHashMap<String, Object>();
@@ -180,6 +170,136 @@ public final class CultureTemplateMapParser implements
         }
 
         return values;
+    }
+
+    private final Collection<Map<String, Object>> getTraitsValues(
+            final TraitsHolder traits) {
+        final Collection<Map<String, Object>> valuesCol;
+        Map<String, Object> value;
+
+        valuesCol = new LinkedList<>();
+        if (traits.getArbitrary() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "arbitrary");
+            value.put("value", traits.getArbitrary());
+
+            valuesCol.add(value);
+        }
+        if (traits.getChaste() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "chaste");
+            value.put("value", traits.getChaste());
+
+            valuesCol.add(value);
+        }
+        if (traits.getCowardly() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "cowardly");
+            value.put("value", traits.getCowardly());
+
+            valuesCol.add(value);
+        }
+        if (traits.getCruel() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "cruel");
+            value.put("value", traits.getCruel());
+
+            valuesCol.add(value);
+        }
+        if (traits.getDeceitful() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "deceitful");
+            value.put("value", traits.getDeceitful());
+
+            valuesCol.add(value);
+        }
+        if (traits.getEnergetic() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "energetic");
+            value.put("value", traits.getEnergetic());
+
+            valuesCol.add(value);
+        }
+        if (traits.getForgiving() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "forgiving");
+            value.put("value", traits.getForgiving());
+
+            valuesCol.add(value);
+        }
+        if (traits.getGenerous() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "generous");
+            value.put("value", traits.getGenerous());
+
+            valuesCol.add(value);
+        }
+        if (traits.getHonest() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "honest");
+            value.put("value", traits.getHonest());
+
+            valuesCol.add(value);
+        }
+        if (traits.getIndulgent() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "indulgent");
+            value.put("value", traits.getIndulgent());
+
+            valuesCol.add(value);
+        }
+        if (traits.getJust() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "just");
+            value.put("value", traits.getJust());
+
+            valuesCol.add(value);
+        }
+        if (traits.getLazy() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "lazy");
+            value.put("value", traits.getLazy());
+
+            valuesCol.add(value);
+        }
+        if (traits.getLustful() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "lustful");
+            value.put("value", traits.getLustful());
+
+            valuesCol.add(value);
+        }
+        if (traits.getMerciful() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "merciful");
+            value.put("value", traits.getMerciful());
+
+            valuesCol.add(value);
+        }
+        if (traits.getModest() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "modest");
+            value.put("value", traits.getModest());
+
+            valuesCol.add(value);
+        }
+
+        return valuesCol;
     }
 
 }

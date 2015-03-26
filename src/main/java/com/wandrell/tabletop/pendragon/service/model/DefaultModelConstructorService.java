@@ -12,20 +12,21 @@ import com.wandrell.tabletop.pendragon.model.character.background.DefaultReligio
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultPendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongings;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultAdditionalBelongings;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultAdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultCultureCharacterTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultCultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultFamilyCharacteristicTable;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultFamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.DefaultFatherClassTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.DefaultCultureCharacterTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.DefaultCultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.DefaultFamilyCharacteristicTable;
+import com.wandrell.tabletop.pendragon.model.chargen.background.DefaultFamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.DefaultFatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FatherClassTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.DefaultAdditionalBelongings;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.DefaultAdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.chargen.region.DefaultHomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.DefaultRegionTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
@@ -100,7 +101,7 @@ public final class DefaultModelConstructorService implements
             final Collection<SkillBox> passionsBonus,
             final Map<SkillBox, Dice> passionsRandom,
             final Collection<SkillBox> directedBonus,
-            final Collection<SkillBox> traitsBonus) {
+            final TraitsHolder traitsBonus) {
         return new DefaultCultureCharacterTemplate(attributesBonus,
                 attributesRandom, skillsBonus, specialtySkills, traitsBonus,
                 directedBonus, passionsBonus, passionsRandom);
@@ -200,7 +201,7 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final RegionTemplate getRegionTemplate(final String name,
-            final Collection<SkillBox> traits) {
+            final TraitsHolder traits) {
         return new DefaultRegionTemplate(name, traits);
     }
 

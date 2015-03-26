@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.model.inventory.Item;
 import com.wandrell.tabletop.pendragon.model.inventory.armor.Shield;
 import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;

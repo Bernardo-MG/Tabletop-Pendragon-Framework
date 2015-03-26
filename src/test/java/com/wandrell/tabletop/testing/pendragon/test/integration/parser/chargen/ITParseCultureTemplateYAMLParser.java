@@ -12,9 +12,10 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.model.chargen.AdditionalBelongingsTable;
-import com.wandrell.tabletop.pendragon.model.chargen.CultureTemplate;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
+import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
@@ -320,38 +321,22 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testTraitsBonus_Female() {
-        final Collection<SkillBox> attributes;
-        final Iterator<SkillBox> itr;
-        SkillBox box;
+        final TraitsHolder traits;
 
-        attributes = culture.getFemaleTemplate().getTraits();
+        traits = culture.getFemaleTemplate().getTraits();
 
-        Assert.assertEquals(attributes.size(), 1);
-
-        itr = attributes.iterator();
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "cowardly");
-        Assert.assertEquals(box.getValue(), (Integer) 22);
+        Assert.assertEquals(traits.getCowardly(), (Integer) 22);
     }
 
     @Test
     public final void testTraitsBonus_Male() {
-        final Collection<SkillBox> attributes;
-        final Iterator<SkillBox> itr;
-        SkillBox box;
+        final TraitsHolder traits;
 
-        attributes = culture.getMaleTemplate().getTraits();
+        traits = culture.getMaleTemplate().getTraits();
 
-        Assert.assertEquals(attributes.size(), 2);
+        Assert.assertEquals(traits.getArbitrary(), (Integer) 6);
 
-        itr = attributes.iterator();
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "arbitrary");
-        Assert.assertEquals(box.getValue(), (Integer) 6);
-
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "chaste");
-        Assert.assertEquals(box.getValue(), (Integer) 12);
+        Assert.assertEquals(traits.getChaste(), (Integer) 12);
     }
 
 }

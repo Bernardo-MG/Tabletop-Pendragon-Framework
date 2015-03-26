@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.Interval;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTable;
-import com.wandrell.tabletop.pendragon.model.chargen.FamilyCharacteristicTemplate;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
+import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FamilyCharacteristicTableYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
