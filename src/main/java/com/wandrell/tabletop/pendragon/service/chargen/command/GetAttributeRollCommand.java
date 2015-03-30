@@ -15,7 +15,8 @@ import com.wandrell.util.ResourceUtils;
 public final class GetAttributeRollCommand implements
         ReturnCommand<Map<String, Dice>> {
 
-    private final Gender gender;
+    private final Gender      gender;
+    private Map<String, Dice> rolls;
 
     public GetAttributeRollCommand(final Gender gender) {
         super();
@@ -25,9 +26,8 @@ public final class GetAttributeRollCommand implements
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Map<String, Dice> execute() throws Exception {
+    public final void execute() throws Exception {
         final StringDiceParser parser;
-        final Map<String, Dice> rolls;
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -53,7 +53,10 @@ public final class GetAttributeRollCommand implements
         rolls.put("dexterity", parser.parse(values.get("dexterity").toString()));
         rolls.put("size", parser.parse(values.get("size").toString()));
         rolls.put("strength", parser.parse(values.get("strength").toString()));
+    }
 
+    @Override
+    public final Map<String, Dice> getResult() {
         return rolls;
     }
 

@@ -10,13 +10,15 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetKnightedGloryCommand implements ReturnCommand<Integer> {
 
+    private Integer glory;
+
     public GetKnightedGloryCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -27,7 +29,12 @@ public final class GetKnightedGloryCommand implements ReturnCommand<Integer> {
 
         values = (Map<String, Object>) values.get("glory");
 
-        return (Integer) values.get("knighted");
+        glory = (Integer) values.get("knighted");
+    }
+
+    @Override
+    public final Integer getResult() {
+        return glory;
     }
 
 }

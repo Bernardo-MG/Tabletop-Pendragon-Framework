@@ -13,6 +13,7 @@ public final class IsAbleToGetSkillRaiseCommand implements
         ReturnCommand<Boolean> {
 
     private final PendragonSkillBox skill;
+    private Boolean                 valid;
 
     public IsAbleToGetSkillRaiseCommand(final PendragonSkillBox skill) {
         super();
@@ -22,7 +23,7 @@ public final class IsAbleToGetSkillRaiseCommand implements
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Boolean execute() {
+    public final void execute() {
         final Yaml yaml;
         final Integer max;
         Map<String, Object> values;
@@ -35,8 +36,13 @@ public final class IsAbleToGetSkillRaiseCommand implements
         values = (Map<String, Object>) values.get("skill");
         max = (Integer) values.get("max");
 
-        return ((skill.getValue() < max) && ((skill.isCombatSkill()) || (skill
+        valid = ((skill.getValue() < max) && ((skill.isCombatSkill()) || (skill
                 .getValue() > 0)));
+    }
+
+    @Override
+    public final Boolean getResult() {
+        return valid;
     }
 
 }

@@ -18,6 +18,7 @@ public final class GetInitialSkillsCommand implements
         PendragonSkillBoxRepositoryAware {
 
     private Repository<PendragonSkillBox> skillRepo;
+    private Collection<PendragonSkillBox> skills;
 
     public GetInitialSkillsCommand() {
         super();
@@ -25,20 +26,19 @@ public final class GetInitialSkillsCommand implements
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Collection<PendragonSkillBox> execute() {
+    public final void execute() {
         final Yaml yaml;
         final Collection<Map<String, String>> data;
-        final Collection<PendragonSkillBox> values;
-        Collection<PendragonSkillBox> skills;
+        Collection<PendragonSkillBox> query;
 
         yaml = new Yaml();
 
         data = (Collection<Map<String, String>>) yaml.load(ResourceUtils
                 .getClassPathReader("config/stat/pendragon_skill_initial.yml"));
 
-        values = new LinkedList<>();
+        skills = new LinkedList<>();
         for (final Map<String, String> value : data) {
-            skills = getPendragonSkillBoxRepository().getCollection(
+            query = getPendragonSkillBoxRepository().getCollection(
                     new Predicate<PendragonSkillBox>() {
 
                         @Override
@@ -49,12 +49,15 @@ public final class GetInitialSkillsCommand implements
 
                     });
 
-            if (!skills.isEmpty()) {
-                values.add(skills.iterator().next());
+            if (!query.isEmpty()) {
+                skills.add(query.iterator().next());
             }
         }
+    }
 
-        return values;
+    @Override
+    public final Collection<PendragonSkillBox> getResult() {
+        return skills;
     }
 
     @Override

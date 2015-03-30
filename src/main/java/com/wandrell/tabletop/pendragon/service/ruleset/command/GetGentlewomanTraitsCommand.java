@@ -12,13 +12,15 @@ import com.wandrell.util.ResourceUtils;
 public final class GetGentlewomanTraitsCommand implements
         ReturnCommand<Collection<String>> {
 
+    private Collection<String> traits;
+
     public GetGentlewomanTraitsCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Collection<String> execute() {
+    public final void execute() {
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -30,7 +32,12 @@ public final class GetGentlewomanTraitsCommand implements
         values = (Map<String, Object>) values.get("traitBonus");
         values = (Map<String, Object>) values.get("gentlewoman");
 
-        return (Collection<String>) values.get("traits");
+        traits = (Collection<String>) values.get("traits");
+    }
+
+    @Override
+    public final Collection<String> getResult() {
+        return traits;
     }
 
 }

@@ -26,7 +26,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(command.execute());
+        command.execute();
+        Assert.assertTrue(command.getResult());
     }
 
     @Test
@@ -41,7 +42,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -56,7 +58,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -72,7 +75,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -87,7 +91,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -102,7 +107,8 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
 
         command = new IsAbleToGetSkillRaiseCommand(skill);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
 }

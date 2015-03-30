@@ -30,7 +30,8 @@ public final class TestGetHitPointsCommand {
 
         command = new GetHitPointsCommand(constitution, size);
 
-        Assert.assertEquals(command.execute(), expected);
+        command.execute();
+        Assert.assertEquals(command.getResult(), expected);
     }
 
 }

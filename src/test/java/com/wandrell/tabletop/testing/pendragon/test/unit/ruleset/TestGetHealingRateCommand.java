@@ -30,7 +30,8 @@ public final class TestGetHealingRateCommand {
 
         command = new GetHealingRateCommand(constitution, strength);
 
-        Assert.assertEquals(command.execute(), expected);
+        command.execute();
+        Assert.assertEquals(command.getResult(), expected);
     }
 
 }

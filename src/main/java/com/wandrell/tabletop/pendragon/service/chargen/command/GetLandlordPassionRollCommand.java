@@ -15,6 +15,7 @@ public final class GetLandlordPassionRollCommand implements ReturnCommand<Dice> 
 
     private final String descriptor;
     private final String name;
+    private Dice         roll;
 
     public GetLandlordPassionRollCommand(final String name,
             final String descriptor) {
@@ -26,11 +27,10 @@ public final class GetLandlordPassionRollCommand implements ReturnCommand<Dice> 
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Dice execute() throws Exception {
+    public final void execute() throws Exception {
         final Yaml yaml;
         final StringDiceParser parser;
         final Iterator<Map<String, Object>> itr;
-        Dice result;
         Collection<Map<String, Object>> values;
         Map<String, Object> value;
 
@@ -42,18 +42,25 @@ public final class GetLandlordPassionRollCommand implements ReturnCommand<Dice> 
 
         parser = new StringDiceParser();
 
-        result = null;
+        roll = null;
         itr = values.iterator();
-        while ((itr.hasNext()) && (result == null)) {
+        while ((itr.hasNext()) && (roll == null)) {
             value = itr.next();
 
             if ((value.get("name").equals(name))
                     && (value.get("descriptor").equals(descriptor))) {
-                result = parser.parse(value.get("roll").toString());
+                roll = parser.parse(value.get("roll").toString());
             }
         }
 
-        return result;
+        if (roll == null) {
+            roll = parser.parse("0");
+        }
+    }
+
+    @Override
+    public final Dice getResult() {
+        return roll;
     }
 
 }

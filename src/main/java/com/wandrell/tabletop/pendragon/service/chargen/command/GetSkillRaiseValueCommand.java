@@ -10,15 +10,16 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetSkillRaiseValueCommand implements ReturnCommand<Integer> {
 
+    private Integer raise;
+
     public GetSkillRaiseValueCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -27,9 +28,12 @@ public final class GetSkillRaiseValueCommand implements ReturnCommand<Integer> {
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("individualDiff");
         values = (Map<String, Object>) values.get("skill");
-        value = (Integer) values.get("raise");
+        raise = (Integer) values.get("raise");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return raise;
     }
 
 }

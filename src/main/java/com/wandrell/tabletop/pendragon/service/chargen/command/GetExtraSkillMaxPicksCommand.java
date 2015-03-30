@@ -11,15 +11,16 @@ import com.wandrell.util.ResourceUtils;
 public final class GetExtraSkillMaxPicksCommand implements
         ReturnCommand<Integer> {
 
+    private Integer picks;
+
     public GetExtraSkillMaxPicksCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -29,9 +30,12 @@ public final class GetExtraSkillMaxPicksCommand implements
         values = (Map<String, Object>) values.get("individualDiff");
         values = (Map<String, Object>) values.get("skill");
         values = (Map<String, Object>) values.get("extra");
-        value = (Integer) values.get("count");
+        picks = (Integer) values.get("count");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return picks;
     }
 
 }

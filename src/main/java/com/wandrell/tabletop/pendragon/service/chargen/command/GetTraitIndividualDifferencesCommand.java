@@ -11,15 +11,16 @@ import com.wandrell.util.ResourceUtils;
 public final class GetTraitIndividualDifferencesCommand implements
         ReturnCommand<Integer> {
 
+    private Integer points;
+
     public GetTraitIndividualDifferencesCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -28,9 +29,12 @@ public final class GetTraitIndividualDifferencesCommand implements
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("individualDiff");
         values = (Map<String, Object>) values.get("trait");
-        value = (Integer) values.get("points");
+        points = (Integer) values.get("points");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return points;
     }
 
 }

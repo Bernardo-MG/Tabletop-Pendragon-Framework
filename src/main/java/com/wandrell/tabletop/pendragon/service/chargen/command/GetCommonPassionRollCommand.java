@@ -12,13 +12,15 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetCommonPassionRollCommand implements ReturnCommand<Dice> {
 
+    private Dice dice;
+
     public GetCommonPassionRollCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Dice execute() throws Exception {
+    public final void execute() throws Exception {
         final StringDiceParser parser;
         final Yaml yaml;
         Map<String, Object> values;
@@ -31,7 +33,12 @@ public final class GetCommonPassionRollCommand implements ReturnCommand<Dice> {
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("rolls");
 
-        return parser.parse((String) values.get("commonPassion"));
+        dice = parser.parse((String) values.get("commonPassion"));
+    }
+
+    @Override
+    public final Dice getResult() {
+        return dice;
     }
 
 }

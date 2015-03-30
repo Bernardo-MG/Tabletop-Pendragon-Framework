@@ -31,7 +31,8 @@ public final class TestGetUnconciousCommand {
 
         command = new GetUnconciousCommand(hitpoints);
 
-        Assert.assertEquals(command.execute(), expected);
+        command.execute();
+        Assert.assertEquals(command.getResult(), expected);
     }
 
 }

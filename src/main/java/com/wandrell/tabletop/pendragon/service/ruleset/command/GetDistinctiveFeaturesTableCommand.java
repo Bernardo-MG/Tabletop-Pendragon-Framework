@@ -17,15 +17,16 @@ import com.wandrell.util.ResourceUtils;
 public final class GetDistinctiveFeaturesTableCommand implements
         ReturnCommand<IntervalTable<Integer>> {
 
+    private IntervalTable<Integer> table;
+
     public GetDistinctiveFeaturesTableCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final IntervalTable<Integer> execute() {
+    public final void execute() {
         final Yaml yaml;
-        final IntervalTable<Integer> table;
         final Map<Interval, Integer> intervals;
         final Collection<Map<String, Object>> intervalsInfo;
         Integer limit;
@@ -58,7 +59,11 @@ public final class GetDistinctiveFeaturesTableCommand implements
                 (Integer) values.get("outOfTableValue"));
 
         table = new DefaultIntervalTable<Integer>(intervals);
+    }
 
+    @Override
+    public final IntervalTable<Integer> getResult() {
         return table;
     }
+
 }

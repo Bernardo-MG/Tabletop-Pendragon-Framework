@@ -30,7 +30,8 @@ public final class TestGetWeightCommand {
 
         command = new GetWeightCommand(size);
 
-        Assert.assertEquals(command.execute(), expected);
+        command.execute();
+        Assert.assertEquals(command.getResult(), expected);
     }
 
 }

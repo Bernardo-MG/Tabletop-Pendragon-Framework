@@ -28,7 +28,13 @@ public final class TestGetDistinctiveFeaturesTableCommand {
 
     @BeforeClass
     public final void initalize() {
-        table = new GetDistinctiveFeaturesTableCommand().execute();
+        final GetDistinctiveFeaturesTableCommand command;
+
+        command = new GetDistinctiveFeaturesTableCommand();
+
+        command.execute();
+
+        table = command.getResult();
     }
 
     @Test(dataProvider = DATA)

@@ -11,15 +11,16 @@ import com.wandrell.util.ResourceUtils;
 public final class GetNoCombatSkillPointsCommand implements
         ReturnCommand<Integer> {
 
+    private Integer points;
+
     public GetNoCombatSkillPointsCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -28,9 +29,12 @@ public final class GetNoCombatSkillPointsCommand implements
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("individualDiff");
         values = (Map<String, Object>) values.get("skill");
-        value = (Integer) values.get("noCombatPoints");
+        points = (Integer) values.get("noCombatPoints");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return points;
     }
 
 }

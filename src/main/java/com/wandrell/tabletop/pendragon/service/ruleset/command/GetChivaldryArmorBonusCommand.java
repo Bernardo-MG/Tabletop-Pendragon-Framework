@@ -11,13 +11,15 @@ import com.wandrell.util.ResourceUtils;
 public final class GetChivaldryArmorBonusCommand implements
         ReturnCommand<Integer> {
 
+    private Integer bonus;
+
     public GetChivaldryArmorBonusCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -29,7 +31,12 @@ public final class GetChivaldryArmorBonusCommand implements
         values = (Map<String, Object>) values.get("traitBonus");
         values = (Map<String, Object>) values.get("chivaldry");
 
-        return (Integer) values.get("armor");
+        bonus = (Integer) values.get("armor");
+    }
+
+    @Override
+    public final Integer getResult() {
+        return bonus;
     }
 
 }

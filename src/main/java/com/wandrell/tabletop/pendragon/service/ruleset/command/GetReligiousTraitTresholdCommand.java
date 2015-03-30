@@ -11,13 +11,15 @@ import com.wandrell.util.ResourceUtils;
 public final class GetReligiousTraitTresholdCommand implements
         ReturnCommand<Integer> {
 
+    private Integer treshold;
+
     public GetReligiousTraitTresholdCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -29,7 +31,12 @@ public final class GetReligiousTraitTresholdCommand implements
         values = (Map<String, Object>) values.get("traitBonus");
         values = (Map<String, Object>) values.get("religious");
 
-        return (Integer) values.get("treshold");
+        treshold = (Integer) values.get("treshold");
+    }
+
+    @Override
+    public final Integer getResult() {
+        return treshold;
     }
 
 }

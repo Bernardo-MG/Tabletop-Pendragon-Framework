@@ -13,6 +13,7 @@ import com.wandrell.util.ResourceUtils;
 public final class GetLandlordPassionsCommand implements
         ReturnCommand<Collection<SkillBox>>, StatConstructorServiceAware {
 
+    private Collection<SkillBox>   skills;
     private StatConstructorService statConsService;
 
     public GetLandlordPassionsCommand() {
@@ -20,9 +21,8 @@ public final class GetLandlordPassionsCommand implements
     }
 
     @Override
-    public final Collection<SkillBox> execute() {
+    public final void execute() {
         final StatsYAMLParser<SkillBox> parser;
-        Collection<SkillBox> values;
 
         parser = new StatsYAMLParser<SkillBox>(new StatBuilder<SkillBox>() {
 
@@ -35,11 +35,14 @@ public final class GetLandlordPassionsCommand implements
 
         });
 
-        values = parser
+        skills = parser
                 .parse(ResourceUtils
                         .getClassPathReader("config/stat/pendragon_passion_landlord.yml"));
+    }
 
-        return values;
+    @Override
+    public final Collection<SkillBox> getResult() {
+        return skills;
     }
 
     @Override

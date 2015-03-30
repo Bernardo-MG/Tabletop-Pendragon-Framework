@@ -11,15 +11,16 @@ import com.wandrell.util.ResourceUtils;
 public final class GetTraitRandomPointsCommand implements
         ReturnCommand<Integer> {
 
+    private Integer points;
+
     public GetTraitRandomPointsCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -27,9 +28,12 @@ public final class GetTraitRandomPointsCommand implements
         values = (Map<String, Object>) yaml.load(ResourceUtils
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("points");
-        value = (Integer) values.get("traitsRandom");
+        points = (Integer) values.get("traitsRandom");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return points;
     }
 
 }

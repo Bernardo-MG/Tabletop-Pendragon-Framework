@@ -10,15 +10,16 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetFamousTraitValueCommand implements ReturnCommand<Integer> {
 
+    private Integer value;
+
     public GetFamousTraitValueCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -28,7 +29,10 @@ public final class GetFamousTraitValueCommand implements ReturnCommand<Integer> 
         values = (Map<String, Object>) values.get("individualDiff");
         values = (Map<String, Object>) values.get("trait");
         value = (Integer) values.get("famous");
+    }
 
+    @Override
+    public final Integer getResult() {
         return value;
     }
 

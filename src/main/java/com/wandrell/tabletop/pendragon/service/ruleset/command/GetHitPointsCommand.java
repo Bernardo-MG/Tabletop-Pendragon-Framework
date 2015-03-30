@@ -5,6 +5,7 @@ import com.wandrell.pattern.command.ReturnCommand;
 public final class GetHitPointsCommand implements ReturnCommand<Integer> {
 
     private final Integer constitution;
+    private Integer       hitpoints;
     private final Integer size;
 
     public GetHitPointsCommand(final Integer constitution, final Integer size) {
@@ -15,8 +16,13 @@ public final class GetHitPointsCommand implements ReturnCommand<Integer> {
     }
 
     @Override
-    public final Integer execute() {
-        return constitution + size;
+    public final void execute() {
+        hitpoints = constitution + size;
+    }
+
+    @Override
+    public final Integer getResult() {
+        return hitpoints;
     }
 
 }

@@ -16,6 +16,7 @@ public final class IsAbleToBecomeExtraSkillCommand implements
 
     private final Gender            gender;
     private final PendragonSkillBox skill;
+    private Boolean                 valid;
 
     public IsAbleToBecomeExtraSkillCommand(final PendragonSkillBox skill,
             final Gender gender) {
@@ -27,8 +28,7 @@ public final class IsAbleToBecomeExtraSkillCommand implements
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Boolean execute() {
-        final Boolean valid;
+    public final void execute() {
         final Yaml yaml;
         final Collection<String> skills;
         Map<String, Object> values;
@@ -56,7 +56,10 @@ public final class IsAbleToBecomeExtraSkillCommand implements
             default:
                 valid = false;
         }
+    }
 
+    @Override
+    public final Boolean getResult() {
         return valid;
     }
 

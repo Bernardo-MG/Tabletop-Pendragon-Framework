@@ -4,6 +4,7 @@ import com.wandrell.pattern.command.ReturnCommand;
 
 public final class GetDamageCommand implements ReturnCommand<Integer> {
 
+    private Integer       damage;
     private final Integer size;
     private final Integer strength;
 
@@ -15,14 +16,19 @@ public final class GetDamageCommand implements ReturnCommand<Integer> {
     }
 
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Float str;
         final Float siz;
 
         str = new Float(strength);
         siz = new Float(size);
 
-        return Math.round((str + siz) / 6);
+        damage = Math.round((str + siz) / 6);
+    }
+
+    @Override
+    public final Integer getResult() {
+        return damage;
     }
 
 }

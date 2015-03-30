@@ -30,7 +30,8 @@ public final class TestGetDamageCommand {
 
         command = new GetDamageCommand(size, strength);
 
-        Assert.assertEquals(command.execute(), expected);
+        command.execute();
+        Assert.assertEquals(command.getResult(), expected);
     }
 
 }

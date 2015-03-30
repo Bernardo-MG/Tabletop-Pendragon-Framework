@@ -10,15 +10,16 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetAttributePointsCommand implements ReturnCommand<Integer> {
 
+    private Integer points;
+
     public GetAttributePointsCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -26,9 +27,12 @@ public final class GetAttributePointsCommand implements ReturnCommand<Integer> {
         values = (Map<String, Object>) yaml.load(ResourceUtils
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("points");
-        value = (Integer) values.get("attributes");
+        points = (Integer) values.get("attributes");
+    }
 
-        return value;
+    @Override
+    public final Integer getResult() {
+        return points;
     }
 
 }

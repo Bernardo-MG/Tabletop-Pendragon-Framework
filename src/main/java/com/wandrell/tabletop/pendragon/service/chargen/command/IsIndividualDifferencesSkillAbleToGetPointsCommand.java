@@ -6,6 +6,7 @@ import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 public final class IsIndividualDifferencesSkillAbleToGetPointsCommand implements
         ReturnCommand<Boolean> {
 
+    private Boolean                 able;
     private final PendragonSkillBox skill;
 
     public IsIndividualDifferencesSkillAbleToGetPointsCommand(
@@ -15,8 +16,13 @@ public final class IsIndividualDifferencesSkillAbleToGetPointsCommand implements
     }
 
     @Override
-    public final Boolean execute() {
-        return !skill.isCombatSkill();
+    public final void execute() {
+        able = !skill.isCombatSkill();
+    }
+
+    @Override
+    public final Boolean getResult() {
+        return able;
     }
 
 }

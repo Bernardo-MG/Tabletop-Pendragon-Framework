@@ -5,6 +5,7 @@ import com.wandrell.pattern.command.ReturnCommand;
 public final class GetWeightCommand implements ReturnCommand<Integer> {
 
     private final Integer size;
+    private Integer       weight;
 
     public GetWeightCommand(final Integer size) {
         super();
@@ -13,8 +14,13 @@ public final class GetWeightCommand implements ReturnCommand<Integer> {
     }
 
     @Override
-    public final Integer execute() {
-        return getWeightRecursive(size);
+    public final void execute() {
+        weight = getWeightRecursive(size);
+    }
+
+    @Override
+    public final Integer getResult() {
+        return weight;
     }
 
     private final Integer getWeightRecursive(final Integer size) {

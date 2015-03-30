@@ -5,6 +5,7 @@ import com.wandrell.pattern.command.ReturnCommand;
 public final class GetMoveRateCommand implements ReturnCommand<Integer> {
 
     private final Integer dexterity;
+    private Integer       moveRate;
     private final Integer strength;
 
     public GetMoveRateCommand(final Integer dexterity, final Integer strength) {
@@ -15,14 +16,19 @@ public final class GetMoveRateCommand implements ReturnCommand<Integer> {
     }
 
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Float str;
         final Float dex;
 
         str = new Float(strength);
         dex = new Float(dexterity);
 
-        return Math.round((str + dex) / 10);
+        moveRate = Math.round((str + dex) / 10);
+    }
+
+    @Override
+    public final Integer getResult() {
+        return moveRate;
     }
 
 }

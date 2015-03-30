@@ -14,15 +14,15 @@ public final class GetInitialDirectedTraitsCommand implements
         ReturnCommand<Collection<SkillBox>>, StatConstructorServiceAware {
 
     private StatConstructorService statConsService;
+    private Collection<SkillBox>   traits;
 
     public GetInitialDirectedTraitsCommand() {
         super();
     }
 
     @Override
-    public final Collection<SkillBox> execute() {
+    public final void execute() {
         final StatsYAMLParser<SkillBox> parser;
-        Collection<SkillBox> values;
 
         parser = new StatsYAMLParser<SkillBox>(new StatBuilder<SkillBox>() {
 
@@ -35,11 +35,14 @@ public final class GetInitialDirectedTraitsCommand implements
 
         });
 
-        values = parser
+        traits = parser
                 .parse(ResourceUtils
                         .getClassPathReader("config/stat/pendragon_directed_trait_initial.yml"));
+    }
 
-        return values;
+    @Override
+    public final Collection<SkillBox> getResult() {
+        return traits;
     }
 
     @Override

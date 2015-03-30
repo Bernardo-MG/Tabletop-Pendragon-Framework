@@ -10,15 +10,16 @@ import com.wandrell.util.ResourceUtils;
 
 public final class GetExtraSkillValueCommand implements ReturnCommand<Integer> {
 
+    private Integer value;
+
     public GetExtraSkillValueCommand() {
         super();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Yaml yaml;
-        final Integer value;
         Map<String, Object> values;
 
         yaml = new Yaml();
@@ -29,7 +30,10 @@ public final class GetExtraSkillValueCommand implements ReturnCommand<Integer> {
         values = (Map<String, Object>) values.get("skill");
         values = (Map<String, Object>) values.get("extra");
         value = (Integer) values.get("value");
+    }
 
+    @Override
+    public final Integer getResult() {
         return value;
     }
 

@@ -5,6 +5,7 @@ import com.wandrell.pattern.command.ReturnCommand;
 public final class GetHealingRateCommand implements ReturnCommand<Integer> {
 
     private final Integer constitution;
+    private Integer       healing;
     private final Integer strength;
 
     public GetHealingRateCommand(final Integer constitution,
@@ -16,14 +17,19 @@ public final class GetHealingRateCommand implements ReturnCommand<Integer> {
     }
 
     @Override
-    public final Integer execute() {
+    public final void execute() {
         final Float str;
         final Float con;
 
         str = new Float(strength);
         con = new Float(constitution);
 
-        return Math.round((str + con) / 10);
+        healing = Math.round((str + con) / 10);
+    }
+
+    @Override
+    public final Integer getResult() {
+        return healing;
     }
 
 }

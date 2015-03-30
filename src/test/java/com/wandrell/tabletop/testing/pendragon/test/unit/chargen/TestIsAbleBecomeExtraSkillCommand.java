@@ -26,7 +26,8 @@ public final class TestIsAbleBecomeExtraSkillCommand {
 
         command = new IsAbleToBecomeExtraSkillCommand(skill, Gender.MALE);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -41,7 +42,8 @@ public final class TestIsAbleBecomeExtraSkillCommand {
 
         command = new IsAbleToBecomeExtraSkillCommand(skill, Gender.FEMALE);
 
-        Assert.assertTrue(command.execute());
+        command.execute();
+        Assert.assertTrue(command.getResult());
     }
 
     @Test
@@ -56,7 +58,8 @@ public final class TestIsAbleBecomeExtraSkillCommand {
 
         command = new IsAbleToBecomeExtraSkillCommand(skill, Gender.FEMALE);
 
-        Assert.assertTrue(!command.execute());
+        command.execute();
+        Assert.assertTrue(!command.getResult());
     }
 
     @Test
@@ -70,7 +73,8 @@ public final class TestIsAbleBecomeExtraSkillCommand {
 
         command = new IsAbleToBecomeExtraSkillCommand(skill, Gender.FEMALE);
 
-        Assert.assertTrue(command.execute());
+        command.execute();
+        Assert.assertTrue(command.getResult());
     }
 
     @Test
@@ -84,7 +88,8 @@ public final class TestIsAbleBecomeExtraSkillCommand {
 
         command = new IsAbleToBecomeExtraSkillCommand(skill, Gender.MALE);
 
-        Assert.assertTrue(command.execute());
+        command.execute();
+        Assert.assertTrue(command.getResult());
     }
 
 }
