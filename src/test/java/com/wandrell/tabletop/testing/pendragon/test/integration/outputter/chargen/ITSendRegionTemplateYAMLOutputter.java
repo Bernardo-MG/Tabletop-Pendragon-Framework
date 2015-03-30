@@ -60,7 +60,7 @@ public final class ITSendRegionTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(region), new BufferedWriter(
+        outputter.output(parserMap.parse(region), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         regionOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -92,7 +92,7 @@ public final class ITSendRegionTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(region), new BufferedWriter(
+        outputter.output(parserMap.parse(region), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         regionOut = parser.parse(new BufferedReader(new FileReader(pathOut

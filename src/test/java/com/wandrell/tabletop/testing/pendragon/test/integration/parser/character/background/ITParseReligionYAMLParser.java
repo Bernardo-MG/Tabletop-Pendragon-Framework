@@ -1,7 +1,6 @@
 package com.wandrell.tabletop.testing.pendragon.test.integration.parser.character.background;
 
 import java.io.Reader;
-import java.util.Iterator;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -12,7 +11,6 @@ import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.character.background.ReligionYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseReligionYAMLParser {
@@ -51,21 +49,13 @@ public final class ITParseReligionYAMLParser {
 
     @Test
     public final void testDerivedAttributesBonus() {
-        final Iterator<SkillBox> itr;
-        SkillBox box;
+        // TODO: Check the others are all set at zero
 
-        Assert.assertEquals((Integer) religion.getDerivedAttributeBonus()
-                .size(), (Integer) 2);
+        Assert.assertEquals(religion.getDerivedAttributeBonus().getDamage(),
+                (Integer) 3);
 
-        itr = religion.getDerivedAttributeBonus().iterator();
-
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "damage_bonus");
-        Assert.assertEquals(box.getValue(), (Integer) 3);
-
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "hitpoints");
-        Assert.assertEquals(box.getValue(), (Integer) 2);
+        Assert.assertEquals(religion.getDerivedAttributeBonus().getHitPoints(),
+                (Integer) 2);
     }
 
     @Test

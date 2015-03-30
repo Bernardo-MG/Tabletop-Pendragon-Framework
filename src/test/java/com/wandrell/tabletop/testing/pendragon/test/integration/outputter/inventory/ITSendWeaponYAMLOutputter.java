@@ -61,7 +61,7 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+        outputter.output(parserMap.parse(weapon), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -111,7 +111,7 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+        outputter.output(parserMap.parse(weapon), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -158,7 +158,7 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+        outputter.output(parserMap.parse(weapon), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -208,7 +208,7 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+        outputter.output(parserMap.parse(weapon), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         weaponOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -258,7 +258,7 @@ public final class ITSendWeaponYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(weapon), new BufferedWriter(
+        outputter.output(parserMap.parse(weapon), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         weaponOut = (RangedWeapon) parser.parse(new BufferedReader(

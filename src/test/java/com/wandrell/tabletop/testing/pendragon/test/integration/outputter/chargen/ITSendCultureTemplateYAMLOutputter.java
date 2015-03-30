@@ -73,7 +73,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(culture), new BufferedWriter(
+        outputter.output(parserMap.parse(culture), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         cultureOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -126,7 +126,7 @@ public final class ITSendCultureTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(culture), new BufferedWriter(
+        outputter.output(parserMap.parse(culture), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         cultureOut = parser.parse(new BufferedReader(new FileReader(pathOut

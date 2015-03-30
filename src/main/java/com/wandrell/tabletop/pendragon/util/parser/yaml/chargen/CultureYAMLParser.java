@@ -13,7 +13,9 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultTraitsHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
@@ -87,7 +89,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     private final CultureCharacterTemplate buildCultureCharacterTemplate(
             final Map<String, Collection<Map<String, Object>>> template)
             throws Exception {
-        final Collection<SkillBox> attributesBonus;
+        final HumanAttributesHolder attributesBonus;
         final Map<String, Dice> attributesRandom;
         final Collection<SkillBox> skillsBonus;
         final Collection<SkillBox> specialtySkills;
@@ -101,7 +103,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
         diceParser = new StringDiceParser();
 
-        attributesBonus = new LinkedList<>();
+        attributesBonus = new DefaultHumanAttributesHolder();
         attributesRandom = new LinkedHashMap<String, Dice>();
         skillsBonus = new LinkedList<>();
         specialtySkills = new LinkedList<>();
@@ -111,11 +113,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
         if (template != null) {
             if (template.containsKey("attributes_bonus")) {
-                for (final Map<String, Object> child : template
-                        .get("attributes_bonus")) {
-                    attributesBonus.add(new DefaultSkillBox(child.get("name")
-                            .toString(), (Integer) child.get("value")));
-                }
+                loadAttributesHolder(template.get("attributes_bonus"),
+                        attributesBonus);
             }
 
             if (template.containsKey("attributes_random")) {
@@ -307,6 +306,24 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         }
 
         return traitsHolder;
+    }
+
+    private final void loadAttributesHolder(
+            final Collection<Map<String, Object>> attributes,
+            final HumanAttributesHolder holder) {
+        for (final Map<String, Object> attribute : attributes) {
+            if (attribute.get("name").toString().equals("appearance")) {
+                holder.setAppearance((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("constitution")) {
+                holder.setConstitution((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("dexterity")) {
+                holder.setDexterity((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("size")) {
+                holder.setSize((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("strength")) {
+                holder.setStrength((Integer) attribute.get("value"));
+            }
+        }
     }
 
 }

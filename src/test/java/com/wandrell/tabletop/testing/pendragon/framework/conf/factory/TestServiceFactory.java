@@ -7,6 +7,7 @@ import com.wandrell.pattern.repository.CollectionRepository;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
@@ -55,16 +56,14 @@ public final class TestServiceFactory {
 
         repository = new CollectionRepository<FamilyCharacteristicTemplate>();
 
-        repository
-                .add(getModelConstructorService()
-                        .getFamilyCharacteristicTemplate("char_female",
-                                new LinkedList<SkillBox>(),
-                                new LinkedList<SkillBox>()));
-        repository
-                .add(getModelConstructorService()
-                        .getFamilyCharacteristicTemplate("char_male",
-                                new LinkedList<SkillBox>(),
-                                new LinkedList<SkillBox>()));
+        repository.add(getModelConstructorService()
+                .getFamilyCharacteristicTemplate("char_female",
+                        new DefaultHumanAttributesHolder(),
+                        new LinkedList<SkillBox>()));
+        repository.add(getModelConstructorService()
+                .getFamilyCharacteristicTemplate("char_male",
+                        new DefaultHumanAttributesHolder(),
+                        new LinkedList<SkillBox>()));
 
         return repository;
     }

@@ -63,20 +63,49 @@ public final class FamilyCharacteristicTableMapParser implements
         }
 
         // Attributes
-        if (!characteristic.getAttributes().isEmpty()) {
-            values = new LinkedList<>();
+        values = new LinkedList<>();
+        if (characteristic.getAttributes().getAppearance() > 0) {
+            value = new LinkedHashMap<String, Object>();
 
-            for (final SkillBox box : characteristic.getAttributes()) {
-                value = new LinkedHashMap<String, Object>();
+            value.put("name", "appearance");
+            value.put("value", characteristic.getAttributes().getAppearance());
 
-                value.put("name", box.getName());
-                value.put("value", box.getValue());
-
-                values.add(value);
-            }
-
-            bonus.put("attributes", values);
+            values.add(value);
         }
+        if (characteristic.getAttributes().getConstitution() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "constitution");
+            value.put("value", characteristic.getAttributes().getConstitution());
+
+            values.add(value);
+        }
+        if (characteristic.getAttributes().getDexterity() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "dexterity");
+            value.put("value", characteristic.getAttributes().getDexterity());
+
+            values.add(value);
+        }
+        if (characteristic.getAttributes().getSize() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "size");
+            value.put("value", characteristic.getAttributes().getSize());
+
+            values.add(value);
+        }
+        if (characteristic.getAttributes().getStrength() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "strength");
+            value.put("value", characteristic.getAttributes().getStrength());
+
+            values.add(value);
+        }
+
+        bonus.put("attributes", values);
 
         // Bonus map
         if (!bonus.isEmpty()) {

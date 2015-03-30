@@ -64,17 +64,47 @@ public final class CultureTemplateMapParser implements
 
         // Attributes
         valuesCol = new LinkedList<>();
-        if (!template.getAttributes().isEmpty()) {
-            for (final SkillBox box : template.getAttributes()) {
-                value = new LinkedHashMap<String, Object>();
+        if (template.getAttributes().getAppearance() > 0) {
+            value = new LinkedHashMap<String, Object>();
 
-                value.put("name", box.getName());
-                value.put("value", box.getValue());
+            value.put("name", "appearance");
+            value.put("value", template.getAttributes().getAppearance());
 
-                valuesCol.add(value);
-            }
-            values.put("attributes_bonus", valuesCol);
+            valuesCol.add(value);
         }
+        if (template.getAttributes().getConstitution() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "constitution");
+            value.put("value", template.getAttributes().getConstitution());
+
+            valuesCol.add(value);
+        }
+        if (template.getAttributes().getDexterity() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "dexterity");
+            value.put("value", template.getAttributes().getDexterity());
+
+            valuesCol.add(value);
+        }
+        if (template.getAttributes().getSize() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "size");
+            value.put("value", template.getAttributes().getSize());
+
+            valuesCol.add(value);
+        }
+        if (template.getAttributes().getStrength() > 0) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "strength");
+            value.put("value", template.getAttributes().getStrength());
+
+            valuesCol.add(value);
+        }
+        values.put("attributes_bonus", valuesCol);
 
         // Random attributes
         valuesCol = new LinkedList<>();
@@ -96,6 +126,7 @@ public final class CultureTemplateMapParser implements
         values.put("traits_bonus", valuesCol);
 
         // Skills
+        valuesCol = new LinkedList<>();
         if (!template.getSkills().isEmpty()) {
             for (final SkillBox box : template.getSkills()) {
                 value = new LinkedHashMap<String, Object>();

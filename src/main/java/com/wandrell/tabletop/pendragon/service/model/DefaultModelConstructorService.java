@@ -11,6 +11,8 @@ import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.background.DefaultReligion;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultPendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
@@ -94,7 +96,7 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
-            final Collection<SkillBox> attributesBonus,
+            final HumanAttributesHolder attributesBonus,
             final Map<String, Dice> attributesRandom,
             final Collection<SkillBox> skillsBonus,
             final Collection<SkillBox> specialtySkills,
@@ -127,9 +129,9 @@ public final class DefaultModelConstructorService implements
     }
 
     @Override
-    public FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
-            String name, Collection<SkillBox> attributes,
-            Collection<SkillBox> skills) {
+    public final FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
+            final String name, final HumanAttributesHolder attributes,
+            final Collection<SkillBox> skills) {
         return new DefaultFamilyCharacteristicTemplate(name, attributes, skills);
     }
 
@@ -175,10 +177,10 @@ public final class DefaultModelConstructorService implements
         horse = new DefaultHorse(type, null, type, armor, damage, movement,
                 combat, hunting, armored);
 
-        horse.setConstitution(constitution);
-        horse.setDexterity(dexterity);
-        horse.setSize(size);
-        horse.setStrength(strength);
+        horse.getAttributes().setConstitution(constitution);
+        horse.getAttributes().setDexterity(dexterity);
+        horse.getAttributes().setSize(size);
+        horse.getAttributes().setStrength(strength);
 
         return horse;
     }
@@ -208,8 +210,9 @@ public final class DefaultModelConstructorService implements
     @Override
     public final Religion getReligion(final String name,
             final Collection<String> traits,
-            final Collection<SkillBox> bonusDerived, final Integer bonusArmor,
-            final Integer bonusDamage, final Integer bonusDamageDice) {
+            final DerivedAttributesHolder bonusDerived,
+            final Integer bonusArmor, final Integer bonusDamage,
+            final Integer bonusDamageDice) {
         return new DefaultReligion(name, traits, bonusDerived, bonusArmor,
                 bonusDamage, bonusDamageDice);
     }

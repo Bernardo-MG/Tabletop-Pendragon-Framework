@@ -60,7 +60,7 @@ public final class ITSendTextListOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(list), new BufferedWriter(
+        outputter.output(parserMap.parse(list), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         listOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -92,7 +92,7 @@ public final class ITSendTextListOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(list), new BufferedWriter(
+        outputter.output(parserMap.parse(list), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         listOut = parser.parse(new BufferedReader(new FileReader(pathOut

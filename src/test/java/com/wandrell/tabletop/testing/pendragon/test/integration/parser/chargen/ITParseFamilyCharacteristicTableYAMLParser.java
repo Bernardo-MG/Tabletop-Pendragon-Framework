@@ -52,7 +52,15 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
 
         Assert.assertEquals(familyChar.getName(), "characteristic_1");
 
-        Assert.assertEquals(familyChar.getAttributes().size(), 0);
+        Assert.assertEquals(familyChar.getAttributes().getAppearance(),
+                (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getConstitution(),
+                (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getDexterity(),
+                (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getSize(), (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getStrength(),
+                (Integer) 0);
 
         skills = familyChar.getSkills();
         Assert.assertEquals(skills.size(), 2);
@@ -75,9 +83,7 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
         final FamilyCharacteristicTemplate familyChar;
         final Collection<SkillBox> skills;
         final Iterator<FamilyCharacteristicTemplate> itrValues;
-        final Iterator<SkillBox> itrAttributes;
         final Iterator<SkillBox> itrSkills;
-        SkillBox entryAttribute;
         SkillBox entrySkill;
 
         itrValues = table.getIntervals().values().iterator();
@@ -86,13 +92,15 @@ public final class ITParseFamilyCharacteristicTableYAMLParser {
 
         Assert.assertEquals(familyChar.getName(), "characteristic_2");
 
-        Assert.assertEquals(familyChar.getAttributes().size(), 1);
-
-        itrAttributes = familyChar.getAttributes().iterator();
-
-        entryAttribute = itrAttributes.next();
-        Assert.assertEquals(entryAttribute.getName(), "appearance");
-        Assert.assertEquals(entryAttribute.getValue(), (Integer) 7);
+        Assert.assertEquals(familyChar.getAttributes().getAppearance(),
+                (Integer) 7);
+        Assert.assertEquals(familyChar.getAttributes().getConstitution(),
+                (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getDexterity(),
+                (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getSize(), (Integer) 0);
+        Assert.assertEquals(familyChar.getAttributes().getStrength(),
+                (Integer) 0);
 
         skills = familyChar.getSkills();
         Assert.assertEquals(skills.size(), 1);

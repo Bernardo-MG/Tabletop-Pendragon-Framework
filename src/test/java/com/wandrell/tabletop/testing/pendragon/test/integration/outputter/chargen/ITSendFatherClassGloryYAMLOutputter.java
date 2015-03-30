@@ -60,7 +60,7 @@ public final class ITSendFatherClassGloryYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(glory), new BufferedWriter(
+        outputter.output(parserMap.parse(glory), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         gloryOut = parser.parse(new BufferedReader(new FileReader(pathOut

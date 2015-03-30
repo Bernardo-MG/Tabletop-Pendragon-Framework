@@ -43,10 +43,10 @@ public final class HorseMapParser implements Parser<Horse, Map<String, Object>> 
 
         attributes = new LinkedHashMap<String, Integer>();
 
-        attributes.put("constitution", horse.getConstitution());
-        attributes.put("dexterity", horse.getDexterity());
-        attributes.put("size", horse.getSize());
-        attributes.put("strength", horse.getStrength());
+        attributes.put("constitution", horse.getAttributes().getConstitution());
+        attributes.put("dexterity", horse.getAttributes().getDexterity());
+        attributes.put("size", horse.getAttributes().getSize());
+        attributes.put("strength", horse.getAttributes().getStrength());
 
         return attributes;
     }
@@ -56,8 +56,8 @@ public final class HorseMapParser implements Parser<Horse, Map<String, Object>> 
 
         derived = new LinkedHashMap<String, Integer>();
 
-        derived.put("damage", horse.getDamage());
-        derived.put("movement_rate", horse.getMoveRate());
+        derived.put("damage", horse.getDerivedAttributes().getDamage());
+        derived.put("movement_rate", horse.getDerivedAttributes().getMoveRate());
 
         return derived;
     }

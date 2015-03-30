@@ -38,16 +38,19 @@ public final class ITParseMinimumHorseYAMLParser {
 
     @Test
     public final void testAttributes() {
-        Assert.assertEquals(horse.getConstitution(), (Integer) 11);
-        Assert.assertEquals(horse.getDexterity(), (Integer) 22);
-        Assert.assertEquals(horse.getSize(), (Integer) 33);
-        Assert.assertEquals(horse.getStrength(), (Integer) 44);
+        Assert.assertEquals(horse.getAttributes().getConstitution(),
+                (Integer) 11);
+        Assert.assertEquals(horse.getAttributes().getDexterity(), (Integer) 22);
+        Assert.assertEquals(horse.getAttributes().getSize(), (Integer) 33);
+        Assert.assertEquals(horse.getAttributes().getStrength(), (Integer) 44);
     }
 
     @Test
     public final void testDerivedAttributes() {
-        Assert.assertEquals(horse.getDamage(), (Integer) 55);
-        Assert.assertEquals(horse.getMoveRate(), (Integer) 66);
+        Assert.assertEquals(horse.getDerivedAttributes().getDamage(),
+                (Integer) 55);
+        Assert.assertEquals(horse.getDerivedAttributes().getMoveRate(),
+                (Integer) 66);
     }
 
     @Test

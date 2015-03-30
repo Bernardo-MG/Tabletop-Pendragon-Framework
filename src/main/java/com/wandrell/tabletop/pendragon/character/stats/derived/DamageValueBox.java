@@ -1,25 +1,29 @@
 package com.wandrell.tabletop.pendragon.character.stats.derived;
 
 import com.wandrell.tabletop.event.ValueChangeEvent;
-import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
 import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
 public final class DamageValueBox extends AbstractValueBox {
 
-    private final PendragonBaseCharacter   character;
+    private final AttributesHolder         attributes;
+    private final DerivedAttributesHolder  derived;
     private final DerivedAttributesService derivedService;
 
-    public DamageValueBox(final PendragonBaseCharacter character,
+    public DamageValueBox(final AttributesHolder attributes,
+            final DerivedAttributesHolder derived,
             final DerivedAttributesService derivedService) {
         super();
 
-        this.character = character;
+        this.attributes = attributes;
+        this.derived = derived;
         this.derivedService = derivedService;
 
-        character
-                .addPendragonCharacterListener(new PendragonCharacterListenerAdapter() {
+        attributes
+                .addAttributesListener(new PendragonCharacterListenerAdapter() {
 
                     @Override
                     public final void sizeChanged(final ValueChangeEvent event) {
@@ -37,12 +41,11 @@ public final class DamageValueBox extends AbstractValueBox {
 
     @Override
     public final DamageValueBox createNewInstance() {
-        return new DamageValueBox(character, derivedService);
+        return new DamageValueBox(attributes, derived, derivedService);
     }
 
     @Override
     public final Integer getValue() {
-        return derivedService.getDamage(character);
+        return derivedService.getDamage(attributes, derived);
     }
-
 }

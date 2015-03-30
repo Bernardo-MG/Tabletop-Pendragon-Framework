@@ -60,7 +60,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(father), new BufferedWriter(
+        outputter.output(parserMap.parse(father), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         fatherOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -111,7 +111,7 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(father), new BufferedWriter(
+        outputter.output(parserMap.parse(father), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         fatherOut = parser.parse(new BufferedReader(new FileReader(pathOut

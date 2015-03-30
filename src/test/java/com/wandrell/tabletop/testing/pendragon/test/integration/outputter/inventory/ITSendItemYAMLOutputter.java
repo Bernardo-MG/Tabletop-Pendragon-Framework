@@ -60,7 +60,7 @@ public final class ITSendItemYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(item), new BufferedWriter(
+        outputter.output(parserMap.parse(item), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         itemOut = parser.parse(new BufferedReader(new FileReader(pathOut

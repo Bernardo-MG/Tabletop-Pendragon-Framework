@@ -10,6 +10,9 @@ import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
@@ -114,7 +117,7 @@ public final class TestModelConstructorService implements
 
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
-            final Collection<SkillBox> attributesBonus,
+            final HumanAttributesHolder attributesBonus,
             final Map<String, Dice> attributesRandom,
             final Collection<SkillBox> skillsBonus,
             final Collection<SkillBox> specialtySkills,
@@ -183,7 +186,7 @@ public final class TestModelConstructorService implements
 
     @Override
     public final FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
-            final String name, final Collection<SkillBox> attributes,
+            final String name, final HumanAttributesHolder attributes,
             final Collection<SkillBox> skills) {
         final FamilyCharacteristicTemplate template;
 
@@ -277,18 +280,24 @@ public final class TestModelConstructorService implements
             final Integer movement, final Integer armor, final Boolean armored,
             final Boolean combat, final Boolean hunting) {
         final Horse horse;
+        final AttributesHolder attributes;
+        final DerivedAttributesHolder derived;
 
         horse = Mockito.mock(Horse.class);
+        attributes = Mockito.mock(AttributesHolder.class);
+        derived = Mockito.mock(DerivedAttributesHolder.class);
 
         Mockito.when(horse.getHorseType()).thenReturn(type);
+        Mockito.when(horse.getAttributes()).thenReturn(attributes);
+        Mockito.when(horse.getDerivedAttributes()).thenReturn(derived);
 
-        Mockito.when(horse.getConstitution()).thenReturn(constitution);
-        Mockito.when(horse.getDexterity()).thenReturn(dexterity);
-        Mockito.when(horse.getSize()).thenReturn(size);
-        Mockito.when(horse.getStrength()).thenReturn(strength);
+        Mockito.when(attributes.getConstitution()).thenReturn(constitution);
+        Mockito.when(attributes.getDexterity()).thenReturn(dexterity);
+        Mockito.when(attributes.getSize()).thenReturn(size);
+        Mockito.when(attributes.getStrength()).thenReturn(strength);
 
-        Mockito.when(horse.getDamage()).thenReturn(damage);
-        Mockito.when(horse.getMoveRate()).thenReturn(movement);
+        Mockito.when(derived.getDamage()).thenReturn(damage);
+        Mockito.when(derived.getMoveRate()).thenReturn(movement);
 
         Mockito.when(horse.getNaturalArmor()).thenReturn(armor);
 
@@ -352,8 +361,9 @@ public final class TestModelConstructorService implements
     @Override
     public final Religion getReligion(final String name,
             final Collection<String> traits,
-            final Collection<SkillBox> bonusDerived, final Integer bonusArmor,
-            final Integer bonusDamage, final Integer bonusDamageDice) {
+            final DerivedAttributesHolder bonusDerived,
+            final Integer bonusArmor, final Integer bonusDamage,
+            final Integer bonusDamageDice) {
         final Religion religion;
 
         religion = Mockito.mock(Religion.class);

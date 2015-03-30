@@ -12,6 +12,8 @@ import org.yaml.snakeyaml.Yaml;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
@@ -86,11 +88,29 @@ public class FamilyCharacteristicTableYAMLParser implements
         return modelService;
     }
 
+    private final void loadAttributesHolder(
+            final Collection<Map<String, Object>> attributes,
+            final HumanAttributesHolder holder) {
+        for (final Map<String, Object> attribute : attributes) {
+            if (attribute.get("name").toString().equals("appearance")) {
+                holder.setAppearance((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("constitution")) {
+                holder.setConstitution((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("dexterity")) {
+                holder.setDexterity((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("size")) {
+                holder.setSize((Integer) attribute.get("value"));
+            } else if (attribute.get("name").toString().equals("strength")) {
+                holder.setStrength((Integer) attribute.get("value"));
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private final FamilyCharacteristicTemplate readFamilyCharacteristic(
             final Map<String, Object> template) {
         final String name;
-        final Collection<SkillBox> attributes;
+        final HumanAttributesHolder attributes;
         final Collection<SkillBox> skills;
         final Map<String, Collection<Map<String, Object>>> bonus;
         SkillBox skillData;
@@ -99,7 +119,7 @@ public class FamilyCharacteristicTableYAMLParser implements
 
         name = (String) template.get("name");
 
-        attributes = new LinkedList<SkillBox>();
+        attributes = new DefaultHumanAttributesHolder();
         skills = new LinkedList<SkillBox>();
 
         if (template.containsKey("bonus")) {
@@ -107,12 +127,7 @@ public class FamilyCharacteristicTableYAMLParser implements
                     .get("bonus");
 
             if (bonus.containsKey("attributes")) {
-                for (final Map<String, Object> attribute : bonus
-                        .get("attributes")) {
-                    value = (Integer) attribute.get("value");
-                    attributes.add(new DefaultSkillBox((String) attribute
-                            .get("name"), value));
-                }
+                loadAttributesHolder(bonus.get("attributes"), attributes);
             }
 
             if (bonus.containsKey("skills")) {

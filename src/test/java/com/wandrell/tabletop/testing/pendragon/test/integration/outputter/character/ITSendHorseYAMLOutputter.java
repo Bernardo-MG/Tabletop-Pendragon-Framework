@@ -60,7 +60,7 @@ public final class ITSendHorseYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(horse), new BufferedWriter(
+        outputter.output(parserMap.parse(horse), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         horseOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -70,13 +70,19 @@ public final class ITSendHorseYAMLOutputter {
 
         Assert.assertEquals(horse.getNaturalArmor(), horseOut.getNaturalArmor());
 
-        Assert.assertEquals(horse.getConstitution(), horseOut.getConstitution());
-        Assert.assertEquals(horse.getDexterity(), horseOut.getDexterity());
-        Assert.assertEquals(horse.getSize(), horseOut.getSize());
-        Assert.assertEquals(horse.getStrength(), horseOut.getStrength());
+        Assert.assertEquals(horse.getAttributes().getConstitution(), horseOut
+                .getAttributes().getConstitution());
+        Assert.assertEquals(horse.getAttributes().getDexterity(), horseOut
+                .getAttributes().getDexterity());
+        Assert.assertEquals(horse.getAttributes().getSize(), horseOut
+                .getAttributes().getSize());
+        Assert.assertEquals(horse.getAttributes().getStrength(), horseOut
+                .getAttributes().getStrength());
 
-        Assert.assertEquals(horse.getDamage(), horseOut.getDamage());
-        Assert.assertEquals(horse.getMoveRate(), horseOut.getMoveRate());
+        Assert.assertEquals(horse.getDerivedAttributes().getDamage(), horseOut
+                .getDerivedAttributes().getDamage());
+        Assert.assertEquals(horse.getDerivedAttributes().getMoveRate(),
+                horseOut.getDerivedAttributes().getMoveRate());
 
         Assert.assertEquals(horse.isArmored(), horseOut.isArmored());
         Assert.assertEquals(horse.isCombatHorse(), horseOut.isCombatHorse());
@@ -105,7 +111,7 @@ public final class ITSendHorseYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(horse), new BufferedWriter(
+        outputter.output(parserMap.parse(horse), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         horseOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -115,13 +121,19 @@ public final class ITSendHorseYAMLOutputter {
 
         Assert.assertEquals(horse.getNaturalArmor(), horseOut.getNaturalArmor());
 
-        Assert.assertEquals(horse.getConstitution(), horseOut.getConstitution());
-        Assert.assertEquals(horse.getDexterity(), horseOut.getDexterity());
-        Assert.assertEquals(horse.getSize(), horseOut.getSize());
-        Assert.assertEquals(horse.getStrength(), horseOut.getStrength());
+        Assert.assertEquals(horse.getAttributes().getConstitution(), horseOut
+                .getAttributes().getConstitution());
+        Assert.assertEquals(horse.getAttributes().getDexterity(), horseOut
+                .getAttributes().getDexterity());
+        Assert.assertEquals(horse.getAttributes().getSize(), horseOut
+                .getAttributes().getSize());
+        Assert.assertEquals(horse.getAttributes().getStrength(), horseOut
+                .getAttributes().getStrength());
 
-        Assert.assertEquals(horse.getDamage(), horseOut.getDamage());
-        Assert.assertEquals(horse.getMoveRate(), horseOut.getMoveRate());
+        Assert.assertEquals(horse.getDerivedAttributes().getDamage(), horseOut
+                .getDerivedAttributes().getDamage());
+        Assert.assertEquals(horse.getDerivedAttributes().getMoveRate(),
+                horseOut.getDerivedAttributes().getMoveRate());
 
         Assert.assertEquals(horse.isArmored(), horseOut.isArmored());
         Assert.assertEquals(horse.isCombatHorse(), horseOut.isCombatHorse());

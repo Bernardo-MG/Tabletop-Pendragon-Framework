@@ -61,7 +61,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(homeland), new BufferedWriter(
+        outputter.output(parserMap.parse(homeland), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         homelandOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -101,7 +101,7 @@ public final class ITSendHomelandTemplateYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(homeland), new BufferedWriter(
+        outputter.output(parserMap.parse(homeland), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         homelandOut = parser.parse(new BufferedReader(new FileReader(pathOut

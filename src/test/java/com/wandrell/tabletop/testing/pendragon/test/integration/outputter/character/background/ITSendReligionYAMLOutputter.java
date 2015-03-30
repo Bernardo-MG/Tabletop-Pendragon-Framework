@@ -17,7 +17,7 @@ import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
-import com.wandrell.tabletop.pendragon.util.parser.dictionary.chargen.ReligionTemplateMapParser;
+import com.wandrell.tabletop.pendragon.util.parser.dictionary.character.background.ReligionTemplateMapParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.character.background.ReligionYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
@@ -56,7 +56,7 @@ public final class ITSendReligionYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(religion), new BufferedWriter(
+        outputter.output(parserMap.parse(religion), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         religionOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -94,7 +94,7 @@ public final class ITSendReligionYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(religion), new BufferedWriter(
+        outputter.output(parserMap.parse(religion), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         religionOut = parser.parse(new BufferedReader(new FileReader(pathOut

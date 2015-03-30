@@ -7,13 +7,13 @@ import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHo
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
 import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
-public final class HitPointsValueBox extends AbstractValueBox {
+public final class KnockdownValueBox extends AbstractValueBox {
 
     private final AttributesHolder         attributes;
     private final DerivedAttributesHolder  derived;
     private final DerivedAttributesService derivedService;
 
-    public HitPointsValueBox(final AttributesHolder attributes,
+    public KnockdownValueBox(final AttributesHolder attributes,
             final DerivedAttributesHolder derived,
             final DerivedAttributesService derivedService) {
         super();
@@ -26,13 +26,13 @@ public final class HitPointsValueBox extends AbstractValueBox {
                 .addAttributesListener(new PendragonCharacterListenerAdapter() {
 
                     @Override
-                    public final void constitutionChanged(
-                            final ValueChangeEvent event) {
+                    public final void sizeChanged(final ValueChangeEvent event) {
                         fireValueChangedEvent(new ValueChangeEvent(this, 0, 0));
                     }
 
                     @Override
-                    public final void sizeChanged(final ValueChangeEvent event) {
+                    public final void strengthChanged(
+                            final ValueChangeEvent event) {
                         fireValueChangedEvent(new ValueChangeEvent(this, 0, 0));
                     }
 
@@ -40,13 +40,12 @@ public final class HitPointsValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final HitPointsValueBox createNewInstance() {
-        return new HitPointsValueBox(attributes, derived, derivedService);
+    public final KnockdownValueBox createNewInstance() {
+        return new KnockdownValueBox(attributes, derived, derivedService);
     }
 
     @Override
     public final Integer getValue() {
-        return derivedService.getHitPoints(attributes, derived);
+        return derivedService.getKnockdown(attributes, derived);
     }
-
 }

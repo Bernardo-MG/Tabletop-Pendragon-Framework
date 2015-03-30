@@ -60,7 +60,7 @@ public final class ITSendSpecialtySkillYAMLOutput {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(skill), new BufferedWriter(
+        outputter.output(parserMap.parse(skill), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         skillOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -93,7 +93,7 @@ public final class ITSendSpecialtySkillYAMLOutput {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(skill), new BufferedWriter(
+        outputter.output(parserMap.parse(skill), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         skillOut = parser.parse(new BufferedReader(new FileReader(pathOut

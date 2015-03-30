@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
@@ -57,37 +58,28 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Female() {
-        final Collection<SkillBox> attributes;
-        final Iterator<SkillBox> itr;
-        SkillBox box;
+        final HumanAttributesHolder attributes;
 
         attributes = culture.getFemaleTemplate().getAttributes();
 
-        Assert.assertEquals(attributes.size(), 1);
-
-        itr = attributes.iterator();
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "dexterity");
-        Assert.assertEquals(box.getValue(), (Integer) 3);
+        Assert.assertEquals(attributes.getAppearance(), (Integer) 0);
+        Assert.assertEquals(attributes.getConstitution(), (Integer) 0);
+        Assert.assertEquals(attributes.getDexterity(), (Integer) 3);
+        Assert.assertEquals(attributes.getSize(), (Integer) 0);
+        Assert.assertEquals(attributes.getStrength(), (Integer) 0);
     }
 
     @Test
     public final void testAttributesBonus_Male() {
-        final Collection<SkillBox> attributes;
-        final Iterator<SkillBox> itr;
-        SkillBox box;
+        final HumanAttributesHolder attributes;
 
         attributes = culture.getMaleTemplate().getAttributes();
 
-        Assert.assertEquals(attributes.size(), 2);
-
-        itr = attributes.iterator();
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "appearance");
-        Assert.assertEquals(box.getValue(), (Integer) 1);
-        box = itr.next();
-        Assert.assertEquals(box.getName(), "constitution");
-        Assert.assertEquals(box.getValue(), (Integer) 2);
+        Assert.assertEquals(attributes.getAppearance(), (Integer) 1);
+        Assert.assertEquals(attributes.getConstitution(), (Integer) 2);
+        Assert.assertEquals(attributes.getDexterity(), (Integer) 0);
+        Assert.assertEquals(attributes.getSize(), (Integer) 0);
+        Assert.assertEquals(attributes.getStrength(), (Integer) 0);
     }
 
     @Test

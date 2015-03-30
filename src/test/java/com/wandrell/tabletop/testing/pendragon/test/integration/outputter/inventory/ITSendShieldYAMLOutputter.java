@@ -60,7 +60,7 @@ public final class ITSendShieldYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(shield), new BufferedWriter(
+        outputter.output(parserMap.parse(shield), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         shieldOut = parser.parse(new BufferedReader(new FileReader(pathOut

@@ -85,7 +85,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(table), new BufferedWriter(
+        outputter.output(parserMap.parse(table), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         tableOut = parser.parse(new BufferedReader(new FileReader(pathOut
@@ -132,7 +132,7 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(table), new BufferedWriter(
+        outputter.output(parserMap.parse(table), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         tableOut = parser.parse(new BufferedReader(new FileReader(pathOut

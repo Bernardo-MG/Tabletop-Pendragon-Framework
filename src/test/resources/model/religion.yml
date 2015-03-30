@@ -10,7 +10,7 @@ bonus:
   damage_bonus: 6
   damage_dice_bonus: 7
   derived_attributes:
-    - name: damage_bonus
+    - name: damage
       value: 3
     - name: hitpoints
       value: 2

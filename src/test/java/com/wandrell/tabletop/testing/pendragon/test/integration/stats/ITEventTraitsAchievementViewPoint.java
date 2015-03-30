@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.pendragon.model.character.DefaultPendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.DerivedAttributeBuilder;
-import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
 import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.valuebox.TraitsAchievementValueBox;
 import com.wandrell.tabletop.valuebox.ValueBox;
@@ -25,37 +26,48 @@ public final class ITEventTraitsAchievementViewPoint {
         derivedBuilder = Mockito.mock(DerivedAttributeBuilder.class);
 
         Mockito.when(
-                derivedBuilder.getDamage(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getDamage(Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getDexterityRoll(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getDexterityRoll(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getHealingRate(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getHealingRate(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getHitPoints(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getHitPoints(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getMajorWoundTreshold(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getKnockdown(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getMoveRate(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getMajorWoundTreshold(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getUnconciousTreshold(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getMoveRate(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
         Mockito.when(
-                derivedBuilder.getWeight(Matchers
-                        .any(PendragonBaseCharacter.class))).thenReturn(
-                Mockito.mock(ValueBox.class));
+                derivedBuilder.getUnconciousTreshold(
+                        Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
+        Mockito.when(
+                derivedBuilder.getWeight(Matchers.any(AttributesHolder.class),
+                        Matchers.any(DerivedAttributesHolder.class)))
+                .thenReturn(Mockito.mock(ValueBox.class));
     }
 
     {

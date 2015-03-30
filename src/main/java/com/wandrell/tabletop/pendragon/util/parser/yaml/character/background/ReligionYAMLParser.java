@@ -9,9 +9,9 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.StaticDerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class ReligionYAMLParser implements Parser<Reader, Religion> {
 
@@ -32,7 +32,7 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
         final Collection<Map<String, Object>> derived;
         final String name;
         final Collection<String> traits;
-        final Collection<SkillBox> bonusDerived;
+        final DerivedAttributesHolder bonusDerived;
         final Integer bonusArmor;
         final Integer bonusDamage;
         final Integer bonusDamageDice;
@@ -55,14 +55,13 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
         }
 
         // Derived attributes bonus
-        bonusDerived = new LinkedList<SkillBox>();
         derived = (Collection<Map<String, Object>>) bonus
                 .get("derived_attributes");
         if (derived != null) {
-            for (final Map<String, Object> attribute : derived) {
-                bonusDerived.add(new DefaultSkillBox((String) attribute
-                        .get("name"), (Integer) attribute.get("value")));
-            }
+            bonusDerived = getDerivedValues(derived);
+        } else {
+            bonusDerived = new StaticDerivedAttributesHolder(0, 0, 0, 0, 0, 0,
+                    0, 0, 0);
         }
 
         // Armor bonus
@@ -88,6 +87,45 @@ public final class ReligionYAMLParser implements Parser<Reader, Religion> {
 
         return getModelService().getReligion(name, traits, bonusDerived,
                 bonusArmor, bonusDamage, bonusDamageDice);
+    }
+
+    private final DerivedAttributesHolder getDerivedValues(
+            final Collection<Map<String, Object>> derived) {
+        Integer damage = 0;
+        Integer dexterityRoll = 0;
+        Integer healingRate = 0;
+        Integer hitPoints = 0;
+        Integer knockdown = 0;
+        Integer majorWoundTreshold = 0;
+        Integer moveRate = 0;
+        Integer unconciousTreshold = 0;
+        Integer weight = 0;
+
+        for (final Map<String, Object> attribute : derived) {
+            if (attribute.get("name").equals("damage")) {
+                damage = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("dexterity_roll")) {
+                dexterityRoll = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("healing_rate")) {
+                healingRate = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("hitpoints")) {
+                hitPoints = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("knockdown")) {
+                knockdown = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("major_wound")) {
+                majorWoundTreshold = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("move_rate")) {
+                moveRate = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("unconcious_treshold")) {
+                unconciousTreshold = (Integer) attribute.get("value");
+            } else if (attribute.get("name").equals("weight")) {
+                weight = (Integer) attribute.get("value");
+            }
+        }
+
+        return new StaticDerivedAttributesHolder(damage, dexterityRoll,
+                healingRate, hitPoints, knockdown, majorWoundTreshold,
+                moveRate, unconciousTreshold, weight);
     }
 
     private final ModelConstructorService getModelService() {

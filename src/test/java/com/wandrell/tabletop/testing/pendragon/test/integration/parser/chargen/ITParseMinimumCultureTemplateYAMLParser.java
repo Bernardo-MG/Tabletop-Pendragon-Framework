@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
@@ -54,20 +55,28 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Female() {
-        final Collection<SkillBox> attributes;
+        final HumanAttributesHolder attributes;
 
         attributes = culture.getFemaleTemplate().getAttributes();
 
-        Assert.assertTrue(attributes.isEmpty());
+        Assert.assertEquals(attributes.getAppearance(), (Integer) 0);
+        Assert.assertEquals(attributes.getConstitution(), (Integer) 0);
+        Assert.assertEquals(attributes.getDexterity(), (Integer) 0);
+        Assert.assertEquals(attributes.getSize(), (Integer) 0);
+        Assert.assertEquals(attributes.getStrength(), (Integer) 0);
     }
 
     @Test
     public final void testAttributesBonus_Male() {
-        final Collection<SkillBox> attributes;
+        final HumanAttributesHolder attributes;
 
         attributes = culture.getMaleTemplate().getAttributes();
 
-        Assert.assertTrue(attributes.isEmpty());
+        Assert.assertEquals(attributes.getAppearance(), (Integer) 0);
+        Assert.assertEquals(attributes.getConstitution(), (Integer) 0);
+        Assert.assertEquals(attributes.getDexterity(), (Integer) 0);
+        Assert.assertEquals(attributes.getSize(), (Integer) 0);
+        Assert.assertEquals(attributes.getStrength(), (Integer) 0);
     }
 
     @Test

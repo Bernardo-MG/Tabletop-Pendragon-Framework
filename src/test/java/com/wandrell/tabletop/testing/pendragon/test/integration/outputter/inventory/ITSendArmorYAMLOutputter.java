@@ -60,7 +60,7 @@ public final class ITSendArmorYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(armor), new BufferedWriter(
+        outputter.output(parserMap.parse(armor), new BufferedWriter(
                 new FileWriter(pathOut.toFile())));
 
         armorOut = parser.parse(new BufferedReader(new FileReader(pathOut

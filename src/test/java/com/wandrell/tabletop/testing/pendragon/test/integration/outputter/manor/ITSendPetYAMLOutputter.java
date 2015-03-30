@@ -64,8 +64,8 @@ public final class ITSendPetYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(pet), new BufferedWriter(new FileWriter(
-                pathOut.toFile())));
+        outputter.output(parserMap.parse(pet), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         petOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
@@ -98,8 +98,8 @@ public final class ITSendPetYAMLOutputter {
         pathOut = Paths.get(TEMPLATE_PATH + getRandomID() + ".yml")
                 .toAbsolutePath();
 
-        outputter.send(parserMap.parse(pet), new BufferedWriter(new FileWriter(
-                pathOut.toFile())));
+        outputter.output(parserMap.parse(pet), new BufferedWriter(
+                new FileWriter(pathOut.toFile())));
 
         petOut = parser.parse(new BufferedReader(new FileReader(pathOut
                 .toFile())));
