@@ -4,7 +4,7 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToBecomeExtraSkillCommand;
@@ -18,7 +18,7 @@ public final class TestIsAbleBecomeExtraSkillCommand {
     @Test
     public final void testIsAble_Combat_Male_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -33,7 +33,7 @@ public final class TestIsAbleBecomeExtraSkillCommand {
     @Test
     public final void testIsAble_Female_CombatIn_Able() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -49,7 +49,7 @@ public final class TestIsAbleBecomeExtraSkillCommand {
     @Test
     public final void testIsAble_Female_CombatOut_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -65,7 +65,7 @@ public final class TestIsAbleBecomeExtraSkillCommand {
     @Test
     public final void testIsAble_Female_NotCombat_Able() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -80,7 +80,7 @@ public final class TestIsAbleBecomeExtraSkillCommand {
     @Test
     public final void testIsAble_NotCombat_Male_Able() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 

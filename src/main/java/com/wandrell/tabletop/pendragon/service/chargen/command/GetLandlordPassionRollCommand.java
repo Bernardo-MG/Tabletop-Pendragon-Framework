@@ -6,12 +6,12 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetLandlordPassionRollCommand implements ReturnCommand<Dice> {
+public final class GetLandlordPassionRollCommand implements ResultCommand<Dice> {
 
     private final String descriptor;
     private final String name;

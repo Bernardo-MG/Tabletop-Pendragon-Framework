@@ -4,7 +4,7 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.chargen.command.IsAbleToGetSkillRaiseCommand;
 
@@ -17,7 +17,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_Combat_Able() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -33,7 +33,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_Combat_AboveLimit_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -49,7 +49,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_Combat_OnLimit_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -66,7 +66,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     public final void testIsAble_NotCombat_AboveLimit_NotAble()
             throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -82,7 +82,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_NotCombat_OnLimit_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 
@@ -98,7 +98,7 @@ public final class TestIsAbleAddIndividualDiffSkillCommand {
     @Test
     public final void testIsAble_NotCombat_Zero_NotAble() throws Exception {
         final PendragonSkillBox skill;
-        final ReturnCommand<Boolean> command;
+        final ResultCommand<Boolean> command;
 
         skill = Mockito.mock(PendragonSkillBox.class);
 

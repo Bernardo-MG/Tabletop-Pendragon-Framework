@@ -4,13 +4,13 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetTraitRollCommand implements ReturnCommand<Dice> {
+public final class GetTraitRollCommand implements ResultCommand<Dice> {
 
     private Dice roll;
 

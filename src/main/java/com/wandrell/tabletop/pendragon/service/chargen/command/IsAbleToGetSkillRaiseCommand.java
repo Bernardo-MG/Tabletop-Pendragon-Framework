@@ -4,13 +4,13 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class IsAbleToGetSkillRaiseCommand implements
-        ReturnCommand<Boolean> {
+        ResultCommand<Boolean> {
 
     private final PendragonSkillBox skill;
     private Boolean                 valid;

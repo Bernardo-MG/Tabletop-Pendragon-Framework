@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetHealingRateCommand;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.parameter.DerivedAttributesTestParameters;
 
@@ -26,7 +26,7 @@ public final class TestGetHealingRateCommand {
     @Test(dataProvider = DATA)
     public final void testValid(final Integer constitution,
             final Integer strength, final Integer expected) throws Exception {
-        final ReturnCommand<Integer> command;
+        final ResultCommand<Integer> command;
 
         command = new GetHealingRateCommand(constitution, strength);
 

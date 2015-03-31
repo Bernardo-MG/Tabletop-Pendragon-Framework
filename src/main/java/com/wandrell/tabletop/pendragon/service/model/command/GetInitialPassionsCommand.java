@@ -2,7 +2,7 @@ package com.wandrell.tabletop.pendragon.service.model.command;
 
 import java.util.Collection;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser.StatBuilder;
@@ -11,7 +11,7 @@ import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetInitialPassionsCommand implements
-        ReturnCommand<Collection<SkillBox>>, StatConstructorServiceAware {
+        ResultCommand<Collection<SkillBox>>, StatConstructorServiceAware {
 
     private Collection<SkillBox>   passions;
     private StatConstructorService statConsService;

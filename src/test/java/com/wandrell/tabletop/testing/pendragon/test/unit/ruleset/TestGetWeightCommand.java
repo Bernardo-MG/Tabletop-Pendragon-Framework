@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetWeightCommand;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.parameter.DerivedAttributesTestParameters;
 
@@ -26,7 +26,7 @@ public final class TestGetWeightCommand {
     @Test(dataProvider = DATA)
     public final void testValid(final Integer size, final Integer expected)
             throws Exception {
-        final ReturnCommand<Integer> command;
+        final ResultCommand<Integer> command;
 
         command = new GetWeightCommand(size);
 

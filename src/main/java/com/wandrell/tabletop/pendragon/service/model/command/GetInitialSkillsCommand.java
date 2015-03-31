@@ -7,14 +7,14 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.pattern.repository.Repository;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.util.tag.service.PendragonSkillBoxRepositoryAware;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetInitialSkillsCommand implements
-        ReturnCommand<Collection<PendragonSkillBox>>,
+        ResultCommand<Collection<PendragonSkillBox>>,
         PendragonSkillBoxRepositoryAware {
 
     private Repository<PendragonSkillBox> skillRepo;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.character.Gender;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
@@ -13,7 +13,7 @@ import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetAttributeRollCommand implements
-        ReturnCommand<Map<String, Dice>> {
+        ResultCommand<Map<String, Dice>> {
 
     private final Gender      gender;
     private Map<String, Dice> rolls;

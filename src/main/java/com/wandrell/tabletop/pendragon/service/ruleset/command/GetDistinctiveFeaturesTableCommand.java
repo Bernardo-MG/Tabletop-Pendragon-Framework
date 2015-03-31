@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.DefaultIntervalTable;
 import com.wandrell.tabletop.interval.Interval;
@@ -15,7 +15,7 @@ import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetDistinctiveFeaturesTableCommand implements
-        ReturnCommand<IntervalTable<Integer>> {
+        ResultCommand<IntervalTable<Integer>> {
 
     private IntervalTable<Integer> table;
 

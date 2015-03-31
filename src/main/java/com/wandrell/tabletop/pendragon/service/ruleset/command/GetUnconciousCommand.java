@@ -1,8 +1,8 @@
 package com.wandrell.tabletop.pendragon.service.ruleset.command;
 
-import com.wandrell.pattern.command.ReturnCommand;
+import com.wandrell.pattern.command.ResultCommand;
 
-public final class GetUnconciousCommand implements ReturnCommand<Integer> {
+public final class GetUnconciousCommand implements ResultCommand<Integer> {
 
     private final Integer hitpoints;
     private Integer       unconcious;
