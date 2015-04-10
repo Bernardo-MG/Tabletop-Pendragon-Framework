@@ -15,10 +15,11 @@ import java.util.Random;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.google.common.base.Predicate;
 import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
@@ -55,11 +56,11 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final Repository<Horse> horseRepository;
-        final Repository<Item> itemRepository;
-        final Repository<Pet> petRepository;
-        final Repository<Shield> shieldRepository;
-        final Repository<Weapon> weaponRepository;
+        final QueryableRepository<Horse, Predicate<Horse>> horseRepository;
+        final QueryableRepository<Item, Predicate<Item>> itemRepository;
+        final QueryableRepository<Pet, Predicate<Pet>> petRepository;
+        final QueryableRepository<Shield, Predicate<Shield>> shieldRepository;
+        final QueryableRepository<Weapon, Predicate<Weapon>> weaponRepository;
         final Path pathOut;
         final Outputter<Object> outputter;
 
@@ -101,11 +102,11 @@ public final class ITSendAdditionalBelongingsYAMLOutputter {
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final Repository<Horse> horseRepository;
-        final Repository<Item> itemRepository;
-        final Repository<Pet> petRepository;
-        final Repository<Shield> shieldRepository;
-        final Repository<Weapon> weaponRepository;
+        final QueryableRepository<Horse, Predicate<Horse>> horseRepository;
+        final QueryableRepository<Item, Predicate<Item>> itemRepository;
+        final QueryableRepository<Pet, Predicate<Pet>> petRepository;
+        final QueryableRepository<Shield, Predicate<Shield>> shieldRepository;
+        final QueryableRepository<Weapon, Predicate<Weapon>> weaponRepository;
         final Path pathOut;
         final Outputter<Object> outputter;
 

@@ -6,8 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
@@ -28,7 +29,7 @@ public final class ITParseMinimumHomelandTemplateYAMLParser {
     public final void initialize() throws Exception {
         final Parser<Reader, HomelandTemplate> parser;
         final ModelConstructorService modelService;
-        final Repository<RegionTemplate> regionRepo;
+        final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo;
 
         modelService = TestServiceFactory.getInstance()
                 .getModelConstructorService();

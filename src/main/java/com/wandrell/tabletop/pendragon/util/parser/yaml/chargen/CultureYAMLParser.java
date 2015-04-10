@@ -10,7 +10,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
@@ -27,13 +27,14 @@ import com.wandrell.tabletop.valuebox.SkillBox;
 
 public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
-    private final Repository<AdditionalBelongingsTable>    addBelongRepo;
-    private final Repository<FamilyCharacteristicTemplate> famCharRepo;
-    private final ModelConstructorService                  modelService;
+    private final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>       addBelongRepo;
+    private final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> famCharRepo;
+    private final ModelConstructorService                                                                    modelService;
 
-    public CultureYAMLParser(final ModelConstructorService service,
-            final Repository<FamilyCharacteristicTemplate> fcRepo,
-            final Repository<AdditionalBelongingsTable> abRepo) {
+    public CultureYAMLParser(
+            final ModelConstructorService service,
+            final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> fcRepo,
+            final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> abRepo) {
         super();
 
         modelService = service;
@@ -215,7 +216,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 }).iterator().next();
     }
 
-    private final Repository<AdditionalBelongingsTable>
+    private final
+            QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>
             getAdditionalBelongingsTableRepository() {
         return addBelongRepo;
     }
@@ -234,7 +236,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 }).iterator().next();
     }
 
-    private final Repository<FamilyCharacteristicTemplate>
+    private final
+            QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
             getFamilyCharacteristicTemplateRepository() {
         return famCharRepo;
     }

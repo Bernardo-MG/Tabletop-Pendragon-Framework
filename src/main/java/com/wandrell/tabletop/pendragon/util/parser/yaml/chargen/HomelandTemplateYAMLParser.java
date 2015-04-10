@@ -9,7 +9,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
@@ -19,11 +19,12 @@ import com.wandrell.tabletop.valuebox.SkillBox;
 public final class HomelandTemplateYAMLParser implements
         Parser<Reader, HomelandTemplate> {
 
-    private final ModelConstructorService    modelService;
-    private final Repository<RegionTemplate> regionRepo;
+    private final ModelConstructorService                                        modelService;
+    private final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo;
 
-    public HomelandTemplateYAMLParser(final ModelConstructorService service,
-            final Repository<RegionTemplate> regionRepo) {
+    public HomelandTemplateYAMLParser(
+            final ModelConstructorService service,
+            final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo) {
         super();
 
         modelService = service;
@@ -126,7 +127,9 @@ public final class HomelandTemplateYAMLParser implements
         return modelService;
     }
 
-    private final Repository<RegionTemplate> getRegionRepository() {
+    private final
+            QueryableRepository<RegionTemplate, Predicate<RegionTemplate>>
+            getRegionRepository() {
         return regionRepo;
     }
 

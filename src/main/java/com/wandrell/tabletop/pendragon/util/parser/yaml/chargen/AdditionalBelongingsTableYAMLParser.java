@@ -11,7 +11,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.Repository;
+import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.interval.DefaultInterval;
@@ -28,20 +28,20 @@ import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 public class AdditionalBelongingsTableYAMLParser implements
         Parser<Reader, AdditionalBelongingsTable> {
 
-    private final Repository<Horse>       horseRepository;
-    private final Repository<Item>        itemRepository;
-    private final ModelConstructorService modelService;
-    private final Repository<Pet>         petRepository;
-    private final Repository<Shield>      shieldRepository;
-    private final Repository<Weapon>      weaponRepository;
+    private final QueryableRepository<Horse, Predicate<Horse>>   horseRepository;
+    private final QueryableRepository<Item, Predicate<Item>>     itemRepository;
+    private final ModelConstructorService                        modelService;
+    private final QueryableRepository<Pet, Predicate<Pet>>       petRepository;
+    private final QueryableRepository<Shield, Predicate<Shield>> shieldRepository;
+    private final QueryableRepository<Weapon, Predicate<Weapon>> weaponRepository;
 
     public AdditionalBelongingsTableYAMLParser(
             final ModelConstructorService service,
-            final Repository<Horse> horseRepository,
-            final Repository<Item> itemRepository,
-            final Repository<Pet> petRepository,
-            final Repository<Shield> shieldRepository,
-            final Repository<Weapon> weaponRepository) {
+            final QueryableRepository<Horse, Predicate<Horse>> horseRepository,
+            final QueryableRepository<Item, Predicate<Item>> itemRepository,
+            final QueryableRepository<Pet, Predicate<Pet>> petRepository,
+            final QueryableRepository<Shield, Predicate<Shield>> shieldRepository,
+            final QueryableRepository<Weapon, Predicate<Weapon>> weaponRepository) {
         super();
 
         modelService = service;
@@ -104,11 +104,13 @@ public class AdditionalBelongingsTableYAMLParser implements
                 intervalsMap);
     }
 
-    private final Repository<Horse> getHorseRepository() {
+    private final QueryableRepository<Horse, Predicate<Horse>>
+            getHorseRepository() {
         return horseRepository;
     }
 
-    private final Repository<Item> getItemRepository() {
+    private final QueryableRepository<Item, Predicate<Item>>
+            getItemRepository() {
         return itemRepository;
     }
 
@@ -116,15 +118,17 @@ public class AdditionalBelongingsTableYAMLParser implements
         return modelService;
     }
 
-    private final Repository<Pet> getPetRepository() {
+    private final QueryableRepository<Pet, Predicate<Pet>> getPetRepository() {
         return petRepository;
     }
 
-    private final Repository<Shield> getShieldRepository() {
+    private final QueryableRepository<Shield, Predicate<Shield>>
+            getShieldRepository() {
         return shieldRepository;
     }
 
-    private final Repository<Weapon> getWeaponRepository() {
+    private final QueryableRepository<Weapon, Predicate<Weapon>>
+            getWeaponRepository() {
         return weaponRepository;
     }
 
