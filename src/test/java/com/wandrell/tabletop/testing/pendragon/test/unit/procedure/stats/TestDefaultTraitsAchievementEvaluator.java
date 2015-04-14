@@ -4,7 +4,7 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.procedure.stats.TraitsAchievementEvaluator;
 import com.wandrell.tabletop.pendragon.procedure.util.stats.DefaultTraitsAchievementEvaluator;
@@ -42,10 +42,10 @@ public final class TestDefaultTraitsAchievementEvaluator {
     @Test
     public final void testIsFulfilling_Fulfills() {
         final TraitsHolder traits;
-        final PendragonHumanCharacter character;
+        final PendragonCharacter character;
 
         traits = Mockito.mock(TraitsHolder.class);
-        character = Mockito.mock(PendragonHumanCharacter.class);
+        character = Mockito.mock(PendragonCharacter.class);
 
         Mockito.when(traits.getChaste()).thenReturn(10);
         Mockito.when(traits.getValorous()).thenReturn(10);
@@ -59,10 +59,10 @@ public final class TestDefaultTraitsAchievementEvaluator {
     @Test
     public final void testIsFulfilling_NotFulfills() {
         final TraitsHolder traits;
-        final PendragonHumanCharacter character;
+        final PendragonCharacter character;
 
         traits = Mockito.mock(TraitsHolder.class);
-        character = Mockito.mock(PendragonHumanCharacter.class);
+        character = Mockito.mock(PendragonCharacter.class);
 
         Mockito.when(traits.getChaste()).thenReturn(10);
         Mockito.when(traits.getValorous()).thenReturn(10);

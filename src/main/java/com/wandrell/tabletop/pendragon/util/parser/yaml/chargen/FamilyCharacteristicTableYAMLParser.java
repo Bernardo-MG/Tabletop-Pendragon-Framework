@@ -12,8 +12,8 @@ import org.yaml.snakeyaml.Yaml;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
-import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
-import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
@@ -90,7 +90,7 @@ public class FamilyCharacteristicTableYAMLParser implements
 
     private final void loadAttributesHolder(
             final Collection<Map<String, Object>> attributes,
-            final HumanAttributesHolder holder) {
+            final AttributesHolder holder) {
         for (final Map<String, Object> attribute : attributes) {
             if (attribute.get("name").toString().equals("appearance")) {
                 holder.setAppearance((Integer) attribute.get("value"));
@@ -110,7 +110,7 @@ public class FamilyCharacteristicTableYAMLParser implements
     private final FamilyCharacteristicTemplate readFamilyCharacteristic(
             final Map<String, Object> template) {
         final String name;
-        final HumanAttributesHolder attributes;
+        final AttributesHolder attributes;
         final Collection<SkillBox> skills;
         final Map<String, Collection<Map<String, Object>>> bonus;
         SkillBox skillData;
@@ -119,7 +119,7 @@ public class FamilyCharacteristicTableYAMLParser implements
 
         name = (String) template.get("name");
 
-        attributes = new DefaultHumanAttributesHolder();
+        attributes = new DefaultAttributesHolder();
         skills = new LinkedList<SkillBox>();
 
         if (template.containsKey("bonus")) {

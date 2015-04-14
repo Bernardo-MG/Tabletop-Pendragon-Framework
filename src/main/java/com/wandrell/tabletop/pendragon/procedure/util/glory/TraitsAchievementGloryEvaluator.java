@@ -1,7 +1,6 @@
 package com.wandrell.tabletop.pendragon.procedure.util.glory;
 
-import com.wandrell.tabletop.pendragon.model.character.PendragonBaseCharacter;
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.procedure.glory.GloryEvaluator;
 import com.wandrell.tabletop.pendragon.procedure.stats.TraitsAchievementEvaluator;
 
@@ -31,17 +30,8 @@ public final class TraitsAchievementGloryEvaluator implements GloryEvaluator {
     }
 
     @Override
-    public final Boolean isApplicable(final PendragonBaseCharacter character) {
-        final Boolean result;
-
-        if (character instanceof PendragonHumanCharacter) {
-            result = getTraitsAchievementEvaluator().isFulfilling(
-                    (PendragonHumanCharacter) character);
-        } else {
-            result = false;
-        }
-
-        return result;
+    public final Boolean isApplicable(final PendragonCharacter character) {
+        return getTraitsAchievementEvaluator().isFulfilling(character);
     }
 
     private final TraitsAchievementEvaluator getTraitsAchievementEvaluator() {

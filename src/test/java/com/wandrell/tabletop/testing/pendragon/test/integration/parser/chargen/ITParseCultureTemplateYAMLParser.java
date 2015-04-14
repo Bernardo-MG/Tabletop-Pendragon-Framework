@@ -13,7 +13,7 @@ import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
@@ -59,7 +59,7 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Female() {
-        final HumanAttributesHolder attributes;
+        final AttributesHolder attributes;
 
         attributes = culture.getFemaleTemplate().getAttributes();
 
@@ -72,7 +72,7 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesBonus_Male() {
-        final HumanAttributesHolder attributes;
+        final AttributesHolder attributes;
 
         attributes = culture.getMaleTemplate().getAttributes();
 

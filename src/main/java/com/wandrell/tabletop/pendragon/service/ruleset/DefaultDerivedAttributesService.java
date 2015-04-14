@@ -6,7 +6,6 @@ import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
-import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetDamageCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetDistinctiveFeaturesTableCommand;
 import com.wandrell.tabletop.pendragon.service.ruleset.command.GetHealingRateCommand;
@@ -52,8 +51,7 @@ public final class DefaultDerivedAttributesService implements
                     new GetDistinctiveFeaturesTableCommand());
         }
 
-        return tableFeatures.getValue(((HumanAttributesHolder) attributes)
-                .getAppearance());
+        return tableFeatures.getValue(attributes.getAppearance());
     }
 
     @Override

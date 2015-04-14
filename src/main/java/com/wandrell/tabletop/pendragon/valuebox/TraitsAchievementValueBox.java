@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.wandrell.tabletop.event.ValueChangeEvent;
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
@@ -14,11 +14,11 @@ import com.wandrell.tabletop.valuebox.AbstractValueBox;
 
 public final class TraitsAchievementValueBox extends AbstractValueBox {
 
-    private final PendragonHumanCharacter  character;
+    private final PendragonCharacter       character;
     private final TraitsAchievementService serviceTraits;
     private Integer                        sum;
 
-    public TraitsAchievementValueBox(final PendragonHumanCharacter character,
+    public TraitsAchievementValueBox(final PendragonCharacter character,
             final TraitsAchievementService service) {
         super();
 
@@ -49,7 +49,7 @@ public final class TraitsAchievementValueBox extends AbstractValueBox {
         return sum;
     }
 
-    private final PendragonHumanCharacter getCharacter() {
+    private final PendragonCharacter getCharacter() {
         return character;
     }
 

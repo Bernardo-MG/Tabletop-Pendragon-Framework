@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.procedure.stats.TraitsAchievementEvaluator;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
@@ -23,7 +23,7 @@ public final class DefaultTraitsAchievementEvaluator implements
     }
 
     @Override
-    public final Boolean isFulfilling(final PendragonHumanCharacter character) {
+    public final Boolean isFulfilling(final PendragonCharacter character) {
         final Map<String, Integer> traits;
         final Iterator<Entry<String, Integer>> itrTraits;
         Entry<String, Integer> trait;

@@ -10,9 +10,9 @@ import com.wandrell.tabletop.pendragon.model.character.DefaultHorse;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.background.DefaultReligion;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultPendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
-import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
@@ -96,7 +96,7 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
-            final HumanAttributesHolder attributesBonus,
+            final AttributesHolder attributesBonus,
             final Map<String, Dice> attributesRandom,
             final Collection<SkillBox> skillsBonus,
             final Collection<SkillBox> specialtySkills,
@@ -130,7 +130,7 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final FamilyCharacteristicTemplate getFamilyCharacteristicTemplate(
-            final String name, final HumanAttributesHolder attributes,
+            final String name, final AttributesHolder attributes,
             final Collection<SkillBox> skills) {
         return new DefaultFamilyCharacteristicTemplate(name, attributes, skills);
     }

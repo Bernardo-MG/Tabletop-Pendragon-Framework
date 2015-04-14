@@ -5,10 +5,9 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.pendragon.model.character.DefaultPendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.DefaultPendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.DerivedAttributeBuilder;
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
-import com.wandrell.tabletop.pendragon.model.character.background.Religion;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
@@ -17,7 +16,7 @@ import com.wandrell.tabletop.valuebox.ValueBox;
 
 public final class ITEventTraitsAchievementViewPoint {
 
-    private final PendragonHumanCharacter  character;
+    private final PendragonCharacter       character;
     private final DerivedAttributeBuilder  derivedBuilder;
 
     private final TraitsAchievementService service;
@@ -71,12 +70,7 @@ public final class ITEventTraitsAchievementViewPoint {
     }
 
     {
-        final Religion religion;
-
-        religion = Mockito.mock(Religion.class);
-
-        character = new DefaultPendragonHumanCharacter("name", derivedBuilder,
-                "culture", religion, "", "", "");
+        character = new DefaultPendragonCharacter("name", derivedBuilder);
 
         service = new TraitsAchievementService() {
 

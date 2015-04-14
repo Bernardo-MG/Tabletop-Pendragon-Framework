@@ -13,9 +13,9 @@ import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.QueryableRepository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
-import com.wandrell.tabletop.pendragon.model.character.stats.DefaultHumanAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultTraitsHolder;
-import com.wandrell.tabletop.pendragon.model.character.stats.HumanAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
@@ -90,7 +90,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     private final CultureCharacterTemplate buildCultureCharacterTemplate(
             final Map<String, Collection<Map<String, Object>>> template)
             throws Exception {
-        final HumanAttributesHolder attributesBonus;
+        final AttributesHolder attributesBonus;
         final Map<String, Dice> attributesRandom;
         final Collection<SkillBox> skillsBonus;
         final Collection<SkillBox> specialtySkills;
@@ -104,7 +104,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
         diceParser = new StringDiceParser();
 
-        attributesBonus = new DefaultHumanAttributesHolder();
+        attributesBonus = new DefaultAttributesHolder();
         attributesRandom = new LinkedHashMap<String, Dice>();
         skillsBonus = new LinkedList<>();
         specialtySkills = new LinkedList<>();
@@ -313,7 +313,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final void loadAttributesHolder(
             final Collection<Map<String, Object>> attributes,
-            final HumanAttributesHolder holder) {
+            final AttributesHolder holder) {
         for (final Map<String, Object> attribute : attributes) {
             if (attribute.get("name").toString().equals("appearance")) {
                 holder.setAppearance((Integer) attribute.get("value"));

@@ -4,7 +4,7 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.pendragon.model.character.PendragonHumanCharacter;
+import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.valuebox.TraitsAchievementValueBox;
@@ -12,7 +12,7 @@ import com.wandrell.tabletop.valuebox.ValueBox;
 
 public final class TestSumTraitsAchievementViewPoint {
 
-    private final PendragonHumanCharacter  character;
+    private final PendragonCharacter       character;
     private final TraitsAchievementService service;
 
     {
@@ -24,7 +24,7 @@ public final class TestSumTraitsAchievementViewPoint {
         Mockito.when(traits.getValorous()).thenReturn(10);
         Mockito.when(traits.getLazy()).thenReturn(5);
 
-        character = Mockito.mock(PendragonHumanCharacter.class);
+        character = Mockito.mock(PendragonCharacter.class);
 
         Mockito.when(character.getTraits()).thenReturn(traits);
 
