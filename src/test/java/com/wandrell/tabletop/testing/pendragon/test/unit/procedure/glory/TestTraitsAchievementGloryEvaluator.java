@@ -37,26 +37,6 @@ public final class TestTraitsAchievementGloryEvaluator {
     }
 
     @Test
-    public final void testIsFulfilling_InvalidClass_NotFulfills() {
-        final GloryEvaluator evaluatorGlory;
-        final TraitsAchievementEvaluator evaluatorTraits;
-        final PendragonCharacter character;
-
-        evaluatorTraits = Mockito.mock(TraitsAchievementEvaluator.class);
-
-        Mockito.when(
-                evaluatorTraits.isFulfilling(Matchers
-                        .any(PendragonCharacter.class))).thenReturn(true);
-
-        evaluatorGlory = new TraitsAchievementGloryEvaluator("name", 100,
-                evaluatorTraits);
-
-        character = Mockito.mock(PendragonCharacter.class);
-
-        Assert.assertTrue(!evaluatorGlory.isApplicable(character));
-    }
-
-    @Test
     public final void testIsFulfilling_NotFulfills() {
         final GloryEvaluator evaluatorGlory;
         final TraitsAchievementEvaluator evaluatorTraits;

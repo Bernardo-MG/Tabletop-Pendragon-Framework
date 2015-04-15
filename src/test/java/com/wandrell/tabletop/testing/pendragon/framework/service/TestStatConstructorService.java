@@ -11,6 +11,10 @@ import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class TestStatConstructorService implements StatConstructorService {
 
+    public TestStatConstructorService() {
+        super();
+    }
+
     @Override
     public final SkillBox getDirectedTrait(final String name,
             final String descriptor, final Integer value) {
