@@ -3,7 +3,6 @@ package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 import java.io.Reader;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -12,8 +11,9 @@ import org.testng.annotations.Test;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.QueryableRepository;
-import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
+import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
@@ -22,7 +22,6 @@ import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
 import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
@@ -85,26 +84,21 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testAttributesRandom_Female() {
-        final Map<String, Dice> attributes;
+        final AttributesRandom attributes;
 
         attributes = culture.getFemaleTemplate().getAttributesRandom();
 
-        Assert.assertEquals(attributes.size(), 1);
-
-        Assert.assertEquals(attributes.get("dexterity").getTextValue(), "10d2");
+        Assert.assertEquals(attributes.getDexterity().getTextValue(), "10d2");
     }
 
     @Test
     public final void testAttributesRandom_Male() {
-        final Map<String, Dice> attributes;
+        final AttributesRandom attributes;
 
         attributes = culture.getMaleTemplate().getAttributesRandom();
 
-        Assert.assertEquals(attributes.size(), 2);
-
-        Assert.assertEquals(attributes.get("appearance").getTextValue(), "1d6");
-        Assert.assertEquals(attributes.get("constitution").getTextValue(),
-                "2d6");
+        Assert.assertEquals(attributes.getAppearance().getTextValue(), "1d6");
+        Assert.assertEquals(attributes.getConstitution().getTextValue(), "2d6");
     }
 
     @Test
@@ -208,34 +202,48 @@ public final class ITParseCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Female() {
-        final Map<SkillBox, Dice> attributes;
-        SkillBox key;
+        final Collection<RandomSkill> passions;
+        final Iterator<RandomSkill> itrPassions;
+        RandomSkill passion;
 
-        attributes = culture.getFemaleTemplate().getPassionsRandom();
+        passions = culture.getFemaleTemplate().getPassionsRandom();
 
-        Assert.assertEquals(attributes.size(), 1);
+        Assert.assertEquals(passions.size(), 1);
 
-        key = new DefaultSkillBox("passion_3", "", 0);
-        Assert.assertEquals(attributes.get(key).getTextValue(), "6d6");
+        itrPassions = passions.iterator();
+
+        passion = itrPassions.next();
+        Assert.assertEquals(passion.getName(), "passion_3");
+        Assert.assertEquals(passion.getDescriptor(), "");
+        Assert.assertEquals(passion.getValue().getTextValue(), "6d6");
     }
 
     @Test
     public final void testPassionsRandom_Male() {
-        final Map<SkillBox, Dice> attributes;
-        SkillBox key;
+        final Collection<RandomSkill> passions;
+        final Iterator<RandomSkill> itrPassions;
+        RandomSkill passion;
 
-        attributes = culture.getMaleTemplate().getPassionsRandom();
+        passions = culture.getMaleTemplate().getPassionsRandom();
 
-        Assert.assertEquals(attributes.size(), 3);
+        Assert.assertEquals(passions.size(), 3);
 
-        key = new DefaultSkillBox("passion_1", "", 0);
-        Assert.assertEquals(attributes.get(key).getTextValue(), "3d6");
+        itrPassions = passions.iterator();
 
-        key = new DefaultSkillBox("passion_2", "descriptor_2", 0);
-        Assert.assertEquals(attributes.get(key).getTextValue(), "0d1");
+        passion = itrPassions.next();
+        Assert.assertEquals(passion.getName(), "passion_1");
+        Assert.assertEquals(passion.getDescriptor(), "");
+        Assert.assertEquals(passion.getValue().getTextValue(), "3d6");
 
-        key = new DefaultSkillBox("passion_4", "", 0);
-        Assert.assertEquals(attributes.get(key).getTextValue(), "0d1+5");
+        passion = itrPassions.next();
+        Assert.assertEquals(passion.getName(), "passion_2");
+        Assert.assertEquals(passion.getDescriptor(), "descriptor_2");
+        Assert.assertEquals(passion.getValue().getTextValue(), "0d1");
+
+        passion = itrPassions.next();
+        Assert.assertEquals(passion.getName(), "passion_4");
+        Assert.assertEquals(passion.getDescriptor(), "");
+        Assert.assertEquals(passion.getValue().getTextValue(), "0d1+5");
     }
 
     @Test

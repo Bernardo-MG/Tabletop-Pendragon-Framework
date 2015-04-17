@@ -11,8 +11,10 @@ import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.background.Religion;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
+import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
@@ -117,11 +119,11 @@ public final class TestModelConstructorService implements
     @Override
     public final CultureCharacterTemplate getCultureCharacterTemplate(
             final AttributesHolder attributesBonus,
-            final Map<String, Dice> attributesRandom,
+            final AttributesRandom attributesRandom,
             final Collection<SkillBox> skillsBonus,
             final Collection<SkillBox> specialtySkills,
             final Collection<SkillBox> passionsBonus,
-            final Map<SkillBox, Dice> passionsRandom,
+            final Collection<RandomSkill> passionsRandom,
             final Collection<SkillBox> directedBonus,
             final TraitsHolder traitsBonus) {
         final CultureCharacterTemplate template;

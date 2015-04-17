@@ -2,7 +2,6 @@ package com.wandrell.tabletop.testing.pendragon.test.integration.parser.chargen;
 
 import java.io.Reader;
 import java.util.Collection;
-import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -11,8 +10,8 @@ import org.testng.annotations.Test;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.QueryableRepository;
-import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
@@ -81,24 +80,6 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
     }
 
     @Test
-    public final void testAttributesRandom_Female() {
-        final Map<String, Dice> attributes;
-
-        attributes = culture.getFemaleTemplate().getAttributesRandom();
-
-        Assert.assertTrue(attributes.isEmpty());
-    }
-
-    @Test
-    public final void testAttributesRandom_Male() {
-        final Map<String, Dice> attributes;
-
-        attributes = culture.getMaleTemplate().getAttributesRandom();
-
-        Assert.assertTrue(attributes.isEmpty());
-    }
-
-    @Test
     public final void testDirectedTraitsBonus_Female() {
         final Collection<SkillBox> dirTraits;
 
@@ -157,7 +138,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Female() {
-        final Map<SkillBox, Dice> passions;
+        final Collection<RandomSkill> passions;
 
         passions = culture.getFemaleTemplate().getPassionsRandom();
 
@@ -166,7 +147,7 @@ public final class ITParseMinimumCultureTemplateYAMLParser {
 
     @Test
     public final void testPassionsRandom_Male() {
-        final Map<SkillBox, Dice> passions;
+        final Collection<RandomSkill> passions;
 
         passions = culture.getMaleTemplate().getPassionsRandom();
 

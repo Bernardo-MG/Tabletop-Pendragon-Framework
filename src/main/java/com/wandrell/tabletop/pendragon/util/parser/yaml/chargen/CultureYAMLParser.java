@@ -2,7 +2,6 @@ package com.wandrell.tabletop.pendragon.util.parser.yaml.chargen;
 
 import java.io.Reader;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -11,11 +10,16 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.tabletop.dice.DefaultDice;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesRandom;
+import com.wandrell.tabletop.pendragon.model.character.stats.DefaultRandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultTraitsHolder;
+import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
@@ -91,25 +95,25 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
             final Map<String, Collection<Map<String, Object>>> template)
             throws Exception {
         final AttributesHolder attributesBonus;
-        final Map<String, Dice> attributesRandom;
+        final AttributesRandom attributesRandom;
         final Collection<SkillBox> skillsBonus;
         final Collection<SkillBox> specialtySkills;
         final Collection<SkillBox> passionsBonus;
-        final Map<SkillBox, Dice> passionsRandom;
+        final Collection<RandomSkill> passionsRandom;
         final Collection<SkillBox> directedBonus;
         final TraitsHolder traitsBonus;
         final Parser<String, Dice> diceParser;
         String descriptor;
-        SkillBox skill;
+        RandomSkill skillRandom;
+        Dice dice;
 
         diceParser = new StringDiceParser();
 
         attributesBonus = new DefaultAttributesHolder();
-        attributesRandom = new LinkedHashMap<String, Dice>();
         skillsBonus = new LinkedList<>();
         specialtySkills = new LinkedList<>();
         passionsBonus = new LinkedList<>();
-        passionsRandom = new LinkedHashMap<SkillBox, Dice>();
+        passionsRandom = new LinkedList<>();
         directedBonus = new LinkedList<>();
 
         if (template != null) {
@@ -118,13 +122,8 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                         attributesBonus);
             }
 
-            if (template.containsKey("attributes_random")) {
-                for (final Map<String, Object> child : template
-                        .get("attributes_random")) {
-                    attributesRandom.put((String) child.get("name"),
-                            diceParser.parse((String) child.get("value")));
-                }
-            }
+            attributesRandom = loadAttributesRandom(template
+                    .get("attributes_random"));
 
             if (template.containsKey("skills_bonus")) {
                 for (final Map<String, Object> child : template
@@ -167,11 +166,13 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                     if (descriptor == null) {
                         descriptor = "";
                     }
-                    skill = new DefaultSkillBox((String) child.get("name"),
-                            descriptor, 0);
 
-                    passionsRandom.put(skill,
-                            diceParser.parse((String) child.get("value")));
+                    dice = diceParser.parse((String) child.get("value"));
+
+                    skillRandom = new DefaultRandomSkill(
+                            (String) child.get("name"), descriptor, dice);
+
+                    passionsRandom.add(skillRandom);
                 }
             }
 
@@ -195,6 +196,10 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
             }
         } else {
             traitsBonus = new DefaultTraitsHolder();
+            attributesRandom = new DefaultAttributesRandom(
+                    new DefaultDice(0, 0), new DefaultDice(0, 0),
+                    new DefaultDice(0, 0), new DefaultDice(0, 0),
+                    new DefaultDice(0, 0));
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
@@ -327,6 +332,55 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
                 holder.setStrength((Integer) attribute.get("value"));
             }
         }
+    }
+
+    private final AttributesRandom loadAttributesRandom(
+            final Collection<Map<String, Object>> attributes) {
+        final Parser<String, Dice> diceParser;
+        Dice appearance;
+        Dice constitution;
+        Dice dexterity;
+        Dice size;
+        Dice strength;
+
+        diceParser = new StringDiceParser();
+
+        appearance = new DefaultDice(0, 0);
+        constitution = new DefaultDice(0, 0);
+        dexterity = new DefaultDice(0, 0);
+        size = new DefaultDice(0, 0);
+        strength = new DefaultDice(0, 0);
+
+        if (attributes != null) {
+            try {
+                for (final Map<String, Object> attribute : attributes) {
+                    if (attribute.get("name").toString().equals("appearance")) {
+                        appearance = diceParser.parse(attribute.get("value")
+                                .toString());
+                    } else if (attribute.get("name").toString()
+                            .equals("constitution")) {
+                        constitution = diceParser.parse(attribute.get("value")
+                                .toString());
+                    } else if (attribute.get("name").toString()
+                            .equals("dexterity")) {
+                        dexterity = diceParser.parse(attribute.get("value")
+                                .toString());
+                    } else if (attribute.get("name").toString().equals("size")) {
+                        size = diceParser.parse(attribute.get("value")
+                                .toString());
+                    } else if (attribute.get("name").toString()
+                            .equals("strength")) {
+                        strength = diceParser.parse(attribute.get("value")
+                                .toString());
+                    }
+                }
+            } catch (final Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return new DefaultAttributesRandom(appearance, constitution, dexterity,
+                size, strength);
     }
 
 }

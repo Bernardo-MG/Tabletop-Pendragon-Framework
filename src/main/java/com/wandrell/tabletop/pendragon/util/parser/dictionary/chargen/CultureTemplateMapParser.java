@@ -4,10 +4,9 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
@@ -108,18 +107,57 @@ public final class CultureTemplateMapParser implements
 
         // Random attributes
         valuesCol = new LinkedList<>();
-        if (!template.getAttributesRandom().isEmpty()) {
-            for (final Entry<String, Dice> entry : template
-                    .getAttributesRandom().entrySet()) {
-                value = new LinkedHashMap<String, Object>();
+        if (!template.getAttributesRandom().getAppearance().getTextValue()
+                .equals("0")) {
+            value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey());
-                value.put("value", entry.getValue().getTextValue());
+            value.put("name", "appearance");
+            value.put("value", template.getAttributesRandom().getAppearance()
+                    .getTextValue());
 
-                valuesCol.add(value);
-            }
-            values.put("attributes_random", valuesCol);
+            valuesCol.add(value);
         }
+        if (!template.getAttributesRandom().getConstitution().getTextValue()
+                .equals("0")) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "constitution");
+            value.put("value", template.getAttributesRandom().getConstitution()
+                    .getTextValue());
+
+            valuesCol.add(value);
+        }
+        if (!template.getAttributesRandom().getDexterity().getTextValue()
+                .equals("0")) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "dexterity");
+            value.put("value", template.getAttributesRandom().getDexterity()
+                    .getTextValue());
+
+            valuesCol.add(value);
+        }
+        if (!template.getAttributesRandom().getSize().getTextValue()
+                .equals("0")) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "size");
+            value.put("value", template.getAttributesRandom().getSize()
+                    .getTextValue());
+
+            valuesCol.add(value);
+        }
+        if (!template.getAttributesRandom().getStrength().getTextValue()
+                .equals("0")) {
+            value = new LinkedHashMap<String, Object>();
+
+            value.put("name", "strength");
+            value.put("value", template.getAttributesRandom().getStrength()
+                    .getTextValue());
+
+            valuesCol.add(value);
+        }
+        values.put("attributes_bonus", valuesCol);
 
         // Traits
         valuesCol = getTraitsValues(template.getTraits());
@@ -172,13 +210,12 @@ public final class CultureTemplateMapParser implements
         // Random passions
         valuesCol = new LinkedList<>();
         if (!template.getPassionsRandom().isEmpty()) {
-            for (final Entry<SkillBox, Dice> entry : template
-                    .getPassionsRandom().entrySet()) {
+            for (final RandomSkill passion : template.getPassionsRandom()) {
                 value = new LinkedHashMap<String, Object>();
 
-                value.put("name", entry.getKey().getName());
-                value.put("descriptor", entry.getKey().getDescriptor());
-                value.put("value", entry.getValue().getTextValue());
+                value.put("name", passion.getName());
+                value.put("descriptor", passion.getDescriptor());
+                value.put("value", passion.getValue().getTextValue());
 
                 valuesCol.add(value);
             }
