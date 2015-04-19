@@ -157,7 +157,7 @@ public final class CultureTemplateMapParser implements
 
             valuesCol.add(value);
         }
-        values.put("attributes_bonus", valuesCol);
+        values.put("attributes_random", valuesCol);
 
         // Traits
         valuesCol = getTraitsValues(template.getTraits());

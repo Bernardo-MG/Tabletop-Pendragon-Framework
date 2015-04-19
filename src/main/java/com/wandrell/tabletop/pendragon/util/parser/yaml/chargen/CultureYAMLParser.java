@@ -197,9 +197,9 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         } else {
             traitsBonus = new DefaultTraitsHolder();
             attributesRandom = new DefaultAttributesRandom(
-                    new DefaultDice(0, 0), new DefaultDice(0, 0),
-                    new DefaultDice(0, 0), new DefaultDice(0, 0),
-                    new DefaultDice(0, 0));
+                    new DefaultDice(0, 1), new DefaultDice(0, 1),
+                    new DefaultDice(0, 1), new DefaultDice(0, 1),
+                    new DefaultDice(0, 1));
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
@@ -345,11 +345,11 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
         diceParser = new StringDiceParser();
 
-        appearance = new DefaultDice(0, 0);
-        constitution = new DefaultDice(0, 0);
-        dexterity = new DefaultDice(0, 0);
-        size = new DefaultDice(0, 0);
-        strength = new DefaultDice(0, 0);
+        appearance = new DefaultDice(0, 1);
+        constitution = new DefaultDice(0, 1);
+        dexterity = new DefaultDice(0, 1);
+        size = new DefaultDice(0, 1);
+        strength = new DefaultDice(0, 1);
 
         if (attributes != null) {
             try {
