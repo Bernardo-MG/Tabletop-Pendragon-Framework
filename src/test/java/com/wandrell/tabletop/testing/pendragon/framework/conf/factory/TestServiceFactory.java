@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.repository.CollectionRepository;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
@@ -19,9 +19,9 @@ import com.wandrell.tabletop.pendragon.model.inventory.weapon.Weapon;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.service.TestModelConstructorService;
 import com.wandrell.tabletop.testing.pendragon.framework.service.TestStatConstructorService;
-import com.wandrell.tabletop.valuebox.SkillBox;
 
 public final class TestServiceFactory {
 
@@ -36,9 +36,9 @@ public final class TestServiceFactory {
     }
 
     public final
-            QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>
+            FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>
             getAdditionalBelongingsTableRepository() {
-        final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> repository;
+        final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> repository;
 
         repository = new CollectionRepository<AdditionalBelongingsTable>();
 
@@ -53,9 +53,9 @@ public final class TestServiceFactory {
     }
 
     public final
-            QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
+    FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
             getFamilyCharacteristicTemplateRepository() {
-        final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> repository;
+        final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> repository;
 
         repository = new CollectionRepository<FamilyCharacteristicTemplate>();
 
@@ -71,9 +71,9 @@ public final class TestServiceFactory {
         return repository;
     }
 
-    public final QueryableRepository<Horse, Predicate<Horse>>
+    public final FilteredRepository<Horse, Predicate<Horse>>
             getHorseRepository() {
-        final QueryableRepository<Horse, Predicate<Horse>> repository;
+        final FilteredRepository<Horse, Predicate<Horse>> repository;
 
         repository = new CollectionRepository<Horse>();
 
@@ -91,8 +91,8 @@ public final class TestServiceFactory {
         return repository;
     }
 
-    public final QueryableRepository<Item, Predicate<Item>> getItemRepository() {
-        final QueryableRepository<Item, Predicate<Item>> repository;
+    public final FilteredRepository<Item, Predicate<Item>> getItemRepository() {
+        final FilteredRepository<Item, Predicate<Item>> repository;
 
         repository = new CollectionRepository<Item>();
 
@@ -114,8 +114,8 @@ public final class TestServiceFactory {
         return new TestModelConstructorService();
     }
 
-    public final QueryableRepository<Pet, Predicate<Pet>> getPetRepository() {
-        final QueryableRepository<Pet, Predicate<Pet>> repository;
+    public final FilteredRepository<Pet, Predicate<Pet>> getPetRepository() {
+        final FilteredRepository<Pet, Predicate<Pet>> repository;
 
         repository = new CollectionRepository<Pet>();
 
@@ -128,9 +128,9 @@ public final class TestServiceFactory {
         return repository;
     }
 
-    public final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>>
+    public final FilteredRepository<RegionTemplate, Predicate<RegionTemplate>>
             getRegionRepository() {
-        final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>> repository;
+        final FilteredRepository<RegionTemplate, Predicate<RegionTemplate>> repository;
 
         repository = new CollectionRepository<RegionTemplate>();
 
@@ -148,9 +148,9 @@ public final class TestServiceFactory {
         return repository;
     }
 
-    public final QueryableRepository<Shield, Predicate<Shield>>
+    public final FilteredRepository<Shield, Predicate<Shield>>
             getShieldRepository() {
-        final QueryableRepository<Shield, Predicate<Shield>> repository;
+        final FilteredRepository<Shield, Predicate<Shield>> repository;
 
         repository = new CollectionRepository<Shield>();
 
@@ -172,9 +172,9 @@ public final class TestServiceFactory {
         return new TestStatConstructorService();
     }
 
-    public final QueryableRepository<Weapon, Predicate<Weapon>>
+    public final FilteredRepository<Weapon, Predicate<Weapon>>
             getWeaponRepository() {
-        final QueryableRepository<Weapon, Predicate<Weapon>> repository;
+        final FilteredRepository<Weapon, Predicate<Weapon>> repository;
 
         repository = new CollectionRepository<Weapon>();
 

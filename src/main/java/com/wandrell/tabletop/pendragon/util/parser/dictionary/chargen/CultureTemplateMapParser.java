@@ -10,7 +10,7 @@ import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class CultureTemplateMapParser implements
         Parser<CultureTemplate, Map<String, Object>> {

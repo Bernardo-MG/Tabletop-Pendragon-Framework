@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
 import com.wandrell.tabletop.pendragon.model.character.stats.RandomSkill;
@@ -20,9 +20,9 @@ import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteri
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.CultureYAMLParser;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseCultureTemplateYAMLParser {
@@ -38,8 +38,8 @@ public final class ITParseCultureTemplateYAMLParser {
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
-        final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
+        final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
+        final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
 
         factory = TestServiceFactory.getInstance();
 

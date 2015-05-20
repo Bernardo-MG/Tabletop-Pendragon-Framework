@@ -17,7 +17,7 @@ import com.google.common.base.Predicate;
 import com.wandrell.pattern.outputter.Outputter;
 import com.wandrell.pattern.outputter.yaml.YAMLOutputter;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureCharacterTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
@@ -50,8 +50,8 @@ public final class ITSendCultureTemplateYAMLOutputter {
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
-        final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
+        final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
+        final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
         final Path pathOut;
         final Outputter<Object> outputter;
 
@@ -103,8 +103,8 @@ public final class ITSendCultureTemplateYAMLOutputter {
         final Parser<Reader, CultureTemplate> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
-        final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
+        final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> belongingsRepository;
+        final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> characteristicRepository;
         final Path pathOut;
         final Outputter<Object> outputter;
 

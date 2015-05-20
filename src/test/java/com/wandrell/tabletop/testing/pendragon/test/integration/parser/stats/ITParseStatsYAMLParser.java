@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser.StatBuilder;
+import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseStatsYAMLParser {
@@ -55,13 +55,11 @@ public final class ITParseStatsYAMLParser {
         Assert.assertEquals(stat.getName(), "stat_1");
         Assert.assertEquals(stat.getDescriptor(), "descriptor_1");
         Assert.assertEquals(stat.getValue(), (Integer) 0);
-        Assert.assertTrue(stat.isDescribed());
 
         stat = itr.next();
         Assert.assertEquals(stat.getName(), "stat_2");
         Assert.assertEquals(stat.getDescriptor(), "");
         Assert.assertEquals(stat.getValue(), (Integer) 1);
-        Assert.assertTrue(!stat.isDescribed());
     }
 
 }

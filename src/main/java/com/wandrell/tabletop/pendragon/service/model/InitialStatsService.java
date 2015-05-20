@@ -9,7 +9,7 @@ import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialDirectedTraitsCommand;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialPassionsCommand;
 import com.wandrell.tabletop.pendragon.service.model.command.GetInitialSkillsCommand;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class InitialStatsService implements StatsService {
 

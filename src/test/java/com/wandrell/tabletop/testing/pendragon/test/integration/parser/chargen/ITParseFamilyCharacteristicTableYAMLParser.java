@@ -14,9 +14,9 @@ import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteri
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.FamilyCharacteristicTableYAMLParser;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseFamilyCharacteristicTableYAMLParser {

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class HomelandTemplateMapParser implements
         Parser<HomelandTemplate, Map<String, Object>> {

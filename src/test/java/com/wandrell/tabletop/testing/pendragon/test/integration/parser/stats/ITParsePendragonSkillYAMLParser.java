@@ -51,8 +51,6 @@ public final class ITParsePendragonSkillYAMLParser {
         Assert.assertEquals(skill.getName(), "skill_1");
         Assert.assertEquals(skill.getDescriptor(), "");
 
-        Assert.assertEquals(skill.isDescribed(), (Boolean) false);
-
         Assert.assertEquals(skill.isCombatSkill(), (Boolean) false);
         Assert.assertEquals(skill.isCourtlySkill(), (Boolean) false);
         Assert.assertEquals(skill.isKnightlySkill(), (Boolean) false);
@@ -61,8 +59,6 @@ public final class ITParsePendragonSkillYAMLParser {
         skill = itr.next();
         Assert.assertEquals(skill.getName(), "skill_2");
         Assert.assertEquals(skill.getDescriptor(), "");
-
-        Assert.assertEquals(skill.isDescribed(), (Boolean) false);
 
         Assert.assertEquals(skill.isCombatSkill(), (Boolean) true);
         Assert.assertEquals(skill.isCourtlySkill(), (Boolean) false);

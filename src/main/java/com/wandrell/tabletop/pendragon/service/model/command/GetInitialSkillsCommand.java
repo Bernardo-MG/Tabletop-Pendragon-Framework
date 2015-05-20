@@ -8,7 +8,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.command.ResultCommand;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.util.tag.service.PendragonSkillBoxRepositoryAware;
 import com.wandrell.util.ResourceUtils;
@@ -17,7 +17,7 @@ public final class GetInitialSkillsCommand implements
         ResultCommand<Collection<PendragonSkillBox>>,
         PendragonSkillBoxRepositoryAware {
 
-    private QueryableRepository<PendragonSkillBox, Predicate<PendragonSkillBox>> skillRepo;
+    private FilteredRepository<PendragonSkillBox, Predicate<PendragonSkillBox>> skillRepo;
     private Collection<PendragonSkillBox>                                        skills;
 
     public GetInitialSkillsCommand() {
@@ -64,12 +64,12 @@ public final class GetInitialSkillsCommand implements
     public final
             void
             setPendragonSkillRepository(
-                    final QueryableRepository<PendragonSkillBox, Predicate<PendragonSkillBox>> repository) {
+                    final FilteredRepository<PendragonSkillBox, Predicate<PendragonSkillBox>> repository) {
         skillRepo = repository;
     }
 
     private final
-            QueryableRepository<PendragonSkillBox, Predicate<PendragonSkillBox>>
+            FilteredRepository<PendragonSkillBox, Predicate<PendragonSkillBox>>
             getPendragonSkillBoxRepository() {
         return skillRepo;
     }

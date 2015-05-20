@@ -11,7 +11,7 @@ import com.wandrell.tabletop.pendragon.service.chargen.command.GetHomelandPassio
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetLandlordPassionRollCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetLandlordPassionsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetPassionIndividualDifferencesPointsCommand;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class DefaultCharGenPassionService implements
         CharGenPassionService {

@@ -8,7 +8,7 @@ import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.valuebox.TraitsAchievementValueBox;
-import com.wandrell.tabletop.valuebox.ValueBox;
+import com.wandrell.tabletop.stats.valuebox.ValueBox;
 
 public final class TestSumTraitsAchievementViewPoint {
 

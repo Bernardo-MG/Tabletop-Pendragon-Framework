@@ -1,13 +1,13 @@
 package com.wandrell.tabletop.pendragon.character.stats.derived;
 
-import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.valuebox.AbstractValueBox;
+import com.wandrell.tabletop.stats.event.ValueChangeEvent;
+import com.wandrell.tabletop.stats.valuebox.AbstractValueBoxEventFirer;
 
-public final class HealingRateValueBox extends AbstractValueBox {
+public final class HealingRateValueBox extends AbstractValueBoxEventFirer {
 
     private final AttributesHolder         attributes;
     private final DerivedAttributesHolder  derived;
@@ -41,13 +41,13 @@ public final class HealingRateValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final HealingRateValueBox createNewInstance() {
-        return new HealingRateValueBox(attributes, derived, derivedService);
+    public final Integer getValue() {
+        return derivedService.getHealingRate(attributes, derived);
     }
 
     @Override
-    public final Integer getValue() {
-        return derivedService.getHealingRate(attributes, derived);
+    public final void setValue(final Integer value) {
+        throw new UnsupportedOperationException("Setting the value is disabled");
     }
 
 }

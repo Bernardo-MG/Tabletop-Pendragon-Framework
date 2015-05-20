@@ -12,7 +12,7 @@ import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
 import com.wandrell.tabletop.pendragon.valuebox.TraitsAchievementValueBox;
-import com.wandrell.tabletop.valuebox.ValueBox;
+import com.wandrell.tabletop.stats.valuebox.ValueBox;
 
 public final class ITEventTraitsAchievementViewPoint {
 

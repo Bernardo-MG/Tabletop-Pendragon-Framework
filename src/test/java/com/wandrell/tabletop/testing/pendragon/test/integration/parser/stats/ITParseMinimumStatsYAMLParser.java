@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser.StatBuilder;
+import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseMinimumStatsYAMLParser {
@@ -32,7 +32,7 @@ public final class ITParseMinimumStatsYAMLParser {
             @Override
             public final SkillBox getStat(final String name,
                     final String descriptor, final Integer value) {
-                return new DefaultSkillBox(name, descriptor, 0);
+                return new DefaultSkillBox(name, descriptor, value);
             }
 
         });

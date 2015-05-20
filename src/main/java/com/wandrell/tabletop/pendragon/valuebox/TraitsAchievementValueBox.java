@@ -5,14 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.PendragonCharacter;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.model.character.stats.TraitsHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.TraitsAchievementService;
-import com.wandrell.tabletop.valuebox.AbstractValueBox;
+import com.wandrell.tabletop.stats.event.ValueChangeEvent;
+import com.wandrell.tabletop.stats.valuebox.AbstractValueBoxEventFirer;
 
-public final class TraitsAchievementValueBox extends AbstractValueBox {
+public final class TraitsAchievementValueBox extends AbstractValueBoxEventFirer {
 
     private final PendragonCharacter       character;
     private final TraitsAchievementService serviceTraits;
@@ -39,14 +39,12 @@ public final class TraitsAchievementValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final AbstractValueBox createNewInstance() {
-        return new TraitsAchievementValueBox(getCharacter(),
-                getTraitsAchievementService());
-    }
-
-    @Override
     public final Integer getValue() {
         return sum;
+    }
+    @Override
+    public final void setValue(final Integer value) {
+        throw new UnsupportedOperationException("Setting the value is disabled");
     }
 
     private final PendragonCharacter getCharacter() {

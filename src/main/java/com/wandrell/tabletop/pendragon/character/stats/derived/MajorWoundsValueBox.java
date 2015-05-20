@@ -1,13 +1,13 @@
 package com.wandrell.tabletop.pendragon.character.stats.derived;
 
-import com.wandrell.tabletop.event.ValueChangeEvent;
 import com.wandrell.tabletop.pendragon.model.character.event.PendragonCharacterListenerAdapter;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.valuebox.AbstractValueBox;
+import com.wandrell.tabletop.stats.event.ValueChangeEvent;
+import com.wandrell.tabletop.stats.valuebox.AbstractValueBoxEventFirer;
 
-public final class MajorWoundsValueBox extends AbstractValueBox {
+public final class MajorWoundsValueBox extends AbstractValueBoxEventFirer {
 
     private final AttributesHolder         attributes;
     private final DerivedAttributesHolder  derived;
@@ -35,13 +35,13 @@ public final class MajorWoundsValueBox extends AbstractValueBox {
     }
 
     @Override
-    public final MajorWoundsValueBox createNewInstance() {
-        return new MajorWoundsValueBox(attributes, derived, derivedService);
+    public final Integer getValue() {
+        return derivedService.getMajorWound(attributes, derived);
     }
 
     @Override
-    public final Integer getValue() {
-        return derivedService.getMajorWound(attributes, derived);
+    public final void setValue(final Integer value) {
+        throw new UnsupportedOperationException("Setting the value is disabled");
     }
 
 }

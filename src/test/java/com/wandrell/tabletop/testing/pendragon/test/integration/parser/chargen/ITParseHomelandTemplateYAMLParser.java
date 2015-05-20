@@ -9,14 +9,14 @@ import org.testng.annotations.Test;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.pendragon.model.chargen.region.HomelandTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.region.RegionTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.chargen.HomelandTemplateYAMLParser;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.TestModelFileConf;
 import com.wandrell.tabletop.testing.pendragon.framework.conf.factory.TestServiceFactory;
-import com.wandrell.tabletop.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class ITParseHomelandTemplateYAMLParser {
@@ -31,7 +31,7 @@ public final class ITParseHomelandTemplateYAMLParser {
     public final void initialize() throws Exception {
         final Parser<Reader, HomelandTemplate> parser;
         final ModelConstructorService modelService;
-        final QueryableRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo;
+        final FilteredRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo;
 
         modelService = TestServiceFactory.getInstance()
                 .getModelConstructorService();

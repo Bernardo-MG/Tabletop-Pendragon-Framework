@@ -7,7 +7,7 @@ import com.wandrell.tabletop.pendragon.service.model.StatConstructorService;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser;
 import com.wandrell.tabletop.pendragon.util.parser.yaml.stats.StatsYAMLParser.StatBuilder;
 import com.wandrell.tabletop.pendragon.util.tag.service.StatConstructorServiceAware;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetInitialDirectedTraitsCommand implements

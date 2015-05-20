@@ -6,8 +6,8 @@ import com.wandrell.tabletop.pendragon.model.character.stats.DefaultPendragonSki
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultSpecialtySkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.PendragonSkillBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.SpecialtySkillBox;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class DefaultStatConstructorService implements
         StatConstructorService {
@@ -21,11 +21,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name, value);
-
-        if (!descriptor.isEmpty()) {
-            skill.setDescriptor(descriptor);
-        }
+        skill = new DefaultSkillBox(name,descriptor, value);
 
         return skill;
     }
@@ -35,11 +31,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name, value);
-
-        if (!descriptor.isEmpty()) {
-            skill.setDescriptor(descriptor);
-        }
+        skill = new DefaultSkillBox(name,descriptor, value);
 
         return skill;
     }
@@ -51,12 +43,8 @@ public final class DefaultStatConstructorService implements
             final Boolean knowledgeSkill, final Boolean courtlySkill) {
         final PendragonSkillBox skill;
 
-        skill = new DefaultPendragonSkillBox(name, value, combatSkill,
+        skill = new DefaultPendragonSkillBox(name,descriptor, value, combatSkill,
                 knightlySkill, knowledgeSkill, courtlySkill);
-
-        if (!descriptor.isEmpty()) {
-            skill.setDescriptor(descriptor);
-        }
 
         return skill;
     }

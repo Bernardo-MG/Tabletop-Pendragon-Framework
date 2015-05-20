@@ -8,7 +8,7 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class StatsYAMLParser<V extends SkillBox> implements
         Parser<Reader, Collection<V>> {
@@ -68,9 +68,9 @@ public final class StatsYAMLParser<V extends SkillBox> implements
                 stat = getStatBuilder().getStat((String) data.get("name"),
                         descriptor, value);
 
-                if ((descriptor.isEmpty()) && (data.containsKey("described"))) {
-                    stat.setDescribed((Boolean) data.get("described"));
-                }
+                //if ((descriptor.isEmpty()) && (data.containsKey("described"))) {
+                //    stat.setDescribed((Boolean) data.get("described"));
+                //}
 
                 stats.add(stat);
             }

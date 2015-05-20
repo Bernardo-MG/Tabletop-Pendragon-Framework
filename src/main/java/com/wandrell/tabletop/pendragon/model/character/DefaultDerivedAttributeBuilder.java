@@ -12,7 +12,7 @@ import com.wandrell.tabletop.pendragon.character.stats.derived.WeightValueBox;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.DerivedAttributesHolder;
 import com.wandrell.tabletop.pendragon.service.ruleset.DerivedAttributesService;
-import com.wandrell.tabletop.valuebox.ValueBox;
+import com.wandrell.tabletop.stats.valuebox.ValueBox;
 
 public final class DefaultDerivedAttributeBuilder implements
         DerivedAttributeBuilder {

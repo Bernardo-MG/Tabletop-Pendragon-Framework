@@ -37,7 +37,7 @@ import com.wandrell.tabletop.pendragon.model.manor.AnimalYearResult;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class TestModelConstructorService implements
         ModelConstructorService {
@@ -400,7 +400,7 @@ public final class TestModelConstructorService implements
 
     @Override
     public final PendragonSkillBox getSkill(final String name,
-            final Boolean described, final String descriptor,
+             final String descriptor,
             final Boolean combat, final Boolean court, final Boolean knight,
             final Boolean knowledge) {
         final PendragonSkillBox skill;
@@ -409,8 +409,6 @@ public final class TestModelConstructorService implements
 
         Mockito.when(skill.getName()).thenReturn(name);
         Mockito.when(skill.getDescriptor()).thenReturn(descriptor);
-
-        Mockito.when(skill.isDescribed()).thenReturn(described);
 
         Mockito.when(skill.isCombatSkill()).thenReturn(combat);
         Mockito.when(skill.isCourtlySkill()).thenReturn(court);

@@ -17,8 +17,8 @@ import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHo
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTable;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public class FamilyCharacteristicTableYAMLParser implements
         Parser<Reader, FamilyCharacteristicTable> {

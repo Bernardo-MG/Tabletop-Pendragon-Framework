@@ -9,7 +9,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.dice.DefaultDice;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.dice.StringDiceParser;
@@ -26,19 +26,19 @@ import com.wandrell.tabletop.pendragon.model.chargen.background.CultureTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FamilyCharacteristicTemplate;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongingsTable;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
-import com.wandrell.tabletop.valuebox.DefaultSkillBox;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
-    private final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>       addBelongRepo;
-    private final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> famCharRepo;
+    private final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>       addBelongRepo;
+    private final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> famCharRepo;
     private final ModelConstructorService                                                                    modelService;
 
     public CultureYAMLParser(
             final ModelConstructorService service,
-            final QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> fcRepo,
-            final QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> abRepo) {
+            final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> fcRepo,
+            final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>> abRepo) {
         super();
 
         modelService = service;
@@ -222,7 +222,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     }
 
     private final
-            QueryableRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>
+            FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>
             getAdditionalBelongingsTableRepository() {
         return addBelongRepo;
     }
@@ -242,7 +242,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
     }
 
     private final
-            QueryableRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
+            FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
             getFamilyCharacteristicTemplateRepository() {
         return famCharRepo;
     }

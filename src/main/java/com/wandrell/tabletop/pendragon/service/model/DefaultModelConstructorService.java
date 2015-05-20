@@ -55,7 +55,7 @@ import com.wandrell.tabletop.pendragon.model.manor.DefaultPet;
 import com.wandrell.tabletop.pendragon.model.manor.Pet;
 import com.wandrell.tabletop.pendragon.model.util.DefaultTextList;
 import com.wandrell.tabletop.pendragon.model.util.TextList;
-import com.wandrell.tabletop.valuebox.SkillBox;
+import com.wandrell.tabletop.stats.valuebox.SkillBox;
 
 public final class DefaultModelConstructorService implements
         ModelConstructorService {
@@ -227,19 +227,13 @@ public final class DefaultModelConstructorService implements
 
     @Override
     public final PendragonSkillBox getSkill(final String name,
-            final Boolean described, final String descriptor,
+           final String descriptor,
             final Boolean combat, final Boolean court, final Boolean knight,
             final Boolean knowledge) {
         final PendragonSkillBox skill;
 
-        skill = new DefaultPendragonSkillBox(name, 0, combat, knight,
+        skill = new DefaultPendragonSkillBox(name,descriptor, 0, combat, knight,
                 knowledge, court);
-
-        if (described) {
-            skill.setDescriptor(descriptor);
-        }
-
-        skill.setDescribed(described);
 
         return skill;
     }

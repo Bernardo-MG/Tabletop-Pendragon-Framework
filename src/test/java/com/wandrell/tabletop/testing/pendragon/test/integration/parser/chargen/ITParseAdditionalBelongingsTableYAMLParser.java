@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.pattern.repository.QueryableRepository;
+import com.wandrell.pattern.repository.FilteredRepository;
 import com.wandrell.tabletop.dice.Dice;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -38,11 +38,11 @@ public final class ITParseAdditionalBelongingsTableYAMLParser {
         final Parser<Reader, AdditionalBelongingsTable> parser;
         final TestServiceFactory factory;
         final ModelConstructorService modelService;
-        final QueryableRepository<Horse, Predicate<Horse>> horseRepository;
-        final QueryableRepository<Item, Predicate<Item>> itemRepository;
-        final QueryableRepository<Pet, Predicate<Pet>> petRepository;
-        final QueryableRepository<Shield, Predicate<Shield>> shieldRepository;
-        final QueryableRepository<Weapon, Predicate<Weapon>> weaponRepository;
+        final FilteredRepository<Horse, Predicate<Horse>> horseRepository;
+        final FilteredRepository<Item, Predicate<Item>> itemRepository;
+        final FilteredRepository<Pet, Predicate<Pet>> petRepository;
+        final FilteredRepository<Shield, Predicate<Shield>> shieldRepository;
+        final FilteredRepository<Weapon, Predicate<Weapon>> weaponRepository;
 
         factory = TestServiceFactory.getInstance();
 
