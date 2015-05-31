@@ -91,9 +91,10 @@ public final class PendragonSkillYAMLParser implements
                         (String) data.get("name"), descriptor, value, combat,
                         knightly, knowledge, courtly);
 
-                //if ((descriptor.isEmpty()) && (data.containsKey("described"))) {
-                //    stat.setDescribed((Boolean) data.get("described"));
-                //}
+                // if ((descriptor.isEmpty()) &&
+                // (data.containsKey("described"))) {
+                // stat.setDescribed((Boolean) data.get("described"));
+                // }
 
                 stats.add(stat);
             }

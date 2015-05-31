@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
@@ -84,8 +84,8 @@ public final class AdditionalBelongingsMapParser implements
 
             group.put("reroll_table", belongings.getRerollTable());
 
-            for (final Dice dice : belongings.getRerolls()) {
-                values.add(dice.getTextValue());
+            for (final DiceFormula dice : belongings.getRerolls()) {
+                values.add(dice.getPrintableText());
             }
             group.put("rerolls", values);
 

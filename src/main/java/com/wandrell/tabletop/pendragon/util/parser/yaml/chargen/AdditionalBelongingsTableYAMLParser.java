@@ -12,8 +12,8 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -30,7 +30,7 @@ public class AdditionalBelongingsTableYAMLParser implements
 
     private final FilteredRepository<Horse, Predicate<Horse>>   horseRepository;
     private final FilteredRepository<Item, Predicate<Item>>     itemRepository;
-    private final ModelConstructorService                        modelService;
+    private final ModelConstructorService                       modelService;
     private final FilteredRepository<Pet, Predicate<Pet>>       petRepository;
     private final FilteredRepository<Shield, Predicate<Shield>> shieldRepository;
     private final FilteredRepository<Weapon, Predicate<Weapon>> weaponRepository;
@@ -109,8 +109,7 @@ public class AdditionalBelongingsTableYAMLParser implements
         return horseRepository;
     }
 
-    private final FilteredRepository<Item, Predicate<Item>>
-            getItemRepository() {
+    private final FilteredRepository<Item, Predicate<Item>> getItemRepository() {
         return itemRepository;
     }
 
@@ -146,16 +145,16 @@ public class AdditionalBelongingsTableYAMLParser implements
         final Integer libra;
         final Integer denarii;
         final String rerollTable;
-        final Collection<Dice> dice;
+        final Collection<DiceFormula> dice;
         final Collection<Horse> horses;
         final Collection<Item> items;
         final Collection<Pet> pets;
         final Collection<Shield> shields;
         final Collection<Weapon> weapons;
         final Boolean choose;
-        final Parser<String, Dice> diceParser;
+        final Parser<String, DiceFormula> diceParser;
 
-        diceParser = new StringDiceParser();
+        diceParser = new DiceFormulaParser();
 
         choose = (Boolean) belongings.get("has_to_choose");
 
@@ -171,7 +170,7 @@ public class AdditionalBelongingsTableYAMLParser implements
         }
 
         mapReroll = (Map<String, Object>) belongings.get("reroll");
-        dice = new LinkedList<Dice>();
+        dice = new LinkedList<DiceFormula>();
         if (mapReroll == null) {
             rerollTable = "";
         } else {

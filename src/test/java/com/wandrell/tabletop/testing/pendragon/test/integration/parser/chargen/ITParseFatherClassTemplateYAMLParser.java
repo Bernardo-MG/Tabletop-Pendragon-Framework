@@ -79,7 +79,7 @@ public final class ITParseFatherClassTemplateYAMLParser {
 
     @Test
     public final void testMoney() {
-        Assert.assertEquals(fatherClass.getMoney().getTextValue(), "3d6+10");
+        Assert.assertEquals(fatherClass.getMoney().getPrintableText(), "3d6+10");
     }
 
     @Test

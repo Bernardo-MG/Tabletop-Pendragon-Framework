@@ -19,7 +19,7 @@ import com.wandrell.tabletop.stats.valuebox.SkillBox;
 public final class HomelandTemplateYAMLParser implements
         Parser<Reader, HomelandTemplate> {
 
-    private final ModelConstructorService                                        modelService;
+    private final ModelConstructorService                                       modelService;
     private final FilteredRepository<RegionTemplate, Predicate<RegionTemplate>> regionRepo;
 
     public HomelandTemplateYAMLParser(
@@ -127,8 +127,7 @@ public final class HomelandTemplateYAMLParser implements
         return modelService;
     }
 
-    private final
-            FilteredRepository<RegionTemplate, Predicate<RegionTemplate>>
+    private final FilteredRepository<RegionTemplate, Predicate<RegionTemplate>>
             getRegionRepository() {
         return regionRepo;
     }

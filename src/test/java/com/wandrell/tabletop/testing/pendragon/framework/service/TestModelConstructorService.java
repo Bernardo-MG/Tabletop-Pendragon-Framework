@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 
-import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -45,7 +45,7 @@ public final class TestModelConstructorService implements
     @Override
     public final AdditionalBelongings getAdditionaBelongings(
             final Boolean choose, final String moneyName, final Money money,
-            final String rerollTable, final Collection<Dice> dice,
+            final String rerollTable, final Collection<DiceFormula> dice,
             final Collection<Horse> horses, final Collection<Item> items,
             final Collection<Pet> pets, final Collection<Shield> shields,
             final Collection<Weapon> weapons) {
@@ -218,7 +218,7 @@ public final class TestModelConstructorService implements
     public final FatherClassTemplate getFatherClassTemplate(final String name,
             final Integer skillsGroupPoints,
             final Integer skillsGroupPointsDivide, final Integer skillsPoints,
-            final Integer skillsNonCombatPoints, final Dice money,
+            final Integer skillsNonCombatPoints, final DiceFormula money,
             final Collection<SkillBox> skillsGroup,
             final Collection<SkillBox> specialtySkills,
             final Collection<SkillBox> directedTraits,
@@ -400,9 +400,8 @@ public final class TestModelConstructorService implements
 
     @Override
     public final PendragonSkillBox getSkill(final String name,
-             final String descriptor,
-            final Boolean combat, final Boolean court, final Boolean knight,
-            final Boolean knowledge) {
+            final String descriptor, final Boolean combat, final Boolean court,
+            final Boolean knight, final Boolean knowledge) {
         final PendragonSkillBox skill;
 
         skill = Mockito.mock(PendragonSkillBox.class);

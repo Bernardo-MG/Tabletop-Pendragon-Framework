@@ -18,7 +18,7 @@ public final class GetInitialSkillsCommand implements
         PendragonSkillBoxRepositoryAware {
 
     private FilteredRepository<PendragonSkillBox, Predicate<PendragonSkillBox>> skillRepo;
-    private Collection<PendragonSkillBox>                                        skills;
+    private Collection<PendragonSkillBox>                                       skills;
 
     public GetInitialSkillsCommand() {
         super();

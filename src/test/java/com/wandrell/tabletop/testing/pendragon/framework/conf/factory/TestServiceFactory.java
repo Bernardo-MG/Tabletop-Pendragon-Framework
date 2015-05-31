@@ -53,7 +53,7 @@ public final class TestServiceFactory {
     }
 
     public final
-    FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
+            FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>>
             getFamilyCharacteristicTemplateRepository() {
         final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> repository;
 

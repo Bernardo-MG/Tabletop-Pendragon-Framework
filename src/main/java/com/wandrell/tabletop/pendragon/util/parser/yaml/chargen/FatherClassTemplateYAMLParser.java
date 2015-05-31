@@ -8,9 +8,10 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.dice.DefaultDice;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.tabletop.dice.notation.DefaultDiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.IntegerComponent;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.pendragon.model.chargen.background.FatherClassTemplate;
 import com.wandrell.tabletop.pendragon.service.model.ModelConstructorService;
 import com.wandrell.tabletop.stats.valuebox.DefaultSkillBox;
@@ -44,15 +45,15 @@ public class FatherClassTemplateYAMLParser implements
         final Integer skillsGroupPointsDivide;
         final Integer skillsPoints;
         final Integer skillsNonCombatPoints;
-        final Dice money;
+        final DiceFormula money;
         final Collection<SkillBox> skillsGroup;
         final Collection<SkillBox> specialtySkills;
         final Collection<SkillBox> directedTraits;
         final Collection<SkillBox> directedTraitsBase;
-        final Parser<String, Dice> diceParser;
+        final Parser<String, DiceFormula> diceParser;
         String descriptor;
 
-        diceParser = new StringDiceParser();
+        diceParser = new DiceFormulaParser();
 
         yaml = new Yaml();
 
@@ -101,7 +102,7 @@ public class FatherClassTemplateYAMLParser implements
         if (values.containsKey("money")) {
             money = diceParser.parse((String) values.get("money"));
         } else {
-            money = new DefaultDice(0, 1);
+            money = new DefaultDiceFormula(new IntegerComponent(0));
         }
 
         // Skills group

@@ -68,9 +68,10 @@ public final class StatsYAMLParser<V extends SkillBox> implements
                 stat = getStatBuilder().getStat((String) data.get("name"),
                         descriptor, value);
 
-                //if ((descriptor.isEmpty()) && (data.containsKey("described"))) {
-                //    stat.setDescribed((Boolean) data.get("described"));
-                //}
+                // if ((descriptor.isEmpty()) &&
+                // (data.containsKey("described"))) {
+                // stat.setDescribed((Boolean) data.get("described"));
+                // }
 
                 stats.add(stat);
             }

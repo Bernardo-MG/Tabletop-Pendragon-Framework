@@ -5,14 +5,16 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.pattern.parser.Parser;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetHomelandPassionRollCommand implements ResultCommand<Dice> {
+public final class GetHomelandPassionRollCommand implements
+        ResultCommand<DiceFormula> {
 
-    private Dice roll;
+    private DiceFormula formula;
 
     public GetHomelandPassionRollCommand() {
         super();
@@ -21,11 +23,11 @@ public final class GetHomelandPassionRollCommand implements ResultCommand<Dice> 
     @SuppressWarnings("unchecked")
     @Override
     public final void execute() throws Exception {
-        final StringDiceParser parser;
+        final Parser<String, DiceFormula> parser;
         final Yaml yaml;
         Map<String, Object> values;
 
-        parser = new StringDiceParser();
+        parser = new DiceFormulaParser();
 
         yaml = new Yaml();
 
@@ -33,12 +35,12 @@ public final class GetHomelandPassionRollCommand implements ResultCommand<Dice> 
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("rolls");
 
-        roll = parser.parse((String) values.get("homelandPassion"));
+        formula = parser.parse((String) values.get("homelandPassion"));
     }
 
     @Override
-    public final Dice getResult() {
-        return roll;
+    public final DiceFormula getResult() {
+        return formula;
     }
 
 }

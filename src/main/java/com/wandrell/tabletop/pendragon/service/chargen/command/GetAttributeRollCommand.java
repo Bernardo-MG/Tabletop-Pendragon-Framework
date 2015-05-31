@@ -6,17 +6,18 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
+import com.wandrell.pattern.parser.Parser;
 import com.wandrell.tabletop.character.Gender;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetAttributeRollCommand implements
-        ResultCommand<Map<String, Dice>> {
+        ResultCommand<Map<String, DiceFormula>> {
 
-    private final Gender      gender;
-    private Map<String, Dice> rolls;
+    private final Gender             gender;
+    private Map<String, DiceFormula> rolls;
 
     public GetAttributeRollCommand(final Gender gender) {
         super();
@@ -27,7 +28,7 @@ public final class GetAttributeRollCommand implements
     @SuppressWarnings("unchecked")
     @Override
     public final void execute() throws Exception {
-        final StringDiceParser parser;
+        final Parser<String, DiceFormula> parser;
         final Yaml yaml;
         Map<String, Object> values;
 
@@ -43,7 +44,7 @@ public final class GetAttributeRollCommand implements
             values = (Map<String, Object>) values.get("female");
         }
 
-        parser = new StringDiceParser();
+        parser = new DiceFormulaParser();
         rolls = new LinkedHashMap<>();
 
         rolls.put("appearance",
@@ -56,7 +57,7 @@ public final class GetAttributeRollCommand implements
     }
 
     @Override
-    public final Map<String, Dice> getResult() {
+    public final Map<String, DiceFormula> getResult() {
         return rolls;
     }
 

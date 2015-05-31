@@ -88,7 +88,8 @@ public final class ITParseCultureTemplateYAMLParser {
 
         attributes = culture.getFemaleTemplate().getAttributesRandom();
 
-        Assert.assertEquals(attributes.getDexterity().getTextValue(), "10d2");
+        Assert.assertEquals(attributes.getDexterity().getPrintableText(),
+                "10d2");
     }
 
     @Test
@@ -97,8 +98,10 @@ public final class ITParseCultureTemplateYAMLParser {
 
         attributes = culture.getMaleTemplate().getAttributesRandom();
 
-        Assert.assertEquals(attributes.getAppearance().getTextValue(), "1d6");
-        Assert.assertEquals(attributes.getConstitution().getTextValue(), "2d6");
+        Assert.assertEquals(attributes.getAppearance().getPrintableText(),
+                "1d6");
+        Assert.assertEquals(attributes.getConstitution().getPrintableText(),
+                "2d6");
     }
 
     @Test
@@ -215,7 +218,7 @@ public final class ITParseCultureTemplateYAMLParser {
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_3");
         Assert.assertEquals(passion.getDescriptor(), "");
-        Assert.assertEquals(passion.getValue().getTextValue(), "6d6");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "6d6");
     }
 
     @Test
@@ -233,17 +236,17 @@ public final class ITParseCultureTemplateYAMLParser {
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_1");
         Assert.assertEquals(passion.getDescriptor(), "");
-        Assert.assertEquals(passion.getValue().getTextValue(), "3d6");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "3d6");
 
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_2");
         Assert.assertEquals(passion.getDescriptor(), "descriptor_2");
-        Assert.assertEquals(passion.getValue().getTextValue(), "0d1");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "0d1");
 
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_4");
         Assert.assertEquals(passion.getDescriptor(), "");
-        Assert.assertEquals(passion.getValue().getTextValue(), "0d1+5");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "0d1+5");
     }
 
     @Test

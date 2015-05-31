@@ -77,8 +77,8 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         Assert.assertEquals(father.getSkillsGroupDividePoints(),
                 fatherOut.getSkillsGroupDividePoints());
 
-        Assert.assertEquals(father.getMoney().getTextValue(), fatherOut
-                .getMoney().getTextValue());
+        Assert.assertEquals(father.getMoney().getPrintableText(), fatherOut
+                .getMoney().getPrintableText());
 
         Assert.assertEquals(father.getSkillsGroup(), fatherOut.getSkillsGroup());
         Assert.assertEquals(father.getDirectedTraits(),
@@ -128,8 +128,8 @@ public final class ITSendFatherClassTemplateYAMLOutputter {
         Assert.assertEquals(father.getSkillsGroupDividePoints(),
                 fatherOut.getSkillsGroupDividePoints());
 
-        Assert.assertEquals(father.getMoney().getTextValue(), fatherOut
-                .getMoney().getTextValue());
+        Assert.assertEquals(father.getMoney().getPrintableText(), fatherOut
+                .getMoney().getPrintableText());
 
         Assert.assertEquals(father.getSkillsGroup(), fatherOut.getSkillsGroup());
         Assert.assertEquals(father.getDirectedTraits(),

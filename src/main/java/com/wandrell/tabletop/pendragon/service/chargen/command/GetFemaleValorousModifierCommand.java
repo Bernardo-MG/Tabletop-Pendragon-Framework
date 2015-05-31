@@ -5,15 +5,16 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.pattern.parser.Parser;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetFemaleValorousModifierCommand implements
-        ResultCommand<Dice> {
+        ResultCommand<DiceFormula> {
 
-    private Dice modifier;
+    private DiceFormula formula;
 
     public GetFemaleValorousModifierCommand() {
         super();
@@ -22,11 +23,11 @@ public final class GetFemaleValorousModifierCommand implements
     @SuppressWarnings("unchecked")
     @Override
     public final void execute() throws Exception {
-        final StringDiceParser parser;
+        final Parser<String, DiceFormula> parser;
         final Yaml yaml;
         Map<String, Object> values;
 
-        parser = new StringDiceParser();
+        parser = new DiceFormulaParser();
 
         yaml = new Yaml();
 
@@ -34,12 +35,12 @@ public final class GetFemaleValorousModifierCommand implements
                 .getClassPathReader(FileConfig.RULESET_CHARGEN_CONFIG));
         values = (Map<String, Object>) values.get("rolls");
 
-        modifier = parser.parse((String) values.get("femaleValorousMod"));
+        formula = parser.parse((String) values.get("femaleValorousMod"));
     }
 
     @Override
-    public final Dice getResult() {
-        return modifier;
+    public final DiceFormula getResult() {
+        return formula;
     }
 
 }

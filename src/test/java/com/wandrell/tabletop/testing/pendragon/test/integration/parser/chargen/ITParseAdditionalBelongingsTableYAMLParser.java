@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.Dice;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
@@ -159,7 +159,7 @@ public final class ITParseAdditionalBelongingsTableYAMLParser {
     public final void testAdditionalBelongings_Second() {
         final AdditionalBelongings belongings;
         final Iterator<AdditionalBelongings> itrValues;
-        final Iterator<Dice> itrDice;
+        final Iterator<DiceFormula> itrDice;
 
         itrValues = table.getIntervals().values().iterator();
         itrValues.next();
@@ -175,8 +175,8 @@ public final class ITParseAdditionalBelongingsTableYAMLParser {
         Assert.assertEquals(belongings.getRerolls().size(), 2);
 
         itrDice = belongings.getRerolls().iterator();
-        Assert.assertEquals(itrDice.next().getTextValue(), "1d6");
-        Assert.assertEquals(itrDice.next().getTextValue(), "1d20+1");
+        Assert.assertEquals(itrDice.next().getPrintableText(), "1d6");
+        Assert.assertEquals(itrDice.next().getPrintableText(), "1d20+1");
 
         Assert.assertEquals(belongings.getHorses().size(), 0);
         Assert.assertEquals(belongings.getItems().size(), 0);

@@ -21,7 +21,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name,descriptor, value);
+        skill = new DefaultSkillBox(name, descriptor, value);
 
         return skill;
     }
@@ -31,7 +31,7 @@ public final class DefaultStatConstructorService implements
             final String descriptor, final Integer value) {
         final SkillBox skill;
 
-        skill = new DefaultSkillBox(name,descriptor, value);
+        skill = new DefaultSkillBox(name, descriptor, value);
 
         return skill;
     }
@@ -43,8 +43,8 @@ public final class DefaultStatConstructorService implements
             final Boolean knowledgeSkill, final Boolean courtlySkill) {
         final PendragonSkillBox skill;
 
-        skill = new DefaultPendragonSkillBox(name,descriptor, value, combatSkill,
-                knightlySkill, knowledgeSkill, courtlySkill);
+        skill = new DefaultPendragonSkillBox(name, descriptor, value,
+                combatSkill, knightlySkill, knowledgeSkill, courtlySkill);
 
         return skill;
     }

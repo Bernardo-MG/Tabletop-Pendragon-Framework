@@ -10,9 +10,10 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.DefaultDice;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.tabletop.dice.notation.DefaultDiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.IntegerComponent;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
@@ -33,7 +34,7 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final FilteredRepository<AdditionalBelongingsTable, Predicate<AdditionalBelongingsTable>>       addBelongRepo;
     private final FilteredRepository<FamilyCharacteristicTemplate, Predicate<FamilyCharacteristicTemplate>> famCharRepo;
-    private final ModelConstructorService                                                                    modelService;
+    private final ModelConstructorService                                                                   modelService;
 
     public CultureYAMLParser(
             final ModelConstructorService service,
@@ -102,12 +103,12 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         final Collection<RandomSkill> passionsRandom;
         final Collection<SkillBox> directedBonus;
         final TraitsHolder traitsBonus;
-        final Parser<String, Dice> diceParser;
+        final Parser<String, DiceFormula> diceParser;
         String descriptor;
         RandomSkill skillRandom;
-        Dice dice;
+        DiceFormula dice;
 
-        diceParser = new StringDiceParser();
+        diceParser = new DiceFormulaParser();
 
         attributesBonus = new DefaultAttributesHolder();
         skillsBonus = new LinkedList<>();
@@ -197,9 +198,11 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         } else {
             traitsBonus = new DefaultTraitsHolder();
             attributesRandom = new DefaultAttributesRandom(
-                    new DefaultDice(0, 1), new DefaultDice(0, 1),
-                    new DefaultDice(0, 1), new DefaultDice(0, 1),
-                    new DefaultDice(0, 1));
+                    new DefaultDiceFormula(new IntegerComponent(0)),
+                    new DefaultDiceFormula(new IntegerComponent(0)),
+                    new DefaultDiceFormula(new IntegerComponent(0)),
+                    new DefaultDiceFormula(new IntegerComponent(0)),
+                    new DefaultDiceFormula(new IntegerComponent(0)));
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
@@ -336,20 +339,20 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final AttributesRandom loadAttributesRandom(
             final Collection<Map<String, Object>> attributes) {
-        final Parser<String, Dice> diceParser;
-        Dice appearance;
-        Dice constitution;
-        Dice dexterity;
-        Dice size;
-        Dice strength;
+        final Parser<String, DiceFormula> diceParser;
+        DiceFormula appearance;
+        DiceFormula constitution;
+        DiceFormula dexterity;
+        DiceFormula size;
+        DiceFormula strength;
 
-        diceParser = new StringDiceParser();
+        diceParser = new DiceFormulaParser();
 
-        appearance = new DefaultDice(0, 1);
-        constitution = new DefaultDice(0, 1);
-        dexterity = new DefaultDice(0, 1);
-        size = new DefaultDice(0, 1);
-        strength = new DefaultDice(0, 1);
+        appearance = new DefaultDiceFormula(new IntegerComponent(0));
+        constitution = new DefaultDiceFormula(new IntegerComponent(0));
+        dexterity = new DefaultDiceFormula(new IntegerComponent(0));
+        size = new DefaultDiceFormula(new IntegerComponent(0));
+        strength = new DefaultDiceFormula(new IntegerComponent(0));
 
         if (attributes != null) {
             try {

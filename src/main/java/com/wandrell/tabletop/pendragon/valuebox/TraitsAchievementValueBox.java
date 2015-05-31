@@ -42,6 +42,7 @@ public final class TraitsAchievementValueBox extends AbstractValueBoxEventFirer 
     public final Integer getValue() {
         return sum;
     }
+
     @Override
     public final void setValue(final Integer value) {
         throw new UnsupportedOperationException("Setting the value is disabled");

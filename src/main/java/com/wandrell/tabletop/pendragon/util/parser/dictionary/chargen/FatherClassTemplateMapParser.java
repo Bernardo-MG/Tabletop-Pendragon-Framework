@@ -43,9 +43,9 @@ public final class FatherClassTemplateMapParser implements
         data.put("skills_points_group_divide",
                 father.getSkillsGroupDividePoints());
 
-        money = father.getMoney().getTextValue();
+        money = father.getMoney().getPrintableText();
         if (!money.isEmpty()) {
-            data.put("money", father.getMoney().getTextValue());
+            data.put("money", father.getMoney().getPrintableText());
         }
 
         data.put("skills_group", skills);

@@ -107,53 +107,53 @@ public final class CultureTemplateMapParser implements
 
         // Random attributes
         valuesCol = new LinkedList<>();
-        if (!template.getAttributesRandom().getAppearance().getTextValue()
+        if (!template.getAttributesRandom().getAppearance().getPrintableText()
                 .equals("0")) {
             value = new LinkedHashMap<String, Object>();
 
             value.put("name", "appearance");
             value.put("value", template.getAttributesRandom().getAppearance()
-                    .getTextValue());
+                    .getPrintableText());
 
             valuesCol.add(value);
         }
-        if (!template.getAttributesRandom().getConstitution().getTextValue()
-                .equals("0")) {
+        if (!template.getAttributesRandom().getConstitution()
+                .getPrintableText().equals("0")) {
             value = new LinkedHashMap<String, Object>();
 
             value.put("name", "constitution");
             value.put("value", template.getAttributesRandom().getConstitution()
-                    .getTextValue());
+                    .getPrintableText());
 
             valuesCol.add(value);
         }
-        if (!template.getAttributesRandom().getDexterity().getTextValue()
+        if (!template.getAttributesRandom().getDexterity().getPrintableText()
                 .equals("0")) {
             value = new LinkedHashMap<String, Object>();
 
             value.put("name", "dexterity");
             value.put("value", template.getAttributesRandom().getDexterity()
-                    .getTextValue());
+                    .getPrintableText());
 
             valuesCol.add(value);
         }
-        if (!template.getAttributesRandom().getSize().getTextValue()
+        if (!template.getAttributesRandom().getSize().getPrintableText()
                 .equals("0")) {
             value = new LinkedHashMap<String, Object>();
 
             value.put("name", "size");
             value.put("value", template.getAttributesRandom().getSize()
-                    .getTextValue());
+                    .getPrintableText());
 
             valuesCol.add(value);
         }
-        if (!template.getAttributesRandom().getStrength().getTextValue()
+        if (!template.getAttributesRandom().getStrength().getPrintableText()
                 .equals("0")) {
             value = new LinkedHashMap<String, Object>();
 
             value.put("name", "strength");
             value.put("value", template.getAttributesRandom().getStrength()
-                    .getTextValue());
+                    .getPrintableText());
 
             valuesCol.add(value);
         }
@@ -215,7 +215,7 @@ public final class CultureTemplateMapParser implements
 
                 value.put("name", passion.getName());
                 value.put("descriptor", passion.getDescriptor());
-                value.put("value", passion.getValue().getTextValue());
+                value.put("value", passion.getValue().getPrintableText());
 
                 valuesCol.add(value);
             }

@@ -7,15 +7,17 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
-import com.wandrell.tabletop.dice.Dice;
-import com.wandrell.tabletop.dice.StringDiceParser;
+import com.wandrell.pattern.parser.Parser;
+import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetLandlordPassionRollCommand implements ResultCommand<Dice> {
+public final class GetLandlordPassionRollCommand implements
+        ResultCommand<DiceFormula> {
 
     private final String descriptor;
+    private DiceFormula  formula;
     private final String name;
-    private Dice         roll;
 
     public GetLandlordPassionRollCommand(final String name,
             final String descriptor) {
@@ -29,7 +31,7 @@ public final class GetLandlordPassionRollCommand implements ResultCommand<Dice> 
     @Override
     public final void execute() throws Exception {
         final Yaml yaml;
-        final StringDiceParser parser;
+        final Parser<String, DiceFormula> parser;
         final Iterator<Map<String, Object>> itr;
         Collection<Map<String, Object>> values;
         Map<String, Object> value;
@@ -40,27 +42,27 @@ public final class GetLandlordPassionRollCommand implements ResultCommand<Dice> 
                 .load(ResourceUtils
                         .getClassPathReader("config/stat/pendragon_passion_landlord.yml"));
 
-        parser = new StringDiceParser();
+        parser = new DiceFormulaParser();
 
-        roll = null;
+        formula = null;
         itr = values.iterator();
-        while ((itr.hasNext()) && (roll == null)) {
+        while ((itr.hasNext()) && (formula == null)) {
             value = itr.next();
 
             if ((value.get("name").equals(name))
                     && (value.get("descriptor").equals(descriptor))) {
-                roll = parser.parse(value.get("roll").toString());
+                formula = parser.parse(value.get("roll").toString());
             }
         }
 
-        if (roll == null) {
-            roll = parser.parse("0");
+        if (formula == null) {
+            formula = parser.parse("0");
         }
     }
 
     @Override
-    public final Dice getResult() {
-        return roll;
+    public final DiceFormula getResult() {
+        return formula;
     }
 
 }
