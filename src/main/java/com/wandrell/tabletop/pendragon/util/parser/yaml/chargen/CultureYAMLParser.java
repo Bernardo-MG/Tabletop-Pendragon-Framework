@@ -10,10 +10,10 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.notation.DefaultDiceFormula;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
-import com.wandrell.tabletop.dice.notation.IntegerComponent;
-import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
+import com.wandrell.tabletop.dice.notation.DefaultDiceExpression;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
+import com.wandrell.tabletop.dice.notation.operation.constant.IntegerConstant;
+import com.wandrell.tabletop.dice.parser.DiceExpressionParser;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesHolder;
 import com.wandrell.tabletop.pendragon.model.character.stats.AttributesRandom;
 import com.wandrell.tabletop.pendragon.model.character.stats.DefaultAttributesHolder;
@@ -103,12 +103,12 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         final Collection<RandomSkill> passionsRandom;
         final Collection<SkillBox> directedBonus;
         final TraitsHolder traitsBonus;
-        final Parser<String, DiceFormula> diceParser;
+        final Parser<String, DiceExpression> diceParser;
         String descriptor;
         RandomSkill skillRandom;
-        DiceFormula dice;
+        DiceExpression dice;
 
-        diceParser = new DiceFormulaParser();
+        diceParser = new DiceExpressionParser();
 
         attributesBonus = new DefaultAttributesHolder();
         skillsBonus = new LinkedList<>();
@@ -198,11 +198,11 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
         } else {
             traitsBonus = new DefaultTraitsHolder();
             attributesRandom = new DefaultAttributesRandom(
-                    new DefaultDiceFormula(new IntegerComponent(0)),
-                    new DefaultDiceFormula(new IntegerComponent(0)),
-                    new DefaultDiceFormula(new IntegerComponent(0)),
-                    new DefaultDiceFormula(new IntegerComponent(0)),
-                    new DefaultDiceFormula(new IntegerComponent(0)));
+                    new DefaultDiceExpression(new IntegerConstant(0)),
+                    new DefaultDiceExpression(new IntegerConstant(0)),
+                    new DefaultDiceExpression(new IntegerConstant(0)),
+                    new DefaultDiceExpression(new IntegerConstant(0)),
+                    new DefaultDiceExpression(new IntegerConstant(0)));
         }
 
         return getModelService().getCultureCharacterTemplate(attributesBonus,
@@ -339,20 +339,20 @@ public class CultureYAMLParser implements Parser<Reader, CultureTemplate> {
 
     private final AttributesRandom loadAttributesRandom(
             final Collection<Map<String, Object>> attributes) {
-        final Parser<String, DiceFormula> diceParser;
-        DiceFormula appearance;
-        DiceFormula constitution;
-        DiceFormula dexterity;
-        DiceFormula size;
-        DiceFormula strength;
+        final Parser<String, DiceExpression> diceParser;
+        DiceExpression appearance;
+        DiceExpression constitution;
+        DiceExpression dexterity;
+        DiceExpression size;
+        DiceExpression strength;
 
-        diceParser = new DiceFormulaParser();
+        diceParser = new DiceExpressionParser();
 
-        appearance = new DefaultDiceFormula(new IntegerComponent(0));
-        constitution = new DefaultDiceFormula(new IntegerComponent(0));
-        dexterity = new DefaultDiceFormula(new IntegerComponent(0));
-        size = new DefaultDiceFormula(new IntegerComponent(0));
-        strength = new DefaultDiceFormula(new IntegerComponent(0));
+        appearance = new DefaultDiceExpression(new IntegerConstant(0));
+        constitution = new DefaultDiceExpression(new IntegerConstant(0));
+        dexterity = new DefaultDiceExpression(new IntegerConstant(0));
+        size = new DefaultDiceExpression(new IntegerConstant(0));
+        strength = new DefaultDiceExpression(new IntegerConstant(0));
 
         if (attributes != null) {
             try {

@@ -8,16 +8,16 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
-import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
+import com.wandrell.tabletop.dice.parser.DiceExpressionParser;
 import com.wandrell.util.ResourceUtils;
 
 public final class GetLandlordPassionRollCommand implements
-        ResultCommand<DiceFormula> {
+        ResultCommand<DiceExpression> {
 
-    private final String descriptor;
-    private DiceFormula  formula;
-    private final String name;
+    private final String   descriptor;
+    private DiceExpression formula;
+    private final String   name;
 
     public GetLandlordPassionRollCommand(final String name,
             final String descriptor) {
@@ -31,7 +31,7 @@ public final class GetLandlordPassionRollCommand implements
     @Override
     public final void execute() throws Exception {
         final Yaml yaml;
-        final Parser<String, DiceFormula> parser;
+        final Parser<String, DiceExpression> parser;
         final Iterator<Map<String, Object>> itr;
         Collection<Map<String, Object>> values;
         Map<String, Object> value;
@@ -42,7 +42,7 @@ public final class GetLandlordPassionRollCommand implements
                 .load(ResourceUtils
                         .getClassPathReader("config/stat/pendragon_passion_landlord.yml"));
 
-        parser = new DiceFormulaParser();
+        parser = new DiceExpressionParser();
 
         formula = null;
         itr = values.iterator();
@@ -61,7 +61,7 @@ public final class GetLandlordPassionRollCommand implements
     }
 
     @Override
-    public final DiceFormula getResult() {
+    public final DiceExpression getResult() {
         return formula;
     }
 

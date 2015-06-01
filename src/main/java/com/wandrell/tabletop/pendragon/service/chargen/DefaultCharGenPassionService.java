@@ -5,7 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Collection;
 
 import com.wandrell.pattern.command.CommandExecutor;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetCommonPassionRollCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetHomelandPassionRollCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetLandlordPassionRollCommand;
@@ -17,8 +17,8 @@ public final class DefaultCharGenPassionService implements
         CharGenPassionService {
 
     private final CommandExecutor comExec;
-    private DiceFormula           common;
-    private DiceFormula           homeland;
+    private DiceExpression        common;
+    private DiceExpression        homeland;
     private Collection<SkillBox>  landlord;
     private Integer               passionPoints;
 
@@ -31,7 +31,7 @@ public final class DefaultCharGenPassionService implements
     }
 
     @Override
-    public final DiceFormula getCommonPassionValue() {
+    public final DiceExpression getCommonPassionValue() {
         if (common == null) {
             common = getCommandExecutor().execute(
                     new GetCommonPassionRollCommand());
@@ -41,7 +41,7 @@ public final class DefaultCharGenPassionService implements
     }
 
     @Override
-    public final DiceFormula getHomelandValue() {
+    public final DiceExpression getHomelandValue() {
         if (homeland == null) {
             homeland = getCommandExecutor().execute(
                     new GetHomelandPassionRollCommand());
@@ -61,7 +61,7 @@ public final class DefaultCharGenPassionService implements
     }
 
     @Override
-    public final DiceFormula getLandlordPassionRoll(final String passion,
+    public final DiceExpression getLandlordPassionRoll(final String passion,
             final String descriptor) {
         return getCommandExecutor().execute(
                 new GetLandlordPassionRollCommand(passion, descriptor));

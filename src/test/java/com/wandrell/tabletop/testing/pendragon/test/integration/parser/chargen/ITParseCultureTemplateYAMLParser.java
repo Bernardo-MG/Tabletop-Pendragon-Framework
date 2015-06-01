@@ -241,12 +241,12 @@ public final class ITParseCultureTemplateYAMLParser {
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_2");
         Assert.assertEquals(passion.getDescriptor(), "descriptor_2");
-        Assert.assertEquals(passion.getValue().getPrintableText(), "0d1");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "0");
 
         passion = itrPassions.next();
         Assert.assertEquals(passion.getName(), "passion_4");
         Assert.assertEquals(passion.getDescriptor(), "");
-        Assert.assertEquals(passion.getValue().getPrintableText(), "0d1+5");
+        Assert.assertEquals(passion.getValue().getPrintableText(), "5");
     }
 
     @Test

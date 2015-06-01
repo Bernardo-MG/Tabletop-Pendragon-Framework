@@ -12,8 +12,8 @@ import org.yaml.snakeyaml.Yaml;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
-import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
+import com.wandrell.tabletop.dice.parser.DiceExpressionParser;
 import com.wandrell.tabletop.interval.DefaultInterval;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -145,16 +145,16 @@ public class AdditionalBelongingsTableYAMLParser implements
         final Integer libra;
         final Integer denarii;
         final String rerollTable;
-        final Collection<DiceFormula> dice;
+        final Collection<DiceExpression> dice;
         final Collection<Horse> horses;
         final Collection<Item> items;
         final Collection<Pet> pets;
         final Collection<Shield> shields;
         final Collection<Weapon> weapons;
         final Boolean choose;
-        final Parser<String, DiceFormula> diceParser;
+        final Parser<String, DiceExpression> diceParser;
 
-        diceParser = new DiceFormulaParser();
+        diceParser = new DiceExpressionParser();
 
         choose = (Boolean) belongings.get("has_to_choose");
 
@@ -170,7 +170,7 @@ public class AdditionalBelongingsTableYAMLParser implements
         }
 
         mapReroll = (Map<String, Object>) belongings.get("reroll");
-        dice = new LinkedList<DiceFormula>();
+        dice = new LinkedList<DiceExpression>();
         if (mapReroll == null) {
             rerollTable = "";
         } else {

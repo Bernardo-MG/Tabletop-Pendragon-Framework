@@ -3,14 +3,14 @@ package com.wandrell.tabletop.pendragon.service.chargen;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetDirectedTraitInitialRollCommand;
 
 public final class DefaultCharGenDirectedTraitsService implements
         CharGenDirectedTraitsService {
 
     private final CommandExecutor comExec;
-    private DiceFormula           initialDirTrait;
+    private DiceExpression        initialDirTrait;
 
     public DefaultCharGenDirectedTraitsService(final CommandExecutor executor) {
         super();
@@ -21,7 +21,7 @@ public final class DefaultCharGenDirectedTraitsService implements
     }
 
     @Override
-    public final DiceFormula getInitialValue() {
+    public final DiceExpression getInitialValue() {
         if (initialDirTrait == null) {
             initialDirTrait = getCommandExecutor().execute(
                     new GetDirectedTraitInitialRollCommand());

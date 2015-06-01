@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.interval.IntervalTable;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
@@ -45,7 +45,7 @@ public final class TestModelConstructorService implements
     @Override
     public final AdditionalBelongings getAdditionaBelongings(
             final Boolean choose, final String moneyName, final Money money,
-            final String rerollTable, final Collection<DiceFormula> dice,
+            final String rerollTable, final Collection<DiceExpression> dice,
             final Collection<Horse> horses, final Collection<Item> items,
             final Collection<Pet> pets, final Collection<Shield> shields,
             final Collection<Weapon> weapons) {
@@ -218,7 +218,7 @@ public final class TestModelConstructorService implements
     public final FatherClassTemplate getFatherClassTemplate(final String name,
             final Integer skillsGroupPoints,
             final Integer skillsGroupPointsDivide, final Integer skillsPoints,
-            final Integer skillsNonCombatPoints, final DiceFormula money,
+            final Integer skillsNonCombatPoints, final DiceExpression money,
             final Collection<SkillBox> skillsGroup,
             final Collection<SkillBox> specialtySkills,
             final Collection<SkillBox> directedTraits,

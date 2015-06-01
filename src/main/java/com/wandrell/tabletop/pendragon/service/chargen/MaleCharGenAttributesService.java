@@ -6,15 +6,15 @@ import java.util.Map;
 
 import com.wandrell.pattern.command.CommandExecutor;
 import com.wandrell.tabletop.character.Gender;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributePointsCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetAttributeRollCommand;
 
 public class MaleCharGenAttributesService implements CharGenAttributesService {
 
-    private Map<String, DiceFormula> attributeRolls;
-    private final CommandExecutor    comExec;
-    private Integer                  points;
+    private Map<String, DiceExpression> attributeRolls;
+    private final CommandExecutor       comExec;
+    private Integer                     points;
 
     public MaleCharGenAttributesService(final CommandExecutor executor) {
         super();
@@ -25,7 +25,7 @@ public class MaleCharGenAttributesService implements CharGenAttributesService {
     }
 
     @Override
-    public final DiceFormula getAppearanceRoll() {
+    public final DiceExpression getAppearanceRoll() {
         return getAttributesRolls().get("appearance");
     }
 
@@ -40,26 +40,26 @@ public class MaleCharGenAttributesService implements CharGenAttributesService {
     }
 
     @Override
-    public final DiceFormula getConstitutionRoll() {
+    public final DiceExpression getConstitutionRoll() {
         return getAttributesRolls().get("constitution");
     }
 
     @Override
-    public final DiceFormula getDexterityRoll() {
+    public final DiceExpression getDexterityRoll() {
         return getAttributesRolls().get("dexterity");
     }
 
     @Override
-    public final DiceFormula getSizeRoll() {
+    public final DiceExpression getSizeRoll() {
         return getAttributesRolls().get("size");
     }
 
     @Override
-    public final DiceFormula getStrengthRoll() {
+    public final DiceExpression getStrengthRoll() {
         return getAttributesRolls().get("strength");
     }
 
-    private final Map<String, DiceFormula> getAttributesRolls() {
+    private final Map<String, DiceExpression> getAttributesRolls() {
         if (attributeRolls == null) {
             attributeRolls = getCommandExecutor().execute(
                     new GetAttributeRollCommand(Gender.MALE));

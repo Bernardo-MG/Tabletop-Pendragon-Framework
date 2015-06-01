@@ -6,14 +6,14 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.wandrell.pattern.command.ResultCommand;
 import com.wandrell.pattern.parser.Parser;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
-import com.wandrell.tabletop.dice.parser.DiceFormulaParser;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
+import com.wandrell.tabletop.dice.parser.DiceExpressionParser;
 import com.wandrell.tabletop.pendragon.conf.FileConfig;
 import com.wandrell.util.ResourceUtils;
 
-public final class GetTraitRollCommand implements ResultCommand<DiceFormula> {
+public final class GetTraitRollCommand implements ResultCommand<DiceExpression> {
 
-    private DiceFormula formula;
+    private DiceExpression formula;
 
     public GetTraitRollCommand() {
         super();
@@ -22,11 +22,11 @@ public final class GetTraitRollCommand implements ResultCommand<DiceFormula> {
     @SuppressWarnings("unchecked")
     @Override
     public final void execute() throws Exception {
-        final Parser<String, DiceFormula> parser;
+        final Parser<String, DiceExpression> parser;
         final Yaml yaml;
         Map<String, Object> values;
 
-        parser = new DiceFormulaParser();
+        parser = new DiceExpressionParser();
 
         yaml = new Yaml();
 
@@ -38,7 +38,7 @@ public final class GetTraitRollCommand implements ResultCommand<DiceFormula> {
     }
 
     @Override
-    public final DiceFormula getResult() {
+    public final DiceExpression getResult() {
         return formula;
     }
 

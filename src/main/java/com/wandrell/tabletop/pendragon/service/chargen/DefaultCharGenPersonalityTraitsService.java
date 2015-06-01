@@ -3,7 +3,7 @@ package com.wandrell.tabletop.pendragon.service.chargen;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.pattern.command.CommandExecutor;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetFamousTraitValueCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetFemaleValorousModifierCommand;
 import com.wandrell.tabletop.pendragon.service.chargen.command.GetTraitIndividualDifferencesCommand;
@@ -16,9 +16,9 @@ public final class DefaultCharGenPersonalityTraitsService implements
     private final CommandExecutor comExec;
     private Integer               diffPoints;
     private Integer               famousTrait;
-    private DiceFormula           femaleValorousMod;
+    private DiceExpression        femaleValorousMod;
     private Integer               randomPoints;
-    private DiceFormula           randomRoll;
+    private DiceExpression        randomRoll;
 
     public DefaultCharGenPersonalityTraitsService(final CommandExecutor executor) {
         super();
@@ -39,7 +39,7 @@ public final class DefaultCharGenPersonalityTraitsService implements
     }
 
     @Override
-    public final DiceFormula getFemaleValorousReduction() {
+    public final DiceExpression getFemaleValorousReduction() {
         // TODO: This should adapt to the dice sign
         // This means, instead of giving a dice to substract, the dice should
         // return a negative value
@@ -72,7 +72,7 @@ public final class DefaultCharGenPersonalityTraitsService implements
     }
 
     @Override
-    public final DiceFormula getRandomRoll() {
+    public final DiceExpression getRandomRoll() {
         if (randomRoll == null) {
             randomRoll = getCommandExecutor()
                     .execute(new GetTraitRollCommand());

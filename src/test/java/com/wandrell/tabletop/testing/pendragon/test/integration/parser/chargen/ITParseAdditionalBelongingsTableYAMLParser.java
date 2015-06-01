@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.google.common.base.Predicate;
 import com.wandrell.pattern.parser.Parser;
 import com.wandrell.pattern.repository.FilteredRepository;
-import com.wandrell.tabletop.dice.notation.DiceFormula;
+import com.wandrell.tabletop.dice.notation.DiceExpression;
 import com.wandrell.tabletop.interval.Interval;
 import com.wandrell.tabletop.pendragon.model.character.Horse;
 import com.wandrell.tabletop.pendragon.model.chargen.inventory.AdditionalBelongings;
@@ -159,7 +159,7 @@ public final class ITParseAdditionalBelongingsTableYAMLParser {
     public final void testAdditionalBelongings_Second() {
         final AdditionalBelongings belongings;
         final Iterator<AdditionalBelongings> itrValues;
-        final Iterator<DiceFormula> itrDice;
+        final Iterator<DiceExpression> itrDice;
 
         itrValues = table.getIntervals().values().iterator();
         itrValues.next();
